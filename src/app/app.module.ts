@@ -7,9 +7,30 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SelectedMaterialModules } from './services/material.module';
 
+import { LandingComponent } from './landing/landing.component';
+
+import { HeaderComponent } from './landing/header/header.component';
+import { HeaderComponent as HomeHeader } from './home/header/header.component';
+import { LoginComponent } from './landing/login/login.component';
+import { SignupComponent } from './landing/signup/signup.component';
+import { FooterComponent } from './footer/footer.component';
+import { PageNotFoundComponent } from './landing/page-not-found/page-not-found.component';
+import { InfoPageComponent } from './landing/info-page/info-page.component';
+
+import { HomeComponent } from './home/home.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent,
+    HeaderComponent,
+    LoginComponent,
+    SignupComponent,
+    FooterComponent,
+    PageNotFoundComponent,
+    InfoPageComponent,
+    HomeComponent,
+    HomeHeader,
   ],
   imports: [
     BrowserModule,
