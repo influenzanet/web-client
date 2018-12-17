@@ -17,6 +17,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './landing/page-not-found/page-not-found.component';
 import { InfoPageComponent } from './landing/info-page/info-page.component';
 
+import { GlobalServicesModule } from './services/global.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,7 @@ import { InfoPageComponent } from './landing/info-page/info-page.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     SelectedMaterialModules,
+    GlobalServicesModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
