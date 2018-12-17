@@ -23,7 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 // import { MatTableModule } from '@angular/material/table';
 // import { MatTabsModule } from '@angular/material/tabs';
-// import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 // import { MatTooltipModule } from '@angular/material/tooltip';
 // import { MatTreeModule } from '@angular/material/tree';
 
@@ -50,7 +50,7 @@ const usedModules = [
     // MatSlideToggleModule,
     // MatTableModule,
     // MatTabsModule,
-    // MatToolbarModule,
+    MatToolbarModule,
     // MatTooltipModule,
     // MatTreeModule,
 ];
