@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 
-// import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 // import { MatButtonToggleModule } from '@angular/material/button-toggle';
 // import { MatCardModule } from '@angular/material/card';
 // import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -28,7 +28,7 @@ import { NgModule } from '@angular/core';
 // import { MatTreeModule } from '@angular/material/tree';
 
 const usedModules = [
-    // MatButtonModule,
+    MatButtonModule,
     // MatButtonToggleModule,
     // MatCardModule,
     // MatCheckboxModule,

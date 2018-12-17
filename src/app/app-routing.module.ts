@@ -8,8 +8,6 @@ import { InfoPageComponent } from './landing/info-page/info-page.component';
 import { LoginComponent } from './landing/login/login.component';
 import { SignupComponent } from './landing/signup/signup.component';
 
-import { HomeComponent } from './home/home.component';
-
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'landing' },
   { path: 'landing', component: LandingComponent, children: [
@@ -18,9 +16,7 @@ const routes: Routes = [
       { path: 'signup', component: SignupComponent },
     ]
   },
-  { path: 'home', component: HomeComponent, children: [
-
-  ]},
+  { path: 'home', loadChildren: '../app/home/home.module#HomeModule'},
   { path: '**', component: PageNotFoundComponent },
 ];
 
