@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="e72d9150f7be7ed57a51c87343dab087547e9971" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/landing/login/login.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description"> Login field for email</note>
+        <note priority="1" from="meaning">login email </note>
+      </trans-unit>
+      <trans-unit id="2f867f33da249b81009ad3dd63bc88abbfed1893" datatype="html">
+        <source>Password</source>
+        <target>Kennwort</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/landing/login/login.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description"> Login field for password</note>
+        <note priority="1" from="meaning">login password </note>
+      </trans-unit>
+      <trans-unit id="edf176e5d32ae1e6cca693dfa9e2c785f7d73fab" datatype="html">
+        <source>Login</source>
+        <target>Einloggen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/landing/login/login.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description"> Button text for starting login</note>
+        <note priority="1" from="meaning">login confirm </note>
+      </trans-unit>
+      <trans-unit id="c198c19cf85e5646c6ab9f04f1e4016086700440" datatype="html">
+        <source>Password forgotten</source>
+        <target>Kennwort vergessen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/landing/login/login.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description"> Button text to trigger password forgotten workflow</note>
+        <note priority="1" from="meaning">login password forgotten </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
