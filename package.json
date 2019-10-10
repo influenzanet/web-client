@@ -1,55 +1,37 @@
 {
-  "name": "influenzanet-web",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
+  "name": "web-client",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@angular/animations": "~7.2.10",
-    "@angular/cdk": "~7.3.5",
-    "@angular/common": "~7.2.10",
-    "@angular/compiler": "~7.2.10",
-    "@angular/core": "~7.2.10",
-    "@angular/forms": "~7.2.10",
-    "@angular/material": "^7.3.5",
-    "@angular/platform-browser": "~7.2.10",
-    "@angular/platform-browser-dynamic": "~7.2.10",
-    "@angular/router": "~7.2.10",
-    "bootstrap": ">=4.3.1",
-    "core-js": "^3.0.0",
-    "hammerjs": "^2.0.8",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.7",
-    "rxjs": "~6.4.0",
-    "tslib": "^1.9.0",
-    "zone.js": "^0.8.29"
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.12",
+    "@types/react": "16.9.5",
+    "@types/react-dom": "16.9.1",
+    "node-sass": "^4.12.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "3.2.0",
+    "typescript": "3.6.4"
   },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~0.13.6",
-    "@angular/cli": "~7.3.6",
-    "@angular/compiler-cli": "^7.2.10",
-    "@angular/language-service": "~7.2.10",
-    "@fortawesome/fontawesome-free": "^5.8.1",
-    "@types/jasmine": "~3.3.12",
-    "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~11.11.6",
-    "codelyzer": "~5.0.0-beta.1",
-    "jasmine-core": "~3.3.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.0.1",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "~2.0.5",
-    "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.0",
-    "protractor": "~5.4.2",
-    "ts-node": "~8.0.3",
-    "tslint": "~5.14.0",
-    "typescript": "^3.2.4"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
