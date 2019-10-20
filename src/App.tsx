@@ -15,9 +15,9 @@ const App: React.FC = () => {
       <Router>
         <NavBar/>
         <Switch>
-          <Route path="/info" component={Info}/>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={Signup}/>
+          <Route path="/" component={Info}/>
         </Switch>
       </Router>
   );
