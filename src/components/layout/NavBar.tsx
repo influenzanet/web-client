@@ -29,15 +29,15 @@ export const NavBar: React.FC = () => {
         <Toolbar>
 
             <Typography variant="h6" className={classes.title}>
-            <Link to={"/info"}>Influenzanet</Link>
+            <Link to={"/info"} style={{ textDecoration: 'none', color: 'white'}}>Influenzanet</Link>
                 {/*<img className={classes.title} src={logo} alt="logo" style={{width: "150px"}}/>*/}
             </Typography>
             {/*
             <Button color="inherit">Login</Button>
             <Button color="inherit">Signup</Button>
             */}
-            <Button color="inherit"><Link to={"/login"}>Login</Link></Button>
-            <Button color="inherit"><Link to={"/signup"}>Signup</Link></Button>
+            <Button color="inherit"><Link to={"/login"}  style={{ textDecoration: 'none', color: 'white'}}>Login</Link></Button>
+            <Button color="inherit"><Link to={"/signup"}  style={{ textDecoration: 'none', color: 'white'}}>Signup</Link></Button>
           
           
         </Toolbar>

@@ -10,7 +10,7 @@ const Info: React.FC = () => {
     <div style={{textAlign: "left", margin: "50px 100px 50px 100px"}}>
         
         <div style={{textAlign: "center"}}>
-            <img src={logo} alt="logo" style={{width: "500px"}}/>
+            <img src={logo} alt="logo" style={{width: "100%", maxWidth: "500px"}}/>
         </div>
         <br/>
 
