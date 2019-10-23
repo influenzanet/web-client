@@ -7,6 +7,7 @@ import Info from './components/Info';
 import Login from './components/form/login/Login';
 import Signup from './components/form/signup/Signup';
 import { createMuiTheme, StylesProvider, MuiThemeProvider } from '@material-ui/core';
+import TestForm from './components/form/login/LoginForm';
 
 
 const App: React.FC = () => {
@@ -33,6 +34,7 @@ const App: React.FC = () => {
           <Switch>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
+            <Route path="/testForm" component={TestForm}/>
             <Route path="/" component={Info}/>
           </Switch>
         </Router>

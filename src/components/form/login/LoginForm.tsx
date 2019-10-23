@@ -1,58 +1,83 @@
-import * as React  from 'react';
-import {Button} from '@material-ui/core';
-import {Field, Formik, Form} from 'formik';
-import { MyField } from '../MyField';
+import React from "react";
+import { Formik, Field } from "formik";
+import * as EmailValidator from "email-validator";
+import * as Yup from "yup";
+import { TextField, Button } from "@material-ui/core";
 
-interface Values {
-    email: string;
-    password: string;
-}
 
-interface Props {
-    onSubmit: (values: Values) => void;
-}
+const LoginForm = () => (
+  <Formik
+    initialValues={{ email: "", password: "" }}
+    onSubmit={(values, { setSubmitting }) => {
+      setTimeout(() => {
+        console.log("Logging in", values);
+        setSubmitting(false);
+      }, 500);
+    }}
 
-export const LoginForm: React.FC<Props> = ({onSubmit}) => {
-    return (
-        <div style={{textAlign: "center"}}>
-            
-        
-        <Formik 
-        initialValues={{email: "", password: ""}} onSubmit={(values) => {
-            onSubmit(values);
-        }}
-        >
-        {({values}) => (
-            <Form>
-                <div>
-                    <Field 
-                        name="email" 
-                        placeholder="email"
-                        component={MyField}
-                    />
-                </div>
-                <div>
-                <Field 
-                    id="standard-password-input"
-                    label="password"
-                    name="password" 
-                    placeholder="password"
-                    type="password"
-                    component={MyField}
-                />
-                </div>
-                <div>
-                <Button type="submit">
+    validationSchema={Yup.object().shape({
+      email: Yup.string()
+        .email()
+        .required("Required"),
+      password: Yup.string()
+        .required("No password provided.")
+        .min(8, "Password is too short - should be 8 chars minimum.")
+        .matches(/(?=.*[0-9])/, "Password must contain a number.")
+    })}
+  >
+    {props => {
+      const {
+        values,
+        touched,
+        errors,
+        isSubmitting,
+        handleChange,
+        handleBlur,
+        handleSubmit
+      } = props;
+      return (
+        <form onSubmit={handleSubmit} style={{textAlign: "center"}}>
+            <div>
+            <TextField
+                name="email"
+                type="text"
+                placeholder="Email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+            />
+            {errors.email && touched.email && (
+                <div className="input-feedback">{errors.email}</div>
+            )}
+            </div>
+            <br/>
+            <div>
+            <TextField
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+            />
+            {errors.password && touched.password && (
+                <div className="input-feedback">{errors.password}</div>
+            )}
+            </div>
+            <br/>
+            <div>
+            <Button type="submit" disabled={isSubmitting}>
                     Submit
-                </Button>
-                </div>
-                <pre>
-                    {JSON.stringify(values, null, 2)}
-                </pre>
-            </Form>   
-        )}
-        </Formik>
-        </div>
-    );
-    
-}
+            </Button>
+            </div>
+            <br/>
+            <pre>
+                {JSON.stringify(values, null, 2)}
+            </pre>
+        </form>
+      );
+    }}
+  </Formik>
+);
+
+export default LoginForm;
