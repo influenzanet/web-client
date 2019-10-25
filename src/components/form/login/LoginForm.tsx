@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field } from "formik";
-import * as EmailValidator from "email-validator";
-import * as Yup from "yup";
+// import * as EmailValidator from "email-validator";
+// import * as Yup from "yup";
 import { TextField, Button } from "@material-ui/core";
 
 
@@ -15,6 +15,7 @@ const LoginForm = () => (
       }, 500);
     }}
 
+    /*
     validationSchema={Yup.object().shape({
       email: Yup.string()
         .email()
@@ -23,7 +24,7 @@ const LoginForm = () => (
         .required("No password provided.")
         .min(8, "Password is too short - should be 8 chars minimum.")
         .matches(/(?=.*[0-9])/, "Password must contain a number.")
-    })}
+    })}*/
   >
     {props => {
       const {
