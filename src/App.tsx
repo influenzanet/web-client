@@ -1,20 +1,22 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NavBar from './components/layout/NavBar';
+import NavBar from './components/Navigation/NavBar/NavBar';
+import Drawer from './components/Navigation/Drawer/Drawer';
 import Info from './components/Info';
 // import Login from './components/form/login/Login';
 // import Signup from './components/form/signup/Signup';
 
 import Button from '@material-ui/core/Button';
-import { createMuiTheme, StylesProvider, MuiThemeProvider } from '@material-ui/core';
+import {
+  createMuiTheme,
+  StylesProvider,
+  MuiThemeProvider,
+} from '@material-ui/core';
 // import TestForm from './components/form/login/LoginForm';
 
 const App: React.FC = () => {
-
-
-
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -35,22 +37,25 @@ const App: React.FC = () => {
   });
 
 
+
+
   return (
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
         <div className={'App'}>
-        <Router>
-          <NavBar/>
-          <Button variant="contained" color="primary">Primary</Button>
-          <Button variant="contained" color="secondary">Secondary</Button>
-          <Button variant="outlined" color="secondary">Secondary</Button>
-          <Switch>
-            {/*<Route path="/login" component={Login}/>
+          <Router>
+            <NavBar />
+            <Drawer side="left"></Drawer>
+            <Button variant="contained" color="primary">Primary</Button>
+            <Button variant="contained" color="secondary">Secondary</Button>
+
+            <Switch>
+              {/*<Route path="/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/testForm" component={TestForm}/>*/}
-            <Route path="/" component={Info}/>
-          </Switch>
-        </Router>
+              <Route path="/" component={Info} />
+            </Switch>
+          </Router>
         </div>
       </StylesProvider>
     </MuiThemeProvider>

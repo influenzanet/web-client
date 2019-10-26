@@ -1,0 +1,20 @@
+@import './../../../App.scss';
+
+.drawer {
+    background-color: $canvas-color;
+}
+
+.drawerAppbar {
+    background-color: white;
+}
+
+.drawerContent {
+    width: 250px;
+    max-width: 80vw;
+}
+
+.drawerLogo {
+    max-height: 40px;
+    margin: 0 auto;
+    max-width: 80%;
+}
