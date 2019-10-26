@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 
 import {
     Drawer as MDrawer,
@@ -16,6 +17,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import styles from './Drawer.module.scss';
 import logo from '../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
+import { NavigationState } from '../../../store/reducers/navigation';
+import { CLOSE_NAVIGATION_DRAWER } from '../../../store/actions/actionTypes';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
@@ -35,10 +38,8 @@ const useStyles = makeStyles(theme => ({
 
 export const Drawer: React.FC<DrawerProps> = (props) => {
     const classes = useStyles();
-
-    const [state, setState] = useState({
-        open: true,
-    });
+    const drawerOpen = useSelector((state: {navigation: NavigationState}) => state.navigation.drawerOpen)
+    const dispatch = useDispatch();
 
     const toggleDrawer = (open: boolean) => (
         event: React.KeyboardEvent | React.MouseEvent,
@@ -51,16 +52,19 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
             return;
         }
         console.log('close drawer - call action');
-        setState(oldState => ({
+        dispatch({ type: CLOSE_NAVIGATION_DRAWER });
+
+        /*setState(oldState => ({
             ...oldState,
             open,
-        }));
+        }));*/
+        // drawerOpen = false;
     };
 
     return (
         <MDrawer
             classes={{ paper: styles.drawer }}
-            open={state.open}
+            open={drawerOpen}
             anchor={props.side}
             onClose={toggleDrawer(false)}
         >
