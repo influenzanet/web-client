@@ -6,7 +6,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import Info from './Info/Info';
+import Info from './Landing/Landing';
 import { Login } from './Login/Login';
 
 // import logo from '../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
