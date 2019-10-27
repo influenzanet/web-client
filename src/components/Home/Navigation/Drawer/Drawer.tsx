@@ -19,6 +19,7 @@ import styles from './Drawer.module.scss';
 import logo from '../../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
 import { NavigationState } from '../../../../store/reducers/navigation';
 import { CLOSE_NAVIGATION_DRAWER } from '../../../../store/actions/actionTypes';
+import { LinkRef } from '../../../common/link';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
@@ -119,7 +120,9 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
                     <Grid item xs={12}>
                         <Button
                             className={styles.drawerBtn}
-                            variant="outlined" color="secondary">
+                            variant="outlined" color="secondary"
+                            component={LinkRef} to="/start"
+                            >
                             Logout</Button>
                     </Grid>
                 </Grid>
