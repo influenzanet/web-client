@@ -56,7 +56,7 @@ const Welcome: React.FC = () => {
                             className={classes.button}
                             component={LinkRef} to="/start/login"
                         >
-                            Login
+                            Sign In
                         </Button>
                     </Grid>
                 </Grid>
