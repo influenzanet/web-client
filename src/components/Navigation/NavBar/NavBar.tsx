@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Link } from "react-router-dom";
+import { OPEN_NAVIGATION_DRAWER } from '../../../store/actions/actionTypes';
 
 
 
@@ -29,11 +32,19 @@ const useStyles = makeStyles(theme => ({
 export const NavBar: React.FC = () => {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar} elevation={0}>
         <Toolbar >
-          <IconButton edge="start" className={classes.menuButton} color="secondary" aria-label="menu">
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="secondary"
+            aria-label="menu"
+            onClick={() => dispatch({ type: OPEN_NAVIGATION_DRAWER })}
+            >
             <MenuIcon />
           </IconButton>
 
