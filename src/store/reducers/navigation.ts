@@ -9,7 +9,7 @@ export interface NavigationState {
 }
 
 const initialState: NavigationState = {
-    drawerOpen: true,
+    drawerOpen: false,
 }
 
 export function navigationReducer(

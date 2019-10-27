@@ -16,9 +16,9 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 import styles from './Drawer.module.scss';
-import logo from '../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
-import { NavigationState } from '../../../store/reducers/navigation';
-import { CLOSE_NAVIGATION_DRAWER } from '../../../store/actions/actionTypes';
+import logo from '../../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
+import { NavigationState } from '../../../../store/reducers/navigation';
+import { CLOSE_NAVIGATION_DRAWER } from '../../../../store/actions/actionTypes';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 

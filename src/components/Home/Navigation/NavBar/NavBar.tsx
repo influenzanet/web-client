@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Link } from "react-router-dom";
-import { OPEN_NAVIGATION_DRAWER } from '../../../store/actions/actionTypes';
+import { OPEN_NAVIGATION_DRAWER } from '../../../../store/actions/actionTypes';
 
 
 

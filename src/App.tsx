@@ -1,19 +1,25 @@
 import React from 'react';
 import './App.scss';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NavBar from './components/Navigation/NavBar/NavBar';
-import Drawer from './components/Navigation/Drawer/Drawer';
-import Info from './components/Info';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+
+
+import OnBoarding from './components/OnBoarding/OnBoarding';
+import Home from './components/Home/Home';
 // import Login from './components/form/login/Login';
 // import Signup from './components/form/signup/Signup';
 
-import Button from '@material-ui/core/Button';
 import {
   createMuiTheme,
   StylesProvider,
   MuiThemeProvider,
 } from '@material-ui/core';
+
 // import TestForm from './components/form/login/LoginForm';
 
 const App: React.FC = () => {
@@ -37,26 +43,19 @@ const App: React.FC = () => {
   });
 
 
-
-
   return (
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
-        <div className={'App'}>
-          <Router>
-            <NavBar />
-            <Drawer side="left"></Drawer>
-            <Button variant="contained" color="primary">Primary</Button>
-            <Button variant="contained" color="secondary">Secondary</Button>
-
-            <Switch>
-              {/*<Route path="/login" component={Login}/>
+        <Router>
+          <Switch>
+            {/*<Route path="/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/testForm" component={TestForm}/>*/}
-              <Route path="/" component={Info} />
-            </Switch>
-          </Router>
-        </div>
+            <Route path="/home" component={Home} />
+            <Route path="/start" component={OnBoarding} />
+            <Redirect to="/start"></Redirect>
+          </Switch>
+        </Router>
       </StylesProvider>
     </MuiThemeProvider>
   );
