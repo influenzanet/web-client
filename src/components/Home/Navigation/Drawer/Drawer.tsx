@@ -20,6 +20,7 @@ import logo from '../../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
 import { NavigationState } from '../../../../store/reducers/navigation';
 import { CLOSE_NAVIGATION_DRAWER } from '../../../../store/actions/actionTypes';
 import { LinkRef } from '../../../common/link';
+import { Redirect } from 'react-router-dom';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
@@ -42,9 +43,12 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
     const drawerOpen = useSelector((state: {navigation: NavigationState}) => state.navigation.drawerOpen)
     const dispatch = useDispatch();
 
-    const toggleDrawer = (open: boolean) => (
+    const [toRoute, setToRoute] = useState('');
+
+    const closeDrawer = () => (
         event: React.KeyboardEvent | React.MouseEvent,
     ) => {
+        console.log('call close drawer')
         if (
             event.type === 'keydown' &&
             ((event as React.KeyboardEvent).key === 'Tab' ||
@@ -62,12 +66,24 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
         // drawerOpen = false;
     };
 
+    const logout = () => {
+        console.log('logout');
+        dispatch({ type: CLOSE_NAVIGATION_DRAWER });
+        setToRoute('/start');
+    }
+
+    if (toRoute.length > 0) {
+        return (
+            <Redirect to={toRoute}></Redirect>
+        );
+    }
+
     return (
         <MDrawer
             classes={{ paper: styles.drawer }}
             open={drawerOpen}
             anchor={props.side}
-            onClose={toggleDrawer(false)}
+            onClose={closeDrawer()}
         >
             <AppBar position="static" className={styles.drawerAppbar} elevation={0}>
                 <Toolbar>
@@ -121,7 +137,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
                         <Button
                             className={styles.drawerBtn}
                             variant="outlined" color="secondary"
-                            component={LinkRef} to="/start"
+                            onClick={logout}
                             >
                             Logout</Button>
                     </Grid>
