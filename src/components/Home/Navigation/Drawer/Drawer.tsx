@@ -19,13 +19,19 @@ import styles from './Drawer.module.scss';
 import logo from '../../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
 import { NavigationState } from '../../../../store/reducers/navigation';
 import { CLOSE_NAVIGATION_DRAWER } from '../../../../store/actions/actionTypes';
+// import { LinkRef } from '../../../common/link';
+import { Redirect, useRouteMatch } from 'react-router-dom';
 import { LinkRef } from '../../../common/link';
-import { Redirect } from 'react-router-dom';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
 type DrawerProps = {
     side: DrawerSide,
+}
+
+interface RouteProps {
+    path: string;
+    isExact: string;
 }
 
 
@@ -40,10 +46,8 @@ const useStyles = makeStyles(theme => ({
 
 export const Drawer: React.FC<DrawerProps> = (props) => {
     const classes = useStyles();
-    const drawerOpen = useSelector((state: {navigation: NavigationState}) => state.navigation.drawerOpen)
+    const drawerOpen = useSelector((state: { navigation: NavigationState }) => state.navigation.drawerOpen)
     const dispatch = useDispatch();
-
-    const [toRoute, setToRoute] = useState('');
 
     const closeDrawer = () => (
         event: React.KeyboardEvent | React.MouseEvent,
@@ -66,17 +70,16 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
         // drawerOpen = false;
     };
 
-    const logout = () => {
-        console.log('logout');
-        dispatch({ type: CLOSE_NAVIGATION_DRAWER });
-        setToRoute('/start');
+    let matchHomeRoute = useRouteMatch<RouteProps>("/home");
+    let matchMyStudiesRoute = useRouteMatch<RouteProps>("/home/my-studies");
+
+    const checkRouteMatch = (match: any | null, exact: boolean): boolean => {
+        if (!match || (exact && !match.isExact)) {
+            return false;
+        }
+        return true;
     }
 
-    if (toRoute.length > 0) {
-        return (
-            <Redirect to={toRoute}></Redirect>
-        );
-    }
 
     return (
         <MDrawer
@@ -95,13 +98,25 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
                 flexDirection="column"
             >
                 <List>
-                    <ListItem button key={'Home'} className={classes.currentRoute}>
+                    <ListItem button key={'Home'}
+                        className={checkRouteMatch(matchHomeRoute, true) ? classes.currentRoute: ''}
+                        onClick={() => {
+                            dispatch({ type: CLOSE_NAVIGATION_DRAWER });
+                        }}
+                        component={LinkRef} to="/home"
+                    >
                         <ListItemText primary={'Home'} />
                     </ListItem>
                     <ListItem button key={'Explore'}>
                         <ListItemText primary={'Explore'} />
                     </ListItem>
-                    <ListItem button key={'My Studies'}>
+                    <ListItem button key={'My Studies'}
+                        onClick={() => {
+                            dispatch({ type: CLOSE_NAVIGATION_DRAWER });
+                        }}
+                        className={checkRouteMatch(matchMyStudiesRoute, true) ? classes.currentRoute: ''}
+                        component={LinkRef} to="/home/my-studies"
+                    >
                         <ListItemText primary={'My Studies'} />
                     </ListItem>
                 </List>
@@ -126,7 +141,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
                         <ListItemText primary={'History'} />
                     </ListItem>
                     <ListItem button key={'Settings'} disabled>
-                        <ListItemText  primary={'Settings'} />
+                        <ListItemText primary={'Settings'} />
                     </ListItem>
                 </List>
 
@@ -137,8 +152,11 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
                         <Button
                             className={styles.drawerBtn}
                             variant="outlined" color="secondary"
-                            onClick={logout}
-                            >
+                            onClick={() => {
+                                dispatch({ type: CLOSE_NAVIGATION_DRAWER });
+                            }}
+                            component={LinkRef} to="/start"
+                        >
                             Logout</Button>
                     </Grid>
                 </Grid>

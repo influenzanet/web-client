@@ -11,6 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import { Link } from "react-router-dom";
 import { OPEN_NAVIGATION_DRAWER } from '../../../../store/actions/actionTypes';
+import { NavigationState } from '../../../../store/reducers/navigation';
 
 
 
@@ -32,6 +33,7 @@ const useStyles = makeStyles(theme => ({
 export const NavBar: React.FC = () => {
   const classes = useStyles();
 
+  const pageTitle = useSelector((state: {navigation: NavigationState}) => state.navigation.currentPageTitle)
   const dispatch = useDispatch();
 
   return (
@@ -49,16 +51,8 @@ export const NavBar: React.FC = () => {
           </IconButton>
 
           <Typography variant="h6" className={classes.title} color="primary">
-            Influenzanet
+            {pageTitle}
           </Typography>
-          {/*
-            <Button color="inherit">Login</Button>
-            <Button color="inherit">Signup</Button>
-            */}
-          <Button color="inherit"><Link to={"/login"} style={{ textDecoration: 'none', color: 'white' }}>Login</Link></Button>
-          <Button color="inherit"><Link to={"/signup"} style={{ textDecoration: 'none', color: 'white' }}>Signup</Link></Button>
-
-
         </Toolbar>
       </AppBar>
     </div>

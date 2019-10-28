@@ -15,11 +15,7 @@ import Login  from './Login/Login';
 
 const OnBoarding: React.FC = () => {
   return (
-
       <Switch>
-        {/*<Route path="/login" component={Login}/>
-            <Route path="/signup" component={Signup}/>
-            <Route path="/testForm" component={TestForm}/>*/}
         <Route path="/start" exact component={Landing} />
         <Route path="/start/login" component={Login} />
         <Route path="/start/signup" component={Signup} />
