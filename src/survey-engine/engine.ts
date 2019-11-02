@@ -1,4 +1,5 @@
 import * as types from './dataTypes';
+import { thisExpression } from '@babel/types';
 
 export const testSurvey: types.SurveyDef = {
     id: "123",
@@ -150,82 +151,6 @@ export const testSurvey: types.SurveyDef = {
     ],
 };
 
-export class SurveyEngine {
-    surveyDef: types.Survey;
-    // renderedTree: types.RenderedSurvey;
-
-    constructor(def: types.Survey) {
-        this.surveyDef = def;
-    }
-
-    /*
-    private getVariantWithLocalisation(): types.Localisation {
-        return null
-    }
-
-    private getNextQuestion(): types.RenderedQuestion | null {
-        this.getVariantWithLocalisation();
-        return null;
-    }*/
-
-    private getNextQuestionGroup(): types.RenderedQuestionGroup | null {
-        return null;
-    }
-
-    private evalConditions(conditions: Object): boolean {
-        if (!conditions) {
-            return true;
-        }
-
-        for (let key in conditions) {
-            console.log(key);
-        }
-        return false;
-    }
-
-    /*
-    render(): types.RenderedSurvey {
-        if (!this.renderedTree) {
-            // Initial rendering
-
-            return {...this.renderedTree};
-        }
-
-        //
-        for (let i = 0; i < this.renderedTree.questionGroups.length; i++) {
-            const questionGroup = this.renderedTree.questionGroups[i];
-            if (!this.evalConditions(questionGroup.conditions)) {
-
-            }
-        }
-        // TODO: check currently rendered tree if something should be removed
-        // TODO: check what new question should be inserted // as direct follow ups
-        // TODO: render end of the question trees
-        return null;
-    }
-    */
-}
-
-export const printRenderedSurvey = (renderedSurvey: types.SurveyState) => {
-    renderedSurvey.questionGroups.forEach(qg => {
-        console.log('Question group: ', qg.id, 'should follow: ', qg.follows);
-        qg.questions.forEach(q => {
-            console.log('\tQuestion: ', q.id, 'should follow: ', q.follows);
-        });
-    });
-}
-
-const evalConditions = (survey: types.Survey, conditions?: Object): boolean => {
-    if (!conditions) {
-        return true;
-    }
-    // todo: eval conditions
-    console.warn(conditions);
-    for (let key in conditions) {
-        console.log(key);
-    }
-    return false;
-}
 
 const pickRandomListItem = (items: Array<any>): any => {
     return items[Math.floor(Math.random() * items.length)];
@@ -235,162 +160,257 @@ const removeIdFromList = (items: Array<any>, id: string): any => {
     return items.filter(item => item.id !== id);
 }
 
-const renderQuestions = (
-    survey: types.Survey,
-    currentQuestionTree: Array<types.RenderedQuestion>,
-    questionGroupDef: types.QuestionGroup): Array<types.RenderedQuestion> => {
-    const renderedQuestions = new Array<types.RenderedQuestion>();
 
-    if (currentQuestionTree.length < 1) {
-        // initial rendering
-        let currentQuestion = getNextQuestion(questionGroupDef, renderedQuestions,
-            survey, // todo: pass object with current state
-        );
-        if (!currentQuestion) {
-            return renderedQuestions
-        }
 
-        renderedQuestions.push({
-            ...currentQuestion,
-            currentQuestion: {
-                ...currentQuestion.variants[0].localisations[0], // todo: get selected localisation or default
-            }
-        });
+// TODO: check currently rendered tree if something should be removed
+// TODO: check what new question should be inserted // as direct follow ups
+// TODO: render end of the question trees
 
-        while (currentQuestion != null) {
-            currentQuestion = getNextQuestion(questionGroupDef, renderedQuestions,
-                survey, // todo: pass object with current state
-                currentQuestion.id
-            );
-            if (!currentQuestion) {
-                return renderedQuestions;
-            }
-            renderedQuestions.push({
-                ...currentQuestion,
-                currentQuestion: {
-                    ...currentQuestion.variants[0].localisations[0], // todo: get selected localisation or default
-                }
+type TimestampType = 'rendered' | 'displayed' | 'response set';
+
+
+interface SurveyEngineCoreInterface {
+    surveyDef: types.SurveyDef;
+    renderedSurvey: Array<types.RenderedQuestionGroup>;
+    responses: types.SurveyResponse;
+
+    // response related methods:
+    getResponse: (groupID: string, questionID: string) => types.QResponse | null;
+    setResponse: (groupID: string, questionID: string, response: types.QResponse) => void;
+
+    questionDisplayed: (groupID: string, questionID: string) => void;
+    evalConditions: (conditions: Object) => boolean;
+    // render: () => void;
+}
+
+export class SurveyEngineCore implements SurveyEngineCoreInterface {
+    surveyDef: types.SurveyDef;
+    renderedSurvey: Array<types.RenderedQuestionGroup>;
+    responses: types.SurveyResponse;
+
+    constructor(definitions: types.SurveyDef, reporter: string, profileID: string) {
+        console.log('core engine')
+        this.surveyDef = { ...definitions };
+        this.responses = this.createResponseContainer(reporter, profileID);
+        this.renderedSurvey = new Array<types.RenderedQuestionGroup>();
+        this.initRenderedGroups();
+    }
+
+    questionDisplayed(groupID: string, questionID: string) {
+        this.setTimestampFor('displayed', groupID, questionID);
+    }
+
+    setResponse(groupID: string, questionID: string, response: any) {
+        console.warn('todo');
+    }
+
+    getResponse(groupID: string, questionID: string): types.QResponse | null {
+        console.warn('todo');
+        return null;
+    }
+
+    printRenderedSurvey = () => {
+        this.renderedSurvey.forEach(qg => {
+            console.log('Question group: ', qg.id, 'should follow: ', qg.follows);
+            qg.questions.forEach(q => {
+                console.log('\tQuestion: ', q.id, 'should follow: ', q.follows);
             });
+        });
+    }
+
+    private createResponseContainer(reporter: string, profileID: string): types.SurveyResponse {
+        const resp = {
+            id: this.surveyDef.id,
+            reporter: reporter,
+            for: profileID,
+            questionGroups: new Array<types.QGResponse>(),
         }
-        return renderedQuestions;
+
+        this.surveyDef.questionGroups.forEach(qg => {
+            const respGroup = {
+                id: qg.id,
+                meta: {
+                    rendered: 0,
+                    displayed: 0,
+                    set: 0,
+                    changed: 0
+                },
+                questions: new Array<types.QResponse>(),
+            };
+            qg.questions.forEach(q => {
+                respGroup.questions.push({
+                    id: q.id,
+                    meta: {
+                        rendered: 0,
+                        displayed: 0,
+                        set: 0,
+                        changed: 0
+                    },
+                });
+            });
+            resp.questionGroups.push(respGroup);
+        });
+        return resp;
     }
 
-    for (let i = 0; i < currentQuestionTree.length; i++) {
-        // TODO: handle re-rendering
-        // TODO: remove questions if conditions not true any more
-        // TODO: insert questions if conditions are true
-    }
-
-
-
-    return renderedQuestions;
-}
-
-const getNextQuestion = (
-    groupDefinition: types.QuestionGroup,
-    currentTree: Array<types.RenderedQuestion>,
-    survey: types.Survey,
-    currentQuestionID?: string): types.Question | null => {
-
-    // get unrendered question groups only
-    const availableQuestions = groupDefinition.questions.filter(q => {
-        return !currentTree.some(item => item.id === q.id);
-    });
-    let followUpQuestions: Array<types.Question>;
-    if (currentQuestionID && currentQuestionID.length > 0) {
-        followUpQuestions = availableQuestions.filter(q => q.follows === currentQuestionID);
-    } else {
-        followUpQuestions = availableQuestions.filter(qg => qg.follows === 'start');
-    }
-
-    if (followUpQuestions.length > 0) {
-        const questionPool = followUpQuestions.filter(q => evalConditions(survey, q.conditions));
-        if (questionPool.length < 1) {
-            return null
+    private setTimestampFor(type: TimestampType, groupID: string, questionID?: string) {
+        let key: string = type;
+        const gIndex = this.responses.questionGroups.findIndex(qg => qg.id === groupID);
+        if (gIndex < 0) {
+            return;
         }
-        return pickRandomListItem(questionPool);
-    }
-
-    const questionPool = availableQuestions.filter(qg => {
-        return evalConditions(survey, qg.conditions) && (!qg.follows || qg.follows === '')
-    });
-    if (questionPool.length < 1) {
-        return null
-    }
-    return pickRandomListItem(questionPool);
-}
-
-
-const getNextQuestionGroup = (survey: types.Survey, currentGroupID?: string): types.QuestionGroup | null => {
-    // get unrendered question groups only
-    const availableGroups = survey.surveyDef.questionGroups.filter(qg => {
-        if (!survey.surveyState) {
-            return true;
+        if (!questionID) {
+            this.responses.questionGroups[gIndex].meta = {
+                ...this.responses.questionGroups[gIndex].meta,
+                [key]: Date.now(),
+            };
+            return;
         }
-        return !survey.surveyState.questionGroups.some(item => item.id === qg.id);
-    });
-    let followUpGroups: Array<types.QuestionGroup>;
-    if (currentGroupID && currentGroupID.length > 0) {
-        followUpGroups = availableGroups.filter(qg => qg.follows === currentGroupID);
-    } else {
-        followUpGroups = availableGroups.filter(qg => qg.follows === 'start');
+        if (type === 'response set') {
+            if (!this.getResponse(groupID, questionID)) {
+                key = 'set';
+            } else {
+                key = 'changed';
+            }
+        }
+
+        const qIndex = this.responses.questionGroups[gIndex].questions.findIndex(q => q.id === questionID);
+        if (qIndex < 0) {
+            return;
+        }
+        this.responses.questionGroups[gIndex].questions[qIndex].meta = {
+            ...this.responses.questionGroups[gIndex].questions[qIndex].meta,
+            [key]: Date.now(),
+        };
     }
 
-    if (followUpGroups.length > 0) {
-        // todo: check eval - evtl. survey is not up to date - pass down current state
-        const groupPool = followUpGroups.filter(qg => evalConditions(survey, qg.conditions));
+    private initRenderedGroups() {
+        let currentGroup = this.getNextQuestionGroup();
+        if (!currentGroup) {
+            return;
+        }
+        this.renderedSurvey.push({
+            ...currentGroup,
+            questions: [],
+        });
+        this.initRenderedQuestions(this.renderedSurvey.length - 1, currentGroup);
+
+        while (currentGroup != null) {
+            currentGroup = this.getNextQuestionGroup(currentGroup.id);
+            if (!currentGroup) {
+                return;
+            }
+            this.renderedSurvey.push({
+                ...currentGroup,
+                questions: [],
+            });
+            this.initRenderedQuestions(this.renderedSurvey.length - 1, currentGroup);
+        }
+        return;
+    }
+
+    private getNextQuestionGroup(currentGroupID?: string): types.QuestionGroup | null {
+        // get unrendered question groups only
+        const availableGroups = this.surveyDef.questionGroups.filter(qg => {
+            return !this.renderedSurvey.some(item => item.id === qg.id);
+        });
+        let followUpGroups: Array<types.QuestionGroup>;
+        if (currentGroupID && currentGroupID.length > 0) {
+            followUpGroups = availableGroups.filter(qg => qg.follows === currentGroupID);
+        } else {
+            followUpGroups = availableGroups.filter(qg => qg.follows === 'start');
+        }
+
+        if (followUpGroups.length > 0) {
+            const groupPool = followUpGroups.filter(qg => this.evalConditions(qg.conditions));
+            if (groupPool.length < 1) {
+                return null
+            }
+            return pickRandomListItem(groupPool);
+        }
+
+        const groupPool = availableGroups.filter(qg => {
+            return this.evalConditions(qg.conditions) && (!qg.follows || qg.follows === '');
+        });
         if (groupPool.length < 1) {
             return null
         }
         return pickRandomListItem(groupPool);
     }
 
-    const groupPool = availableGroups.filter(qg => {
-        // todo: check eval - evtl. survey is not up to date - pass down current state
-        return evalConditions(survey, qg.conditions) && (!qg.follows || qg.follows === '')
-    });
-    if (groupPool.length < 1) {
-        return null
-    }
-    return pickRandomListItem(groupPool);
-}
-
-export const renderSurvey = (survey: types.Survey): types.Survey => {
-    const newSurvey = {
-        ...survey,
-    }
-    if (!newSurvey.surveyState) {
-        newSurvey.surveyState = {
-            questionGroups: new Array<types.RenderedQuestionGroup>(),
-        };
-
-        let currentGroup = getNextQuestionGroup(newSurvey);
-        if (!currentGroup) {
-            return newSurvey
+    private initRenderedQuestions(groupIndex: number, qGroup: types.QuestionGroup) {
+        let currentQuestion = this.getNextQuestion(groupIndex, qGroup);
+        if (!currentQuestion) {
+            return;
         }
-        newSurvey.surveyState.questionGroups.push({
-            ...currentGroup,
-            questions: renderQuestions(survey, [], currentGroup),
+
+        this.renderedSurvey[groupIndex].questions.push({
+            ...currentQuestion,
+            currentQuestion: {
+                ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
+            }
         });
 
-        while (currentGroup != null) {
-            currentGroup = getNextQuestionGroup(newSurvey, currentGroup.id);
-            if (!currentGroup) {
-                return newSurvey
+        while (currentQuestion != null) {
+            currentQuestion = this.getNextQuestion(groupIndex, qGroup, currentQuestion.id);
+            if (!currentQuestion) {
+                return;
             }
-            newSurvey.surveyState.questionGroups.push({
-                ...currentGroup,
-                questions: renderQuestions(survey, [], currentGroup),
+            this.renderedSurvey[groupIndex].questions.push({
+                ...currentQuestion,
+                currentQuestion: {
+                    ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
+                }
             });
         }
-        return newSurvey;
+        return;
     }
-    // todo: update survey state
 
-    // TODO: check currently rendered tree if something should be removed
-    // TODO: check what new question should be inserted // as direct follow ups
-    // TODO: render end of the question trees
+    private selectVariationAndLocalisation(question: types.Question): types.Localisation {
+        console.warn('todo: implement variation and locatisation selection');
+        return question.variants[0].localisations[0];
+    }
 
-    return newSurvey;
+    private getNextQuestion(groupIndex: number, qGroup: types.QuestionGroup, currentQuestionID?: string): types.Question | null {
+        // get unrendered question groups only
+        const availableQuestions = qGroup.questions.filter(q => {
+            return !this.renderedSurvey[groupIndex].questions.some(item => item.id === q.id);
+        });
+        let followUpQuestions: Array<types.Question>;
+        if (currentQuestionID && currentQuestionID.length > 0) {
+            followUpQuestions = availableQuestions.filter(q => q.follows === currentQuestionID);
+        } else {
+            followUpQuestions = availableQuestions.filter(q => q.follows === 'start');
+        }
 
+        if (followUpQuestions.length > 0) {
+            const questionPool = followUpQuestions.filter(q => this.evalConditions(q.conditions));
+            if (questionPool.length < 1) {
+                return null
+            }
+            return pickRandomListItem(questionPool);
+        }
+
+        const questionPool = availableQuestions.filter(q => {
+            return this.evalConditions(q.conditions) && (!q.follows || q.follows === '')
+        });
+        if (questionPool.length < 1) {
+            return null
+        }
+        return pickRandomListItem(questionPool);
+    }
+
+    evalConditions(conditions?: Object): boolean {
+        if (!conditions) {
+            return true;
+        }
+        console.log(conditions);
+        return false;
+    }
+}
+
+
+interface SurveyEngineHttp {
+
+    httpCall: () => Promise<boolean>;
 }
