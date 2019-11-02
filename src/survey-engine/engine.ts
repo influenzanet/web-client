@@ -6,12 +6,12 @@ export const testSurvey: types.SurveyDef = {
     questionGroups: [
         {
             id: "qg1",
-            follows: "qg2",
+            follows: ["qg2"],
             // conditions: {},
             questions: [
                 {
                     id: "q9",
-                    follows: "start",
+                    follows: ["start"],
                     variants: [{
                         id: 'v9',
                         localisations: [{
@@ -102,7 +102,7 @@ export const testSurvey: types.SurveyDef = {
         },
         {
             id: "qg3",
-            follows: "start",
+            follows: ["start"],
             questions: [
                 {
                     id: "q1",
@@ -116,7 +116,7 @@ export const testSurvey: types.SurveyDef = {
                 },
                 {
                     id: "q2",
-                    follows: "q1",
+                    follows: ["q1"],
                     variants: [{
                         id: 'v2',
                         localisations: [{
@@ -137,7 +137,7 @@ export const testSurvey: types.SurveyDef = {
                 },
                 {
                     id: "q4",
-                    follows: "q3",
+                    follows: ["q3"],
                     variants: [{
                         id: 'v4',
                         localisations: [{
@@ -173,8 +173,9 @@ interface SurveyEngineCoreInterface {
     surveyDef: types.SurveyDef;
     renderedSurvey: Array<types.RenderedQuestionGroup>;
     responses: types.SurveyResponse;
+    context: types.SurveyContext;
 
-    // response related methods:
+    setContext: (context: types.SurveyContext) => void;
     getResponse: (groupID: string, questionID: string) => types.QResponse | null;
     setResponse: (groupID: string, questionID: string, response: types.QResponse) => void;
 
@@ -187,10 +188,12 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
     surveyDef: types.SurveyDef;
     renderedSurvey: Array<types.RenderedQuestionGroup>;
     responses: types.SurveyResponse;
+    context: types.SurveyContext; // for external infos when evaluating conditions
 
-    constructor(definitions: types.SurveyDef, reporter: string, profileID: string) {
+    constructor(definitions: types.SurveyDef, reporter: string, profileID: string, context?: types.SurveyContext) {
         console.log('core engine')
         this.surveyDef = { ...definitions };
+        this.context = { ...context };
         this.responses = this.createResponseContainer(reporter, profileID);
         this.renderedSurvey = new Array<types.RenderedQuestionGroup>();
         this.initRenderedGroups();
@@ -201,12 +204,41 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
     }
 
     setResponse(groupID: string, questionID: string, response: any) {
-        console.warn('todo');
+        this.setTimestampFor('response set', groupID, questionID); // keep at the beginning - more accurate - checks if response exists
+        const gIndex = this.responses.questionGroups.findIndex(qg => qg.id === groupID);
+        if (gIndex < 0) {
+            return null;
+        }
+        const qIndex = this.responses.questionGroups[gIndex].questions.findIndex(q => q.id === questionID);
+        if (qIndex < 0) {
+            return null;
+        }
+
+        this.responses.questionGroups[gIndex].questions[qIndex].response = response;
+        console.warn('todo: call rerender everything');
     }
 
     getResponse(groupID: string, questionID: string): types.QResponse | null {
-        console.warn('todo');
-        return null;
+        const gIndex = this.responses.questionGroups.findIndex(qg => qg.id === groupID);
+        if (gIndex < 0) {
+            return null;
+        }
+        const qIndex = this.responses.questionGroups[gIndex].questions.findIndex(q => q.id === questionID);
+        if (qIndex < 0) {
+            return null;
+        }
+
+        if (!this.responses.questionGroups[gIndex].questions[qIndex].response) {
+            return null;
+        }
+
+        return {
+            ...this.responses.questionGroups[gIndex].questions[qIndex],
+        };
+    }
+
+    setContext(context: types.SurveyContext) {
+        this.context = context;
     }
 
     printRenderedSurvey = () => {
@@ -316,9 +348,9 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         });
         let followUpGroups: Array<types.QuestionGroup>;
         if (currentGroupID && currentGroupID.length > 0) {
-            followUpGroups = availableGroups.filter(qg => qg.follows === currentGroupID);
+            followUpGroups = availableGroups.filter(qg => qg.follows && qg.follows.includes(currentGroupID));
         } else {
-            followUpGroups = availableGroups.filter(qg => qg.follows === 'start');
+            followUpGroups = availableGroups.filter(qg => qg.follows && qg.follows.includes('start'));
         }
 
         if (followUpGroups.length > 0) {
@@ -330,7 +362,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         }
 
         const groupPool = availableGroups.filter(qg => {
-            return this.evalConditions(qg.conditions) && (!qg.follows || qg.follows === '');
+            return this.evalConditions(qg.conditions) && (!qg.follows || qg.follows.length < 1);
         });
         if (groupPool.length < 1) {
             return null
@@ -367,7 +399,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
     }
 
     private selectVariationAndLocalisation(question: types.Question): types.Localisation {
-        console.warn('todo: implement variation and locatisation selection');
+        console.warn('todo: implement variation and localisation selection');
         return question.variants[0].localisations[0];
     }
 
@@ -378,9 +410,9 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         });
         let followUpQuestions: Array<types.Question>;
         if (currentQuestionID && currentQuestionID.length > 0) {
-            followUpQuestions = availableQuestions.filter(q => q.follows === currentQuestionID);
+            followUpQuestions = availableQuestions.filter(q => q.follows && q.follows.includes(currentQuestionID));
         } else {
-            followUpQuestions = availableQuestions.filter(q => q.follows === 'start');
+            followUpQuestions = availableQuestions.filter(q => q.follows && q.follows.includes('start'));
         }
 
         if (followUpQuestions.length > 0) {
@@ -392,7 +424,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         }
 
         const questionPool = availableQuestions.filter(q => {
-            return this.evalConditions(q.conditions) && (!q.follows || q.follows === '')
+            return this.evalConditions(q.conditions) && (!q.follows || q.follows.length < 1)
         });
         if (questionPool.length < 1) {
             return null

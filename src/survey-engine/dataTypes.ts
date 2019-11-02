@@ -5,14 +5,14 @@ export interface SurveyDef {
 
 export interface QuestionGroup {
     id: string;
-    follows?: string;
+    follows?: Array<string>;
     conditions?: Object;
     questions: Array<Question>;
 }
 
 export interface Question {
     id: string;
-    follows?: string;
+    follows?: Array<string>;
     conditions?: Object;
     variants: Array<Variant>;
 }
@@ -25,6 +25,10 @@ export interface Variant {
 export interface Localisation {
     code: string;
     question: string;
+}
+
+export interface SurveyContext {
+
 }
 
 // --------- Rendered Survey Types ----------
