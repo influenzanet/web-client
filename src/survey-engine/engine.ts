@@ -151,9 +151,10 @@ export const testSurvey: types.SurveyDef = {
                 {
                     id: "q3",
                     conditions: [{
-                        type: 'hasAns',
+                        type: 'eq',
                         args: [
-                            '$survey().$group("qg3").$question("q2")'
+                            '$response:q2,123',
+                            'yes'
                         ]
                     }],
                     variants: [{
@@ -545,18 +546,30 @@ class EvalRules {
                     id => this.isQuestionInRenderedSurvey(id, renderedSurvey)
                 );
                 break;
+            case 'eq':
+                if (condition.args.length < 2) {
+                    console.warn('"eq" method expects more than a sinlge argument');
+                    break;
+                }
+
+                let values = [];
+                for (let ind = 0; ind < condition.args.length; ind++) {
+                    // TODO: resolve reference to have a value
+                    const val = this.parseValue(condition.args[ind] as string, context, responses);
+                    values.push(val);
+                    console.log(val);
+                }
+                conditionValue = values.every((val, i, arr) => val === arr[0]);
+                console.log(conditionValue);
+
+                break;
             default:
                 console.warn('condition type unknown for the current engine: ' + condition.type + '. Default return value is false.');
                 break;
         }
         return conditionValue;
     }
-    // ---------- CORE EVALS ----------------
-
-
-    // TODO: lookup references
-    // TODO: lookup methods
-
+    // ---------- HELPER METHODS ----------------
     private isQuestionInRenderedSurvey(id: string, renderSurvey: Array<types.RenderedQuestionGroup>): boolean {
         for (let i = 0; i < renderSurvey.length; i++) {
             const qg = renderSurvey[i];
@@ -566,10 +579,53 @@ class EvalRules {
         }
         return false;
     }
-}
 
+    private parseValue(
+        refOrValue: string,
+        // renderedSurvey?: Array<types.RenderedQuestionGroup>,
+        context?: types.SurveyContext,
+        responses?: types.SurveyResponse
+        ): any {
+        if (refOrValue.length > 1 && refOrValue[0] === '$') {
+            const [type, argsStr] = refOrValue.split(':');
+            const args = argsStr.split(',');
+            let value: any;
+            switch (type) {
+                case '$response':
+                    if (args.length < 1)  {
+                        console.warn('missing arguments in $response');
+                        return null;
+                    }
+                    const questionID = args[0];
+                    const surveyID = args.length > 1 ? args[1] : '';
+                    const currentResponseObject = this.getResponse(questionID, responses, context, surveyID);
+                    value = currentResponseObject ?  currentResponseObject.response : {};
+                    break;
+                default:
+                    console.warn('reference type not known: ' + type);
+                    break;
+            }
+            return value;
+        }
+        return refOrValue;
+    }
 
-interface SurveyEngineHttp {
+    private getResponse(questionID: string, responses?: types.SurveyResponse, context?: types.SurveyContext, surveyID?: string): types.QResponse | null {
+        if (!surveyID || surveyID === '' || (responses && responses.id === surveyID)) {
+            // use current survey:
+            if (!responses) {
+                return null;
+            }
 
-    httpCall: () => Promise<boolean>;
+            for (let i = 0; i < responses.questionGroups.length; i++) {
+                const qResp = responses.questionGroups[i].questions.find(q => q.id === questionID);
+                if (qResp) {
+                    return qResp;
+                }
+            }
+        }
+
+        console.warn('todo: implement context with external surveys');
+        return null;
+    }
 }

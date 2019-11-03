@@ -20,6 +20,8 @@ const MyStudies: React.FC = () => {
         console.log(sEngine.responses);
         sEngine.printRenderedSurvey();
 
+        sEngine.setResponse('qg3', 'q2', 'yes');
+        sEngine.printRenderedSurvey();
 
         dispatch({ type: SET_PAGE_TITLE, title: 'My Studies'});
     });
