@@ -186,7 +186,7 @@ const pickRandomListItem = (items: Array<any>): any => {
     return items[Math.floor(Math.random() * items.length)];
 }
 
-const removeIdFromList = (items: Array<any>, id: string): any => {
+const removeIdFromList = (items: Array<any>, id: string): Array<any> => {
     return items.filter(item => item.id !== id);
 }
 
@@ -437,7 +437,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
     }
 
     private getNextQuestion(groupIndex: number, qGroup: types.QuestionGroup, currentQuestionID?: string): types.Question | null {
-        // get unrendered question groups only
+        // get unrendered questions only
         const availableQuestions = qGroup.questions.filter(q => {
             return !this.renderedSurvey[groupIndex].questions.some(item => item.id === q.id);
         });
@@ -467,13 +467,107 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
 
     private reRenderSurvey() {
         console.warn('todo: implement rerendering');
-        // if question group conditions false, remove from tree
-        // else enter groups question
-        // if question conditions false, remove from tree
-        // else check if next question is still the same
-        // if not insert new question(s)
-        // TODO: check currently rendered tree if something should be removed
-        // TODO: check what new question should be inserted // as direct follow ups
+        this.renderedSurvey.forEach(
+            qg => {
+                if (!this.evalConditions(qg.conditions)) {
+                    this.renderedSurvey = removeIdFromList(this.renderedSurvey, qg.id);
+                    console.log('removed question group: ' + qg.id);
+                } else {
+                    const ind = this.renderedSurvey.findIndex(group => qg.id === group.id);
+                    const groupDef = this.surveyDef.questionGroups.find(gDef => gDef.id === qg.id);
+                    if (!groupDef) {
+                        console.error('group definition not found for: ' + qg.id);
+                        return;
+                    }
+
+                    // recheck questions of the group
+                    // check if start question is missing first:
+                    let availableQuestions = groupDef.questions.filter(q => {
+                        return !this.renderedSurvey[ind].questions.some(item => item.id === q.id);
+                    });
+                    let followUpQuestions = availableQuestions.filter(q =>
+                        q.follows && q.follows.includes('start') && this.evalConditions(q.conditions)
+                    );
+                    if (followUpQuestions.length > 0) {
+                        const newQ = pickRandomListItem(followUpQuestions);
+                        this.renderedSurvey[ind].questions.splice(0, 0, {
+                            ...newQ,
+                            currentQuestion: {
+                                ...this.selectVariationAndLocalisation(newQ),
+                            }
+                        });
+                        this.setTimestampFor('rendered', groupDef.id, newQ.id);
+                    }
+
+                    qg.questions.forEach(
+                        q => {
+                            if (!this.evalConditions(q.conditions)) {
+                                this.renderedSurvey[ind].questions = removeIdFromList(this.renderedSurvey[ind].questions, q.id);
+                                console.log('removed question: ' + q.id);
+                            } else {
+                                // else check if next question is still the same
+                                // if not insert new question(s)
+                                let currentQIndex = this.renderedSurvey[ind].questions.findIndex(cQ => cQ.id === q.id);
+                                availableQuestions = groupDef.questions.filter(cQ => {
+                                    return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
+                                });
+                                followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(q.id) && this.evalConditions(cQ.conditions));
+
+                                while (followUpQuestions.length > 0) {
+                                    const newQ = pickRandomListItem(followUpQuestions);
+                                    currentQIndex += 1;
+                                    this.renderedSurvey[ind].questions.splice(currentQIndex, 0, {
+                                        ...newQ,
+                                        currentQuestion: {
+                                            ...this.selectVariationAndLocalisation(newQ),
+                                        }
+                                    });
+                                    this.setTimestampFor('rendered', groupDef.id, newQ.id);
+
+                                    availableQuestions = groupDef.questions.filter(cQ => {
+                                        return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
+                                    });
+                                    followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(newQ.id) && this.evalConditions(cQ.conditions));
+                                }
+                            }
+                        });
+
+                    // render end of the question trees
+                    // get unrendered questions only
+                    const lastQID = this.renderedSurvey[ind].questions[this.renderedSurvey[ind].questions.length - 1].id;
+                    let currentQuestion = this.getNextQuestion(ind, groupDef, lastQID);
+                    if (currentQuestion) {
+                        // new question to be added at the end:
+                        this.renderedSurvey[ind].questions.push({
+                            ...currentQuestion,
+                            currentQuestion: {
+                                ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
+                            }
+                        });
+                        this.setTimestampFor('rendered', groupDef.id, currentQuestion.id);
+
+                        while (currentQuestion != null) {
+                            currentQuestion = this.getNextQuestion(ind, groupDef, currentQuestion.id);
+                            if (!currentQuestion) {
+                                return;
+                            }
+                            this.renderedSurvey[ind].questions.push({
+                                ...currentQuestion,
+                                currentQuestion: {
+                                    ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
+                                }
+                            });
+                            this.setTimestampFor('rendered', groupDef.id, currentQuestion.id);
+                        }
+                    }
+
+
+
+
+                    // check if add any new groups after this one // as direct follow ups
+                }
+            }
+        );
         // TODO: render end of the question trees
     }
 
@@ -585,21 +679,21 @@ class EvalRules {
         // renderedSurvey?: Array<types.RenderedQuestionGroup>,
         context?: types.SurveyContext,
         responses?: types.SurveyResponse
-        ): any {
+    ): any {
         if (refOrValue.length > 1 && refOrValue[0] === '$') {
             const [type, argsStr] = refOrValue.split(':');
             const args = argsStr.split(',');
             let value: any;
             switch (type) {
                 case '$response':
-                    if (args.length < 1)  {
+                    if (args.length < 1) {
                         console.warn('missing arguments in $response');
                         return null;
                     }
                     const questionID = args[0];
                     const surveyID = args.length > 1 ? args[1] : '';
                     const currentResponseObject = this.getResponse(questionID, responses, context, surveyID);
-                    value = currentResponseObject ?  currentResponseObject.response : {};
+                    value = currentResponseObject ? currentResponseObject.response : {};
                     break;
                 default:
                     console.warn('reference type not known: ' + type);
