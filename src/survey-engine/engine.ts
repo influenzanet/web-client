@@ -325,6 +325,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
             ...currentGroup,
             questions: [],
         });
+        this.setTimestampFor('rendered', currentGroup.id);
         this.initRenderedQuestions(this.renderedSurvey.length - 1, currentGroup);
 
         while (currentGroup != null) {
@@ -336,6 +337,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                 ...currentGroup,
                 questions: [],
             });
+            this.setTimestampFor('rendered', currentGroup.id);
             this.initRenderedQuestions(this.renderedSurvey.length - 1, currentGroup);
         }
         return;
@@ -382,6 +384,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                 ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
             }
         });
+        this.setTimestampFor('rendered', qGroup.id, currentQuestion.id);
 
         while (currentQuestion != null) {
             currentQuestion = this.getNextQuestion(groupIndex, qGroup, currentQuestion.id);
@@ -394,6 +397,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                     ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
                 }
             });
+            this.setTimestampFor('rendered', qGroup.id, currentQuestion.id);
         }
         return;
     }
