@@ -467,6 +467,30 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
 
     private reRenderSurvey() {
         console.warn('todo: implement rerendering');
+        // check if start question group is missing first:
+        let availableGroups = this.surveyDef.questionGroups.filter(qg => {
+            return !this.renderedSurvey.some(item => item.id === qg.id);
+        });
+        let followUpGroups = availableGroups.filter(
+            qg => qg.follows && qg.follows.includes('start') && this.evalConditions(qg.conditions)
+        );
+
+        while (followUpGroups.length > 0) {
+            const newQG = pickRandomListItem(followUpGroups);
+            this.renderedSurvey.splice(0, 0, {
+                ...newQG,
+                questions: [],
+            });
+            this.setTimestampFor('rendered', newQG.id);
+            this.initRenderedQuestions(this.renderedSurvey.length - 1, newQG);
+
+
+            let availableGroups = this.surveyDef.questionGroups.filter(qg => {
+                return !this.renderedSurvey.some(item => item.id === qg.id);
+            });
+            followUpGroups = availableGroups.filter(cQ => cQ.follows && cQ.follows.includes(newQG.id) && this.evalConditions(cQ.conditions));
+        }
+
         this.renderedSurvey.forEach(
             qg => {
                 if (!this.evalConditions(qg.conditions)) {
@@ -488,7 +512,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                     let followUpQuestions = availableQuestions.filter(q =>
                         q.follows && q.follows.includes('start') && this.evalConditions(q.conditions)
                     );
-                    if (followUpQuestions.length > 0) {
+                    while (followUpQuestions.length > 0) {
                         const newQ = pickRandomListItem(followUpQuestions);
                         this.renderedSurvey[ind].questions.splice(0, 0, {
                             ...newQ,
@@ -497,6 +521,11 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                             }
                         });
                         this.setTimestampFor('rendered', groupDef.id, newQ.id);
+
+                        availableQuestions = groupDef.questions.filter(cQ => {
+                            return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
+                        });
+                        followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(newQ.id) && this.evalConditions(cQ.conditions));
                     }
 
                     qg.questions.forEach(
@@ -549,7 +578,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                         while (currentQuestion != null) {
                             currentQuestion = this.getNextQuestion(ind, groupDef, currentQuestion.id);
                             if (!currentQuestion) {
-                                return;
+                                break;
                             }
                             this.renderedSurvey[ind].questions.push({
                                 ...currentQuestion,
@@ -561,14 +590,61 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                         }
                     }
 
-
-
-
                     // check if add any new groups after this one // as direct follow ups
+                    const lastQGID = this.renderedSurvey[ind].id;
+                    let currentQuestionGroup = this.getNextQuestionGroup(lastQGID);
+                    if (currentQuestionGroup) {
+                        // new question groups to be added at the end:
+                        this.renderedSurvey.push({
+                            ...currentQuestionGroup,
+                            questions: [],
+                        });
+                        this.setTimestampFor('rendered', currentQuestionGroup.id);
+                        this.initRenderedQuestions(this.renderedSurvey.length - 1, currentQuestionGroup);
+
+                        while (currentQuestionGroup != null) {
+                            currentQuestionGroup = this.getNextQuestionGroup(lastQGID);
+                            if (!currentQuestionGroup) {
+                                break;
+                            }
+                            this.renderedSurvey.push({
+                                ...currentQuestionGroup,
+                                questions: [],
+                            });
+                            this.setTimestampFor('rendered', currentQuestionGroup.id);
+                            this.initRenderedQuestions(this.renderedSurvey.length - 1, currentQuestionGroup);
+                        }
+                    }
+
                 }
             }
         );
-        // TODO: render end of the question trees
+
+        // render end of the question groups
+        const lastQGID = this.renderedSurvey[this.renderedSurvey.length - 1].id;
+        let currentQuestionGroup = this.getNextQuestionGroup(lastQGID);
+        if (currentQuestionGroup) {
+            // new question groups to be added at the end:
+            this.renderedSurvey.push({
+                ...currentQuestionGroup,
+                questions: [],
+            });
+            this.setTimestampFor('rendered', currentQuestionGroup.id);
+            this.initRenderedQuestions(this.renderedSurvey.length - 1, currentQuestionGroup);
+
+            while (currentQuestionGroup != null) {
+                currentQuestionGroup = this.getNextQuestionGroup(lastQGID);
+                if (!currentQuestionGroup) {
+                    break;
+                }
+                this.renderedSurvey.push({
+                    ...currentQuestionGroup,
+                    questions: [],
+                });
+                this.setTimestampFor('rendered', currentQuestionGroup.id);
+                this.initRenderedQuestions(this.renderedSurvey.length - 1, currentQuestionGroup);
+            }
+        }
     }
 
     evalConditions(conditions?: Array<types.Condition>): boolean {
