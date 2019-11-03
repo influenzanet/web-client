@@ -6,19 +6,20 @@ export interface SurveyDef {
 export interface QuestionGroup {
     id: string;
     follows?: Array<string>;
-    conditions?: Object;
+    conditions?: Array<Condition>;
     questions: Array<Question>;
 }
 
 export interface Question {
     id: string;
     follows?: Array<string>;
-    conditions?: Object;
+    conditions?: Array<Condition>;
     variants: Array<Variant>;
 }
 
 export interface Variant {
     id: string;
+    conditions?: Array<Condition>;
     localisations: Array<Localisation>;
 }
 
@@ -27,8 +28,22 @@ export interface Localisation {
     question: string;
 }
 
-export interface SurveyContext {
+export interface Condition {
+    type: string;
+    args: Array<Condition> | Array<string>;
+    //[key: string]: Array<Conditions> | Array<string>;
+}
 
+interface Reference {
+    survey?: string;
+    group?: string;
+    question?: string;
+}
+
+export interface SurveyContext {
+    responses?: Array<SurveyResponse>;
+    profile?: any; // TODO: define
+    // TODO: have geolocation and other attributes
 }
 
 // --------- Rendered Survey Types ----------
