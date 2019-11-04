@@ -190,7 +190,7 @@ const removeIdFromList = (items: Array<any>, id: string): Array<any> => {
     return items.filter(item => item.id !== id);
 }
 
-type TimestampType = 'rendered' | 'displayed' | 'response set';
+type TimestampType = 'rendered' | 'displayed' | 'responded';
 
 
 interface SurveyEngineCoreInterface {
@@ -232,7 +232,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
     }
 
     setResponse(groupID: string, questionID: string, response: any) {
-        this.setTimestampFor('response set', groupID, questionID); // keep at the beginning - more accurate - checks if response exists
+        this.setTimestampFor('responded', groupID, questionID); // keep at the beginning - more accurate - checks if response exists
         const gIndex = this.responses.questionGroups.findIndex(qg => qg.id === groupID);
         if (gIndex < 0) {
             return null;
@@ -291,10 +291,10 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
             const respGroup = {
                 id: qg.id,
                 meta: {
-                    rendered: 0,
-                    displayed: 0,
-                    set: 0,
-                    changed: 0
+                    rendered: [],
+                    displayed: [],
+                    repsonded: [],
+                    position: -1
                 },
                 questions: new Array<types.QResponse>(),
             };
@@ -302,10 +302,10 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                 respGroup.questions.push({
                     id: q.id,
                     meta: {
-                        rendered: 0,
-                        displayed: 0,
-                        set: 0,
-                        changed: 0
+                        rendered: [],
+                        displayed: [],
+                        repsonded: [],
+                        position: -1
                     },
                 });
             });
@@ -315,34 +315,41 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
     }
 
     private setTimestampFor(type: TimestampType, groupID: string, questionID?: string) {
-        let key: string = type;
         const gIndex = this.responses.questionGroups.findIndex(qg => qg.id === groupID);
         if (gIndex < 0) {
             return;
         }
         if (!questionID) {
-            this.responses.questionGroups[gIndex].meta = {
-                ...this.responses.questionGroups[gIndex].meta,
-                [key]: Date.now(),
-            };
-            return;
-        }
-        if (type === 'response set') {
-            if (!this.getResponse(groupID, questionID)) {
-                key = 'set';
-            } else {
-                key = 'changed';
+            switch (type) {
+                case 'rendered':
+                    this.responses.questionGroups[gIndex].meta.rendered.push(Date.now());
+                    break;
+                case 'displayed':
+                    this.responses.questionGroups[gIndex].meta.displayed.push(Date.now());
+                    break;
+                case 'responded':
+                    this.responses.questionGroups[gIndex].meta.repsonded.push(Date.now());
+                    break;
             }
+            return;
         }
 
         const qIndex = this.responses.questionGroups[gIndex].questions.findIndex(q => q.id === questionID);
         if (qIndex < 0) {
             return;
         }
-        this.responses.questionGroups[gIndex].questions[qIndex].meta = {
-            ...this.responses.questionGroups[gIndex].questions[qIndex].meta,
-            [key]: Date.now(),
-        };
+
+        switch (type) {
+            case 'rendered':
+                this.responses.questionGroups[gIndex].questions[qIndex].meta.rendered.push(Date.now());
+                break;
+            case 'displayed':
+                this.responses.questionGroups[gIndex].questions[qIndex].meta.displayed.push(Date.now());
+                break;
+            case 'responded':
+                this.responses.questionGroups[gIndex].questions[qIndex].meta.repsonded.push(Date.now());
+                break;
+        }
     }
 
     private initRenderedSurvey() {
@@ -350,26 +357,37 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         if (!currentGroup) {
             return;
         }
-        this.renderedSurvey.push({
+        let newQG = {
             ...currentGroup,
             questions: [],
-        });
-        this.setTimestampFor('rendered', currentGroup.id);
-        this.initRenderedQuestions(this.renderedSurvey.length - 1, currentGroup);
+        };
+        let newIndex = this.addQuestionGroup(newQG);
+        this.initRenderedQuestions(newIndex, currentGroup);
 
         while (currentGroup != null) {
             currentGroup = this.getNextQuestionGroup(currentGroup.id);
             if (!currentGroup) {
                 return;
             }
-            this.renderedSurvey.push({
+            newQG = {
                 ...currentGroup,
                 questions: [],
-            });
-            this.setTimestampFor('rendered', currentGroup.id);
-            this.initRenderedQuestions(this.renderedSurvey.length - 1, currentGroup);
+            };
+            newIndex = this.addQuestionGroup(newQG);
+            this.initRenderedQuestions(newIndex, currentGroup);
         }
         return;
+    }
+
+    private addQuestionGroup(renderedQuestionGroup: types.RenderedQuestionGroup, atPosition?: number): number {
+        if (!atPosition) {
+            this.renderedSurvey.push(renderedQuestionGroup);
+            this.setTimestampFor('rendered', renderedQuestionGroup.id);
+            return this.renderedSurvey.length - 1;
+        }
+        this.renderedSurvey.splice(atPosition, 0, renderedQuestionGroup);
+        this.setTimestampFor('rendered', renderedQuestionGroup.id);
+        return atPosition;
     }
 
     private getNextQuestionGroup(currentGroupID?: string): types.QuestionGroup | null {
@@ -474,21 +492,19 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         let followUpGroups = availableGroups.filter(
             qg => qg.follows && qg.follows.includes('start') && this.evalConditions(qg.conditions)
         );
+        let currentGroupIndex = 0;
 
         while (followUpGroups.length > 0) {
             const newQG = pickRandomListItem(followUpGroups);
-            this.renderedSurvey.splice(0, 0, {
-                ...newQG,
-                questions: [],
-            });
-            this.setTimestampFor('rendered', newQG.id);
-            this.initRenderedQuestions(this.renderedSurvey.length - 1, newQG);
-
+            currentGroupIndex = this.addQuestionGroup(newQG, currentGroupIndex);
+            this.initRenderedQuestions(currentGroupIndex, newQG);
 
             let availableGroups = this.surveyDef.questionGroups.filter(qg => {
                 return !this.renderedSurvey.some(item => item.id === qg.id);
             });
             followUpGroups = availableGroups.filter(cQ => cQ.follows && cQ.follows.includes(newQG.id) && this.evalConditions(cQ.conditions));
+
+            currentGroupIndex += 1;
         }
 
         this.renderedSurvey.forEach(
@@ -512,9 +528,10 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                     let followUpQuestions = availableQuestions.filter(q =>
                         q.follows && q.follows.includes('start') && this.evalConditions(q.conditions)
                     );
+                    let currentQIndex = 0;
                     while (followUpQuestions.length > 0) {
                         const newQ = pickRandomListItem(followUpQuestions);
-                        this.renderedSurvey[ind].questions.splice(0, 0, {
+                        this.renderedSurvey[ind].questions.splice(currentQIndex, 0, {
                             ...newQ,
                             currentQuestion: {
                                 ...this.selectVariationAndLocalisation(newQ),
@@ -526,6 +543,8 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                             return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
                         });
                         followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(newQ.id) && this.evalConditions(cQ.conditions));
+
+                        currentQIndex += 1;
                     }
 
                     qg.questions.forEach(
@@ -536,7 +555,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                             } else {
                                 // else check if next question is still the same
                                 // if not insert new question(s)
-                                let currentQIndex = this.renderedSurvey[ind].questions.findIndex(cQ => cQ.id === q.id);
+                                currentQIndex = this.renderedSurvey[ind].questions.findIndex(cQ => cQ.id === q.id);
                                 availableQuestions = groupDef.questions.filter(cQ => {
                                     return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
                                 });
@@ -595,24 +614,24 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                     let currentQuestionGroup = this.getNextQuestionGroup(lastQGID);
                     if (currentQuestionGroup) {
                         // new question groups to be added at the end:
-                        this.renderedSurvey.push({
+                        let newQG = {
                             ...currentQuestionGroup,
                             questions: [],
-                        });
-                        this.setTimestampFor('rendered', currentQuestionGroup.id);
-                        this.initRenderedQuestions(this.renderedSurvey.length - 1, currentQuestionGroup);
+                        };
+                        let qgIndex = this.addQuestionGroup(newQG);
+                        this.initRenderedQuestions(qgIndex, currentQuestionGroup);
 
                         while (currentQuestionGroup != null) {
                             currentQuestionGroup = this.getNextQuestionGroup(lastQGID);
                             if (!currentQuestionGroup) {
                                 break;
                             }
-                            this.renderedSurvey.push({
+                            newQG = {
                                 ...currentQuestionGroup,
                                 questions: [],
-                            });
-                            this.setTimestampFor('rendered', currentQuestionGroup.id);
-                            this.initRenderedQuestions(this.renderedSurvey.length - 1, currentQuestionGroup);
+                            };
+                            qgIndex = this.addQuestionGroup(newQG);
+                            this.initRenderedQuestions(qgIndex, currentQuestionGroup);
                         }
                     }
 
@@ -623,27 +642,15 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         // render end of the question groups
         const lastQGID = this.renderedSurvey[this.renderedSurvey.length - 1].id;
         let currentQuestionGroup = this.getNextQuestionGroup(lastQGID);
-        if (currentQuestionGroup) {
+        while (currentQuestionGroup !== null) {
             // new question groups to be added at the end:
-            this.renderedSurvey.push({
+            const newQG = {
                 ...currentQuestionGroup,
                 questions: [],
-            });
-            this.setTimestampFor('rendered', currentQuestionGroup.id);
-            this.initRenderedQuestions(this.renderedSurvey.length - 1, currentQuestionGroup);
-
-            while (currentQuestionGroup != null) {
-                currentQuestionGroup = this.getNextQuestionGroup(lastQGID);
-                if (!currentQuestionGroup) {
-                    break;
-                }
-                this.renderedSurvey.push({
-                    ...currentQuestionGroup,
-                    questions: [],
-                });
-                this.setTimestampFor('rendered', currentQuestionGroup.id);
-                this.initRenderedQuestions(this.renderedSurvey.length - 1, currentQuestionGroup);
-            }
+            };
+            const qgIndex = this.addQuestionGroup(newQG);
+            this.initRenderedQuestions(qgIndex, currentQuestionGroup);
+            currentQuestionGroup = this.getNextQuestionGroup(currentQuestionGroup.id);
         }
     }
 

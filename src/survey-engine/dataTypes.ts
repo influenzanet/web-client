@@ -57,11 +57,12 @@ export interface RenderedQuestion extends Question {
 }
 
 // --------- Survey Response Types ----------
-export interface ResponseTimestamps {
-    rendered: number;
-    displayed: number;
-    set: number;
-    changed: number;
+export interface ResponseMeta {
+    position: number; // position in the list
+    // timestamps:
+    rendered: Array<number>;
+    displayed: Array<number>;
+    repsonded: Array<number>;
 }
 
 export interface SurveyResponse {
@@ -73,13 +74,13 @@ export interface SurveyResponse {
 
 export interface QGResponse {
     id: string;
-    meta: ResponseTimestamps;
+    meta: ResponseMeta;
     questions: Array<QResponse>
 }
 
 export interface QResponse {
     id: string;
-    meta: ResponseTimestamps;
+    meta: ResponseMeta;
     variant?: string;
     localisation?: string;
     response?: any;
