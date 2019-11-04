@@ -390,6 +390,17 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         return atPosition;
     }
 
+    private addQuestionToGroup(groupIndex: number, renderedQuestion: types.RenderedQuestion, atPosition?: number): number {
+        if (!atPosition) {
+            this.renderedSurvey[groupIndex].questions.push(renderedQuestion);
+            this.setTimestampFor('rendered', this.renderedSurvey[groupIndex].id, renderedQuestion.id);
+            return this.renderedSurvey[groupIndex].questions.length - 1;
+        }
+        this.renderedSurvey[groupIndex].questions.splice(atPosition, 0, renderedQuestion);
+        this.setTimestampFor('rendered', this.renderedSurvey[groupIndex].id, renderedQuestion.id);
+        return atPosition;
+    }
+
     private getNextQuestionGroup(currentGroupID?: string): types.QuestionGroup | null {
         // get unrendered question groups only
         const availableGroups = this.surveyDef.questionGroups.filter(qg => {
@@ -421,30 +432,16 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
 
     private initRenderedQuestions(groupIndex: number, qGroup: types.QuestionGroup) {
         let currentQuestion = this.getNextQuestion(groupIndex, qGroup);
-        if (!currentQuestion) {
-            return;
-        }
 
-        this.renderedSurvey[groupIndex].questions.push({
-            ...currentQuestion,
-            currentQuestion: {
-                ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
-            }
-        });
-        this.setTimestampFor('rendered', qGroup.id, currentQuestion.id);
-
-        while (currentQuestion != null) {
-            currentQuestion = this.getNextQuestion(groupIndex, qGroup, currentQuestion.id);
-            if (!currentQuestion) {
-                return;
-            }
-            this.renderedSurvey[groupIndex].questions.push({
+        while (currentQuestion) {
+            this.addQuestionToGroup(groupIndex, {
                 ...currentQuestion,
                 currentQuestion: {
-                    ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
+                    ...this.selectVariationAndLocalisation(currentQuestion),
                 }
             });
-            this.setTimestampFor('rendered', qGroup.id, currentQuestion.id);
+
+            currentQuestion = this.getNextQuestion(groupIndex, qGroup, currentQuestion.id);
         }
         return;
     }
@@ -531,13 +528,12 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                     let currentQIndex = 0;
                     while (followUpQuestions.length > 0) {
                         const newQ = pickRandomListItem(followUpQuestions);
-                        this.renderedSurvey[ind].questions.splice(currentQIndex, 0, {
+                        this.addQuestionToGroup(ind, {
                             ...newQ,
                             currentQuestion: {
                                 ...this.selectVariationAndLocalisation(newQ),
                             }
-                        });
-                        this.setTimestampFor('rendered', groupDef.id, newQ.id);
+                        }, currentQIndex);
 
                         availableQuestions = groupDef.questions.filter(cQ => {
                             return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
@@ -564,13 +560,12 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                                 while (followUpQuestions.length > 0) {
                                     const newQ = pickRandomListItem(followUpQuestions);
                                     currentQIndex += 1;
-                                    this.renderedSurvey[ind].questions.splice(currentQIndex, 0, {
+                                    this.addQuestionToGroup(ind, {
                                         ...newQ,
                                         currentQuestion: {
                                             ...this.selectVariationAndLocalisation(newQ),
                                         }
-                                    });
-                                    this.setTimestampFor('rendered', groupDef.id, newQ.id);
+                                    }, currentQIndex);
 
                                     availableQuestions = groupDef.questions.filter(cQ => {
                                         return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
@@ -584,30 +579,19 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                     // get unrendered questions only
                     const lastQID = this.renderedSurvey[ind].questions[this.renderedSurvey[ind].questions.length - 1].id;
                     let currentQuestion = this.getNextQuestion(ind, groupDef, lastQID);
-                    if (currentQuestion) {
-                        // new question to be added at the end:
-                        this.renderedSurvey[ind].questions.push({
+
+                    // new question to be added at the end:
+                    while (currentQuestion != null) {
+                        this.addQuestionToGroup(ind, {
                             ...currentQuestion,
                             currentQuestion: {
-                                ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
+                                ...this.selectVariationAndLocalisation(currentQuestion),
                             }
                         });
-                        this.setTimestampFor('rendered', groupDef.id, currentQuestion.id);
 
-                        while (currentQuestion != null) {
-                            currentQuestion = this.getNextQuestion(ind, groupDef, currentQuestion.id);
-                            if (!currentQuestion) {
-                                break;
-                            }
-                            this.renderedSurvey[ind].questions.push({
-                                ...currentQuestion,
-                                currentQuestion: {
-                                    ...this.selectVariationAndLocalisation(currentQuestion), // todo: get selected localisation or default
-                                }
-                            });
-                            this.setTimestampFor('rendered', groupDef.id, currentQuestion.id);
-                        }
+                        currentQuestion = this.getNextQuestion(ind, groupDef, currentQuestion.id);
                     }
+
 
                     // check if add any new groups after this one // as direct follow ups
                     const lastQGID = this.renderedSurvey[ind].id;
