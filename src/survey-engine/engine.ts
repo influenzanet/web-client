@@ -6,30 +6,32 @@ export const testSurvey: types.SurveyDef = {
         {
             id: "qg1",
             follows: ["qg2"],
-            conditions: [
-                {
-                    type: 'or',
-                    args: [
-                        {
-                            type: 'hasAns',
-                            args: ['q1', '123'] // question in survey (two ids)
-                        },
-                        {
-                            type: 'inQT',
-                            args: ['q11', 'q5']
-                        },
-                        {
-                            type: 'not',
-                            args: [
-                                {
-                                    type: 'inQT',
-                                    args: ['q11', 'q13']
-                                },
-                            ]
+            condition:
+            {
+                name: 'or',
+                data: [
+                    {
+                        name: 'hasAns',
+                        data: {
+                            name: 'ref',
+                            data: 'response[q1].test'
                         }
-                    ]
-                }
-            ],
+                    },
+                    {
+                        name: 'inQT',
+                        data: ['q11', 'q5']
+                    },
+                    {
+                        name: 'not',
+                        data: {
+                            name: 'inQT',
+                            data: ['q11', 'q5']
+                        },
+
+                    }
+
+                ]
+            },
             questions: [
                 {
                     id: "q9",
@@ -44,10 +46,10 @@ export const testSurvey: types.SurveyDef = {
                 },
                 {
                     id: "q10",
-                    conditions: [{
-                        type: 'inQT',
-                        args: ['q11']
-                    }],
+                    condition: {
+                        name: 'inQT',
+                        data: ['q11']
+                    },
                     variants: [{
                         id: 'v10',
                         localisations: [{
@@ -129,6 +131,16 @@ export const testSurvey: types.SurveyDef = {
             questions: [
                 {
                     id: "q1",
+                    condition: {
+                        name: 'eq',
+                        data: [
+                            {
+                                name: 'ref',
+                                data: 'context.mode',
+                            },
+                            'test'
+                        ]
+                    },
                     variants: [{
                         id: 'v1',
                         localisations: [{
@@ -150,13 +162,17 @@ export const testSurvey: types.SurveyDef = {
                 },
                 {
                     id: "q3",
-                    conditions: [{
-                        type: 'eq',
-                        args: [
-                            '$response:q2,123',
-                            'yes'
+                    condition: {
+                        name: 'eq',
+                        data: [
+                            {
+                                name: 'ref',
+                                data: 'response[q2]',
+                                dtype: 'int'
+                            },
+                            1
                         ]
-                    }],
+                    },
                     variants: [{
                         id: 'v3',
                         localisations: [{
@@ -204,7 +220,7 @@ interface SurveyEngineCoreInterface {
     setResponse: (groupID: string, questionID: string, response: types.QResponse) => void;
 
     questionDisplayed: (groupID: string, questionID: string) => void; // should be called by the client when displaying a question
-    evalConditions: (conditions: Array<types.Condition>) => boolean;
+    evalConditions: (condition: types.EvalObject) => boolean;
     // render: () => void;
 }
 
@@ -414,7 +430,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         }
 
         if (followUpGroups.length > 0) {
-            const groupPool = followUpGroups.filter(qg => this.evalConditions(qg.conditions));
+            const groupPool = followUpGroups.filter(qg => this.evalConditions(qg.condition));
             if (groupPool.length < 1) {
                 return null
             }
@@ -422,7 +438,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         }
 
         const groupPool = availableGroups.filter(qg => {
-            return this.evalConditions(qg.conditions) && (!qg.follows || qg.follows.length < 1);
+            return this.evalConditions(qg.condition) && (!qg.follows || qg.follows.length < 1);
         });
         if (groupPool.length < 1) {
             return null
@@ -464,7 +480,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         }
 
         if (followUpQuestions.length > 0) {
-            const questionPool = followUpQuestions.filter(q => this.evalConditions(q.conditions));
+            const questionPool = followUpQuestions.filter(q => this.evalConditions(q.condition));
             if (questionPool.length < 1) {
                 return null
             }
@@ -472,7 +488,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         }
 
         const questionPool = availableQuestions.filter(q => {
-            return this.evalConditions(q.conditions) && (!q.follows || q.follows.length < 1)
+            return this.evalConditions(q.condition) && (!q.follows || q.follows.length < 1)
         });
         if (questionPool.length < 1) {
             return null
@@ -487,7 +503,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
             return !this.renderedSurvey.some(item => item.id === qg.id);
         });
         let followUpGroups = availableGroups.filter(
-            qg => qg.follows && qg.follows.includes('start') && this.evalConditions(qg.conditions)
+            qg => qg.follows && qg.follows.includes('start') && this.evalConditions(qg.condition)
         );
         let currentGroupIndex = 0;
 
@@ -499,14 +515,14 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
             let availableGroups = this.surveyDef.questionGroups.filter(qg => {
                 return !this.renderedSurvey.some(item => item.id === qg.id);
             });
-            followUpGroups = availableGroups.filter(cQ => cQ.follows && cQ.follows.includes(newQG.id) && this.evalConditions(cQ.conditions));
+            followUpGroups = availableGroups.filter(cQ => cQ.follows && cQ.follows.includes(newQG.id) && this.evalConditions(cQ.condition));
 
             currentGroupIndex += 1;
         }
 
         this.renderedSurvey.forEach(
             qg => {
-                if (!this.evalConditions(qg.conditions)) {
+                if (!this.evalConditions(qg.condition)) {
                     this.renderedSurvey = removeIdFromList(this.renderedSurvey, qg.id);
                     console.log('removed question group: ' + qg.id);
                 } else {
@@ -523,7 +539,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                         return !this.renderedSurvey[ind].questions.some(item => item.id === q.id);
                     });
                     let followUpQuestions = availableQuestions.filter(q =>
-                        q.follows && q.follows.includes('start') && this.evalConditions(q.conditions)
+                        q.follows && q.follows.includes('start') && this.evalConditions(q.condition)
                     );
                     let currentQIndex = 0;
                     while (followUpQuestions.length > 0) {
@@ -538,14 +554,14 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                         availableQuestions = groupDef.questions.filter(cQ => {
                             return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
                         });
-                        followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(newQ.id) && this.evalConditions(cQ.conditions));
+                        followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(newQ.id) && this.evalConditions(cQ.condition));
 
                         currentQIndex += 1;
                     }
 
                     qg.questions.forEach(
                         q => {
-                            if (!this.evalConditions(q.conditions)) {
+                            if (!this.evalConditions(q.condition)) {
                                 this.renderedSurvey[ind].questions = removeIdFromList(this.renderedSurvey[ind].questions, q.id);
                                 console.log('removed question: ' + q.id);
                             } else {
@@ -555,7 +571,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                                 availableQuestions = groupDef.questions.filter(cQ => {
                                     return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
                                 });
-                                followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(q.id) && this.evalConditions(cQ.conditions));
+                                followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(q.id) && this.evalConditions(cQ.condition));
 
                                 while (followUpQuestions.length > 0) {
                                     const newQ = pickRandomListItem(followUpQuestions);
@@ -570,14 +586,15 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                                     availableQuestions = groupDef.questions.filter(cQ => {
                                         return !this.renderedSurvey[ind].questions.some(item => item.id === cQ.id);
                                     });
-                                    followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(newQ.id) && this.evalConditions(cQ.conditions));
+                                    followUpQuestions = availableQuestions.filter(cQ => cQ.follows && cQ.follows.includes(newQ.id) && this.evalConditions(cQ.condition));
                                 }
                             }
                         });
 
                     // render end of the question trees
                     // get unrendered questions only
-                    const lastQID = this.renderedSurvey[ind].questions[this.renderedSurvey[ind].questions.length - 1].id;
+                    const lastQID = this.renderedSurvey[ind].questions.length > 0 ?
+                        this.renderedSurvey[ind].questions[this.renderedSurvey[ind].questions.length - 1].id : undefined;
                     let currentQuestion = this.getNextQuestion(ind, groupDef, lastQID);
 
                     // new question to be added at the end:
@@ -638,9 +655,9 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
         }
     }
 
-    evalConditions(conditions?: Array<types.Condition>): boolean {
+    evalConditions(condition?: types.EvalObject): boolean {
         return this.evalEngine.eval(
-            conditions,
+            condition,
             this.renderedSurvey,
             this.context,
             this.responses
@@ -649,88 +666,112 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
 }
 
 class EvalRules {
+    renderedSurvey?: Array<types.RenderedQuestionGroup>;
+    context?: types.SurveyContext;
+    responses?: types.SurveyResponse;
+
     public eval(
-        conditions?: Array<types.Condition>,
+        condition?: types.EvalObject,
         renderedSurvey?: Array<types.RenderedQuestionGroup>,
         context?: types.SurveyContext,
         responses?: types.SurveyResponse
     ): boolean {
         // Default if no conditions found:
-        if (!conditions) {
+        if (!condition) {
             return true;
         }
 
-        return conditions.every(condition => this.evalCondition(
-            condition,
-            renderedSurvey,
-            context,
-            responses
-        ));
+        this.renderedSurvey = renderedSurvey;
+        this.context = context;
+        this.responses = responses;
+
+        return this.evalCondition(condition);
     }
 
-    private evalCondition(
-        condition: types.Condition,
-        renderedSurvey?: Array<types.RenderedQuestionGroup>,
-        context?: types.SurveyContext,
-        responses?: types.SurveyResponse
-    ): boolean {
+    private evalCondition(condition: types.EvalObject): boolean {
         let conditionValue = false;
-        switch (condition.type) {
+        switch (condition.name) {
             case 'or':
-                conditionValue = (condition.args as Array<types.Condition>).some(
-                    (c: types.Condition) => this.evalCondition(c, renderedSurvey, context, responses)
-                );
+                conditionValue = this.or(condition);
                 break;
             case 'and':
-                conditionValue = (condition.args as Array<types.Condition>).every(
-                    (c: types.Condition) => this.evalCondition(c, renderedSurvey, context, responses)
-                );
+                conditionValue = this.and(condition);
                 break;
             case 'not':
-                if (condition.args.length !== 1) {
-                    console.warn('not methods expects only a sinlge argument');
-                    break;
-                }
-                conditionValue = !this.evalCondition((condition.args as Array<types.Condition>)[0], renderedSurvey, context, responses);
-                break;
-            case 'hasAns':
-                // if referenced question has an answer
-                // TODO:
-                console.warn('todo');
-                break;
-            case 'inQT':
-                // if referenced questions are in the rendered survey (current survey)
-                if (!renderedSurvey) {
-                    break;
-                }
-                conditionValue = (condition.args as Array<string>).every(
-                    id => this.isQuestionInRenderedSurvey(id, renderedSurvey)
-                );
+                conditionValue = this.not(condition);
                 break;
             case 'eq':
-                if (condition.args.length < 2) {
-                    console.warn('"eq" method expects more than a sinlge argument');
-                    break;
-                }
-
-                let values = [];
-                for (let ind = 0; ind < condition.args.length; ind++) {
-                    // TODO: resolve reference to have a value
-                    const val = this.parseValue(condition.args[ind] as string, context, responses);
-                    values.push(val);
-                    console.log(val);
-                }
-                conditionValue = values.every((val, i, arr) => val === arr[0]);
-                console.log(conditionValue);
-
+                conditionValue = this.eq(condition);
                 break;
+            /*
+        case 'hasAns':
+            // if referenced question has an answer
+            // TODO:
+            console.warn('todo');
+            break;
+        case 'inQT':
+            // if referenced questions are in the rendered survey (current survey)
+            if (!renderedSurvey) {
+                break;
+            }
+            conditionValue = (condition.args as Array<string>).every(
+                id => this.isQuestionInRenderedSurvey(id, renderedSurvey)
+            );
+            break;
+            */
             default:
-                console.warn('condition type unknown for the current engine: ' + condition.type + '. Default return value is false.');
+                console.warn('condition type unknown for the current engine: ' + condition.name + '. Default return value is false.');
                 break;
         }
         return conditionValue;
     }
+
     // ---------- HELPER METHODS ----------------
+    private or(condition: types.EvalObject): boolean {
+        if (!Array.isArray(condition.data)) {
+            console.warn('or: data attribute is missing or wrong: ' + condition.data);
+            return false;
+        }
+        return condition.data.some((value) => this.evalCondition(value));
+    }
+
+    private and(condition: types.EvalObject): boolean {
+        if (!Array.isArray(condition.data)) {
+            console.warn('and: data attribute is missing or wrong: ' + condition.data);
+            return false;
+        }
+        return condition.data.every((value) => this.evalCondition(value));
+    }
+
+    private not(condition: types.EvalObject): boolean {
+        if (!condition.data || typeof (condition.data) !== 'object') {
+            console.warn('not methods expects a sinlge EvalObject as an argument ');
+            return false;
+        }
+        return !this.evalCondition(condition.data as types.EvalObject);
+    }
+
+    private eq(condition: types.EvalObject): boolean {
+        if (!Array.isArray(condition.data)) {
+            console.warn('and: data attribute is missing or wrong: ' + condition.data);
+            return false;
+        }
+        let values = [];
+        for (let ind = 0; ind < condition.data.length; ind++) {
+            const val = condition.data[ind];
+            if (typeof (val) === 'object' && val.name === 'ref') {
+                values.push(this.ref(val));
+            } else {
+                values.push(val);
+            }
+
+        }
+        console.log(values);
+        // check if all values are equal
+        return values.every((val, i, arr) => val === arr[0]);
+    }
+
+
     private isQuestionInRenderedSurvey(id: string, renderSurvey: Array<types.RenderedQuestionGroup>): boolean {
         for (let i = 0; i < renderSurvey.length; i++) {
             const qg = renderSurvey[i];
@@ -741,52 +782,66 @@ class EvalRules {
         return false;
     }
 
-    private parseValue(
-        refOrValue: string,
-        // renderedSurvey?: Array<types.RenderedQuestionGroup>,
-        context?: types.SurveyContext,
-        responses?: types.SurveyResponse
-    ): any {
-        if (refOrValue.length > 1 && refOrValue[0] === '$') {
-            const [type, argsStr] = refOrValue.split(':');
-            const args = argsStr.split(',');
-            let value: any;
-            switch (type) {
-                case '$response':
-                    if (args.length < 1) {
-                        console.warn('missing arguments in $response');
-                        return null;
-                    }
-                    const questionID = args[0];
-                    const surveyID = args.length > 1 ? args[1] : '';
-                    const currentResponseObject = this.getResponse(questionID, responses, context, surveyID);
-                    value = currentResponseObject ? currentResponseObject.response : {};
-                    break;
-                default:
-                    console.warn('reference type not known: ' + type);
-                    break;
+    private ref(refValue: types.EvalObject): any {
+        let items = (refValue.data as string).split('.');
+
+        let currentObj: any;
+        for (let i = 0; i < items.length; i++) {
+            const b1 = items[i].lastIndexOf('[');
+            const b2 = items[i].lastIndexOf(']');
+            if (b1 > -1 && b2 > -1) {
+                // find
+                const vType = items[i].slice(0, b1);
+                const id = items[i].slice(b1 + 1, b2);
+
+                switch (vType) {
+                    case "response":
+                        currentObj = this.getResponse(id);
+                        break;
+                    case 'question':
+                        console.warn('question reference not implemented yet: ' + items[i]);
+                        break;
+                }
+            } else if (!currentObj) {
+                // start variable:
+                switch (items[i]) {
+                    case 'context':
+                        currentObj = this.context;
+                        break;
+                    default:
+                        console.warn('variable not known: ' + items[i]);
+                        break;
+                }
+
+            } else {
+                // get
+                currentObj = currentObj[items[i]];
             }
-            return value;
+            console.log(currentObj);
+
         }
-        return refOrValue;
+
+        console.log(items);
+        switch (refValue.dtype) {
+            case 'int':
+                return typeof (currentObj) === 'string' ? parseInt(currentObj) : Math.floor(currentObj);
+            default:
+                return currentObj;
+        }
     }
 
-    private getResponse(questionID: string, responses?: types.SurveyResponse, context?: types.SurveyContext, surveyID?: string): types.QResponse | null {
-        if (!surveyID || surveyID === '' || (responses && responses.id === surveyID)) {
-            // use current survey:
-            if (!responses) {
-                return null;
-            }
-
-            for (let i = 0; i < responses.questionGroups.length; i++) {
-                const qResp = responses.questionGroups[i].questions.find(q => q.id === questionID);
-                if (qResp) {
-                    return qResp;
-                }
-            }
+    private getResponse(questionID: string): types.QResponse | null {
+        if (!this.responses) {
+            return null;
         }
 
-        console.warn('todo: implement context with external surveys');
+        for (let i = 0; i < this.responses.questionGroups.length; i++) {
+            const qg = this.responses.questionGroups[i];
+            const q = qg.questions.find(q => q.id === questionID);
+            if (q) {
+                return q.response;
+            }
+        }
         return null;
     }
 }

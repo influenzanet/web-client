@@ -11,8 +11,10 @@ const MyStudies: React.FC = () => {
 
     useEffect(() => {
         // const survey = renderSurvey({ surveyDef: testSurvey});
-
-        const sEngine = new SurveyEngineCore(testSurvey, 'me', 'someone else');
+        const context = {
+            mode: 'test',
+        }
+        const sEngine = new SurveyEngineCore(testSurvey, 'me', 'someone else', context);
 
         /*if (survey.surveyState) {
             printRenderedSurvey(survey.surveyState);
@@ -20,7 +22,7 @@ const MyStudies: React.FC = () => {
         console.log(sEngine.responses);
         sEngine.printRenderedSurvey();
 
-        sEngine.setResponse('qg3', 'q2', 'yes');
+        sEngine.setResponse('qg3', 'q2', 1);
         sEngine.printRenderedSurvey();
 
         dispatch({ type: SET_PAGE_TITLE, title: 'My Studies'});
