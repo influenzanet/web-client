@@ -11,13 +11,6 @@ export const testSurvey: types.SurveyDef = {
                 name: 'or',
                 data: [
                     {
-                        name: 'hasAns',
-                        data: {
-                            name: 'ref',
-                            data: 'response[q1].test'
-                        }
-                    },
-                    {
                         name: 'inQT',
                         data: ['q11', 'q5']
                     },
@@ -27,7 +20,6 @@ export const testSurvey: types.SurveyDef = {
                             name: 'inQT',
                             data: ['q11', 'q5']
                         },
-
                     }
 
                 ]
@@ -135,8 +127,11 @@ export const testSurvey: types.SurveyDef = {
                         name: 'eq',
                         data: [
                             {
-                                name: 'ref',
-                                data: 'context.mode',
+                                name: 'getAttribute',
+                                data: [
+                                    { name: 'getContext' },
+                                    'mode'
+                                ]
                             },
                             'test'
                         ]
@@ -166,8 +161,14 @@ export const testSurvey: types.SurveyDef = {
                         name: 'eq',
                         data: [
                             {
-                                name: 'ref',
-                                data: 'response[q2]',
+                                name: 'getAttribute',
+                                data: [
+                                    {
+                                        name: 'getResponse',
+                                        data: 'q2'
+                                    },
+                                    'response'
+                                ],
                                 dtype: 'int'
                             },
                             1
@@ -688,21 +689,24 @@ class EvalRules {
         return this.evalCondition(condition);
     }
 
-    private evalCondition(condition: types.EvalObject): boolean {
-        let conditionValue = false;
+    private evalCondition(condition: types.EvalObject): any {
         switch (condition.name) {
             case 'or':
-                conditionValue = this.or(condition);
-                break;
+                return this.or(condition);
             case 'and':
-                conditionValue = this.and(condition);
-                break;
+                return this.and(condition);
             case 'not':
-                conditionValue = this.not(condition);
-                break;
+                return this.not(condition);
             case 'eq':
-                conditionValue = this.eq(condition);
-                break;
+                return this.eq(condition);
+            case 'getContext':
+                return this.getContext();
+            case 'getResponse':
+                return this.getResponse(condition);
+            case 'getAttribute':
+                return this.getAttribute(condition);
+            case 'getArrayItem':
+                return this.getArrayItem(condition);
             /*
         case 'hasAns':
             // if referenced question has an answer
@@ -723,10 +727,10 @@ class EvalRules {
                 console.warn('condition type unknown for the current engine: ' + condition.name + '. Default return value is false.');
                 break;
         }
-        return conditionValue;
+        return false;
     }
 
-    // ---------- HELPER METHODS ----------------
+    // ---------- LOGIC OPERATORS ----------------
     private or(condition: types.EvalObject): boolean {
         if (!Array.isArray(condition.data)) {
             console.warn('or: data attribute is missing or wrong: ' + condition.data);
@@ -751,6 +755,7 @@ class EvalRules {
         return !this.evalCondition(condition.data as types.EvalObject);
     }
 
+    // ---------- COMPARISONS ----------------
     private eq(condition: types.EvalObject): boolean {
         if (!Array.isArray(condition.data)) {
             console.warn('and: data attribute is missing or wrong: ' + condition.data);
@@ -759,8 +764,8 @@ class EvalRules {
         let values = [];
         for (let ind = 0; ind < condition.data.length; ind++) {
             const val = condition.data[ind];
-            if (typeof (val) === 'object' && val.name === 'ref') {
-                values.push(this.ref(val));
+            if (typeof (val) === 'object') {
+                values.push(this.evalCondition(val));
             } else {
                 values.push(val);
             }
@@ -769,6 +774,72 @@ class EvalRules {
         console.log(values);
         // check if all values are equal
         return values.every((val, i, arr) => val === arr[0]);
+    }
+
+    // TODO: <=, >=, <, >
+
+    // ---------- ROOT REFERENCES ----------------
+    private getContext(): any {
+        return this.context;
+    }
+
+    private getResponse(reference: types.EvalObject): types.QResponse | null {
+        if (!this.responses) {
+            console.warn('no responses available');
+            return null;
+        }
+        if (!reference.data || typeof (reference.data) !== "string") {
+            console.warn('missing or wrong data attribute: ' + reference.data);
+            return null;
+        }
+
+        const questionID = reference.data;
+        for (let i = 0; i < this.responses.questionGroups.length; i++) {
+            const qg = this.responses.questionGroups[i];
+            const q = qg.questions.find(q => q.id === questionID);
+            if (q) {
+                return q;
+            }
+        }
+        return null;
+    }
+
+    // TODO: access rendered survey properties
+
+    // ---------- WORKING WITH OBJECT/ARRAYS ----------------
+    private getAttribute(attributeRef: types.EvalObject): any {
+        if (!Array.isArray(attributeRef.data) || attributeRef.data.length !== 2) {
+            console.warn('getAttribute: data attribute is missing or wrong: ' + attributeRef.data);
+            return null;
+        }
+
+        const obj = this.evalCondition(attributeRef.data[0]);
+        if (!obj || typeof (obj) !== 'object') {
+            console.warn('getAttribute: received wrong type for referenced object: ' + obj);
+            return null;
+        }
+        const attr = obj[attributeRef.data[1]];
+        if (attributeRef.dtype) {
+            return this.typeConvert(attr, attributeRef.dtype);
+        }
+        return attr;
+    }
+
+    private getArrayItem(itemRef: types.EvalObject): any {
+        if (!Array.isArray(itemRef.data) || itemRef.data.length !== 2) {
+            console.warn('getArrayItem: data attribute is missing or wrong: ' + itemRef.data);
+            return null;
+        }
+        const arr = this.evalCondition(itemRef.data[0]);
+        if (!arr || !Array.isArray(arr)) {
+            console.warn('getArrayItem: received wrong type for referenced array: ' + arr);
+            return null;
+        }
+        const item = arr[itemRef.data[1]];
+        if (itemRef.dtype) {
+            return this.typeConvert(item, itemRef.dtype);
+        }
+        return item;
     }
 
 
@@ -782,66 +853,13 @@ class EvalRules {
         return false;
     }
 
-    private ref(refValue: types.EvalObject): any {
-        let items = (refValue.data as string).split('.');
 
-        let currentObj: any;
-        for (let i = 0; i < items.length; i++) {
-            const b1 = items[i].lastIndexOf('[');
-            const b2 = items[i].lastIndexOf(']');
-            if (b1 > -1 && b2 > -1) {
-                // find
-                const vType = items[i].slice(0, b1);
-                const id = items[i].slice(b1 + 1, b2);
-
-                switch (vType) {
-                    case "response":
-                        currentObj = this.getResponse(id);
-                        break;
-                    case 'question':
-                        console.warn('question reference not implemented yet: ' + items[i]);
-                        break;
-                }
-            } else if (!currentObj) {
-                // start variable:
-                switch (items[i]) {
-                    case 'context':
-                        currentObj = this.context;
-                        break;
-                    default:
-                        console.warn('variable not known: ' + items[i]);
-                        break;
-                }
-
-            } else {
-                // get
-                currentObj = currentObj[items[i]];
-            }
-            console.log(currentObj);
-
-        }
-
-        console.log(items);
-        switch (refValue.dtype) {
+    private typeConvert(value: any, dtype: string): any {
+        switch (dtype) {
             case 'int':
-                return typeof (currentObj) === 'string' ? parseInt(currentObj) : Math.floor(currentObj);
+                return typeof (value) === 'string' ? parseInt(value) : Math.floor(value);
             default:
-                return currentObj;
+                return value;
         }
-    }
-
-    private getResponse(questionID: string): types.QResponse | null {
-        if (!this.responses) {
-            return null;
-        }
-
-        for (let i = 0; i < this.responses.questionGroups.length; i++) {
-            const qg = this.responses.questionGroups[i];
-            const q = qg.questions.find(q => q.id === questionID);
-            if (q) {
-                return q.response;
-            }
-        }
-        return null;
     }
 }
