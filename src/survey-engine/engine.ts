@@ -758,7 +758,7 @@ class EvalRules {
     // ---------- COMPARISONS ----------------
     private eq(condition: types.EvalObject): boolean {
         if (!Array.isArray(condition.data)) {
-            console.warn('and: data attribute is missing or wrong: ' + condition.data);
+            console.warn('eq: data attribute is missing or wrong: ' + condition.data);
             return false;
         }
         let values = [];
@@ -776,7 +776,53 @@ class EvalRules {
         return values.every((val, i, arr) => val === arr[0]);
     }
 
-    // TODO: <=, >=, <, >
+    private gt(condition: types.EvalObject): boolean {
+        if (!Array.isArray(condition.data) || condition.data.length !== 2) {
+            console.warn('gt: data attribute is missing or wrong: ' + condition.data);
+            return false;
+        }
+
+        const a = (typeof (condition.data[0]) === 'object') ?
+            this.evalCondition(condition.data[0]) : condition.data[0];
+        const b = (typeof (condition.data[1]) === 'object') ?
+            this.evalCondition(condition.data[1]) : condition.data[1];
+        return a > b;
+    }
+    private gte(condition: types.EvalObject): boolean {
+        if (!Array.isArray(condition.data) || condition.data.length !== 2) {
+            console.warn('gte: data attribute is missing or wrong: ' + condition.data);
+            return false;
+        }
+        const a = (typeof (condition.data[0]) === 'object') ?
+            this.evalCondition(condition.data[0]) : condition.data[0];
+        const b = (typeof (condition.data[1]) === 'object') ?
+            this.evalCondition(condition.data[1]) : condition.data[1];
+        return a >= b;
+    }
+
+    private lt(condition: types.EvalObject): boolean {
+        if (!Array.isArray(condition.data) || condition.data.length !== 2) {
+            console.warn('lt: data attribute is missing or wrong: ' + condition.data);
+            return false;
+        }
+        const a = (typeof (condition.data[0]) === 'object') ?
+            this.evalCondition(condition.data[0]) : condition.data[0];
+        const b = (typeof (condition.data[1]) === 'object') ?
+            this.evalCondition(condition.data[1]) : condition.data[1];
+        return a < b;
+    }
+
+    private lte(condition: types.EvalObject): boolean {
+        if (!Array.isArray(condition.data) || condition.data.length !== 2) {
+            console.warn('lte: data attribute is missing or wrong: ' + condition.data);
+            return false;
+        }
+        const a = (typeof (condition.data[0]) === 'object') ?
+            this.evalCondition(condition.data[0]) : condition.data[0];
+        const b = (typeof (condition.data[1]) === 'object') ?
+            this.evalCondition(condition.data[1]) : condition.data[1];
+        return a <= b;
+    }
 
     // ---------- ROOT REFERENCES ----------------
     private getContext(): any {
