@@ -58,7 +58,7 @@ export interface ResponseMeta {
     // timestamps:
     rendered: Array<number>;
     displayed: Array<number>;
-    repsonded: Array<number>;
+    responded: Array<number>;
 }
 
 export interface SurveyResponse {

@@ -310,7 +310,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                 meta: {
                     rendered: [],
                     displayed: [],
-                    repsonded: [],
+                    responded: [],
                     position: -1
                 },
                 questions: new Array<types.QResponse>(),
@@ -321,7 +321,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                     meta: {
                         rendered: [],
                         displayed: [],
-                        repsonded: [],
+                        responded: [],
                         position: -1
                     },
                 });
@@ -345,7 +345,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                     this.responses.questionGroups[gIndex].meta.displayed.push(Date.now());
                     break;
                 case 'responded':
-                    this.responses.questionGroups[gIndex].meta.repsonded.push(Date.now());
+                    this.responses.questionGroups[gIndex].meta.responded.push(Date.now());
                     break;
             }
             return;
@@ -364,7 +364,7 @@ export class SurveyEngineCore implements SurveyEngineCoreInterface {
                 this.responses.questionGroups[gIndex].questions[qIndex].meta.displayed.push(Date.now());
                 break;
             case 'responded':
-                this.responses.questionGroups[gIndex].questions[qIndex].meta.repsonded.push(Date.now());
+                this.responses.questionGroups[gIndex].questions[qIndex].meta.responded.push(Date.now());
                 break;
         }
     }
