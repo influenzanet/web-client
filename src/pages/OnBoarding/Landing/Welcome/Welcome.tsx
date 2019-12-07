@@ -8,7 +8,7 @@ import {
     Grid,
 } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { LinkRef } from '../../../common/link';
+import { LinkRef } from '../../../../components/common/link';
 
 
 const useStyles = makeStyles((theme: Theme) =>

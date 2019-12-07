@@ -16,12 +16,12 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 import styles from './Drawer.module.scss';
-import logo from '../../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
-import { NavigationState } from '../../../../store/reducers/navigation';
-import { CLOSE_NAVIGATION_DRAWER } from '../../../../store/actions/actionTypes';
+import logo from '../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
+import { NavigationState } from '../../../store/navigation/types';
+import { closeNavigationDrawer } from '../../../store/navigation/actions';
 // import { LinkRef } from '../../../common/link';
 import { Redirect, useRouteMatch } from 'react-router-dom';
-import { LinkRef } from '../../../common/link';
+import { LinkRef } from '../../common/link';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
@@ -61,7 +61,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
             return;
         }
         console.log('close drawer - call action');
-        dispatch({ type: CLOSE_NAVIGATION_DRAWER });
+        dispatch(closeNavigationDrawer());
 
         /*setState(oldState => ({
             ...oldState,
@@ -101,7 +101,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
                     <ListItem button key={'Home'}
                         className={checkRouteMatch(matchHomeRoute, true) ? classes.currentRoute: ''}
                         onClick={() => {
-                            dispatch({ type: CLOSE_NAVIGATION_DRAWER });
+                            dispatch(closeNavigationDrawer());
                         }}
                         component={LinkRef} to="/home"
                     >
@@ -112,7 +112,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
                     </ListItem>
                     <ListItem button key={'My Studies'}
                         onClick={() => {
-                            dispatch({ type: CLOSE_NAVIGATION_DRAWER });
+                            dispatch(closeNavigationDrawer());
                         }}
                         className={checkRouteMatch(matchMyStudiesRoute, true) ? classes.currentRoute: ''}
                         component={LinkRef} to="/home/my-studies"
@@ -153,7 +153,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
                             className={styles.drawerBtn}
                             variant="outlined" color="secondary"
                             onClick={() => {
-                                dispatch({ type: CLOSE_NAVIGATION_DRAWER });
+                                dispatch(closeNavigationDrawer());
                             }}
                             component={LinkRef} to="/start"
                         >

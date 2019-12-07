@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkRef } from '../../common/link';
+import { LinkRef } from '../../../components/common/link';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
     const classes = useStyles();
 
     return (
@@ -51,7 +51,7 @@ const Login: React.FC = () => {
                     <img src={logo} alt="logo" height="100%"/>
                 </Box>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Sign Up
                 </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
@@ -76,9 +76,20 @@ const Login: React.FC = () => {
                         id="password"
                         autoComplete="current-password"
                     />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="confirmPassword"
+                        label="Confirm Password"
+                        type="password"
+                        id="confirmPassword"
+                        autoComplete="current-password"
+                    />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
+                        label="Do you accept the terms and conditions. (Ref. here)"
                     />
                     <Button
                         type="submit"
@@ -88,7 +99,7 @@ const Login: React.FC = () => {
                         component={LinkRef} to="/home"
                         className={classes.submit}
                     >
-                        Sign In
+                        Sign Up
                     </Button>
                     <Grid container>
                         <Grid item xs>
@@ -97,8 +108,8 @@ const Login: React.FC = () => {
                             </Link>
                         </Grid>
                         <Grid item>
-                        <Link variant="body2" component={LinkRef} to="/start/signup">
-                                {"Don't have an account? Sign Up"}
+                            <Link variant="body2" component={LinkRef} to="/start/login">
+                                {"Already have an account? Sign in"}
                             </Link>
                         </Grid>
                     </Grid>
@@ -108,4 +119,4 @@ const Login: React.FC = () => {
     );
 }
 
-export default Login;
+export default Signup;

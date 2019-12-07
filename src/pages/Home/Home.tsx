@@ -6,8 +6,8 @@ import {
     Redirect,
 } from 'react-router-dom';
 
-import NavBar from './Navigation/NavBar/NavBar';
-import Drawer from './Navigation/Drawer/Drawer';
+import NavBar from '../../components/Navigation/NavBar/NavBar';
+import Drawer from '../../components/Navigation/Drawer/Drawer';
 import Dashboard from './Dashboard/Dashboard';
 import MyStudies from './MyStudies/MyStudies';
 

@@ -5,15 +5,9 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { navigationReducer } from './store/reducers/navigation';
+import store  from './store';
 
-const rootReducer = combineReducers({
-    navigation: navigationReducer,
-});
-
-const store = createStore(rootReducer);
 
 ReactDOM.render(
     <Provider store={store}>

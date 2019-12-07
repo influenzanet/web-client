@@ -9,8 +9,8 @@ import {
 } from 'react-router-dom';
 
 
-import OnBoarding from './components/OnBoarding/OnBoarding';
-import Home from './components/Home/Home';
+import OnBoarding from './pages/OnBoarding/OnBoarding';
+import Home from './pages/Home/Home';
 // import Login from './components/form/login/Login';
 // import Signup from './components/form/signup/Signup';
 
