@@ -13,6 +13,7 @@ const MyStudies: React.FC = () => {
     dispatch(setPageTitle('My Studies'));
   });
 
+
   const testQuestion: Question = {
     key: 'Q-TEST',
     type: 'basic.input.single-choice',
@@ -51,7 +52,7 @@ const MyStudies: React.FC = () => {
       My Studies
       <SingleChoice
         question={testQuestion}
-        languageCode="de"
+        languageCode="en"
       />
     </div>
   )
