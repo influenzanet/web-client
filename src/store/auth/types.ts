@@ -1,34 +1,33 @@
 // State:
 export interface AuthState {
-    isAuth: boolean;
-    loading: boolean;
+  isAuth: boolean;
+  loading: boolean;
 }
 
 // Action Types:
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
-
 export const LOGOUT = 'LOGOUT';
 
 interface LoginStartAction {
-    type: typeof LOGIN_START
+  type: typeof LOGIN_START
 }
 interface LoginSuccessAction {
-    type: typeof LOGIN_SUCCESS
+  type: typeof LOGIN_SUCCESS
 }
 
 interface LoginFailedAction {
-    type: typeof LOGIN_FAILED
+  type: typeof LOGIN_FAILED
 }
 
 interface LogoutAction {
-    type: typeof LOGOUT
+  type: typeof LOGOUT
 }
 
 
 export type AuthActionTypes =
-    LoginStartAction |
-    LoginSuccessAction |
-    LoginFailedAction |
-    LogoutAction
+  LoginStartAction |
+  LoginSuccessAction |
+  LoginFailedAction |
+  LogoutAction
