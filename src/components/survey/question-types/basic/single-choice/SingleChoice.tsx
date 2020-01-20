@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Question, QComponentType, ResponseOptionGroup } from 'survey-engine/lib/data_types';
 import FormControl from '@material-ui/core/FormControl';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
+import Typography from '@material-ui/core/Typography';
 
 interface SingleChoiceProps {
   question: Question;
   languageCode: string;
+  answerSelected: (selectedAnswer: string | undefined) => void;
 }
 
 const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
+  const [value, setValue] = useState<string | undefined>('');
+
+  useEffect(() => {
+    props.answerSelected(value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   const getTitle = (components: Array<QComponentType>, lang: string): string | undefined => {
     const title = components.find(comp => comp.role === 'title');
@@ -35,19 +43,27 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
     return rg;
   }
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue((event.target as HTMLInputElement).value);
+  };
+
   const answersGroup = (
     <FormControl component="fieldset"
     //className={classes.formControl}
     >
       <RadioGroup aria-label="options"
         name={getResponseGroup()?.key}
-      //value={value}
-      // onChange={handleChange}
+        value={value}
+        onChange={handleChange}
       >
         {
           getResponseGroup() ?
             <React.Fragment> {getResponseGroup()?.items.map(option =>
-              <FormControlLabel key={option.key} value={option.key} control={<Radio />} label={getTranslation(option, props.languageCode)}
+              <FormControlLabel
+                key={option.key}
+                value={option.key}
+                control={<Radio />}
+                label={getTranslation(option, props.languageCode)}
                 disabled={option.disabled !== undefined} // TODO: fix this
               />
             )}</React.Fragment> : null
@@ -65,7 +81,9 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
 
   return (
     <div>
-      <p>{getTitle(props.question.components, props.languageCode)}</p>
+      <Typography variant="h6">
+        {getTitle(props.question.components, props.languageCode)}
+      </Typography>
       {answersGroup}
     </div>
 

@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setPageTitle } from '../../../store/navigation/actions';
 import SingleChoice from '../../../components/survey/question-types/basic/single-choice/SingleChoice';
 import { Question } from 'survey-engine/lib/data_types';
+import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
+import { Container } from '@material-ui/core';
 
 const MyStudies: React.FC = () => {
   const dispatch = useDispatch();
@@ -47,14 +50,34 @@ const MyStudies: React.FC = () => {
   }
 
   return (
-
-    <div>
+    <Container maxWidth="lg">
       My Studies
-      <SingleChoice
-        question={testQuestion}
-        languageCode="en"
-      />
-    </div>
+      <Paper>
+        <Box p={2}>
+          <SingleChoice
+            question={testQuestion}
+            languageCode="en"
+            answerSelected={(selectedAnswer: string | undefined) => {
+              console.log('todo: handle answer - ' + selectedAnswer);
+
+            }}
+          />
+        </Box>
+      </Paper>
+
+      <Paper>
+        <Box p={2} mt={2}>
+          <SingleChoice
+            question={testQuestion}
+            languageCode="en"
+            answerSelected={(selectedAnswer: string | undefined) => {
+              console.log('todo: handle answer - ' + selectedAnswer);
+
+            }}
+          />
+        </Box>
+      </Paper>
+    </Container>
   )
 }
 
