@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setPageTitle } from '../../../store/navigation/actions';
-import SingleChoice from '../../../components/survey/question-types/basic/single-choice/SingleChoice';
+import SingleChoice from '../../../components/survey/question-types/basic/SingleChoice/SingleChoice';
 import { Question } from 'survey-engine/lib/data_types';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import { Container } from '@material-ui/core';
+import MultipleChoice from '../../../components/survey/question-types/basic/MultipleChoice/MultipleChoice';
 
 const MyStudies: React.FC = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,8 @@ const MyStudies: React.FC = () => {
     ]
   }
 
+  const currentLanguage = 'en';
+
   return (
     <Container maxWidth="lg">
       My Studies
@@ -56,7 +59,7 @@ const MyStudies: React.FC = () => {
         <Box p={2}>
           <SingleChoice
             question={testQuestion}
-            languageCode="en"
+            languageCode={currentLanguage}
             answerSelected={(selectedAnswer: string | undefined) => {
               console.log('todo: handle answer - ' + selectedAnswer);
 
@@ -67,12 +70,11 @@ const MyStudies: React.FC = () => {
 
       <Paper>
         <Box p={2} mt={2}>
-          <SingleChoice
+          <MultipleChoice
             question={testQuestion}
-            languageCode="en"
-            answerSelected={(selectedAnswer: string | undefined) => {
-              console.log('todo: handle answer - ' + selectedAnswer);
-
+            languageCode={currentLanguage}
+            answerChanged={(selections: string[]) => {
+              console.log('todo: handle answer - ' + selections.join(', '));
             }}
           />
         </Box>
