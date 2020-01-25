@@ -1,7 +1,7 @@
 import { SurveyGroupItem, SurveySingleItem } from 'survey-engine/lib/data_types';
 
 const Q4: SurveySingleItem = {
-  key: 'QG4.Q4',
+  key: 'QG0.QG4.Q4',
   version: 1,
   validations: [],
   type: "basic.input.single-choice",
@@ -81,7 +81,7 @@ const Q4: SurveySingleItem = {
 }
 
 const Q4b: SurveySingleItem = {
-  key: 'QG4.Q4b',
+  key: 'QG0.QG4.Q4b',
   condition: {
     name: 'or',
     data: [
@@ -96,7 +96,7 @@ const Q4b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'QG4.Q4'
+                    str: 'QG0.QG4.Q4'
                   },
                   {
                     str: 'RG1.R1'
@@ -118,7 +118,7 @@ const Q4b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'QG4.Q4'
+                    str: 'QG0.QG4.Q4'
                   },
                   {
                     str: 'RG1.R2'
@@ -214,7 +214,7 @@ const Q4b: SurveySingleItem = {
 }
 
 const Q4c: SurveySingleItem = {
-  key: 'QG4.Q4c',
+  key: 'QG0.QG4.Q4c',
   condition: {
     name: 'or',
     data: [
@@ -229,7 +229,7 @@ const Q4c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'QG4.Q4'
+                    str: 'QG0.QG4.Q4'
                   },
                   {
                     str: 'RG1.R1'
@@ -251,7 +251,7 @@ const Q4c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'QG4.Q4'
+                    str: 'QG0.QG4.Q4'
                   },
                   {
                     str: 'RG1.R2'
@@ -347,7 +347,7 @@ export const QG0: SurveyGroupItem = {
   version: 1,
   items: [
     {
-      key: 'QG4',
+      key: 'QG0.QG4',
       version: 1,
       items: [
         Q4,
