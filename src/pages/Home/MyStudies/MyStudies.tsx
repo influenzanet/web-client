@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { setPageTitle } from '../../../store/navigation/actions';
 import SingleChoice from '../../../components/survey/question-types/basic/SingleChoice/SingleChoice';
-import { Question } from 'survey-engine/lib/data_types';
+import { SurveySingleItem, ResponseItem } from 'survey-engine/lib/data_types';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import { Container } from '@material-ui/core';
@@ -18,7 +18,7 @@ const MyStudies: React.FC = () => {
   });
 
 
-  const testQuestion: Question = {
+  const testQuestion: SurveySingleItem = {
     key: 'Q-TEST',
     type: 'basic.input.single-choice',
     version: 1,
@@ -27,22 +27,22 @@ const MyStudies: React.FC = () => {
     components: [
       {
         key: 'TITLE', role: 'title', content: [
-          { code: 'en', parts: ['Test question ', '1'] },
-          { code: 'de', parts: ['Testfrage ', '1'] }
+          { code: 'en', parts: [{ str: 'Test question ' }, { str: '1' }] },
+          { code: 'de', parts: [{ str: 'Testfrage ' }, { str: '1' }] }
         ]
       }, // displayCondition: {}
       {
-        key: 'RESPS', role: 'responseGroup', items: [
+        key: 'RG1', role: 'responseGroup', items: [
           {
-            key: 'R1', role: 'option', content: [
-              { code: 'en', parts: ['Answer ', '1'] },
-              { code: 'de', parts: ['Antwort ', '1'] }
+            key: 'RG1.R1', role: 'option', content: [
+              { code: 'en', parts: [{ str: 'Answer ' }, { str: '1' }] },
+              { code: 'de', parts: [{ str: 'Antwort ' }, { str: '1' }] }
             ]
           },
           {
-            key: 'R2', role: 'option', content: [
-              { code: 'en', parts: ['Answer ', '2'] },
-              { code: 'de', parts: ['Antwort ', '2'] }
+            key: 'RG1.R2', role: 'option', content: [
+              { code: 'en', parts: [{ str: 'Answer ' }, { str: '2' }] },
+              { code: 'de', parts: [{ str: 'Antwort ' }, { str: '2' }] }
             ]
           },
         ]
@@ -60,9 +60,8 @@ const MyStudies: React.FC = () => {
           <SingleChoice
             question={testQuestion}
             languageCode={currentLanguage}
-            answerSelected={(selectedAnswer: string | undefined) => {
-              console.log('todo: handle answer - ' + selectedAnswer);
-
+            responseChanged={(response: ResponseItem | undefined) => {
+              console.log('todo: handle answer - ', response);
             }}
           />
         </Box>
@@ -73,8 +72,14 @@ const MyStudies: React.FC = () => {
           <MultipleChoice
             question={testQuestion}
             languageCode={currentLanguage}
-            answerChanged={(selections: string[]) => {
-              console.log('todo: handle answer - ' + selections.join(', '));
+            responsePrefill={{
+              key: 'RG1',
+              items: [
+                { key: 'RG1.R1' }
+              ]
+            }}
+            responseChanged={(selections: ResponseItem | undefined) => {
+              console.log('todo: handle answer - ', selections);
             }}
           />
         </Box>

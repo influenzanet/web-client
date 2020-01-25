@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Question, QComponentType, ResponseOptionGroup } from 'survey-engine/lib/data_types';
+import { SurveySingleItem, ItemComponent, ResponseGroupComponent, LocalizedString, ResponseItem } from 'survey-engine/lib/data_types';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
+import { getLocaleStringTextByCode, getItemComponentTranslationByRole, getItemComponentByRole } from '../../../utils';
 
 
 interface MultipleChoiceProps {
-  question: Question;
+  question: SurveySingleItem;
   languageCode: string;
-  answerChanged: (currenAnsers: string[]) => void;
+  responsePrefill?: ResponseItem;
+  responseChanged: (response: ResponseItem | undefined) => void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -27,56 +28,66 @@ const useStyles = makeStyles((theme: Theme) =>
 const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
   const classes = useStyles();
 
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [response, setResponse] = useState<ResponseItem | undefined>(props.responsePrefill);
+  const [touched, setTouched] = useState(false);
 
   useEffect(() => {
-    props.answerChanged(selectedOptions);
+    if (touched) {
+      props.responseChanged(response);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOptions]);
+  }, [response]);
 
-  const getTitle = (components: Array<QComponentType>, lang: string): string | undefined => {
-    const title = components.find(comp => comp.role === 'title');
-    if (!title) {
-      return undefined;
+  const getResponseGroup = (): ResponseGroupComponent | undefined => {
+    const rg = getItemComponentByRole(props.question.components, 'responseGroup');
+    if (!rg) {
+      return;
     }
-    console.log(title);
-    console.log('check display condition');
-    const translation = title.content?.find(cont => cont.code === lang);
-    if (!translation) {
-      return undefined;
+    if (!response) {
+      setResponse({
+        key: rg.key ? rg.key : 'no key found',
+        items: []
+      })
     }
-    return translation.parts.join('');
-  }
-
-  const getTranslation = (comp: QComponentType, code: string): string | undefined => {
-    return comp.content?.find(cont => cont.code === code).parts.join('');
-  }
-
-  const getResponseGroup = (): ResponseOptionGroup | undefined => {
-    const rg = props.question.components.find(cont => cont.role === 'responseGroup');
-    return rg;
+    return (rg as ResponseGroupComponent);
   }
 
   const handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTouched(true);
     if (event.target.checked) {
-      setSelectedOptions(prev => {
-        return [...prev, name];
+      const newRI: ResponseItem = {
+        key: name,
+      }
+
+      setResponse(prev => {
+        if (!prev) { return { key: 'no key found', items: [] } }
+        return {
+          ...prev,
+          items: prev.items ? [...prev.items, newRI] : [newRI]
+        }
       });
     } else {
-      setSelectedOptions(prev => {
-        return prev.filter(opt => opt !== name);
-      })
+      setResponse(prev => {
+        if (!prev) { return { key: 'no key found', items: [] } }
+        return {
+          ...prev,
+          items: prev.items?.filter(i => i.key !== name),
+        }
+      });
     }
   };
 
   const isChecked = (key: string): boolean => {
-    return selectedOptions.includes(key);
+    if (!response || !response.items || response.items.length < 1) {
+      return false;
+    }
+    return response.items.findIndex(ri => ri.key === key) > -1;
   }
 
   return (
     <div className={classes.root}>
       <Typography variant="h6">
-        {getTitle(props.question.components, props.languageCode)}
+        {getItemComponentTranslationByRole(props.question.components, 'title', props.languageCode)}
       </Typography>
       <FormControl component="fieldset">
         <FormGroup>
@@ -86,13 +97,12 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
                 <FormControlLabel
                   key={option.key}
                   value={option.key}
-                  control={<Checkbox checked={isChecked(option.key)} onChange={handleChange(option.key)} value={option.key} />}
-                  label={getTranslation(option, props.languageCode)}
+                  control={<Checkbox checked={isChecked(option.key ? option.key : 'no key found')} onChange={handleChange(option.key ? option.key : 'no key found')} value={option.key} />}
+                  label={getLocaleStringTextByCode(option, props.languageCode)}
                   disabled={option.disabled !== undefined} // TODO: fix this
                 />
               )}</React.Fragment> : null
           }
-
         </FormGroup>
 
         <FormHelperText>Be careful</FormHelperText>
