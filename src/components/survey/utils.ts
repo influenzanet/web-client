@@ -17,7 +17,7 @@ export const getItemComponentTranslationByRole = (components: Array<ItemComponen
 export const getLocaleStringTextByCode = (comp: ItemComponent, code: string): string | undefined => {
   const translation = (comp.content?.find(cont => cont.code === code) as LocalizedString);
   if (!translation) { return }
-  return translation.parts.map(p => p.str).join('');
+  return translation.parts.map(p => p).join('');
 }
 
 export const getItemComponentByRole = (components: Array<ItemComponent>, role: string): ItemComponent | undefined => {

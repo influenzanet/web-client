@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SurveySingleItem, ItemComponent, ResponseGroupComponent, LocalizedString, ResponseItem } from 'survey-engine/lib/data_types';
+import { SurveySingleItem, ResponseGroupComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';

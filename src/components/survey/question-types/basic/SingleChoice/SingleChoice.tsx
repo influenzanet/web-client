@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SurveySingleItem, ResponseGroupComponent, ItemComponent, LocalizedString, ResponseItem } from 'survey-engine/lib/data_types';
+import { SurveySingleItem, ResponseGroupComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import FormControl from '@material-ui/core/FormControl';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -79,13 +79,6 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
               />
             )}</React.Fragment> : null
         }
-
-        <FormControlLabel
-          value="disabled"
-          disabled
-          control={<Radio />}
-          label="(Disabled option)"
-        />
       </RadioGroup>
     </FormControl>
   )

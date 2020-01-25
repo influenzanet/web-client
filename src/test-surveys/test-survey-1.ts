@@ -30,6 +30,9 @@ const Q4: SurveySingleItem = {
     {
       key: 'RG1',
       role: 'responseGroup',
+      order: {
+        name: 'sequential'
+      },
       items: [
         {
           key: 'RG1.R1',
@@ -159,6 +162,9 @@ const Q4b: SurveySingleItem = {
     {
       key: 'RG1',
       role: 'responseGroup',
+      order: {
+        name: 'sequential'
+      },
       items: [
         {
           key: 'RG1.R1',
@@ -292,6 +298,9 @@ const Q4c: SurveySingleItem = {
     {
       key: 'RG1',
       role: 'responseGroup',
+      order: {
+        name: 'sequential'
+      },
       items: [
         {
           key: 'RG1.R1',

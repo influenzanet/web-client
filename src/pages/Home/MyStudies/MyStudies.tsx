@@ -8,6 +8,8 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import { Container } from '@material-ui/core';
 import MultipleChoice from '../../../components/survey/question-types/basic/MultipleChoice/MultipleChoice';
+import SinglePageSurveyView from '../../../components/survey/SinglePageSurveyView/SinglePageSurveyView';
+import { QG0 } from '../../../test-surveys/test-survey-1';
 
 const MyStudies: React.FC = () => {
   const dispatch = useDispatch();
@@ -55,18 +57,10 @@ const MyStudies: React.FC = () => {
   return (
     <Container maxWidth="lg">
       My Studies
-      <Paper>
-        <Box p={2}>
-          <SingleChoice
-            question={testQuestion}
-            languageCode={currentLanguage}
-            responseChanged={(response: ResponseItem | undefined) => {
-              console.log('todo: handle answer - ', response);
-            }}
-          />
-        </Box>
-      </Paper>
-
+      <SinglePageSurveyView
+        surveyDefinition={QG0}
+      />
+      <Box height={250}></Box>
       <Paper>
         <Box p={2} mt={2}>
           <MultipleChoice
