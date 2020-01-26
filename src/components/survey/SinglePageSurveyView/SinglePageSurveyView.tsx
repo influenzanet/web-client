@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SurveyGroupItem, SurveySingleItem, isSurveyGroupItem } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SingleChoice from '../question-types/basic/SingleChoice/SingleChoice';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import MultipleChoice from '../question-types/basic/MultipleChoice/MultipleChoice';
+import Button from '@material-ui/core/Button';
 
 interface SinglePageSurveyViewProps {
   surveyDefinition: SurveyGroupItem;
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
   const classes = useStyles();
 
-  const [sEngine, setSEngine] = useState<SurveyEngineCore>(new SurveyEngineCore(props.surveyDefinition));
+  const [sEngine,] = useState<SurveyEngineCore>(new SurveyEngineCore(props.surveyDefinition));
   const [respCount, setRespCount] = useState(0);
 
   const [selectedLanguage, setSelectedLanguage] = useState('en');
@@ -72,13 +73,22 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
                 sEngine.setResponse(surveyItem.key, response);
                 setRespCount(respCount + 1);
               }
-              /*
-              console.log('handle response');
-              console.log(response);*/
             }}
           />
         )
-
+      case 'basic.input.multiple-choice':
+        return (
+          <MultipleChoice
+            question={surveyItem}
+            languageCode={selectedLanguage}
+            responseChanged={(response) => {
+              if (response) {
+                sEngine.setResponse(surveyItem.key, response);
+                setRespCount(respCount + 1);
+              }
+            }}
+          />
+        )
       default:
         return <p>unknown question type: {surveyItem.type}</p>
     }
@@ -119,6 +129,16 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
     </Box>
   )
 
+  const submitBtnGroup = (
+    <Box display="flex" m={1}>
+      <Box flexGrow={1}></Box>
+      <Box>
+        <Button className={classes.formControl} variant="contained" color="primary">Submit</Button>
+        <Button variant="contained" color="secondary">Cancel</Button>
+      </Box>
+    </Box>
+  )
+
   return (
     <div >
       {langaugeSelector}
@@ -131,7 +151,7 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
           </Paper>
         )
       }
-
+      {submitBtnGroup}
     </div>
   );
 };
