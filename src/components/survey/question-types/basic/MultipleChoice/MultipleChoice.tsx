@@ -84,11 +84,17 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
     return response.items.findIndex(ri => ri.key === key) > -1;
   }
 
+  const description = getItemComponentTranslationByRole(props.question.components, 'description', props.languageCode);
   return (
     <div className={classes.root}>
       <Typography variant="h6">
         {getItemComponentTranslationByRole(props.question.components, 'title', props.languageCode)}
       </Typography>
+      {description ?
+        <Typography variant="subtitle2">
+          {description}
+        </Typography> : null}
+
       <FormControl component="fieldset">
         <FormGroup>
           {

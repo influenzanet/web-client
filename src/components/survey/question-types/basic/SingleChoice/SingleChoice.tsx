@@ -156,12 +156,16 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
       </RadioGroup>
     </FormControl>
   )
-
+  const description = getItemComponentTranslationByRole(props.question.components, 'description', props.languageCode);
   return (
     <div>
       <Typography variant="h6">
         {getItemComponentTranslationByRole(props.question.components, 'title', props.languageCode)}
       </Typography>
+      {description ?
+        <Typography variant="subtitle2">
+          {description}
+        </Typography> : null}
       {answersGroup}
     </div>
 
