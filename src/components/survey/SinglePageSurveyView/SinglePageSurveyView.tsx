@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme: Theme) =>
     formControl: {
       margin: theme.spacing(1),
     },
+    btn: {
+      margin: theme.spacing(1),
+      minWidth: 150,
+    },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
@@ -130,11 +134,15 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
   )
 
   const submitBtnGroup = (
-    <Box display="flex" m={1}>
-      <Box flexGrow={1}></Box>
+    <Box textAlign="center" m={1}>
       <Box>
-        <Button className={classes.formControl} variant="contained" color="primary">Submit</Button>
-        <Button variant="contained" color="secondary">Cancel</Button>
+        <Button className={classes.btn} variant="contained" color="primary"
+          onClick={() => {
+            const resp = sEngine.getResponses();
+            console.log(resp);
+          }}
+        >Submit</Button>
+        <Button className={classes.btn} variant="contained" color="secondary">Cancel</Button>
       </Box>
     </Box>
   )

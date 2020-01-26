@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { SurveySingleItem, ResponseGroupComponent, ResponseItem } from 'survey-engine/lib/data_types';
+import { SurveySingleItem, ResponseGroupComponent, ResponseItem, ResponseComponent } from 'survey-engine/lib/data_types';
 import FormControl from '@material-ui/core/FormControl';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import Typography from '@material-ui/core/Typography';
 import { getLocaleStringTextByCode, getItemComponentTranslationByRole } from '../../../utils';
+import { TextField, Box } from '@material-ui/core';
 
 interface SingleChoiceProps {
   question: SurveySingleItem;
@@ -17,6 +18,10 @@ interface SingleChoiceProps {
 const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.responsePrefill);
   const [touched, setTouched] = useState(false);
+
+  const [inputValues, setInputValues] = useState<ResponseItem[]>(
+    props.responsePrefill && props.responsePrefill.items ? props.responsePrefill.items.slice() : []
+  );
 
   useEffect(() => {
     if (touched) {
@@ -44,11 +49,43 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
     const key = (event.target as HTMLInputElement).value;
     setResponse(prev => {
       if (!prev) { return { key: 'no key found', items: [] } }
+      const value = inputValues.find(v => v.key === key);
       return {
         ...prev,
-        items: [{ key }]
+        items: [
+          {
+            key,
+            value: value ? value.value : undefined
+          }]
       }
     });
+  };
+
+  const handleInputValueChange = (key: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!key) { return; }
+    setTouched(true);
+
+    const value = (event.target as HTMLInputElement).value;
+
+    setInputValues(prev => {
+      setResponse(prevResp => {
+        if (!prevResp) { return { key: 'no key found', items: [] } }
+        return {
+          ...prevResp,
+          items: [{
+            key,
+            value
+          }]
+        }
+      });
+      const ind = prev.findIndex(v => v.key === key);
+      if (ind > -1) {
+        prev[ind] = { key, value }
+      }
+      return [
+        ...prev
+      ]
+    })
   };
 
   const getSelectedKey = (): string | undefined => {
@@ -56,6 +93,43 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
       return '';
     }
     return response.items[0].key;
+  }
+
+  const getResponseOptionLabel = (comp: ResponseComponent) => {
+    switch (comp.role) {
+      case 'responseOption':
+        return <React.Fragment>{getLocaleStringTextByCode(comp, props.languageCode)}</React.Fragment>
+      case 'userInput':
+        let r = inputValues.find(v => v.key === comp.key);
+        if (!r) {
+          r = { key: comp.key ? comp.key : 'errorkey', value: '' };
+          const nr = r;
+          setInputValues(prev => [
+            ...prev,
+            nr
+          ]);
+        }
+
+        return (
+          <Box display="flex" height="100%" alignItems="center" width="100%">
+            <Box mr={1}>
+              {getLocaleStringTextByCode(comp, props.languageCode)}
+            </Box>
+            <Box flexGrow={1}>
+              <TextField
+                fullWidth
+                value={r?.value}
+                margin="dense"
+                onChange={handleInputValueChange(comp.key)}
+              ></TextField>
+            </Box>
+          </Box>
+        )
+      default:
+        return <React.Fragment>
+          Unknown component role: {comp.role}
+        </React.Fragment>
+    }
   }
 
   const answersGroup = (
@@ -74,7 +148,7 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
                 key={option.key}
                 value={option.key}
                 control={<Radio />}
-                label={getLocaleStringTextByCode(option, props.languageCode)}
+                label={getResponseOptionLabel(option as ResponseComponent)}
                 disabled={option.disabled !== undefined} // TODO: fix this
               />
             )}</React.Fragment> : null
