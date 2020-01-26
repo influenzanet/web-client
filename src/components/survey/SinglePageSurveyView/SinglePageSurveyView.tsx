@@ -4,6 +4,11 @@ import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SingleChoice from '../question-types/basic/SingleChoice/SingleChoice';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 interface SinglePageSurveyViewProps {
   surveyDefinition: SurveyGroupItem;
@@ -13,11 +18,24 @@ interface SinglePageSurveyViewProps {
   // save temporary result
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    formControl: {
+      margin: theme.spacing(1),
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  }),
+);
+
 const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
+  const classes = useStyles();
 
   const [sEngine, setSEngine] = useState<SurveyEngineCore>(new SurveyEngineCore(props.surveyDefinition));
   const [respCount, setRespCount] = useState(0);
 
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
 
   const renderedSurvey = sEngine.getRenderedSurvey()
   console.log(renderedSurvey);
@@ -39,7 +57,7 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
   const surveyItems = flattenSurveyItemTree(renderedSurvey);
   console.log(surveyItems);
 
-  const selectedLangue = 'en';
+
 
   const mapSurveyItemToComp = (surveyItem: SurveySingleItem): React.ReactFragment => {
     sEngine.questionDisplayed(surveyItem.key);
@@ -48,7 +66,7 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
         return (
           <SingleChoice
             question={surveyItem}
-            languageCode={selectedLangue}
+            languageCode={selectedLanguage}
             responseChanged={(response) => {
               if (response) {
                 sEngine.setResponse(surveyItem.key, response);
@@ -66,8 +84,44 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
     }
   }
 
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setSelectedLanguage(event.target.value as string);
+  };
+
+  const availableLanguages = [
+    { code: 'en', label: 'English' },
+    { code: 'de', label: 'Deutsch' },
+  ]
+
+  const langaugeSelector = (
+    <Box display="flex">
+      <Box flexGrow={1}></Box>
+      <Box>
+
+        <FormControl className={classes.formControl}>
+          <Select
+            labelId="language-select-label"
+            id="language-select"
+            color="primary"
+            value={selectedLanguage}
+            onChange={handleChange}
+          >
+            {
+              availableLanguages.map(item =>
+                <MenuItem key={item.code} value={item.code}>
+                  {item.label}
+                </MenuItem>)
+            }
+          </Select>
+        </FormControl>
+
+      </Box>
+    </Box>
+  )
+
   return (
     <div >
+      {langaugeSelector}
       {
         surveyItems.map(surveyItem =>
           <Paper key={surveyItem.key}>

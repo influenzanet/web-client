@@ -56,7 +56,6 @@ const MyStudies: React.FC = () => {
 
   return (
     <Container maxWidth="lg">
-      My Studies
       <SinglePageSurveyView
         surveyDefinition={QG0}
       />
