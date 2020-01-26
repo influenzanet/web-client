@@ -351,6 +351,176 @@ const Q4c: SurveySingleItem = {
   ]
 }
 
+const Q5: SurveySingleItem = {
+  key: 'QG0.QG5.Q5',
+  version: 1,
+  validations: [],
+  type: "basic.input.multiple-choice",
+  components: [
+    {
+      role: 'title',
+      content: [
+        {
+          code: 'en',
+          parts: [
+            {
+              str: 'Except people you meet on public contact, do you have contact with any of the following during the course of a typical day?'
+            },
+          ]
+        },
+        {
+          code: 'de',
+          parts: [
+            {
+              str: 'XX'
+            },
+          ]
+        },
+      ]
+    },
+    {
+      role: 'description',
+      content: [
+        {
+          code: 'en',
+          parts: [
+            {
+              str: 'Select all options that apply, if any'
+            },
+          ]
+        },
+        {
+          code: 'de',
+          parts: [
+            {
+              str: 'XX'
+            },
+          ]
+        },
+      ]
+    },
+    {
+      key: 'RG1',
+      role: 'responseGroup',
+      order: {
+        name: 'sequential'
+      },
+      items: [
+        {
+          key: 'RG1.R1',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'More than 10 children or teenagers over the course of the day'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'XX'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R2',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'More than 10 people aged over 65 over the course of day'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'XX'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R3',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Patients'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'XX'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R4',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Groups of people (more than 10 individuals at any one time)'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'XX'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R5',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'None of the above'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'XX'
+                },
+              ]
+            },
+          ]
+        },
+      ]
+    },
+  ]
+}
+
 export const QG0: SurveyGroupItem = {
   key: 'QG0',
   version: 1,
@@ -363,7 +533,14 @@ export const QG0: SurveyGroupItem = {
         Q4b,
         Q4c,
       ],
-    }
+    },
+    {
+      key: 'QG0.QG5',
+      version: 1,
+      items: [
+        Q5,
+      ],
+    },
   ],
 }
 
