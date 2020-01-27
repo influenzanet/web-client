@@ -480,7 +480,7 @@ const Q4c: SurveySingleItem = {
         },
         {
           key: 'RG1.R2',
-          role: 'userInput',
+          role: 'responseOption',
           content: [
             {
               code: 'en',
@@ -502,7 +502,7 @@ const Q4c: SurveySingleItem = {
         },
         {
           key: 'RG1.R3',
-          role: 'userInput',
+          role: 'responseOption',
           content: [
             {
               code: 'en',
@@ -524,7 +524,7 @@ const Q4c: SurveySingleItem = {
         },
         {
           key: 'RG1.R4',
-          role: 'userInput',
+          role: 'responseOption',
           content: [
             {
               code: 'en',
@@ -546,7 +546,7 @@ const Q4c: SurveySingleItem = {
         },
         {
           key: 'RG1.R5',
-          role: 'userInput',
+          role: 'responseOption',
           content: [
             {
               code: 'en',
