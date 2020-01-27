@@ -64,7 +64,7 @@ const Q4: SurveySingleItem = {
               code: 'en',
               parts: [
                 {
-                  str: 'Paid employment, part-time?'
+                  str: 'Paid employment, part-time'
                 },
               ]
             },
@@ -73,6 +73,160 @@ const Q4: SurveySingleItem = {
               parts: [
                 {
                   str: 'XX'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R3',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Self-employed (businessman, farmer, tradesman, etc)'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'XX'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R4',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Attending daycare/school/college/university'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Besuch von Kindertagesstätten/Schulen/Hochschulen/Universitäten'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R5',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Home-maker (e.g. housewife)'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Haushaltsführung (z.B. Hausfrau)'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R6',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Unemployed'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Arbeitslos'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R7',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Long-term sick-leave or parental leave'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Langfristiger Krankheitsurlaub oder Elternurlaub'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R8',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Retired'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Im Ruhestand'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R9',
+          role: 'responseOption',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Other'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Sonstige'
                 },
               ]
             },
@@ -153,7 +307,7 @@ const Q4b: SurveySingleItem = {
           code: 'de',
           parts: [
             {
-              str: 'XX'
+              str: 'Wie lautet der erste Teil der Postleitzahl Ihrer Schule/Hochschule/Arbeitsplatz (wo Sie den größten Teil Ihrer Arbeits-/Studienzeit verbringen)?'
             },
           ]
         },
@@ -186,7 +340,7 @@ const Q4b: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Ich weiß es nicht / kann mich nicht erinnern'
                 },
               ]
             },
@@ -208,7 +362,7 @@ const Q4b: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Nicht zutreffend (z.B. keinen festen Arbeitsplatz haben)'
                 },
               ]
             },
@@ -289,7 +443,7 @@ const Q4c: SurveySingleItem = {
           code: 'de',
           parts: [
             {
-              str: 'XX'
+              str: 'Welche der folgenden Beschreibungen deckt sich am ehesten mit Ihrer Hauptbeschäftigung?'
             },
           ]
         },
@@ -318,7 +472,7 @@ const Q4c: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Fachkraft (z.B. Manager, Arzt, Lehrer, Krankenschwester, Ingenieur)'
                 },
               ]
             },
@@ -326,6 +480,94 @@ const Q4c: SurveySingleItem = {
         },
         {
           key: 'RG1.R2',
+          role: 'userInput',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Office work (e.g. admin, finance assistant, receptionist, etc)'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Bürotätigkeit (z.B. Verwaltung, Finanzassistentin, Rezeptionistin, etc.)'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R3',
+          role: 'userInput',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Retail, sales, catering and hospitality and leisure (e.g. shop assistant, waiter, bar-staff, gym instructor etc)'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Einzelhandel, Verkauf, Gastronomie und Gastgewerbe und Freizeit (z.B. Verkäufer, Kellner, Barpersonal, Fitnesstrainer usw.)'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R4',
+          role: 'userInput',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Skilled manual worker (e.g. mechanic, electrician, technician)'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Facharbeiter (z.B. Mechaniker, Elektriker, Techniker)'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R5',
+          role: 'userInput',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Other manual work (e.g. cleaning, security, driver)'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Andere manuelle Arbeiten (z.B. Reinigung, Sicherheit, Fahrer)'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R6',
           role: 'userInput',
           content: [
             {
@@ -340,7 +582,7 @@ const Q4c: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Sonstige'
                 },
               ]
             },
@@ -372,7 +614,7 @@ const Q5: SurveySingleItem = {
           code: 'de',
           parts: [
             {
-              str: 'XX'
+              str: 'Abgesehen von Menschen, denen Sie in der Öffentlichkeit begegnen, haben Sie im Laufe eines typischen Tages Kontakt mit einer der folgenden Personengruppen?'
             },
           ]
         },
@@ -393,7 +635,7 @@ const Q5: SurveySingleItem = {
           code: 'de',
           parts: [
             {
-              str: 'XX'
+              str: 'Wählen Sie alle entsprechenden Optionen aus, falls diese zutreffen'
             },
           ]
         },
@@ -422,7 +664,7 @@ const Q5: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Mehr als 10 Kinder oder Jugendliche im Laufe des Tages'
                 },
               ]
             },
@@ -444,7 +686,7 @@ const Q5: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Mehr als 10 Personen im Alter von über 65 Jahren im Laufe des Tages'
                 },
               ]
             },
@@ -466,7 +708,7 @@ const Q5: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Patientinnen und Patienten'
                 },
               ]
             },
@@ -488,7 +730,7 @@ const Q5: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Personengruppen (mehr als 10 Personen zu einem beliebigen Zeitpunkt).'
                 },
               ]
             },
@@ -510,7 +752,7 @@ const Q5: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Keine der oben genannten'
                 },
               ]
             },
