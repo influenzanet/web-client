@@ -21,7 +21,7 @@ const Q4: SurveySingleItem = {
           code: 'de',
           parts: [
             {
-              str: 'XX'
+              str: 'Was ist Ihre Haupttätigkeit?'
             },
           ]
         },
@@ -50,7 +50,7 @@ const Q4: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Bezahlte Beschäftigung, Vollzeit'
                 },
               ]
             },
@@ -72,7 +72,7 @@ const Q4: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Bezahlte Beschäftigung, Teilzeit'
                 },
               ]
             },
@@ -94,7 +94,7 @@ const Q4: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'XX'
+                  str: 'Selbstständige (Geschäftsleute, Landwirte, Handwerker usw.)'
                 },
               ]
             },
@@ -730,7 +730,7 @@ const Q5: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'Personengruppen (mehr als 10 Personen zu einem beliebigen Zeitpunkt).'
+                  str: 'Personengruppen (mehr als 10 Personen zu einem beliebigen Zeitpunkt)'
                 },
               ]
             },
