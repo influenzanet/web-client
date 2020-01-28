@@ -25,7 +25,10 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
 
   useEffect(() => {
     if (touched) {
-      props.responseChanged(response);
+      const timer = setTimeout(() => {
+        props.responseChanged(response);
+      }, 500);
+      return () => clearTimeout(timer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);

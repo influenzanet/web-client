@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SurveySingleItem, ResponseGroupComponent, ResponseItem } from 'survey-engine/lib/data_types';
+import { SurveySingleItem, ResponseGroupComponent, ResponseItem, ItemComponent } from 'survey-engine/lib/data_types';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -7,7 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
-import { getLocaleStringTextByCode, getItemComponentTranslationByRole, getItemComponentByRole } from '../../../utils';
+import { getLocaleStringTextByCode, getItemComponentTranslationByRole, getItemComponentByRole, getItemComponentsByRole } from '../../../utils';
 
 
 interface MultipleChoiceProps {
@@ -84,6 +84,23 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
     return response.items.findIndex(ri => ri.key === key) > -1;
   }
 
+  const isDisabled = (item: ItemComponent): boolean => {
+    if (item.disabled === true) {
+      const key = item.key ? item.key : 'no key found';
+      if (isChecked(key)) {
+        setResponse(prev => {
+          if (!prev) { return { key: 'no key found', items: [] } }
+          return {
+            ...prev,
+            items: prev.items?.filter(i => i.key !== key),
+          }
+        });
+      }
+      return true;
+    }
+    return false;
+  }
+
   const description = getItemComponentTranslationByRole(props.question.components, 'description', props.languageCode);
   return (
     <div className={classes.root}>
@@ -105,13 +122,17 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
                   value={option.key}
                   control={<Checkbox checked={isChecked(option.key ? option.key : 'no key found')} onChange={handleChange(option.key ? option.key : 'no key found')} value={option.key} />}
                   label={getLocaleStringTextByCode(option, props.languageCode)}
-                  disabled={option.disabled !== undefined} // TODO: fix this
+                  disabled={isDisabled(option)} // TODO: fix this
                 />
               )}</React.Fragment> : null
           }
         </FormGroup>
 
-        {/*<FormHelperText>Be careful</FormHelperText>*/}
+        {
+          getItemComponentsByRole(props.question.components, 'warning').map(
+            (comp, index) => <FormHelperText key={index}> {getLocaleStringTextByCode(comp, props.languageCode)}</FormHelperText>
+          )
+        }
       </FormControl>
     </div>
   );
