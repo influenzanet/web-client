@@ -618,7 +618,26 @@ const Q5: SurveySingleItem = {
             },
           ]
         },
-      ]
+      ],
+      disabled: {
+        name: 'isDefined',
+        data: [
+          {
+            dtype: 'exp',
+            exp: {
+              name: 'getResponseItem',
+              data: [
+                {
+                  str: 'QG0.QG5.Q5'
+                },
+                {
+                  str: 'RG1.R5'
+                }
+              ]
+            }
+          }
+        ]
+      },
     },
     {
       role: 'description',
