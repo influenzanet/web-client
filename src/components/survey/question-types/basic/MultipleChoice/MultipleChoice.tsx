@@ -22,6 +22,14 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       // display: 'flex',
     },
+    warning: {
+      color: "#ffce00",
+      fontWeight: "bold"
+    },
+    error: {
+      color: "#ff2300",
+      fontWeight: "bold"
+    }
   }),
 );
 
@@ -140,7 +148,17 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
               if (comp.displayCondition === false) {
                 return null;
               }
-              return (<FormHelperText key={index}> {getLocaleStringTextByCode(comp, props.languageCode)}</FormHelperText>)
+              return (<FormHelperText key={index} className={classes.warning}> {getLocaleStringTextByCode(comp, props.languageCode)}</FormHelperText>)
+            }
+          )
+        }
+        {
+          getItemComponentsByRole(props.question.components, 'error').map(
+            (comp, index) => {
+              if (comp.displayCondition === false) {
+                return null;
+              }
+              return (<FormHelperText key={index} className={classes.error}> {getLocaleStringTextByCode(comp, props.languageCode)}</FormHelperText>)
             }
           )
         }
