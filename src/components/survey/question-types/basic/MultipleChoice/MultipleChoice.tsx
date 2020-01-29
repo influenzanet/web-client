@@ -7,7 +7,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
+import Popover from '@material-ui/core/Popover';
 import { getLocaleStringTextByCode, getItemComponentTranslationByRole, getItemComponentByRole, getItemComponentsByRole } from '../../../utils';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import IconButton from '@material-ui/core/IconButton';
+import Box from '@material-ui/core/Box';
 
 
 interface MultipleChoiceProps {
@@ -29,6 +33,9 @@ const useStyles = makeStyles((theme: Theme) =>
     error: {
       color: "#ff2300",
       fontWeight: "bold"
+    },
+    helpText: {
+      padding: theme.spacing(2),
     }
   }),
 );
@@ -38,6 +45,9 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
 
   const [response, setResponse] = useState<ResponseItem | undefined>(props.responsePrefill);
   const [touched, setTouched] = useState(false);
+
+  // for helpGroup
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (touched) {
@@ -109,12 +119,71 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
     return false;
   }
 
+  const openHelpGroup = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseHelpGroup = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'help-group-popover' : undefined;
+
+  const renderHelpGroup = () => {
+    const helpGroup = getItemComponentByRole(props.question.components, 'helpGroup') as ItemGroupComponent;
+    if (!helpGroup) {
+      return null;
+    }
+
+    return <Box alignItems="center">
+      <IconButton aria-describedby={id} onClick={openHelpGroup} size="small">
+        <InfoOutlinedIcon />
+      </IconButton>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleCloseHelpGroup}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <Box p={2}>
+          {
+            helpGroup.items.map((item, index) => {
+              const isTitle = item.role === "title";
+              return (
+                <Typography key={index} variant={isTitle ? "subtitle2" : "body1"}>
+                  {getLocaleStringTextByCode(item, props.languageCode)}
+                </Typography>
+              )
+            })
+          }
+        </Box>
+      </Popover>
+    </Box>
+
+  }
+
+
   const description = getItemComponentTranslationByRole(props.question.components, 'description', props.languageCode);
   return (
     <div className={classes.root}>
-      <Typography variant="h6">
-        {getItemComponentTranslationByRole(props.question.components, 'title', props.languageCode)}
-      </Typography>
+      <Box display="flex">
+        <Box flexGrow="1">
+          <Typography variant="h6">
+            {getItemComponentTranslationByRole(props.question.components, 'title', props.languageCode)}
+          </Typography>
+        </Box>
+        {renderHelpGroup()}
+      </Box>
+
       {description ?
         <Typography variant="subtitle2">
           {description}
