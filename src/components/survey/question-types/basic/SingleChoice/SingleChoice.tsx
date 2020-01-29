@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SurveySingleItem, ResponseGroupComponent, ResponseItem, ResponseComponent } from 'survey-engine/lib/data_types';
+import { SurveySingleItem, ItemGroupComponent, ResponseItem, ResponseComponent } from 'survey-engine/lib/data_types';
 import FormControl from '@material-ui/core/FormControl';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -33,7 +33,7 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
-  const getResponseGroup = (): ResponseGroupComponent | undefined => {
+  const getResponseGroup = (): ItemGroupComponent | undefined => {
     const rg = props.question.components.find(cont => cont.role === 'responseGroup');
     if (!rg) {
       return;
@@ -44,7 +44,7 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
         items: []
       })
     }
-    return rg as ResponseGroupComponent;
+    return rg as ItemGroupComponent;
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
