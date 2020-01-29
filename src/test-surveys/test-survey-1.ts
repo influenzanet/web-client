@@ -596,7 +596,31 @@ const Q4c: SurveySingleItem = {
 const Q5: SurveySingleItem = {
   key: 'QG0.QG5.Q5',
   version: 1,
-  validations: [],
+  validations: [
+    {
+      key: 'V1',
+      type: 'soft',
+      rule: {
+        name: 'isDefined',
+        data: [
+          {
+            dtype: 'exp',
+            exp: {
+              name: 'getResponseItem',
+              data: [
+                {
+                  str: 'QG0.QG5.Q5'
+                },
+                {
+                  str: 'RG1.R5'
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
   type: "basic.input.multiple-choice",
   components: [
     {
@@ -642,6 +666,38 @@ const Q5: SurveySingleItem = {
       ]
     },
     {
+      role: 'warning',
+      displayCondition: {
+        name: 'getSurveyItemValidation',
+        data: [
+          {
+            str: 'this'
+          },
+          {
+            str: 'V1'
+          }
+        ]
+      },
+      content: [
+        {
+          code: 'en',
+          parts: [
+            {
+              str: 'Invalid input data'
+            },
+          ]
+        },
+        {
+          code: 'de',
+          parts: [
+            {
+              str: 'Ungültige Eingabe'
+            },
+          ]
+        },
+      ],
+    },
+    {
       key: 'RG1',
       role: 'responseGroup',
       order: {
@@ -669,25 +725,6 @@ const Q5: SurveySingleItem = {
               ]
             },
           ],
-          disabled: {
-            name: 'isDefined',
-            data: [
-              {
-                dtype: 'exp',
-                exp: {
-                  name: 'getResponseItem',
-                  data: [
-                    {
-                      str: 'QG0.QG5.Q5'
-                    },
-                    {
-                      str: 'RG1.R5'
-                    }
-                  ]
-                }
-              }
-            ]
-          },
         },
         {
           key: 'RG1.R2',
