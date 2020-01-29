@@ -116,21 +116,32 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
         <FormGroup>
           {
             getResponseGroup() ?
-              <React.Fragment> {getResponseGroup()?.items.map(option =>
-                <FormControlLabel
-                  key={option.key}
-                  value={option.key}
-                  control={<Checkbox checked={isChecked(option.key ? option.key : 'no key found')} onChange={handleChange(option.key ? option.key : 'no key found')} value={option.key} />}
-                  label={getLocaleStringTextByCode(option, props.languageCode)}
-                  disabled={isDisabled(option)} // TODO: fix this
-                />
+              <React.Fragment> {getResponseGroup()?.items.map(option => {
+                if (option.displayCondition === false) {
+                  return null;
+                }
+                return (
+                  <FormControlLabel
+                    key={option.key}
+                    value={option.key}
+                    control={<Checkbox checked={isChecked(option.key ? option.key : 'no key found')} onChange={handleChange(option.key ? option.key : 'no key found')} value={option.key} />}
+                    label={getLocaleStringTextByCode(option, props.languageCode)}
+                    disabled={isDisabled(option)} // TODO: fix this
+                  />
+                )
+              }
               )}</React.Fragment> : null
           }
         </FormGroup>
 
         {
           getItemComponentsByRole(props.question.components, 'warning').map(
-            (comp, index) => <FormHelperText key={index}> {getLocaleStringTextByCode(comp, props.languageCode)}</FormHelperText>
+            (comp, index) => {
+              if (comp.displayCondition === false) {
+                return null;
+              }
+              return (<FormHelperText key={index}> {getLocaleStringTextByCode(comp, props.languageCode)}</FormHelperText>)
+            }
           )
         }
       </FormControl>
