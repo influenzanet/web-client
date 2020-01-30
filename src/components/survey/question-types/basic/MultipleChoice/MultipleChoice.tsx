@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "#ff2300",
       fontWeight: "bold"
     },
-    helpText: {
-      padding: theme.spacing(2),
+    helpBox: {
+      backgroundColor: '#f1f1f1',
     }
   }),
 );
@@ -137,7 +137,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
     }
 
     return <Box alignItems="center">
-      <IconButton aria-describedby={id} onClick={openHelpGroup} size="small">
+      <IconButton aria-describedby={id} onClick={openHelpGroup} size="small" color="secondary">
         <InfoOutlinedIcon />
       </IconButton>
       <Popover
@@ -154,12 +154,12 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
           horizontal: 'right',
         }}
       >
-        <Box p={2}>
+        <Box p={2} maxWidth={400} className={classes.helpBox}>
           {
             helpGroup.items.map((item, index) => {
               const isTitle = item.role === "title";
               return (
-                <Typography key={index} variant={isTitle ? "subtitle2" : "body1"}>
+                <Typography key={index} variant={isTitle ? "subtitle1" : "body1"}>
                   {getLocaleStringTextByCode(item, props.languageCode)}
                 </Typography>
               )
