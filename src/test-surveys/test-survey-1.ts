@@ -1355,6 +1355,337 @@ const Q5b: SurveySingleItem = {
   ]
 }
 
+const Q6_test: SurveySingleItem = {
+  key: 'QG0.QG6.Q6',
+  version: 1,
+  validations: [],
+  type: "basic.input.single-choice",
+  components: [
+    {
+      role: 'title',
+      content: [
+        {
+          code: 'en',
+          parts: [
+            {
+              str: 'INCLUDING YOU, how many people in each of the following age groups live in your household?'
+            },
+          ]
+        },
+        {
+          code: 'de',
+          parts: [
+            {
+              str: 'EINSCHLIESSLICH IHNEN, wie viele Personen aus jeder der folgenden Altersgruppen leben in Ihrem Haushalt?'
+            },
+          ]
+        },
+      ]
+    },
+    {
+      key: 'RG1',
+      role: 'responseGroup',
+      order: {
+        name: 'sequential'
+      },
+      items: [
+        {
+          key: 'RG1.R1',
+          role: 'responseDropDown',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: '0-4 years'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: '0-4 Jahre'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R2',
+          role: 'responseDropDown',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: '5-18 years'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: '5-18 Jahre'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R3',
+          role: 'responseDropDown',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: '19-44 years'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: '19-44 Jahre'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R4',
+          role: 'responseDropDown',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: '45-64 years'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: '45-64 Jahre'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'RG1.R5',
+          role: 'responseDropDown',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: '65+ years'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: '65+ Jahre'
+                },
+              ]
+            },
+          ]
+        },
+      ]
+    },
+  ]
+}
+
+const Q6: SurveySingleItem = {
+  key: 'QG0.QG6.Q6',
+  version: 1,
+  validations: [],
+  // TODO change to basic.input.dropDown
+  type: "basic.input.single-choice",
+  components: [
+    {
+      role: 'title',
+      content: [
+        {
+          code: 'en',
+          parts: [
+            {
+              str: 'INCLUDING YOU, how many people in each of the following age groups live in your household?'
+            },
+          ]
+        },
+        {
+          code: 'de',
+          parts: [
+            {
+              str: 'EINSCHLIESSLICH IHNEN, wie viele Personen aus jeder der folgenden Altersgruppen leben in Ihrem Haushalt?'
+            },
+          ]
+        },
+      ]
+    },
+    {
+      key: 'IGC2',
+      role: 'responseGroup',
+      order: {
+        name: 'sequential'
+      },
+      items: [
+        {
+          key: 'IGC2.IGC1',
+          role: 'dropDownGroup',
+          order: {
+            name: 'sequential'
+          },
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: '0-4 years'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: '0-4 Jahre'
+                },
+              ]
+            },
+          ],
+          items: [
+            {
+              key: 'IGC2.IGC1.RC1',
+              role: 'dropDownDefault',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: '0'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: '0'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: 'IGC2.IGC1.RC2',
+              role: 'dropDownOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: '1'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: '1'
+                    },
+                  ]
+                },
+              ]
+            },
+          ]
+        },
+        {
+          key: 'IGC2.IGC2',
+          role: 'dropDownGroup',
+          order: {
+            name: 'sequential'
+          },
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: '5-18 years'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: '5-18 Jahre'
+                },
+              ]
+            },
+          ],
+          items: [
+            {
+              key: 'IGC2.IGC2.RC1',
+              role: 'dropDownDefault',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: '0'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: '0'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: 'IGC2.IGC2.RC2',
+              role: 'dropDownOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: '1'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: '1'
+                    },
+                  ]
+                },
+              ]
+            },
+          ]
+        },
+      ]
+    },
+  ]
+}
+
 export const QG0: SurveyGroupItem = {
   key: 'QG0',
   version: 1,
@@ -1376,6 +1707,13 @@ export const QG0: SurveyGroupItem = {
         Q5b,
       ],
     },
+    {
+      key: 'QG0.QG6',
+      version: 1,
+      items: [
+        Q6
+      ]
+    }
   ],
 }
 
