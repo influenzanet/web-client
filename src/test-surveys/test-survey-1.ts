@@ -339,7 +339,7 @@ const Q4: SurveySingleItem = {
 }
 
 const Q4b: SurveySingleItem = {
-  key: 'QG0.QG4.Q4b',
+  key: '0.4.4b',
   condition: {
     name: 'or',
     data: [
@@ -354,10 +354,10 @@ const Q4b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'QG0.QG4.Q4'
+                    str: '0.4.4'
                   },
                   {
-                    str: 'RG1.R1'
+                    str: '1.1.1'
                   }
                 ]
               }
@@ -376,10 +376,10 @@ const Q4b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'QG0.QG4.Q4'
+                    str: '0.4.4'
                   },
                   {
-                    str: 'RG1.R2'
+                    str: '1.1.2'
                   }
                 ]
               }
@@ -391,7 +391,6 @@ const Q4b: SurveySingleItem = {
   },
   version: 1,
   validations: [],
-  type: "basic.input.single-choice",
   components: [
     {
       role: 'title',
@@ -415,25 +414,20 @@ const Q4b: SurveySingleItem = {
       ]
     },
     {
-      key: 'RG1',
-      role: 'responseGroup',
+      key: '0',
+      role: 'helpGroup',
       order: {
         name: 'sequential'
       },
       items: [
         {
-          key: 'RG1.R1',
-          role: 'userInput',
-        },
-        {
-          key: 'RG1.R2',
-          role: 'responseOption',
+          role: 'title',
           content: [
             {
               code: 'en',
               parts: [
                 {
-                  str: 'I don’t know/can’t remember'
+                  str: 'Why are we asking this?'
                 },
               ]
             },
@@ -441,21 +435,41 @@ const Q4b: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'Ich weiß es nicht / kann mich nicht erinnern'
+                  str: 'Warum fragen wir das?'
+                },
+              ]
+            },
+          ],
+        },
+        {
+          role: 'description',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'To find out roughly how far you travel on a regular basis.'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Um ungefähr herauszufinden, wie weit Sie regelmäßig reisen.'
                 },
               ]
             },
           ]
         },
         {
-          key: 'RG1.R3',
-          role: 'responseOption',
+          role: 'title',
           content: [
             {
               code: 'en',
               parts: [
                 {
-                  str: 'Not applicable (e.g. don’t have a fixed workplace)'
+                  str: 'How should I answer it?'
                 },
               ]
             },
@@ -463,7 +477,28 @@ const Q4b: SurveySingleItem = {
               code: 'de',
               parts: [
                 {
-                  str: 'Nicht zutreffend (z.B. keinen festen Arbeitsplatz haben)'
+                  str: 'Wie soll ich darauf antworten?'
+                },
+              ]
+            },
+          ],
+        },
+        {
+          role: 'description',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Please choose the first part of the post-code (the part before the space).'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Bitte wählen Sie den ersten Teil der Postleitzahl (den Teil vor dem Leerzeichen).'
                 },
               ]
             },
@@ -471,11 +506,77 @@ const Q4b: SurveySingleItem = {
         },
       ]
     },
+    {
+      key: '1',
+      role: 'responseGroup',
+      order: {
+        name: 'sequential'
+      },
+      items: [
+        {
+          key: '1.1',
+          role: 'singleChoiceGroup',
+          order: {
+            name: 'sequential'
+          },
+          items: [
+            {
+              key: '1.1.1',
+              role: 'userInput',
+            },
+            {
+              key: '1.1.2',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'I don’t know/can’t remember'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Ich weiß es nicht / kann mich nicht erinnern'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.3',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Not applicable (e.g. don’t have a fixed workplace)'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Nicht zutreffend (z.B. keinen festen Arbeitsplatz haben)'
+                    },
+                  ]
+                },
+              ]
+            },
+          ]
+        }
+      ]
+    },
   ]
 }
 
 const Q4c: SurveySingleItem = {
-  key: 'QG0.QG4.Q4c',
+  key: '0.4.4c',
   condition: {
     name: 'or',
     data: [
@@ -490,10 +591,10 @@ const Q4c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'QG0.QG4.Q4'
+                    str: '0.4.4'
                   },
                   {
-                    str: 'RG1.R1'
+                    str: '1.1.1'
                   }
                 ]
               }
@@ -512,10 +613,10 @@ const Q4c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'QG0.QG4.Q4'
+                    str: '0.4.4'
                   },
                   {
-                    str: 'RG1.R2'
+                    str: '1.1.2'
                   }
                 ]
               }
@@ -527,7 +628,6 @@ const Q4c: SurveySingleItem = {
   },
   version: 1,
   validations: [],
-  type: "basic.input.single-choice",
   components: [
     {
       role: 'title',
