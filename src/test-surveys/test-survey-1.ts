@@ -651,144 +651,246 @@ const Q4c: SurveySingleItem = {
       ]
     },
     {
-      key: 'RG1',
+      key: '0',
+      role: 'helpGroup',
+      order: {
+        name: 'sequential'
+      },
+      items: [
+        {
+          role: 'title',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Why are we asking this?'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Warum fragen wir das?'
+                },
+              ]
+            },
+          ],
+        },
+        {
+          role: 'description',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'To check how representative our sample is compared to the population as a whole and to find out whether the chance of getting flu is different for people in different types of occupation.'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Um zu überprüfen, wie repräsentativ unsere Stichprobe im Vergleich zur Gesamtbevölkerung ist, und um herauszufinden, ob die Chance, eine Grippe zu bekommen, für Menschen in verschiedenen Berufsfeldern unterschiedlich hoch ist.'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          role: 'title',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'How should I answer it?'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Wie soll ich darauf antworten?'
+                },
+              ]
+            },
+          ],
+        },
+        {
+          role: 'description',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Please tick the box that most closely resembles your main occupation.'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Bitte kreuzen Sie das Kästchen an, das Ihrer Hauptbeschäftigung am nächsten kommt.'
+                },
+              ]
+            },
+          ]
+        },
+      ]
+    },
+    {
+      key: '1',
       role: 'responseGroup',
       order: {
         name: 'sequential'
       },
       items: [
         {
-          key: 'RG1.R1',
-          role: 'responseOption',
-          content: [
+          key: '1.1',
+          role: 'singleChoiceGroup',
+          order: {
+            name: 'sequential'
+          },
+          items: [
             {
-              code: 'en',
-              parts: [
+              key: '1.1.1',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'Professional (e.g. manager, doctor, teacher, nurse, engineer)'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Professional (e.g. manager, doctor, teacher, nurse, engineer)'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Fachkraft (z.B. Manager, Arzt, Lehrer, Krankenschwester, Ingenieur)'
+                    },
+                  ]
                 },
               ]
             },
             {
-              code: 'de',
-              parts: [
+              key: '1.1.2',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'Fachkraft (z.B. Manager, Arzt, Lehrer, Krankenschwester, Ingenieur)'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Office work (e.g. admin, finance assistant, receptionist, etc)'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Bürotätigkeit (z.B. Verwaltung, Finanzassistentin, Rezeptionistin, etc.)'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.3',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Retail, sales, catering and hospitality and leisure (e.g. shop assistant, waiter, bar-staff, gym instructor etc)'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Einzelhandel, Verkauf, Gastronomie und Gastgewerbe und Freizeit (z.B. Verkäufer, Kellner, Barpersonal, Fitnesstrainer usw.)'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.4',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Skilled manual worker (e.g. mechanic, electrician, technician)'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Facharbeiter (z.B. Mechaniker, Elektriker, Techniker)'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.5',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Other manual work (e.g. cleaning, security, driver)'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Andere manuelle Arbeiten (z.B. Reinigung, Sicherheit, Fahrer)'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.6',
+              role: 'userInput',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Other'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Sonstige'
+                    },
+                  ]
                 },
               ]
             },
           ]
-        },
-        {
-          key: 'RG1.R2',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Office work (e.g. admin, finance assistant, receptionist, etc)'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Bürotätigkeit (z.B. Verwaltung, Finanzassistentin, Rezeptionistin, etc.)'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R3',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Retail, sales, catering and hospitality and leisure (e.g. shop assistant, waiter, bar-staff, gym instructor etc)'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Einzelhandel, Verkauf, Gastronomie und Gastgewerbe und Freizeit (z.B. Verkäufer, Kellner, Barpersonal, Fitnesstrainer usw.)'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R4',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Skilled manual worker (e.g. mechanic, electrician, technician)'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Facharbeiter (z.B. Mechaniker, Elektriker, Techniker)'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R5',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Other manual work (e.g. cleaning, security, driver)'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Andere manuelle Arbeiten (z.B. Reinigung, Sicherheit, Fahrer)'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R6',
-          role: 'userInput',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Other'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Sonstige'
-                },
-              ]
-            },
-          ]
-        },
+        }
       ]
     },
   ]
