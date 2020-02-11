@@ -1,10 +1,9 @@
 import { SurveyGroupItem, SurveySingleItem } from 'survey-engine/lib/data_types';
 
 const Q4: SurveySingleItem = {
-  key: 'QG0.QG4.Q4',
+  key: '0.4.4',
   version: 1,
   validations: [],
-  type: "basic.input.single-choice",
   components: [
     {
       role: 'title',
@@ -28,210 +27,312 @@ const Q4: SurveySingleItem = {
       ]
     },
     {
-      key: 'RG1',
+      key: '0',
+      role: 'helpGroup',
+      order: {
+        name: 'sequential'
+      },
+      items: [
+        {
+          role: 'title',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Why are we asking this?'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Warum fragen wir das?'
+                },
+              ]
+            },
+          ],
+        },
+        {
+          role: 'description',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'To check how representative our sample is compared to the population as a whole, and to find out whether the chance of getting flu is different for people in different types of occupation.'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Um zu überprüfen, wie repräsentativ unsere Stichprobe im Vergleich zur Gesamtbevölkerung ist, und um herauszufinden, ob die Chance, eine Grippe zu bekommen, für Menschen in verschiedenen Berufsfeldern unterschiedlich hoch ist.'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          role: 'title',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'How should I answer it?'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Wie soll ich darauf antworten?'
+                },
+              ]
+            },
+          ],
+        },
+        {
+          role: 'description',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Please tick the box that most closely resembles your main occupation. For pre-school children who don’t go to daycare tick the “other” box.'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Bitte kreuzen Sie das Kästchen an, das Ihrer Hauptbeschäftigung am nächsten kommt. Bei Vorschulkindern, die nicht in die Kindertagesstätte gehen, kreuzen Sie bitte das Kästchen "andere" an.'
+                },
+              ]
+            },
+          ]
+        },
+      ]
+    },
+    {
+      key: '1',
       role: 'responseGroup',
       order: {
         name: 'sequential'
       },
       items: [
         {
-          key: 'RG1.R1',
-          role: 'responseOption',
-          content: [
+          key: '1.1',
+          role: 'singleChoiceGroup',
+          order: {
+            name: 'sequential'
+          },
+          items: [
             {
-              code: 'en',
-              parts: [
+              key: '1.1.1',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'Paid employment, full-time'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Paid employment, full-time'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Bezahlte Beschäftigung, Vollzeit'
+                    },
+                  ]
                 },
               ]
             },
             {
-              code: 'de',
-              parts: [
+              key: '1.1.2',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'Bezahlte Beschäftigung, Vollzeit'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Paid employment, part-time'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Bezahlte Beschäftigung, Teilzeit'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.3',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Self-employed (businessman, farmer, tradesman, etc)'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Selbstständige (Geschäftsleute, Landwirte, Handwerker usw.)'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.4',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Attending daycare/school/college/university'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Besuch von Kindertagesstätten/Schulen/Hochschulen/Universitäten'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.5',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Home-maker (e.g. housewife)'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Haushaltsführung (z.B. Hausfrau)'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.6',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Unemployed'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Arbeitslos'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.7',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Long-term sick-leave or parental leave'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Langfristiger Krankheitsurlaub oder Elternurlaub'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.8',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Retired'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Im Ruhestand'
+                    },
+                  ]
+                },
+              ]
+            },
+            {
+              key: '1.1.9',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Other'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Sonstige'
+                    },
+                  ]
                 },
               ]
             },
           ]
-        },
-        {
-          key: 'RG1.R2',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Paid employment, part-time'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Bezahlte Beschäftigung, Teilzeit'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R3',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Self-employed (businessman, farmer, tradesman, etc)'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Selbstständige (Geschäftsleute, Landwirte, Handwerker usw.)'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R4',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Attending daycare/school/college/university'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Besuch von Kindertagesstätten/Schulen/Hochschulen/Universitäten'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R5',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Home-maker (e.g. housewife)'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Haushaltsführung (z.B. Hausfrau)'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R6',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Unemployed'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Arbeitslos'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R7',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Long-term sick-leave or parental leave'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Langfristiger Krankheitsurlaub oder Elternurlaub'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R8',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Retired'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Im Ruhestand'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R9',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Other'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Sonstige'
-                },
-              ]
-            },
-          ]
-        },
+        }
       ]
     },
   ]
@@ -1505,11 +1606,9 @@ const Q6_test: SurveySingleItem = {
 }
 
 const Q6: SurveySingleItem = {
-  key: 'QG0.QG6.Q6',
+  key: '0.6',
   version: 1,
   validations: [],
-  // TODO change to basic.input.dropDown
-  type: "basic.input.single-choice",
   components: [
     {
       role: 'title',
@@ -1687,11 +1786,11 @@ const Q6: SurveySingleItem = {
 }
 
 export const QG0: SurveyGroupItem = {
-  key: 'QG0',
+  key: '0',
   version: 1,
   items: [
     {
-      key: 'QG0.QG4',
+      key: '0.4',
       version: 1,
       items: [
         Q4,
@@ -1700,20 +1799,14 @@ export const QG0: SurveyGroupItem = {
       ],
     },
     {
-      key: 'QG0.QG5',
+      key: '0.5',
       version: 1,
       items: [
         Q5,
         Q5b,
       ],
     },
-    {
-      key: 'QG0.QG6',
-      version: 1,
-      items: [
-        Q6
-      ]
-    }
+    Q6,
   ],
 }
 
