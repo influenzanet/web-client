@@ -5,6 +5,7 @@ const Q4: SurveySingleItem = {
   version: 1,
   validations: [],
   components: [
+    // title
     {
       role: 'title',
       content: [
@@ -26,6 +27,7 @@ const Q4: SurveySingleItem = {
         },
       ]
     },
+    // helpGroup
     {
       key: '0',
       role: 'helpGroup',
@@ -119,6 +121,7 @@ const Q4: SurveySingleItem = {
         },
       ]
     },
+    // responseGroup
     {
       key: '1',
       role: 'responseGroup',
@@ -392,6 +395,7 @@ const Q4b: SurveySingleItem = {
   version: 1,
   validations: [],
   components: [
+    // title
     {
       role: 'title',
       content: [
@@ -413,6 +417,7 @@ const Q4b: SurveySingleItem = {
         },
       ]
     },
+    // helpGroup
     {
       key: '0',
       role: 'helpGroup',
@@ -506,6 +511,7 @@ const Q4b: SurveySingleItem = {
         },
       ]
     },
+    // responseGroup
     {
       key: '1',
       role: 'responseGroup',
@@ -629,6 +635,7 @@ const Q4c: SurveySingleItem = {
   version: 1,
   validations: [],
   components: [
+    // title
     {
       role: 'title',
       content: [
@@ -650,6 +657,7 @@ const Q4c: SurveySingleItem = {
         },
       ]
     },
+    // helpGroup
     {
       key: '0',
       role: 'helpGroup',
@@ -743,6 +751,7 @@ const Q4c: SurveySingleItem = {
         },
       ]
     },
+    // responseGroup
     {
       key: '1',
       role: 'responseGroup',
@@ -897,7 +906,7 @@ const Q4c: SurveySingleItem = {
 }
 
 const Q5: SurveySingleItem = {
-  key: 'QG0.QG5.Q5',
+  key: '0.5.5',
   version: 1,
   validations: [
     {
@@ -917,7 +926,7 @@ const Q5: SurveySingleItem = {
                     name: 'getResponseItem',
                     data: [
                       {
-                        str: 'QG0.QG5.Q5'
+                        str: '0.5.5'
                       },
                       {
                         str: 'RG1.R5'
@@ -944,7 +953,7 @@ const Q5: SurveySingleItem = {
                           name: 'getResponseItem',
                           data: [
                             {
-                              str: 'QG0.QG5.Q5'
+                              str: '0.5.5'
                             },
                             {
                               str: 'RG1.R1'
@@ -966,7 +975,7 @@ const Q5: SurveySingleItem = {
                           name: 'getResponseItem',
                           data: [
                             {
-                              str: 'QG0.QG5.Q5'
+                              str: '0.5.5'
                             },
                             {
                               str: 'RG1.R2'
@@ -988,7 +997,7 @@ const Q5: SurveySingleItem = {
                           name: 'getResponseItem',
                           data: [
                             {
-                              str: 'QG0.QG5.Q5'
+                              str: '0.5.5'
                             },
                             {
                               str: 'RG1.R3'
@@ -1010,7 +1019,7 @@ const Q5: SurveySingleItem = {
                           name: 'getResponseItem',
                           data: [
                             {
-                              str: 'QG0.QG5.Q5'
+                              str: '0.5.5'
                             },
                             {
                               str: 'RG1.R4'
@@ -1028,8 +1037,8 @@ const Q5: SurveySingleItem = {
       }
     }
   ],
-  type: "basic.input.multiple-choice",
   components: [
+    // title
     {
       role: 'title',
       content: [
@@ -1051,6 +1060,7 @@ const Q5: SurveySingleItem = {
         },
       ],
     },
+    // description
     {
       role: 'description',
       content: [
@@ -1072,8 +1082,9 @@ const Q5: SurveySingleItem = {
         },
       ]
     },
+    // helpGroup
     {
-      key: 'IG1',
+      key: '0',
       role: 'helpGroup',
       order: {
         name: 'sequential'
@@ -1165,6 +1176,7 @@ const Q5: SurveySingleItem = {
         },
       ]
     },
+    // warning
     {
       role: 'warning',
       displayCondition: {
@@ -1197,134 +1209,144 @@ const Q5: SurveySingleItem = {
         },
       ],
     },
+    // responseGroup
     {
-      key: 'RG1',
+      key: '1',
       role: 'responseGroup',
       order: {
         name: 'sequential'
       },
       items: [
         {
-          key: 'RG1.R1',
-          role: 'responseOption',
-          content: [
+          key: '1.1',
+          role: 'multipleChoiceGroup',
+          order: {
+            name: 'sequential'
+          },
+          items: [
             {
-              code: 'en',
-              parts: [
+              key: '1.1.1',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'More than 10 children or teenagers over the course of the day'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'More than 10 children or teenagers over the course of the day'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Mehr als 10 Kinder oder Jugendliche im Laufe des Tages'
+                    },
+                  ]
+                },
+              ],
+            },
+            {
+              key: '1.1.2',
+              role: 'responseOption',
+              content: [
+                {
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'More than 10 people aged over 65 over the course of day'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Mehr als 10 Personen im Alter von über 65 Jahren im Laufe des Tages'
+                    },
+                  ]
                 },
               ]
             },
             {
-              code: 'de',
-              parts: [
+              key: '1.1.3',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'Mehr als 10 Kinder oder Jugendliche im Laufe des Tages'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Patients'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Patientinnen und Patienten'
+                    },
+                  ]
                 },
               ]
             },
-          ],
-        },
-        {
-          key: 'RG1.R2',
-          role: 'responseOption',
-          content: [
             {
-              code: 'en',
-              parts: [
+              key: '1.1.4',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'More than 10 people aged over 65 over the course of day'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Groups of people (more than 10 individuals at any one time)'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Personengruppen (mehr als 10 Personen zu einem beliebigen Zeitpunkt)'
+                    },
+                  ]
                 },
               ]
             },
             {
-              code: 'de',
-              parts: [
+              key: '1.1.5',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'Mehr als 10 Personen im Alter von über 65 Jahren im Laufe des Tages'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'None of the above'
+                    },
+                  ]
+                },
+                {
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Keine der oben genannten'
+                    },
+                  ]
                 },
               ]
             },
           ]
-        },
-        {
-          key: 'RG1.R3',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Patients'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Patientinnen und Patienten'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R4',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Groups of people (more than 10 individuals at any one time)'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Personengruppen (mehr als 10 Personen zu einem beliebigen Zeitpunkt)'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R5',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'None of the above'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Keine der oben genannten'
-                },
-              ]
-            },
-          ]
-        },
+        }
       ]
     },
   ]
 }
 
 const Q5b: SurveySingleItem = {
-  key: 'QG0.QG5.Q5b',
+  key: '0.5.5b',
   version: 1,
   validations: [],
-  type: "basic.input.multiple-choice",
   components: [
+    // title
     {
       role: 'title',
       content: [
@@ -1346,6 +1368,7 @@ const Q5b: SurveySingleItem = {
         },
       ],
     },
+    // description
     {
       role: 'description',
       content: [
@@ -1367,8 +1390,9 @@ const Q5b: SurveySingleItem = {
         },
       ]
     },
+    // helpGroup
     {
-      key: 'IG1',
+      key: '0',
       role: 'helpGroup',
       order: {
         name: 'sequential'
@@ -1460,358 +1484,220 @@ const Q5b: SurveySingleItem = {
         },
       ]
     },
+    // responseGroup
     {
-      key: 'RG1',
+      key: '1',
       role: 'responseGroup',
       order: {
         name: 'sequential'
       },
       items: [
         {
-          key: 'RG1.R1',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'More than 10 children or teenagers over the course of the day'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Mehr als 10 Kinder oder Jugendliche im Laufe des Tages'
-                },
-              ]
-            },
-          ],
-          disabled: {
-            name: 'isDefined',
-            data: [
-              {
-                dtype: 'exp',
-                exp: {
-                  name: 'getResponseItem',
-                  data: [
-                    {
-                      str: 'QG0.QG5.Q5b'
-                    },
-                    {
-                      str: 'RG1.R5'
-                    }
-                  ]
-                }
-              }
-            ]
+          key: '1.1',
+          role: 'multipleChoiceGroup',
+          order: {
+            name: 'sequential'
           },
-        },
-        {
-          key: 'RG1.R2',
-          role: 'responseOption',
-          content: [
+          items: [
             {
-              code: 'en',
-              parts: [
+              key: '1.1.1',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'More than 10 people aged over 65 over the course of day'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: 'Mehr als 10 Personen im Alter von über 65 Jahren im Laufe des Tages'
-                },
-              ]
-            },
-          ],
-          disabled: {
-            name: 'isDefined',
-            data: [
-              {
-                dtype: 'exp',
-                exp: {
-                  name: 'getResponseItem',
-                  data: [
+                  code: 'en',
+                  parts: [
                     {
-                      str: 'QG0.QG5.Q5b'
+                      str: 'More than 10 children or teenagers over the course of the day'
                     },
-                    {
-                      str: 'RG1.R5'
-                    }
                   ]
-                }
-              }
-            ]
-          },
-        },
-        {
-          key: 'RG1.R3',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Patients'
                 },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
                 {
-                  str: 'Patientinnen und Patienten'
-                },
-              ]
-            },
-          ],
-          disabled: {
-            name: 'isDefined',
-            data: [
-              {
-                dtype: 'exp',
-                exp: {
-                  name: 'getResponseItem',
-                  data: [
+                  code: 'de',
+                  parts: [
                     {
-                      str: 'QG0.QG5.Q5b'
+                      str: 'Mehr als 10 Kinder oder Jugendliche im Laufe des Tages'
                     },
-                    {
-                      str: 'RG1.R5'
-                    }
                   ]
-                }
-              }
-            ]
-          },
-        },
-        {
-          key: 'RG1.R4',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'Groups of people (more than 10 individuals at any one time)'
                 },
-              ]
+              ],
+              disabled: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: '0.5.5b'
+                        },
+                        {
+                          str: '1.1.5'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
             },
             {
-              code: 'de',
-              parts: [
+              key: '1.1.2',
+              role: 'responseOption',
+              content: [
                 {
-                  str: 'Personengruppen (mehr als 10 Personen zu einem beliebigen Zeitpunkt)'
-                },
-              ]
-            },
-          ],
-          disabled: {
-            name: 'isDefined',
-            data: [
-              {
-                dtype: 'exp',
-                exp: {
-                  name: 'getResponseItem',
-                  data: [
+                  code: 'en',
+                  parts: [
                     {
-                      str: 'QG0.QG5.Q5b'
+                      str: 'More than 10 people aged over 65 over the course of day'
                     },
-                    {
-                      str: 'RG1.R5'
-                    }
                   ]
-                }
-              }
-            ]
-          },
-        },
-        {
-          key: 'RG1.R5',
-          role: 'responseOption',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: 'None of the above'
                 },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
                 {
-                  str: 'Keine der oben genannten'
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Mehr als 10 Personen im Alter von über 65 Jahren im Laufe des Tages'
+                    },
+                  ]
                 },
-              ]
+              ],
+              disabled: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: '0.5.5b'
+                        },
+                        {
+                          str: '1.1.5'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
             },
-          ]
-        },
-      ]
-    },
-  ]
-}
-
-const Q6_test: SurveySingleItem = {
-  key: 'QG0.QG6.Q6',
-  version: 1,
-  validations: [],
-  type: "basic.input.single-choice",
-  components: [
-    {
-      role: 'title',
-      content: [
-        {
-          code: 'en',
-          parts: [
             {
-              str: 'INCLUDING YOU, how many people in each of the following age groups live in your household?'
-            },
-          ]
-        },
-        {
-          code: 'de',
-          parts: [
-            {
-              str: 'EINSCHLIESSLICH IHNEN, wie viele Personen aus jeder der folgenden Altersgruppen leben in Ihrem Haushalt?'
-            },
-          ]
-        },
-      ]
-    },
-    {
-      key: 'RG1',
-      role: 'responseGroup',
-      order: {
-        name: 'sequential'
-      },
-      items: [
-        {
-          key: 'RG1.R1',
-          role: 'responseDropDown',
-          content: [
-            {
-              code: 'en',
-              parts: [
+              key: '1.1.3',
+              role: 'responseOption',
+              content: [
                 {
-                  str: '0-4 years'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Patients'
+                    },
+                  ]
                 },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
                 {
-                  str: '0-4 Jahre'
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Patientinnen und Patienten'
+                    },
+                  ]
                 },
-              ]
+              ],
+              disabled: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: '0.5.5b'
+                        },
+                        {
+                          str: '1.1.5'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
             },
-          ]
-        },
-        {
-          key: 'RG1.R2',
-          role: 'responseDropDown',
-          content: [
             {
-              code: 'en',
-              parts: [
+              key: '1.1.4',
+              role: 'responseOption',
+              content: [
                 {
-                  str: '5-18 years'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'Groups of people (more than 10 individuals at any one time)'
+                    },
+                  ]
                 },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
                 {
-                  str: '5-18 Jahre'
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Personengruppen (mehr als 10 Personen zu einem beliebigen Zeitpunkt)'
+                    },
+                  ]
                 },
-              ]
+              ],
+              disabled: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: '0.5.5b'
+                        },
+                        {
+                          str: '1.1.5'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
             },
-          ]
-        },
-        {
-          key: 'RG1.R3',
-          role: 'responseDropDown',
-          content: [
             {
-              code: 'en',
-              parts: [
+              key: '1.1.5',
+              role: 'responseOption',
+              content: [
                 {
-                  str: '19-44 years'
+                  code: 'en',
+                  parts: [
+                    {
+                      str: 'None of the above'
+                    },
+                  ]
                 },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
                 {
-                  str: '19-44 Jahre'
-                },
-              ]
-            },
-          ]
-        },
-        {
-          key: 'RG1.R4',
-          role: 'responseDropDown',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: '45-64 years'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: '45-64 Jahre'
+                  code: 'de',
+                  parts: [
+                    {
+                      str: 'Keine der oben genannten'
+                    },
+                  ]
                 },
               ]
             },
           ]
-        },
-        {
-          key: 'RG1.R5',
-          role: 'responseDropDown',
-          content: [
-            {
-              code: 'en',
-              parts: [
-                {
-                  str: '65+ years'
-                },
-              ]
-            },
-            {
-              code: 'de',
-              parts: [
-                {
-                  str: '65+ Jahre'
-                },
-              ]
-            },
-          ]
-        },
+        }
       ]
     },
   ]
 }
 
 const Q6: SurveySingleItem = {
-  key: '0.6',
+  key: '0.6.6',
   version: 1,
   validations: [],
   components: [
+    // title
     {
       role: 'title',
       content: [
@@ -1833,15 +1719,110 @@ const Q6: SurveySingleItem = {
         },
       ]
     },
+    // helpGroup
     {
-      key: 'IGC2',
+      key: '0',
+      role: 'helpGroup',
+      order: {
+        name: 'sequential'
+      },
+      items: [
+        {
+          role: 'title',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Why are we asking this?'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Warum fragen wir das?'
+                },
+              ]
+            },
+          ],
+        },
+        {
+          role: 'description',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'Members of larger households, or those with children, may be more likely to catch flu than others.'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Mitglieder größerer Haushalte oder solche mit Kindern können sich mit größerer Wahrscheinlichkeit an der Grippe anstecken als andere.'
+                },
+              ]
+            },
+          ]
+        },
+        {
+          role: 'title',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'How should I answer it?'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Wie soll ich darauf antworten?'
+                },
+              ]
+            },
+          ],
+        },
+        {
+          role: 'description',
+          content: [
+            {
+              code: 'en',
+              parts: [
+                {
+                  str: 'A household is defined as a group of people (not necessarily related) living at the same address who share cooking facilities and share a living room, sitting room or dining area.'
+                },
+              ]
+            },
+            {
+              code: 'de',
+              parts: [
+                {
+                  str: 'Ein Haushalt ist definiert als eine Gruppe von Personen (nicht notwendigerweise miteinander verwandt), die an derselben Adresse wohnen, sich die Kochgelegenheit und ein Wohnzimmer, einen Aufenthaltsraum oder einen Essbereich teilen.'
+                },
+              ]
+            },
+          ]
+        },
+      ]
+    },
+    // responseGroup
+    {
+      key: '1',
       role: 'responseGroup',
       order: {
         name: 'sequential'
       },
       items: [
         {
-          key: 'IGC2.IGC1',
+          key: '1.1',
           role: 'dropDownGroup',
           order: {
             name: 'sequential'
@@ -1866,7 +1847,7 @@ const Q6: SurveySingleItem = {
           ],
           items: [
             {
-              key: 'IGC2.IGC1.RC1',
+              key: '1.1.1',
               role: 'dropDownDefault',
               content: [
                 {
@@ -1888,7 +1869,7 @@ const Q6: SurveySingleItem = {
               ]
             },
             {
-              key: 'IGC2.IGC1.RC2',
+              key: '1.1.1',
               role: 'dropDownOption',
               content: [
                 {
@@ -1912,7 +1893,7 @@ const Q6: SurveySingleItem = {
           ]
         },
         {
-          key: 'IGC2.IGC2',
+          key: '1.2',
           role: 'dropDownGroup',
           order: {
             name: 'sequential'
@@ -1937,7 +1918,7 @@ const Q6: SurveySingleItem = {
           ],
           items: [
             {
-              key: 'IGC2.IGC2.RC1',
+              key: '1.2.1',
               role: 'dropDownDefault',
               content: [
                 {
@@ -1959,7 +1940,7 @@ const Q6: SurveySingleItem = {
               ]
             },
             {
-              key: 'IGC2.IGC2.RC2',
+              key: '1.2.2',
               role: 'dropDownOption',
               content: [
                 {
@@ -2008,7 +1989,13 @@ export const QG0: SurveyGroupItem = {
         Q5b,
       ],
     },
-    Q6,
+    {
+      key: '0.6',
+      version: 1,
+      items: [
+        Q6,
+      ],
+    },
   ],
 }
 
