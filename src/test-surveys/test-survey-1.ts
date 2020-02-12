@@ -38,7 +38,7 @@ const Q4: SurveySingleItem = {
         items: [
           {
             role: 'title',
-            style: [{ key: 'variant', value: 'subtitle2' }],
+            style: [{ key: 'variant', value: 'h6' }],
             content: [
               {
                 code: 'en',
@@ -82,7 +82,7 @@ const Q4: SurveySingleItem = {
           },
           {
             role: 'title',
-            style: [{ key: 'variant', value: 'subtitle2' }],
+            style: [{ key: 'variant', value: 'h6' }],
             content: [
               {
                 code: 'en',
