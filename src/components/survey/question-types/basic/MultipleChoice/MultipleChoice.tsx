@@ -8,7 +8,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 import Popover from '@material-ui/core/Popover';
-import { getLocaleStringTextByCode, getItemComponentTranslationByRole, getItemComponentByRole, getItemComponentsByRole } from '../../../utils';
+import { getLocaleStringTextByCode, getItemComponentTranslationByRole, getItemComponentByRole, getItemComponentsByRole } from '../../../SurveySingleItemView/utils';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
@@ -57,7 +57,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
   }, [response]);
 
   const getResponseGroup = (): ItemGroupComponent | undefined => {
-    const rg = getItemComponentByRole(props.question.components, 'responseGroup');
+    const rg = getItemComponentByRole(props.question.components.items, 'responseGroup');
     if (!rg) {
       return;
     }
@@ -131,7 +131,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
   const id = open ? 'help-group-popover' : undefined;
 
   const renderHelpGroup = () => {
-    const helpGroup = getItemComponentByRole(props.question.components, 'helpGroup') as ItemGroupComponent;
+    const helpGroup = getItemComponentByRole(props.question.components.items, 'helpGroup') as ItemGroupComponent;
     if (!helpGroup) {
       return null;
     }
@@ -172,13 +172,13 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
   }
 
 
-  const description = getItemComponentTranslationByRole(props.question.components, 'description', props.languageCode);
+  const description = getItemComponentTranslationByRole(props.question.components.items, 'description', props.languageCode);
   return (
     <div className={classes.root}>
       <Box display="flex">
         <Box flexGrow="1">
           <Typography variant="h6">
-            {getItemComponentTranslationByRole(props.question.components, 'title', props.languageCode)}
+            {getItemComponentTranslationByRole(props.question.components.items, 'title', props.languageCode)}
           </Typography>
         </Box>
         {renderHelpGroup()}
@@ -212,7 +212,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
         </FormGroup>
 
         {
-          getItemComponentsByRole(props.question.components, 'warning').map(
+          getItemComponentsByRole(props.question.components.items, 'warning').map(
             (comp, index) => {
               if (comp.displayCondition === false) {
                 return null;
@@ -222,7 +222,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
           )
         }
         {
-          getItemComponentsByRole(props.question.components, 'error').map(
+          getItemComponentsByRole(props.question.components.items, 'error').map(
             (comp, index) => {
               if (comp.displayCondition === false) {
                 return null;

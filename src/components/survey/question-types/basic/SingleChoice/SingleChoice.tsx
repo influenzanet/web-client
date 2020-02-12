@@ -5,7 +5,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import Typography from '@material-ui/core/Typography';
-import { getLocaleStringTextByCode, getItemComponentTranslationByRole } from '../../../utils';
+import { getLocaleStringTextByCode, getItemComponentTranslationByRole } from '../../../SurveySingleItemView/utils';
 import { TextField, Box } from '@material-ui/core';
 
 interface SingleChoiceProps {
@@ -34,7 +34,7 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
   }, [response]);
 
   const getResponseGroup = (): ItemGroupComponent | undefined => {
-    const rg = props.question.components.find(cont => cont.role === 'responseGroup');
+    const rg = props.question.components.items.find(cont => cont.role === 'responseGroup');
     if (!rg) {
       return;
     }
@@ -159,11 +159,11 @@ const SingleChoice: React.FC<SingleChoiceProps> = (props) => {
       </RadioGroup>
     </FormControl>
   )
-  const description = getItemComponentTranslationByRole(props.question.components, 'description', props.languageCode);
+  const description = getItemComponentTranslationByRole(props.question.components.items, 'description', props.languageCode);
   return (
     <div>
       <Typography variant="h6">
-        {getItemComponentTranslationByRole(props.question.components, 'title', props.languageCode)}
+        {getItemComponentTranslationByRole(props.question.components.items, 'title', props.languageCode)}
       </Typography>
       {description ?
         <Typography variant="subtitle2">
