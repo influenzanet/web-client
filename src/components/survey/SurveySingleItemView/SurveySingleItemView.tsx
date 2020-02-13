@@ -15,6 +15,8 @@ import Box from '@material-ui/core/Box';
 import HelpGroup from './HelpGroup/HelpGroup';
 import ResponseItemView from './ResponseItemView/ResponseItemView';
 import TextViewComponent from './TextViewComponent/TextViewComponent';
+import ErrorComponent from './ErrorComponent/ErrorComponent';
+import WarningComponent from './WarningComponent/WarningComponent';
 
 interface SurveySingleItemViewProps {
   renderItem: SurveySingleItem;
@@ -87,6 +89,16 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
             />
           case 'text':
             return <TextViewComponent key={index.toFixed()}
+              compDef={component}
+              languageCode={props.languageCode}
+            />
+          case 'error':
+            return <ErrorComponent key={index.toFixed()}
+              compDef={component}
+              languageCode={props.languageCode}
+            />
+          case 'warning':
+            return <WarningComponent key={index.toFixed()}
               compDef={component}
               languageCode={props.languageCode}
             />

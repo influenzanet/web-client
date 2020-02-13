@@ -1,9 +1,8 @@
 import React from 'react';
-import { Box, IconButton, Popover, Typography } from '@material-ui/core';
+import { Box, IconButton, Popover } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { getLocaleStringTextByCode } from '../utils';
 
 import TextViewComponent from '../TextViewComponent/TextViewComponent';
 
