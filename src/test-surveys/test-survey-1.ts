@@ -37,8 +37,8 @@ const Q4: SurveySingleItem = {
         },
         items: [
           {
-            role: 'title',
-            style: [{ key: 'variant', value: 'h6' }],
+            role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -59,7 +59,7 @@ const Q4: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             style: [{ key: 'variant', value: 'body1' }],
             content: [
               {
@@ -81,7 +81,7 @@ const Q4: SurveySingleItem = {
             ]
           },
           {
-            role: 'title',
+            role: 'text',
             style: [{ key: 'variant', value: 'h6' }],
             content: [
               {
@@ -103,7 +103,7 @@ const Q4: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             style: [{ key: 'variant', value: 'body1' }],
             content: [
               {
@@ -433,7 +433,7 @@ const Q4b: SurveySingleItem = {
         },
         items: [
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -454,7 +454,8 @@ const Q4b: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
+            style: [{ key: 'variant', value: 'body1' }],
             content: [
               {
                 code: 'en',
@@ -475,7 +476,7 @@ const Q4b: SurveySingleItem = {
             ]
           },
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -496,7 +497,7 @@ const Q4b: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -652,7 +653,7 @@ const Q4c: SurveySingleItem = {
             code: 'en',
             parts: [
               {
-                str: 'Which of the following descriptions most closely matches with your main occupation?'
+                str: 'Which of the following texts most closely matches with your main occupation?'
               },
             ]
           },
@@ -675,7 +676,7 @@ const Q4c: SurveySingleItem = {
         },
         items: [
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -696,7 +697,7 @@ const Q4c: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -717,7 +718,7 @@ const Q4c: SurveySingleItem = {
             ]
           },
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -738,7 +739,7 @@ const Q4c: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1071,9 +1072,10 @@ const Q5: SurveySingleItem = {
           },
         ],
       },
-      // description
+      // text
       {
-        role: 'description',
+        role: 'text',
+        style: [{ key: 'variant', value: 'body1' }],
         content: [
           {
             code: 'en',
@@ -1102,7 +1104,7 @@ const Q5: SurveySingleItem = {
         },
         items: [
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1123,7 +1125,7 @@ const Q5: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1144,7 +1146,7 @@ const Q5: SurveySingleItem = {
             ]
           },
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1165,7 +1167,7 @@ const Q5: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1381,9 +1383,9 @@ const Q5b: SurveySingleItem = {
           },
         ],
       },
-      // description
+      // text
       {
-        role: 'description',
+        role: 'text',
         content: [
           {
             code: 'en',
@@ -1412,7 +1414,7 @@ const Q5b: SurveySingleItem = {
         },
         items: [
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1433,7 +1435,7 @@ const Q5b: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1454,7 +1456,7 @@ const Q5b: SurveySingleItem = {
             ]
           },
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1475,7 +1477,7 @@ const Q5b: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1743,7 +1745,7 @@ const Q6: SurveySingleItem = {
         },
         items: [
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1764,7 +1766,7 @@ const Q6: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1785,7 +1787,7 @@ const Q6: SurveySingleItem = {
             ]
           },
           {
-            role: 'title',
+            role: 'text',
             content: [
               {
                 code: 'en',
@@ -1806,7 +1808,7 @@ const Q6: SurveySingleItem = {
             ],
           },
           {
-            role: 'description',
+            role: 'text',
             content: [
               {
                 code: 'en',
