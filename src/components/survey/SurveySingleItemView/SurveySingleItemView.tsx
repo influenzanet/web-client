@@ -50,11 +50,6 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.responsePrefill);
   const [touched, setTouched] = useState(false);
 
-
-  // find first title
-  // find help group
-  //
-
   const renderHelpGroup = (): React.ReactNode => {
     const helpGroup = getItemComponentByRole(props.renderItem.components.items, 'helpGroup') as ItemGroupComponent;
     if (!helpGroup) {
@@ -80,11 +75,38 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
           case 'helpGroup':
             return null;
           case 'responseGroup':
+            if (!response) {
+              setResponse({
+                key: component.key ? component.key : 'no key found',
+                items: []
+              })
+            }
             return <ResponseItemView key={index.toFixed()}
               compDef={component}
               prefill={props.responsePrefill}
-              responseChanged={(response) => {
-                console.log('todo: implement response handling');
+              responseChanged={(key, response) => {
+                setTouched(true);
+                setResponse(prev => {
+                  if (!prev || !prev.items) { return { key: component.key ? component.key : 'no key found', items: [] } }
+
+                  if (!response) {
+                    return {
+                      ...prev,
+                      items: prev.items?.filter(i => i.key !== key),
+                    }
+                  }
+
+                  const ind = prev.items.findIndex(item => item.key === response.key);
+                  if (ind > -1) {
+                    prev.items[index] = { ...response };
+                  } else {
+                    prev.items.push({ ...response });
+                  }
+                  return {
+                    ...prev,
+                    items: [...prev.items],
+                  }
+                });
               }}
             />
           case 'text':
