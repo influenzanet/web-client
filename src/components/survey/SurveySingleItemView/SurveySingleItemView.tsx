@@ -13,6 +13,8 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import HelpGroup from './HelpGroup/HelpGroup';
+import ResponseItemView from './ResponseItemView/ResponseItemView';
+import TextViewComponent from './TextViewComponent/TextViewComponent';
 
 interface SurveySingleItemViewProps {
   renderItem: SurveySingleItem;
@@ -64,6 +66,37 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
     )
   }
 
+  const renderBodyComponents = (): React.ReactNode => {
+    return <React.Fragment>
+      {props.renderItem.components.items.map((component: ItemComponent, index: number) => {
+        if (component.displayCondition === false) {
+          return null;
+        }
+        switch (component.role) {
+          case 'title':
+            return null;
+          case 'helpGroup':
+            return null;
+          case 'responseGroup':
+            return <ResponseItemView key={index.toFixed()}
+              compDef={component}
+              prefill={props.responsePrefill}
+              responseChanged={(response) => {
+                console.log('todo: implement response handling');
+              }}
+            />
+          case 'text':
+            return <TextViewComponent key={index.toFixed()}
+              compDef={component}
+              languageCode={props.languageCode}
+            />
+          default:
+            console.warn('compment role not implemented: ' + component.role);
+            return <p key={index.toFixed()}>{component.role} not implemented</p>
+        }
+      })}
+    </React.Fragment>;
+  }
 
   return (
     <div className={classes.root}>
@@ -75,8 +108,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
         </Box>
         {renderHelpGroup()}
       </Box>
-
-      <p>SurveySingleItemView</p>
+      {renderBodyComponents()}
     </div>
   );
 };

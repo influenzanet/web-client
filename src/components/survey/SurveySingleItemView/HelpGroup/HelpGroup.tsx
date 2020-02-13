@@ -4,7 +4,8 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { ItemGroupComponent } from 'survey-engine/lib/data_types';
 import { getLocaleStringTextByCode } from '../utils';
-import { Variant } from '@material-ui/core/styles/createTypography';
+
+import TextViewComponent from '../TextViewComponent/TextViewComponent';
 
 interface HelpGroupProps {
   componentGroup: ItemGroupComponent;
@@ -59,18 +60,10 @@ const HelpGroup: React.FC<HelpGroupProps> = (props) => {
         <Box p={2} maxWidth={400} className={classes.helpBox}>
           {
             props.componentGroup.items.map((item, index) => {
-              let variant = 'body1' as Variant;
-              if (item.style) {
-                const v = item.style.find(st => st.key === 'variant')
-                if (v) {
-                  variant = v.value as Variant;
-                }
-              }
-              return (
-                <Typography key={index} variant={variant}>
-                  {getLocaleStringTextByCode(item, props.languageCode)}
-                </Typography>
-              )
+              return <TextViewComponent key={index.toFixed()}
+                compDef={item}
+                languageCode={props.languageCode}
+              />
             })
           }
         </Box>
