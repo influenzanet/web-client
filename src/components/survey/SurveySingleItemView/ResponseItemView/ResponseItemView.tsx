@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponseItem, ItemComponent } from 'survey-engine/lib/data_types';
+import { ResponseItem, ItemComponent, isItemGroupComponent, ItemGroupComponent } from 'survey-engine/lib/data_types';
 
 interface ResponseItemViewProps {
   compDef: ItemComponent;
@@ -8,8 +8,26 @@ interface ResponseItemViewProps {
 }
 
 const ResponseItemView: React.FC<ResponseItemViewProps> = (props) => {
+  const isGroup = isItemGroupComponent(props.compDef);
+
+  if (isGroup) {
+    return <React.Fragment>
+      {(props.compDef as ItemGroupComponent).items.map(
+        (respItem) =>
+          <ResponseItemView
+            key={respItem.key}
+            compDef={respItem}
+            prefill={undefined}
+            responseChanged={() => { console.log('todo') }}
+          />
+
+      )}
+    </React.Fragment>
+  }
+
   return (
-    <p>ResponseItemView</p>
+
+    <p>{props.compDef.role}</p>
   );
 };
 
