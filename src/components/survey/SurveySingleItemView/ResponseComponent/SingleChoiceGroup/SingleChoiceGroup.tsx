@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ItemComponent, isItemGroupComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
+import { ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
 import { ResponseItem } from 'survey-engine/lib/data_types/response';
-import { FormControl, RadioGroup, FormControlLabel, Radio, Box, TextField } from '@material-ui/core';
+import { FormControl, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import { getLocaleStringTextByCode } from '../../utils';
 import RadioCtrlWithTextField from './RadioCtrlWithTextField/RadioCtrlWithTextField';
 
