@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ItemComponent, isItemGroupComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
 import { ResponseItem } from 'survey-engine/lib/data_types/response';
-import { FormControl, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import { FormControl, RadioGroup, FormControlLabel, Radio, Box, TextField } from '@material-ui/core';
 import { getLocaleStringTextByCode } from '../../utils';
+import RadioCtrlWithTextField from './RadioCtrlWithTextField/RadioCtrlWithTextField';
 
 interface SingleChoiceGroupProps {
   compDef: ItemComponent;
@@ -45,12 +46,37 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
       return {
         ...prev,
         items: [
-          {
-            key,
-            value: value ? value.value : undefined
-          }]
+          value ? { key, value: value.value } : { key }
+        ]
       }
     });
+  };
+
+  const handleInputValueChange = (key: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!key) { return; }
+    setTouched(true);
+
+    const value = (event.target as HTMLInputElement).value;
+
+    setInputValues(prev => {
+      setResponse(prevResp => {
+        if (!prevResp) { return { key: 'no key found', items: [] } }
+        return {
+          ...prevResp,
+          items: [{
+            key,
+            value
+          }]
+        }
+      });
+      const ind = prev.findIndex(v => v.key === key);
+      if (ind > -1) {
+        prev[ind] = { key, value }
+      }
+      return [
+        ...prev
+      ]
+    })
   };
 
   const getSelectedKey = (): string | undefined => {
@@ -59,7 +85,6 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     }
     return response.items[0].key;
   }
-
 
   const renderResponseOption = (option: ItemComponent): React.ReactNode => {
     switch (option.role) {
@@ -71,6 +96,23 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           label={getLocaleStringTextByCode(option, props.languageCode)}
           disabled={option.disabled !== undefined}
         />;
+      case 'userInput':
+        let r = inputValues.find(v => v.key === option.key);
+        if (!r) {
+          r = { key: option.key ? option.key : 'errorkey', value: '' };
+          const nr = r;
+          setInputValues(prev => [
+            ...prev,
+            nr
+          ]);
+        }
+        return <RadioCtrlWithTextField
+          key={option.key}
+          compDef={option}
+          inputValue={r.value ? r.value : ''}
+          languageCode={props.languageCode}
+          onInputChange={handleInputValueChange(option.key)}
+        />
       default:
         return <p key={option.key}>role inside single choice group not implemented yet: {option.role}</p>
     }
