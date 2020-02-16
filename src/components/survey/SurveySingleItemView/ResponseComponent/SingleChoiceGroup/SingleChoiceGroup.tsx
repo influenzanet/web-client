@@ -87,6 +87,9 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
   }
 
   const renderResponseOption = (option: ItemComponent): React.ReactNode => {
+    if (option.displayCondition === false) {
+      return null;
+    }
     switch (option.role) {
       case 'responseOption':
         return <FormControlLabel
