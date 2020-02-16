@@ -59,7 +59,7 @@ const Q4: SurveySingleItem = {
           },
           {
             role: 'text',
-            style: [{ key: 'variant', value: 'body1' }],
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -81,7 +81,7 @@ const Q4: SurveySingleItem = {
           },
           {
             role: 'text',
-            style: [{ key: 'variant', value: 'h6' }],
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -103,7 +103,7 @@ const Q4: SurveySingleItem = {
           },
           {
             role: 'text',
-            style: [{ key: 'variant', value: 'body1' }],
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -432,6 +432,7 @@ const Q4b: SurveySingleItem = {
         items: [
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -453,7 +454,7 @@ const Q4b: SurveySingleItem = {
           },
           {
             role: 'text',
-            style: [{ key: 'variant', value: 'body1' }],
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -475,6 +476,7 @@ const Q4b: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -496,6 +498,7 @@ const Q4b: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -674,6 +677,7 @@ const Q4c: SurveySingleItem = {
         items: [
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -695,6 +699,7 @@ const Q4c: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -716,6 +721,7 @@ const Q4c: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -737,6 +743,7 @@ const Q4c: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -1101,6 +1108,7 @@ const Q5: SurveySingleItem = {
         items: [
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -1122,6 +1130,7 @@ const Q5: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -1143,6 +1152,7 @@ const Q5: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -1164,6 +1174,7 @@ const Q5: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -1410,6 +1421,7 @@ const Q5b: SurveySingleItem = {
         items: [
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -1431,6 +1443,7 @@ const Q5b: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -1452,6 +1465,7 @@ const Q5b: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -1473,6 +1487,7 @@ const Q5b: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -1740,6 +1755,7 @@ const Q6: SurveySingleItem = {
         items: [
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -1761,6 +1777,7 @@ const Q6: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
@@ -1782,6 +1799,7 @@ const Q6: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
             content: [
               {
                 code: 'en',
@@ -1803,6 +1821,7 @@ const Q6: SurveySingleItem = {
           },
           {
             role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
             content: [
               {
                 code: 'en',
