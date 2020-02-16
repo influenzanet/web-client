@@ -1,16 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SurveySingleItem, ItemGroupComponent, ResponseItem, ItemComponent } from 'survey-engine/lib/data_types';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
-import Popover from '@material-ui/core/Popover';
-import { getLocaleStringTextByCode, getItemComponentTranslationByRole, getItemComponentByRole, getItemComponentsByRole } from './utils';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import IconButton from '@material-ui/core/IconButton';
+import { getItemComponentTranslationByRole, getItemComponentByRole } from './utils';
 import Box from '@material-ui/core/Box';
 import HelpGroup from './HelpGroup/HelpGroup';
 import TextViewComponent from './TextViewComponent/TextViewComponent';
@@ -50,6 +42,13 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.responsePrefill);
   const [touched, setTouched] = useState(false);
 
+  useEffect(() => {
+    if (touched) {
+      props.responseChanged(response);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [response]);
+
   const renderHelpGroup = (): React.ReactNode => {
     const helpGroup = getItemComponentByRole(props.renderItem.components.items, 'helpGroup') as ItemGroupComponent;
     if (!helpGroup) {
@@ -82,31 +81,13 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
               })
             }
             return <ResponseComponent key={index.toFixed()}
+              languageCode={props.languageCode}
               compDef={component}
               prefill={props.responsePrefill}
-              responseChanged={(key, response) => {
+              responseChanged={(response) => {
+                console.log('new response set', response)
                 setTouched(true);
-                setResponse(prev => {
-                  if (!prev || !prev.items) { return { key: component.key ? component.key : 'no key found', items: [] } }
-
-                  if (!response) {
-                    return {
-                      ...prev,
-                      items: prev.items?.filter(i => i.key !== key),
-                    }
-                  }
-
-                  const ind = prev.items.findIndex(item => item.key === response.key);
-                  if (ind > -1) {
-                    prev.items[index] = { ...response };
-                  } else {
-                    prev.items.push({ ...response });
-                  }
-                  return {
-                    ...prev,
-                    items: [...prev.items],
-                  }
-                });
+                setResponse(response);
               }}
             />
           case 'text':
