@@ -30,7 +30,6 @@ const Q4: SurveySingleItem = {
       },
       // helpGroup
       {
-        key: '0',
         role: 'helpGroup',
         order: {
           name: 'sequential'
@@ -426,7 +425,6 @@ const Q4b: SurveySingleItem = {
       },
       // helpGroup
       {
-        key: '0',
         role: 'helpGroup',
         order: {
           name: 'sequential'
@@ -669,7 +667,6 @@ const Q4c: SurveySingleItem = {
       },
       // helpGroup
       {
-        key: '0',
         role: 'helpGroup',
         order: {
           name: 'sequential'
@@ -1097,7 +1094,6 @@ const Q5: SurveySingleItem = {
       },
       // helpGroup
       {
-        key: '0',
         role: 'helpGroup',
         order: {
           name: 'sequential'
@@ -1407,7 +1403,6 @@ const Q5b: SurveySingleItem = {
       },
       // helpGroup
       {
-        key: '0',
         role: 'helpGroup',
         order: {
           name: 'sequential'
@@ -1738,7 +1733,6 @@ const Q6: SurveySingleItem = {
       },
       // helpGroup
       {
-        key: '0',
         role: 'helpGroup',
         order: {
           name: 'sequential'
