@@ -13,10 +13,10 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import HelpGroup from './HelpGroup/HelpGroup';
-import ResponseItemView from './ResponseItemView/ResponseItemView';
 import TextViewComponent from './TextViewComponent/TextViewComponent';
 import ErrorComponent from './ErrorComponent/ErrorComponent';
 import WarningComponent from './WarningComponent/WarningComponent';
+import ResponseComponent from './ResponseComponent/ResponseComponent';
 
 interface SurveySingleItemViewProps {
   renderItem: SurveySingleItem;
@@ -81,7 +81,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
                 items: []
               })
             }
-            return <ResponseItemView key={index.toFixed()}
+            return <ResponseComponent key={index.toFixed()}
               compDef={component}
               prefill={props.responsePrefill}
               responseChanged={(key, response) => {
