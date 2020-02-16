@@ -944,7 +944,7 @@ const Q5: SurveySingleItem = {
                         str: '0.5.5'
                       },
                       {
-                        str: 'RG1.R5'
+                        str: '1.1.5'
                       }
                     ]
                   }
@@ -971,7 +971,7 @@ const Q5: SurveySingleItem = {
                               str: '0.5.5'
                             },
                             {
-                              str: 'RG1.R1'
+                              str: '1.1.1'
                             }
                           ]
                         }
@@ -993,7 +993,7 @@ const Q5: SurveySingleItem = {
                               str: '0.5.5'
                             },
                             {
-                              str: 'RG1.R2'
+                              str: '1.1.2'
                             }
                           ]
                         }
@@ -1015,7 +1015,7 @@ const Q5: SurveySingleItem = {
                               str: '0.5.5'
                             },
                             {
-                              str: 'RG1.R3'
+                              str: '1.1.3'
                             }
                           ]
                         }
@@ -1037,7 +1037,7 @@ const Q5: SurveySingleItem = {
                               str: '0.5.5'
                             },
                             {
-                              str: 'RG1.R4'
+                              str: '1.1.4'
                             }
                           ]
                         }
