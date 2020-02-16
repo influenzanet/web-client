@@ -1393,6 +1393,7 @@ const Q5b: SurveySingleItem = {
       // text
       {
         role: 'text',
+        style: [{ key: 'variant', value: 'body1' }],
         content: [
           {
             code: 'en',
