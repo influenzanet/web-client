@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { SurveyGroupItem, SurveySingleItem, isSurveyGroupItem } from 'survey-engine/lib/data_types';
+import { SurveyGroupItem, SurveySingleItem } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
+import { flattenSurveyItemTree } from 'survey-engine/lib/utils';
 import SurveySingleItemView from '../SurveySingleItemView/SurveySingleItemView';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
@@ -44,19 +45,6 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
   const renderedSurvey = sEngine.getRenderedSurvey()
   console.log(renderedSurvey);
 
-  const flattenSurveyItemTree = (renderedTree: SurveyGroupItem): SurveySingleItem[] => {
-    const flatTree = new Array<SurveySingleItem>();
-
-    renderedTree.items.forEach(item => {
-      // console.log(item);
-      if (isSurveyGroupItem(item)) {
-        flatTree.push(...flattenSurveyItemTree(item));
-      } else {
-        flatTree.push({ ...item });
-      }
-    });
-    return flatTree;
-  }
 
   const surveyItems = flattenSurveyItemTree(renderedSurvey);
   console.log(surveyItems);
