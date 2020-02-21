@@ -40,19 +40,29 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
   const [sEngine,] = useState<SurveyEngineCore>(new SurveyEngineCore(props.surveyDefinition));
   const [respCount, setRespCount] = useState(0);
 
+  const [displayedKeys, setDisplayedKeys] = useState<Array<string>>([]);
+
   const [selectedLanguage, setSelectedLanguage] = useState('en');
 
   const renderedSurvey = sEngine.getRenderedSurvey()
-  console.log(renderedSurvey);
-
 
   const surveyItems = flattenSurveyItemTree(renderedSurvey);
-  console.log(surveyItems);
-
+  const currentDisplayedKeys = surveyItems.map(item => item.key);
+  if (displayedKeys.length > 0 && !displayedKeys.every(key => currentDisplayedKeys.includes(key))) {
+    setDisplayedKeys(prev => {
+      return prev.filter(key => currentDisplayedKeys.includes(key));
+    })
+  }
 
 
   const mapSurveyItemToComp = (surveyItem: SurveySingleItem): React.ReactFragment => {
-    sEngine.questionDisplayed(surveyItem.key);
+    if (!displayedKeys.includes(surveyItem.key)) {
+      sEngine.questionDisplayed(surveyItem.key);
+      setDisplayedKeys(prev => {
+        return [...prev, surveyItem.key];
+      })
+    }
+
     return <SurveySingleItemView
       renderItem={surveyItem}
       languageCode={selectedLanguage}
