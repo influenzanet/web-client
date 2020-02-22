@@ -1879,7 +1879,7 @@ const Q6: SurveySingleItem = {
             items: [
               {
                 key: '1.1.1',
-                role: 'dropDownDefault',
+                role: 'dropDownOption',
                 content: [
                   {
                     code: 'en',
@@ -1950,7 +1950,7 @@ const Q6: SurveySingleItem = {
             items: [
               {
                 key: '1.2.1',
-                role: 'dropDownDefault',
+                role: 'dropDownOption',
                 content: [
                   {
                     code: 'en',
