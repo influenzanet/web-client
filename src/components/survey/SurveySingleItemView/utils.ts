@@ -1,4 +1,4 @@
-import { ItemComponent, LocalizedString } from "survey-engine/lib/data_types";
+import { ItemComponent, LocalizedString, LocalizedObject } from "survey-engine/lib/data_types";
 
 
 export const getItemComponentTranslationByRole = (components: Array<ItemComponent>, role: string, code: string): string | null => {
@@ -6,7 +6,7 @@ export const getItemComponentTranslationByRole = (components: Array<ItemComponen
   if (!comp || comp.displayCondition === false) {
     return null;
   }
-  const translation = getLocaleStringTextByCode(comp, code);
+  const translation = getLocaleStringTextByCode(comp.content, code);
   if (!translation) {
     console.warn('no translation found for given language code: ' + code);
     return null;
@@ -14,8 +14,9 @@ export const getItemComponentTranslationByRole = (components: Array<ItemComponen
   return translation;
 }
 
-export const getLocaleStringTextByCode = (comp: ItemComponent, code: string): string | undefined => {
-  const translation = (comp.content?.find(cont => cont.code === code) as LocalizedString);
+export const getLocaleStringTextByCode = (translations: LocalizedObject[] | undefined, code: string): string | undefined => {
+  if (!translations) { return; }
+  const translation = (translations.find(cont => cont.code === code) as LocalizedString);
   if (!translation) { return }
   return translation.parts.map(p => p).join('');
 }

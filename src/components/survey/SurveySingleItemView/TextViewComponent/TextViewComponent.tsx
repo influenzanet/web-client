@@ -20,7 +20,7 @@ const TextViewComponent: React.FC<TextViewComponentProps> = (props) => {
 
   return (
     <Typography variant={variant}>
-      {getLocaleStringTextByCode(props.compDef, props.languageCode)}
+      {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
     </Typography>
   );
 };

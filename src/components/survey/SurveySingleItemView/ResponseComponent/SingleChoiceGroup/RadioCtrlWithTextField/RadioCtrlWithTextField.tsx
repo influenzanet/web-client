@@ -13,7 +13,7 @@ interface RadioCtrlWithTextFieldProps {
 const RadioCtrlWithTextField: React.FC<RadioCtrlWithTextFieldProps> = (props) => {
   const label = <Box display="flex" height="100%" alignItems="center" width="100%">
     <Box mr={1}>
-      {getLocaleStringTextByCode(props.compDef, props.languageCode)}
+      {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
     </Box>
     <Box flexGrow={1}>
       <TextField

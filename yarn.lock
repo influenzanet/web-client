@@ -10296,9 +10296,9 @@ supports-color@^6.1.0:
     has-flag "^3.0.0"
 
 survey-engine@^0.4.7:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/survey-engine/-/survey-engine-0.4.7.tgz#704880e3847d064abba403af8a5819f3b439c926"
-  integrity sha512-m/QSanAqLyccnyxrzxN1a0m72+kbRM6YfppRxj7p8eAl1DeG44Lf5xeMpNFZFlKJHjkIETkdMysJJIy9NxQ6/Q==
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/survey-engine/-/survey-engine-0.4.8.tgz#46c8e213c7c05629752e6a75f6924646061d3045"
+  integrity sha512-fcvpCG9eCsQIohAS/4LjPlKurxJ6A+sO5t4g0krvilgdj1Zen9l0xwWANWACGLNXj6/1k1GpD82unVr7CiOXww==
 
 svg-parser@^2.0.0:
   version "2.0.3"

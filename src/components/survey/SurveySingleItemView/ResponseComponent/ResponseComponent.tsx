@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem, isItemGroupComponent, ItemGroupComponent } from 'survey-engine/lib/data_types';
 import SingleChoiceGroup from './SingleChoiceGroup/SingleChoiceGroup';
 import MultipleChoiceGroup from './MultipleChoiceGroup/MultipleChoiceGroup';
+import DropDownGroup from './DropDownGroup/DropDownGroup';
 
 interface ResponseComponentProps {
   compDef: ItemComponent;
@@ -76,6 +77,14 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           />
         case 'multipleChoiceGroup':
           return <MultipleChoiceGroup
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'dropDownGroup':
+          return <DropDownGroup
             key={respComp.key}
             languageCode={props.languageCode}
             compDef={respComp}

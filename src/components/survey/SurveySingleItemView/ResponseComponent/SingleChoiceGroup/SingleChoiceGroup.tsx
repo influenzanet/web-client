@@ -96,7 +96,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           key={option.key}
           value={option.key}
           control={<Radio />}
-          label={getLocaleStringTextByCode(option, props.languageCode)}
+          label={getLocaleStringTextByCode(option.content, props.languageCode)}
           disabled={option.disabled !== undefined}
         />;
       case 'userInput':

@@ -24,7 +24,7 @@ const ErrorComponent: React.FC<ErrorComponentProps> = (props) => {
   return (
     <FormHelperText
       className={classes.error}>
-      {getLocaleStringTextByCode(props.compDef, props.languageCode)}
+      {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
     </FormHelperText>
   );
 };

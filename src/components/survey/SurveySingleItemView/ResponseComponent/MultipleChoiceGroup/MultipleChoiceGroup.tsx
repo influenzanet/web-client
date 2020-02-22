@@ -97,8 +97,8 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
             <Checkbox checked={isChecked(option.key ? option.key : 'no key found')}
               onChange={handleSelectionChange}
               value={option.key} />}
-          label={getLocaleStringTextByCode(option, props.languageCode)}
-          disabled={isDisabled(option)} // TODO: fix this
+          label={getLocaleStringTextByCode(option.content, props.languageCode)}
+          disabled={isDisabled(option)}
         />
       default:
         return <p key={option.key}>role inside multiple choice group not implemented yet: {option.role}</p>

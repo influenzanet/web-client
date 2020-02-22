@@ -23,7 +23,7 @@ const WarningComponent: React.FC<WarningComponentProps> = (props) => {
   return (
     <FormHelperText
       className={classes.warning}>
-      {getLocaleStringTextByCode(props.compDef, props.languageCode)}
+      {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
     </FormHelperText>
   );
 };

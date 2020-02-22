@@ -1934,7 +1934,7 @@ const Q6: SurveySingleItem = {
                 code: 'en',
                 parts: [
                   {
-                    str: '5-18 years'
+                    str: '5-18 years:'
                   },
                 ]
               },

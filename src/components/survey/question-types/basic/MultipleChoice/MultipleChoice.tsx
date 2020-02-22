@@ -160,7 +160,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
               const isTitle = item.role === "title";
               return (
                 <Typography key={index} variant={isTitle ? "subtitle1" : "body1"}>
-                  {getLocaleStringTextByCode(item, props.languageCode)}
+                  {getLocaleStringTextByCode(item.content, props.languageCode)}
                 </Typography>
               )
             })
@@ -202,7 +202,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
                     key={option.key}
                     value={option.key}
                     control={<Checkbox checked={isChecked(option.key ? option.key : 'no key found')} onChange={handleChange(option.key ? option.key : 'no key found')} value={option.key} />}
-                    label={getLocaleStringTextByCode(option, props.languageCode)}
+                    label={getLocaleStringTextByCode(option.content, props.languageCode)}
                     disabled={isDisabled(option)} // TODO: fix this
                   />
                 )
@@ -217,7 +217,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
               if (comp.displayCondition === false) {
                 return null;
               }
-              return (<FormHelperText key={index} className={classes.warning}> {getLocaleStringTextByCode(comp, props.languageCode)}</FormHelperText>)
+              return (<FormHelperText key={index} className={classes.warning}> {getLocaleStringTextByCode(comp.content, props.languageCode)}</FormHelperText>)
             }
           )
         }
@@ -227,7 +227,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = (props) => {
               if (comp.displayCondition === false) {
                 return null;
               }
-              return (<FormHelperText key={index} className={classes.error}> {getLocaleStringTextByCode(comp, props.languageCode)}</FormHelperText>)
+              return (<FormHelperText key={index} className={classes.error}> {getLocaleStringTextByCode(comp.content, props.languageCode)}</FormHelperText>)
             }
           )
         }
