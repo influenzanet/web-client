@@ -75,7 +75,7 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
       <FormControl className={classes.formControl} margin="dense" style={{ margin: 0 }}>
         {
           props.compDef.description ?
-            <InputLabel id={props.compDef.key + 'label'}>
+            <InputLabel id={props.compDef.key + 'label'} shrink>
               {getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
             </InputLabel> : null
         }
