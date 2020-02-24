@@ -89,7 +89,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
       return null;
     }
     switch (option.role) {
-      case 'responseOption':
+      case 'option':
         return <FormControlLabel
           key={option.key}
           value={option.key}

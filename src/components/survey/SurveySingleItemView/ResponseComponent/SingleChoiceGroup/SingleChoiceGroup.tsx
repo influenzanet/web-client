@@ -91,7 +91,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
       return null;
     }
     switch (option.role) {
-      case 'responseOption':
+      case 'option':
         return <FormControlLabel
           key={option.key}
           value={option.key}
@@ -99,7 +99,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           label={getLocaleStringTextByCode(option.content, props.languageCode)}
           disabled={option.disabled !== undefined}
         />;
-      case 'userInput':
+      case 'input':
         let r = inputValues.find(v => v.key === option.key);
         if (!r) {
           r = { key: option.key ? option.key : 'errorkey', value: '' };
