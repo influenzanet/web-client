@@ -142,7 +142,7 @@ const Q4: SurveySingleItem = {
             items: [
               {
                 key: '1.1.1',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -164,7 +164,7 @@ const Q4: SurveySingleItem = {
               },
               {
                 key: '1.1.2',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -186,7 +186,7 @@ const Q4: SurveySingleItem = {
               },
               {
                 key: '1.1.3',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -208,7 +208,7 @@ const Q4: SurveySingleItem = {
               },
               {
                 key: '1.1.4',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -230,7 +230,7 @@ const Q4: SurveySingleItem = {
               },
               {
                 key: '1.1.5',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -252,7 +252,7 @@ const Q4: SurveySingleItem = {
               },
               {
                 key: '1.1.6',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -274,7 +274,7 @@ const Q4: SurveySingleItem = {
               },
               {
                 key: '1.1.7',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -296,7 +296,7 @@ const Q4: SurveySingleItem = {
               },
               {
                 key: '1.1.8',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -318,7 +318,7 @@ const Q4: SurveySingleItem = {
               },
               {
                 key: '1.1.9',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -537,11 +537,11 @@ const Q4b: SurveySingleItem = {
             items: [
               {
                 key: '1.1.1',
-                role: 'userInput',
+                role: 'input',
               },
               {
                 key: '1.1.2',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -563,7 +563,7 @@ const Q4b: SurveySingleItem = {
               },
               {
                 key: '1.1.3',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -782,7 +782,7 @@ const Q4c: SurveySingleItem = {
             items: [
               {
                 key: '1.1.1',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -804,7 +804,7 @@ const Q4c: SurveySingleItem = {
               },
               {
                 key: '1.1.2',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -826,7 +826,7 @@ const Q4c: SurveySingleItem = {
               },
               {
                 key: '1.1.3',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -848,7 +848,7 @@ const Q4c: SurveySingleItem = {
               },
               {
                 key: '1.1.4',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -870,7 +870,7 @@ const Q4c: SurveySingleItem = {
               },
               {
                 key: '1.1.5',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -892,7 +892,7 @@ const Q4c: SurveySingleItem = {
               },
               {
                 key: '1.1.6',
-                role: 'userInput',
+                role: 'input',
                 content: [
                   {
                     code: 'en',
@@ -1246,7 +1246,7 @@ const Q5: SurveySingleItem = {
             items: [
               {
                 key: '1.1.1',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1268,7 +1268,7 @@ const Q5: SurveySingleItem = {
               },
               {
                 key: '1.1.2',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1290,7 +1290,7 @@ const Q5: SurveySingleItem = {
               },
               {
                 key: '1.1.3',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1312,7 +1312,7 @@ const Q5: SurveySingleItem = {
               },
               {
                 key: '1.1.4',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1334,7 +1334,7 @@ const Q5: SurveySingleItem = {
               },
               {
                 key: '1.1.5',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1527,7 +1527,7 @@ const Q5b: SurveySingleItem = {
             items: [
               {
                 key: '1.1.1',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1568,7 +1568,7 @@ const Q5b: SurveySingleItem = {
               },
               {
                 key: '1.1.2',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1609,7 +1609,7 @@ const Q5b: SurveySingleItem = {
               },
               {
                 key: '1.1.3',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1650,7 +1650,7 @@ const Q5b: SurveySingleItem = {
               },
               {
                 key: '1.1.4',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1691,7 +1691,7 @@ const Q5b: SurveySingleItem = {
               },
               {
                 key: '1.1.5',
-                role: 'responseOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1876,10 +1876,28 @@ const Q6: SurveySingleItem = {
                 ]
               },
             ],
+            description: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'description'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'description'
+                  },
+                ]
+              },
+            ],
             items: [
               {
                 key: '1.1.1',
-                role: 'dropDownOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1901,7 +1919,7 @@ const Q6: SurveySingleItem = {
               },
               {
                 key: '1.1.2',
-                role: 'dropDownOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1950,7 +1968,7 @@ const Q6: SurveySingleItem = {
             items: [
               {
                 key: '1.2.1',
-                role: 'dropDownOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
@@ -1972,7 +1990,7 @@ const Q6: SurveySingleItem = {
               },
               {
                 key: '1.2.2',
-                role: 'dropDownOption',
+                role: 'option',
                 content: [
                   {
                     code: 'en',
