@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { FormControl, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
+import { FormControl, FormGroup, FormControlLabel, Checkbox, Box, TextField } from '@material-ui/core';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { getLocaleStringTextByCode } from '../../utils';
 
 interface MultipleChoiceGroupProps {
@@ -10,9 +11,23 @@ interface MultipleChoiceGroupProps {
   languageCode: string;
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    inputLabel: {
+      width: "100%",
+    }
+  }),
+);
+
 const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
+  const classes = useStyles();
+
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
+
+  const [inputValues, setInputValues] = useState<ResponseItem[]>(
+    props.prefill && props.prefill.items ? props.prefill.items.slice() : []
+  );
 
   useEffect(() => {
     if (touched) {
@@ -60,6 +75,33 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     }
   }
 
+  const handleInputValueChange = (key: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!key) { return; }
+    setTouched(true);
+
+    const value = (event.target as HTMLInputElement).value;
+
+    setInputValues(prev => {
+      setResponse(prevResp => {
+        if (!prevResp) { return { key: 'no key found', items: [] } }
+        return {
+          ...prevResp,
+          items: [{
+            key,
+            value
+          }]
+        }
+      });
+      const ind = prev.findIndex(v => v.key === key);
+      if (ind > -1) {
+        prev[ind] = { key, value }
+      }
+      return [
+        ...prev
+      ]
+    })
+  };
+
   const isChecked = (key: string): boolean => {
     if (!response || !response.items || response.items.length < 1) {
       return false;
@@ -98,6 +140,46 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
               onChange={handleSelectionChange}
               value={option.key} />}
           label={getLocaleStringTextByCode(option.content, props.languageCode)}
+          disabled={isDisabled(option)}
+        />
+      case 'input':
+        let r = inputValues.find(v => v.key === option.key);
+        if (!r) {
+          r = { key: option.key ? option.key : 'errorkey', value: '' };
+          const nr = r;
+          setInputValues(prev => [
+            ...prev,
+            nr
+          ]);
+        }
+
+        const label = <Box display="flex" height="100%" alignItems="center" width="100%">
+          {
+            option.content ?
+              <Box mr={1}>
+                {getLocaleStringTextByCode(option.content, props.languageCode)}
+              </Box> : null
+          }
+          <Box flexGrow={1}>
+            <TextField
+              fullWidth
+              value={r.value ? r.value : ''}
+              margin="dense"
+              onChange={handleInputValueChange(option.key)}
+              disabled={isDisabled(option)}
+            ></TextField>
+          </Box>
+        </Box >;
+
+        return <FormControlLabel
+          classes={{ label: classes.inputLabel }}
+          key={option.key}
+          value={option.key}
+          control={
+            <Checkbox checked={isChecked(option.key ? option.key : 'no key found')}
+              onChange={handleSelectionChange}
+              value={option.key} />}
+          label={label}
           disabled={isDisabled(option)}
         />
       default:

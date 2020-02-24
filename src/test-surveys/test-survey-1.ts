@@ -1526,6 +1526,47 @@ const Q5b: SurveySingleItem = {
             },
             items: [
               {
+                key: '1.1.0',
+                role: 'input',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Other: '
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'Andere:'
+                      },
+                    ]
+                  },
+                ],
+                disabled: {
+                  name: 'isDefined',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'getResponseItem',
+                        data: [
+                          {
+                            str: '0.5.5b'
+                          },
+                          {
+                            str: '1.1.5'
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+              },
+              {
                 key: '1.1.1',
                 role: 'option',
                 content: [
