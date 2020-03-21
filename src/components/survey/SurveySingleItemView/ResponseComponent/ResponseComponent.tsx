@@ -3,6 +3,10 @@ import { ItemComponent, ResponseItem, isItemGroupComponent, ItemGroupComponent }
 import SingleChoiceGroup from './SingleChoiceGroup/SingleChoiceGroup';
 import MultipleChoiceGroup from './MultipleChoiceGroup/MultipleChoiceGroup';
 import DropDownGroup from './DropDownGroup/DropDownGroup';
+import DateInput from './DateInput/DateInput';
+import TextInput from './TextInput/TextInput';
+import MultilineTextInput from './MultilineTextInput/MultilineTextInput';
+import NumberInput from './NumberInput/NumberInput';
 
 interface ResponseComponentProps {
   compDef: ItemComponent;
@@ -85,6 +89,38 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           />
         case 'dropDownGroup':
           return <DropDownGroup
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'input':
+          return <TextInput
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'multilineTextInput':
+          return <MultilineTextInput
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'numberInput':
+          return <NumberInput
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'dateInput':
+          return <DateInput
             key={respComp.key}
             languageCode={props.languageCode}
             compDef={respComp}
