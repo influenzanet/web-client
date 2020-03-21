@@ -2059,10 +2059,175 @@ const Q6: SurveySingleItem = {
   }
 }
 
+const Q3: SurveySingleItem = {
+  key: '0.3',
+  version: 1,
+  validations: [],
+  components: {
+    role: 'root', items: [
+      // title
+      {
+        role: 'title',
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'When is your birthday?'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Wann ist Ihr Geburtstag?'
+              },
+            ]
+          },
+        ]
+      },
+      // helpGroup
+      {
+        role: 'helpGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Why are we asking this?'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Warum fragen wir das?'
+                  },
+                ]
+              },
+            ],
+          },
+          {
+            role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Members of larger households, or those with children, may be more likely to catch flu than others.'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Mitglieder größerer Haushalte oder solche mit Kindern können sich mit größerer Wahrscheinlichkeit an der Grippe anstecken als andere.'
+                  },
+                ]
+              },
+            ]
+          },
+          {
+            role: 'text',
+            style: [{ key: 'variant', value: 'subtitle2' }],
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'How should I answer it?'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Wie soll ich darauf antworten?'
+                  },
+                ]
+              },
+            ],
+          },
+          {
+            role: 'text',
+            style: [{ key: 'variant', value: 'body2' }],
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'A household is defined as a group of people (not necessarily related) living at the same address who share cooking facilities and share a living room, sitting room or dining area.'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Ein Haushalt ist definiert als eine Gruppe von Personen (nicht notwendigerweise miteinander verwandt), die an derselben Adresse wohnen, sich die Kochgelegenheit und ein Wohnzimmer, einen Aufenthaltsraum oder einen Essbereich teilen.'
+                  },
+                ]
+              },
+            ]
+          },
+        ]
+      },
+      // responseGroup
+      {
+        key: '1',
+        role: 'responseGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            key: '1.1',
+            role: 'dateInput',
+            properties: {
+              dateInputMode: { str: 'Y' },
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'On '
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Am '
+                  },
+                ]
+              },
+            ],
+          }
+        ]
+      },
+    ]
+  }
+}
+
 export const QG0: SurveyGroupItem = {
   key: '0',
   version: 1,
   items: [
+    Q3,
     {
       key: '0.4',
       version: 1,

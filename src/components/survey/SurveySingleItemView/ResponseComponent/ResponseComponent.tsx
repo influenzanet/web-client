@@ -8,6 +8,12 @@ import TextInput from './TextInput/TextInput';
 import MultilineTextInput from './MultilineTextInput/MultilineTextInput';
 import NumberInput from './NumberInput/NumberInput';
 
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import "moment/locale/de";
+
+// pick a date util library
+import MomentUtils from '@date-io/moment';
+
 interface ResponseComponentProps {
   compDef: ItemComponent;
   prefill?: ResponseItem;
@@ -68,7 +74,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
       });
   };
 
-  return <React.Fragment>
+  return <MuiPickersUtilsProvider utils={MomentUtils} locale={props.languageCode}>
     {(props.compDef as ItemGroupComponent).items.map(respComp => {
       switch (respComp.role) {
         case 'singleChoiceGroup':
@@ -132,7 +138,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
       }
     })
     }
-  </React.Fragment>
+  </MuiPickersUtilsProvider>
 };
 
 export default ResponseComponent;

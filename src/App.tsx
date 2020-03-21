@@ -8,11 +8,6 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-
-// pick a date util library
-import MomentUtils from '@date-io/moment';
-
 import OnBoarding from './pages/OnBoarding/OnBoarding';
 import Home from './pages/Home/Home';
 // import Login from './components/form/login/Login';
@@ -50,18 +45,16 @@ const App: React.FC = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
-        <MuiPickersUtilsProvider utils={MomentUtils}>
-          <Router>
-            <Switch>
-              {/*<Route path="/login" component={Login}/>
+        <Router>
+          <Switch>
+            {/*<Route path="/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/testForm" component={TestForm}/>*/}
-              <Route path="/home" component={Home} />
-              <Route path="/start" component={OnBoarding} />
-              <Redirect to="/start"></Redirect>
-            </Switch>
-          </Router>
-        </MuiPickersUtilsProvider>
+            <Route path="/home" component={Home} />
+            <Route path="/start" component={OnBoarding} />
+            <Redirect to="/start"></Redirect>
+          </Switch>
+        </Router>
       </StylesProvider>
     </MuiThemeProvider>
   );
