@@ -40,7 +40,7 @@ const Q1: SurveySingleItem = {
                                             }
                                         ]
                                     }
-                                ]
+                                ],
                             },
                             {
                                 key: "1.1.142",
@@ -318,6 +318,9 @@ const Q1: SurveySingleItem = {
 
 const Q2: SurveySingleItem = {
     key: "weekly.33",
+    follows: [
+        "weekly.32",
+    ],
     version: 1,
     validations: [],
     components: {
@@ -792,6 +795,9 @@ const Qcov2b: SurveySingleItem = {
 
 const Qcov3: SurveySingleItem = {
     key: "weekly.Qcov3",
+    follows: [
+        "weekly.32",
+    ],
     version: 1,
     validations: [],
     components: {
