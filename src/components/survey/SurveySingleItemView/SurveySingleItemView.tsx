@@ -22,17 +22,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       // display: 'flex',
     },
-    warning: {
-      color: "#ffce00",
-      fontWeight: "bold"
-    },
-    error: {
-      color: "#ff2300",
-      fontWeight: "bold"
-    },
-    helpBox: {
-      backgroundColor: '#f1f1f1',
-    }
   }),
 );
 
