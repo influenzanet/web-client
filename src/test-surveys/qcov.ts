@@ -873,13 +873,34 @@ const Q2: SurveySingleItem = {
                                                                         {
                                                                             dtype: "exp",
                                                                             exp: {
-                                                                                name: "getPreviousResponses",
+                                                                                name: "getLastFromSurveyItemResponses",
                                                                                 data: [
                                                                                     {
-                                                                                        str: "weekly.35"
+                                                                                        dtype: "exp",
+                                                                                        exp: {
+                                                                                            name: "filterResponsesByIncludesKeys",
+                                                                                            data: [
+                                                                                                {
+                                                                                                    dtype: "exp",
+                                                                                                    exp: {
+                                                                                                        name: "getPreviousResponses",
+                                                                                                        data: [
+                                                                                                            {
+                                                                                                                str: "weekly.35"
+                                                                                                            }
+                                                                                                        ]
+                                                                                                    }
+                                                                                                },
+                                                                                                {
+                                                                                                    str: "1.1"
+                                                                                                },
+                                                                                                {
+                                                                                                    str: "1.1.169"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
                                                                                     }
                                                                                 ]
-
                                                                             }
                                                                         },
                                                                         {
