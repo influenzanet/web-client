@@ -853,44 +853,52 @@ const Q2: SurveySingleItem = {
                         {
                             dtype: "exp",
                             exp: {
-                                name: "getAttribute",
+                                name: "getTimeSince",
                                 data: [
                                     {
                                         dtype: "exp",
                                         exp: {
-                                            name: "getObjectByHierarchicalKey",
+                                            name: "getAttribute",
                                             data: [
                                                 {
                                                     dtype: "exp",
                                                     exp: {
-                                                        name: "getAttribute",
+                                                        name: "getObjectByHierarchicalKey",
                                                         data: [
                                                             {
                                                                 dtype: "exp",
                                                                 exp: {
-                                                                    name: "getPreviousResponses",
+                                                                    name: "getAttribute",
                                                                     data: [
                                                                         {
-                                                                            str: "weekly.35"
+                                                                            dtype: "exp",
+                                                                            exp: {
+                                                                                name: "getPreviousResponses",
+                                                                                data: [
+                                                                                    {
+                                                                                        str: "weekly.35"
+                                                                                    }
+                                                                                ]
+
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            str: "response"
                                                                         }
                                                                     ]
-
                                                                 }
                                                             },
                                                             {
-                                                                str: "response"
+                                                                str: "1.1.169"
                                                             }
                                                         ]
                                                     }
                                                 },
                                                 {
-                                                    str: "1.1.169"
+                                                    str: "value"
                                                 }
                                             ]
                                         }
-                                    },
-                                    {
-                                        str: "value"
                                     }
                                 ]
                             }
