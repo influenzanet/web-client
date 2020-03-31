@@ -810,7 +810,7 @@ const Q2: SurveySingleItem = {
                         {
                             dtype: "exp",
                             exp: {
-                                name: "getTimeSince",
+                                name: "getSecondsSince",
                                 data: [
                                     {
                                         dtype: "exp",
@@ -853,7 +853,7 @@ const Q2: SurveySingleItem = {
                         {
                             dtype: "exp",
                             exp: {
-                                name: "getTimeSince",
+                                name: "getSecondsSince",
                                 data: [
                                     {
                                         dtype: "exp",
