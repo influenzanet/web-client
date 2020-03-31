@@ -1011,6 +1011,469 @@ const Q2: SurveySingleItem = {
 
 const Qcov1: SurveySingleItem = {
     key: "weekly.Qcov1",
+    condition: {
+        name: "and",
+        data: [
+            // if report any symptoms
+            {
+                dtype: 'exp',
+                exp: {
+                    name: "or",
+                    data: [
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.142'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.143'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.144'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.145'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.146'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.147'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.148'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.149'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.150'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.151'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.152'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.153'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.154'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.155'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.156'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.157'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.158'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.159'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.32'
+                                                },
+                                                {
+                                                    str: '1.1.160'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    ]
+                }
+            },
+            // answers to Q2 weekly other than « Yes »
+            {
+                dtype: "exp",
+                exp: {
+                    name: "not",
+                    data: [
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'isDefined',
+                                data: [
+                                    {
+                                        dtype: 'exp',
+                                        exp: {
+                                            name: 'getResponseItem',
+                                            data: [
+                                                {
+                                                    str: 'weekly.33'
+                                                },
+                                                {
+                                                    str: '1.1.161'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
     version: 1,
     validations: [],
     components: {
@@ -1103,6 +1566,34 @@ const Qcov1: SurveySingleItem = {
 
 const Qcov1b: SurveySingleItem = {
     key: "weekly.Qcov1b",
+    condition: {
+        name: "and",
+        data: [
+            // « yes » to Qcov1
+            {
+                dtype: 'exp',
+                exp: {
+                    name: 'isDefined',
+                    data: [
+                        {
+                            dtype: 'exp',
+                            exp: {
+                                name: 'getResponseItem',
+                                data: [
+                                    {
+                                        str: 'weekly.Qcov1'
+                                    },
+                                    {
+                                        str: '1.1.1'
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
     version: 1,
     validations: [],
     components: {
