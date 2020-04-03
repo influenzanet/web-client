@@ -39,12 +39,12 @@ const TextInput: React.FC<TextInputProps> = (props) => {
       if (!prev) {
         return {
           key: props.compDef.key ? props.compDef.key : 'no key found',
-          value: inputValue
+          value: value
         }
       }
       return {
         ...prev,
-        value: inputValue
+        value: value
       }
     })
   };
