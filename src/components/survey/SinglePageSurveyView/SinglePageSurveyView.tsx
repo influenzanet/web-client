@@ -84,7 +84,7 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
     { code: 'de', label: 'Deutsch' },
   ]
 
-  const langaugeSelector = (
+  const languageSelector = (
     <Box display="flex">
       <Box flexGrow={1}></Box>
       <Box>
@@ -126,7 +126,7 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
 
   return (
     <div >
-      {langaugeSelector}
+      {languageSelector}
       {
         surveyItems.map(surveyItem =>
           <Paper key={surveyItem.key}>
