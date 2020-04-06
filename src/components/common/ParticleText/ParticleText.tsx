@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 
 interface ParticleTextProps {
   text: string;
   fontSize: string;
   fontFillStyle: string;
+  placeholderRef: RefObject<HTMLDivElement>;
 }
 
 class ParticleText extends React.Component<ParticleTextProps> {
@@ -18,6 +19,8 @@ class ParticleText extends React.Component<ParticleTextProps> {
   private canvasWidth = 0;
   private canvasHeight = 0;
 
+  private verticalPosition = 0;
+
   public componentDidMount() {
     if (this.canvasRef.current) {
       let canvas = this.canvasRef.current;
@@ -29,6 +32,7 @@ class ParticleText extends React.Component<ParticleTextProps> {
       window.addEventListener("touchstart", this.onTouch);
       window.addEventListener("touchmove", this.onTouch);
       window.addEventListener("touchend", this.onTouchEnd);
+      window.addEventListener("scroll", this.onScroll);
 
       if (this.canvasContext) {
         this.canvasContext.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
@@ -52,6 +56,9 @@ class ParticleText extends React.Component<ParticleTextProps> {
           }
         }
 
+        let canvasRect = this.canvasRef.current.getClientRects()[0];
+        this.verticalPosition = canvasRect.y + canvasRect.height / 2;
+
         this.renderFrame();
       }
     }
@@ -59,6 +66,7 @@ class ParticleText extends React.Component<ParticleTextProps> {
 
   private renderFrame = () => {
     if (this.canvasRef && this.canvasRef.current && this.canvasContext) {
+      //this.updateVerticalPosition();
       this.canvasContext.clearRect(0, 0, this.canvasRef.current.width, this.canvasRef.current.height);
       this.particles.forEach((particle) => particle.renderFrame(this.mousePosition));
     }
@@ -70,14 +78,18 @@ class ParticleText extends React.Component<ParticleTextProps> {
     if (this.canvasContext) {
       let canvas = this.canvasContext.canvas;
       let oldWidth = canvas.width;
-      let oldHeight = canvas.height;
       this.udpdateCanvasDimensions(canvas);
 
       let deltaX = (canvas.width - oldWidth) / 2;
-      let deltaY = (canvas.height - oldHeight) / 2;
 
-      this.particles.forEach((particle) => particle.teleport(new Vector2(deltaX, deltaY)));
+      this.particles.forEach((particle) => particle.teleport(new Vector2(deltaX, 0)));
     }
+
+    this.updateVerticalPosition();
+  }
+
+  private onScroll = () => {
+    this.updateVerticalPosition();
   }
 
   private udpdateCanvasDimensions(canvas: HTMLCanvasElement) {
@@ -85,6 +97,19 @@ class ParticleText extends React.Component<ParticleTextProps> {
     this.canvasHeight = canvas.clientHeight * window.devicePixelRatio;
     canvas.width = this.canvasWidth;
     canvas.height = this.canvasHeight;
+  }
+
+  private updateVerticalPosition() {
+    let placeholder = this.props.placeholderRef.current;
+    if (placeholder) {
+      let placeholderRect = placeholder.getClientRects()[0];
+      let newVerticalPosition = placeholderRect.y + placeholderRect.height / 2;
+      let deltaVerticalPosition = (newVerticalPosition - this.verticalPosition) * window.devicePixelRatio;
+      this.particles.forEach(particle => {
+        particle.teleport(new Vector2(0, deltaVerticalPosition));
+      });
+      this.verticalPosition = newVerticalPosition;
+    }
   }
 
   private onMouseMove = (ev: MouseEvent) => {

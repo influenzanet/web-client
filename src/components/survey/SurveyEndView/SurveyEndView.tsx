@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, Fragment } from 'react';
-import { Container, Typography, Paper, Grid } from '@material-ui/core';
+import { Container, Typography, Paper, Grid, Box } from '@material-ui/core';
 import FlexGrow from '../../common/FlexGrow';
 import ParticleText from '../../common/ParticleText/ParticleText';
 
@@ -8,7 +8,7 @@ interface SurveyEndViewProps {
 
 const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const emojiRef = useRef<HTMLDivElement>(null);
+  const emojiPlaceholderRef = useRef<HTMLDivElement>(null);
 
   const emojiSize = "142px";
 
@@ -17,7 +17,6 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.style.height = `calc(100vh - ${containerRef.current.offsetTop}px)`;
-      if (emojiRef.current) emojiRef.current.style.top = `${containerRef.current.offsetTop}px`;
     }
   });
 
@@ -28,16 +27,17 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
 
   const Emoji = () => {
     return (
-      <Fragment>
-        <div style={{ minHeight: emojiSize }} />
-        <div ref={emojiRef} style={{ position: "absolute", bottom: 0, left: 0, right: 0, top: 0 }}>
+      <Box pt={10} pb={10}>
+        <div ref={emojiPlaceholderRef} style={{ minHeight: emojiSize }} />
+        <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, top: 0 }}>
           <ParticleText
             text={getRandomEmoji()}
             fontSize={emojiSize}
             fontFillStyle=""
+            placeholderRef={emojiPlaceholderRef}
           />
         </div>
-      </Fragment>
+      </Box>
     );
   }
 
@@ -72,12 +72,14 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
     <Fragment>
       <Container ref={containerRef} style={{ display: "flex", flexDirection: "column" }}>
         <FlexGrow />
-        <Typography variant="h3" color="primary" align="center">
-          Thank you for participating!
-      </Typography>
-        <Typography variant="h3" color="secondary" align="center">
-          Stay healthy!
-      </Typography>
+        <Box pt={4} pb={4}>
+          <Typography variant="h3" color="primary" align="center">
+            Thank you for participating!
+          </Typography>
+          <Typography variant="h3" color="secondary" align="center">
+            Stay healthy!
+          </Typography>
+        </Box>
         <FlexGrow />
         <Emoji />
         <FlexGrow />
