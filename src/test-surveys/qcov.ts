@@ -295,6 +295,48 @@ const Q1: SurveySingleItem = {
                                 ]
                             },
                             {
+                                key: "1.1.20",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Loss of smell"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.21",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Loss of taste"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.22",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Nose bleed"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
                                 key: "1.1.160",
                                 role: "option",
                                 content: [
@@ -1486,26 +1528,26 @@ const Qcov1: SurveySingleItem = {
                         code: "en",
                         parts: [
                             {
-                                str: "In the 14 days before your symptoms started, did you travel to an area at risk for new coronavirus infection? (See the list of areas at risk below)"
+                                str: "In the 14 days before your symptoms started, did you travel to a foreign country?"
                             }
                         ]
                     }
                 ]
             },
-            {
-                role: 'text',
-                style: [{ key: 'variant', value: 'body2' }],
-                content: [
-                    {
-                        code: 'en',
-                        parts: [
-                            {
-                                str: 'China (mainland China, Hong Kong, Macao), Singapore, South Korea, Iran, Italy (regions of Lombardy, Venetia, Emilia-Romagna)'
-                            },
-                        ]
-                    },
-                ]
-            },
+            // {
+            //     role: 'text',
+            //     style: [{ key: 'variant', value: 'body2' }],
+            //     content: [
+            //         {
+            //             code: 'en',
+            //             parts: [
+            //                 {
+            //                     str: 'China (mainland China, Hong Kong, Macao), Singapore, South Korea, Iran, Italy (regions of Lombardy, Venetia, Emilia-Romagna)'
+            //                 },
+            //             ]
+            //         },
+            //     ]
+            // },
             {
                 key: "1",
                 role: "responseGroup",
@@ -1913,7 +1955,248 @@ const Qcov3: SurveySingleItem = {
                         code: "en",
                         parts: [
                             {
-                                str: "In the 14 days before your symptoms started, have you been in contact with someone for whom tests have confirmed that they have Covid-19?"
+                                str: "In the 14 days before your symptoms started, have you been in close contact with someone for whom tests have confirmed that they have Covid-19?"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                key: "1",
+                role: "responseGroup",
+                items: [
+                    {
+                        key: "1.1",
+                        role: "singleChoiceGroup",
+                        items: [
+                            {
+                                key: "1.1.1",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Yes"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.0",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "No"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.2",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I don't know"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+const Qcov3b: SurveySingleItem = {
+    key: "weekly.Qcov3b",
+    follows: [
+        "weekly.Qcov3",
+    ],
+    version: 1,
+    validations: [],
+    components: {
+        role: "root",
+        items: [
+            {
+                role: "title",
+                content: [
+                    {
+                        code: "en",
+                        parts: [
+                            {
+                                str: "Do you live in the same household as that person?"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                key: "1",
+                role: "responseGroup",
+                items: [
+                    {
+                        key: "1.1",
+                        role: "singleChoiceGroup",
+                        items: [
+                            {
+                                key: "1.1.1",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Yes"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.0",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "No"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.2",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I don't know"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+const Qcov8: SurveySingleItem = {
+    key: "weekly.Qcov8",
+    follows: [],
+    version: 1,
+    validations: [],
+    components: {
+        role: "root",
+        items: [
+            {
+                role: "title",
+                content: [
+                    {
+                        code: "en",
+                        parts: [
+                            {
+                                str: "In the 14 days before your symptoms started, have you been in close contact with someone presenting symptoms of COVID-19?"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                key: "1",
+                role: "responseGroup",
+                items: [
+                    {
+                        key: "1.1",
+                        role: "singleChoiceGroup",
+                        items: [
+                            {
+                                key: "1.1.1",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Yes"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.0",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "No"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.2",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I don't know"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+const Qcov8b: SurveySingleItem = {
+    key: "weekly.Qcov8b",
+    follows: [
+        "weekly.Qcov8",
+    ],
+    version: 1,
+    validations: [],
+    components: {
+        role: "root",
+        items: [
+            {
+                role: "title",
+                content: [
+                    {
+                        code: "en",
+                        parts: [
+                            {
+                                str: "Do you live in the same household as that person?"
                             }
                         ]
                     }
@@ -3407,6 +3690,84 @@ const Qcov4: SurveySingleItem = {
     }
 }
 
+const Qcov5: SurveySingleItem = {
+    key: "weekly.Qcov5",
+    version: 1,
+    validations: [],
+    components: {
+        role: "root",
+        items: [
+            {
+                role: "title",
+                content: [
+                    {
+                        code: "en",
+                        parts: [
+                            {
+                                str: "Because of your symptoms, did you call [write the number of emergency line of your country]?"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                key: "1",
+                role: "responseGroup",
+                items: [
+                    {
+                        key: "1.1",
+                        role: "singleChoiceGroup",
+                        items: [
+                            {
+                                key: "1.1.1",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Yes"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.0",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "No"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.2",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I don't know"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+
 const Q8: SurveySingleItem = {
     key: "weekly.44",
     version: 1,
@@ -3661,6 +4022,34 @@ const Q9: SurveySingleItem = {
                                 ]
                             },
                             {
+                                key: "1.1.7",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Homeopathy"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.8",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Alternative medicine (essential oil, phytotherapy, etc.)"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
                                 key: "1.1.221",
                                 role: "option",
                                 content: [
@@ -3836,6 +4225,73 @@ const Q9b: SurveySingleItem = {
                                     }
                                 ]
                             }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+const Q14: SurveySingleItem = {
+    key: "weekly.Q14",
+    follows: [
+        "weekly.32",
+    ],
+    version: 1,
+    validations: [],
+    components: {
+        role: "root",
+        items: [
+            {
+                role: "title",
+                content: [
+                    {
+                        code: "en",
+                        parts: [
+                            {
+                                str: "Because of your symptoms, were you hospitalized?"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                key: "1",
+                role: "responseGroup",
+                items: [
+                    {
+                        key: "1.1",
+                        role: "singleChoiceGroup",
+                        items: [
+                            {
+                                key: "1.1.1",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Yes"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.0",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "No"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
                         ]
                     }
                 ]
@@ -4148,8 +4604,8 @@ const Q10c: SurveySingleItem = {
     }
 }
 
-const Qcov5: SurveySingleItem = {
-    key: "weekly.Qcov5",
+const Qcov6: SurveySingleItem = {
+    key: "weekly.Qcov6",
     version: 1,
     validations: [],
     components: {
@@ -4162,7 +4618,7 @@ const Qcov5: SurveySingleItem = {
                         code: "en",
                         parts: [
                             {
-                                str: "Because of your symptoms, did you wear a mask (surgical mask sold in pharmacies)?"
+                                str: "Because of your symptoms, did you wear a mask (surgical mask sold in pharmacies, or mask FFP1, FFP2, FFP3)?"
                             }
                         ]
                     }
@@ -4226,8 +4682,8 @@ const Qcov5: SurveySingleItem = {
     }
 }
 
-const Qcov6: SurveySingleItem = {
-    key: "weekly.Qcov6",
+const Qcov7: SurveySingleItem = {
+    key: "weekly.Qcov7",
     version: 1,
     validations: [],
     components: {
@@ -4262,7 +4718,7 @@ const Qcov6: SurveySingleItem = {
                                         code: "en",
                                         parts: [
                                             {
-                                                str: "Regularly wash hands"
+                                                str: "Regularly wash or disinfect hands"
                                             }
                                         ]
                                     }
@@ -4325,6 +4781,20 @@ const Qcov6: SurveySingleItem = {
                                 ]
                             },
                             {
+                                key: "1.1.11",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Stop greeting by hugging and/or kissing on both cheeks"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
                                 key: "1.1.6",
                                 role: "option",
                                 content: [
@@ -4381,7 +4851,7 @@ const Qcov6: SurveySingleItem = {
                                 ]
                             },
                             {
-                                key: "1.1.11",
+                                key: "1.1.10",
                                 role: "option",
                                 content: [
                                     {
@@ -4395,7 +4865,63 @@ const Qcov6: SurveySingleItem = {
                                 ]
                             },
                             {
-                                key: "1.1.10",
+                                key: "1.1.13",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Have your food-shopping delivered by a store or a friend/family member "
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.14",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Avoid seeing friends and family"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.15",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Avoid being in contact with people over 65 years or with a chronic disease "
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.11",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "Avoid being in contact with children"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.12",
                                 role: "option",
                                 content: [
                                     {
@@ -4564,6 +5090,140 @@ const Q11: SurveySingleItem = {
     }
 }
 
+const Qcov9: SurveySingleItem = {
+    key: "weekly.Qcov9",
+    version: 1,
+    validations: [],
+    components: {
+        role: "root",
+        items: [
+            {
+                role: "title",
+                content: [
+                    {
+                        code: "en",
+                        parts: [
+                            {
+                                str: "For which reason(s) do you think you have this disease? (Select all the relevant answers)"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                key: "1",
+                role: "responseGroup",
+                items: [
+                    {
+                        key: "1.1",
+                        role: "singleChoiceGroup",
+                        items: [
+                            {
+                                key: "1.1.1",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "My doctor told me I have this disease"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.2",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I had a laboratory confirmation that I have this disease"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.3",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I had direct contact with a laboratory confirmed case"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.4",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I had close contact with someone for whom a doctor diagnosed this disease "
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.5",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I was in close contact with someone presenting symptoms of this disease"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.6",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I was at an event/location with a confirmed case"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                key: "1.1.7",
+                                role: "option",
+                                content: [
+                                    {
+                                        code: "en",
+                                        parts: [
+                                            {
+                                                str: "I think I have this disease"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+
 export const survey: SurveyGroupItem = {
     key: 'weekly',
     version: 1,
@@ -4575,6 +5235,9 @@ export const survey: SurveyGroupItem = {
         Qcov2,
         Qcov2b,
         Qcov3,
+        Qcov3b,
+        Qcov8,
+        Qcov8b,
         Q3,
         Q4,
         Q5,
@@ -4585,15 +5248,18 @@ export const survey: SurveyGroupItem = {
         Q7,
         Q7b,
         Qcov4,
+        Qcov5,
         Q8,
         Q8b,
         Q9,
         Q9b,
+        Q14,
         Q10,
         Q10b,
         Q10c,
-        Qcov5,
         Qcov6,
+        Qcov7,
         Q11,
+        Qcov9,
     ]
 }
