@@ -134,14 +134,14 @@ const Q4: SurveySingleItem = {
         },
         items: [
           {
-            key: '1.1',
+            key: '1',
             role: 'singleChoiceGroup',
             order: {
               name: 'sequential'
             },
             items: [
               {
-                key: '1.1.1',
+                key: '1',
                 role: 'option',
                 content: [
                   {
@@ -163,7 +163,7 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.2',
+                key: '2',
                 role: 'option',
                 content: [
                   {
@@ -185,7 +185,7 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.3',
+                key: '3',
                 role: 'option',
                 content: [
                   {
@@ -207,7 +207,7 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.4',
+                key: '4',
                 role: 'option',
                 content: [
                   {
@@ -229,7 +229,7 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.5',
+                key: '5',
                 role: 'option',
                 content: [
                   {
@@ -251,7 +251,7 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.6',
+                key: '6',
                 role: 'option',
                 content: [
                   {
@@ -273,7 +273,7 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.7',
+                key: '7',
                 role: 'option',
                 content: [
                   {
@@ -295,7 +295,7 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.8',
+                key: '8',
                 role: 'option',
                 content: [
                   {
@@ -317,7 +317,7 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.9',
+                key: '9',
                 role: 'option',
                 content: [
                   {
@@ -529,18 +529,18 @@ const Q4b: SurveySingleItem = {
         },
         items: [
           {
-            key: '1.1',
+            key: '1',
             role: 'singleChoiceGroup',
             order: {
               name: 'sequential'
             },
             items: [
               {
-                key: '1.1.1',
+                key: '1',
                 role: 'input',
               },
               {
-                key: '1.1.2',
+                key: '2',
                 role: 'option',
                 content: [
                   {
@@ -562,7 +562,7 @@ const Q4b: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.3',
+                key: '3',
                 role: 'option',
                 content: [
                   {
@@ -774,14 +774,14 @@ const Q4c: SurveySingleItem = {
         },
         items: [
           {
-            key: '1.1',
+            key: '1',
             role: 'singleChoiceGroup',
             order: {
               name: 'sequential'
             },
             items: [
               {
-                key: '1.1.1',
+                key: '1',
                 role: 'option',
                 content: [
                   {
@@ -803,7 +803,7 @@ const Q4c: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.2',
+                key: '2',
                 role: 'option',
                 content: [
                   {
@@ -825,7 +825,7 @@ const Q4c: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.3',
+                key: '3',
                 role: 'option',
                 content: [
                   {
@@ -847,7 +847,7 @@ const Q4c: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.4',
+                key: '4',
                 role: 'option',
                 content: [
                   {
@@ -869,7 +869,7 @@ const Q4c: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.5',
+                key: '5',
                 role: 'option',
                 content: [
                   {
@@ -891,7 +891,7 @@ const Q4c: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.6',
+                key: '6',
                 role: 'input',
                 content: [
                   {
@@ -1238,14 +1238,14 @@ const Q5: SurveySingleItem = {
         },
         items: [
           {
-            key: '1.1',
+            key: '1',
             role: 'multipleChoiceGroup',
             order: {
               name: 'sequential'
             },
             items: [
               {
-                key: '1.1.1',
+                key: '1',
                 role: 'option',
                 content: [
                   {
@@ -1267,7 +1267,7 @@ const Q5: SurveySingleItem = {
                 ],
               },
               {
-                key: '1.1.2',
+                key: '2',
                 role: 'option',
                 content: [
                   {
@@ -1289,7 +1289,7 @@ const Q5: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.3',
+                key: '3',
                 role: 'option',
                 content: [
                   {
@@ -1311,7 +1311,7 @@ const Q5: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.4',
+                key: '4',
                 role: 'option',
                 content: [
                   {
@@ -1333,7 +1333,7 @@ const Q5: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.5',
+                key: '5',
                 role: 'option',
                 content: [
                   {
@@ -1519,55 +1519,14 @@ const Q5b: SurveySingleItem = {
         },
         items: [
           {
-            key: '1.1',
+            key: '1',
             role: 'multipleChoiceGroup',
             order: {
               name: 'sequential'
             },
             items: [
               {
-                key: '1.1.0',
-                role: 'input',
-                content: [
-                  {
-                    code: 'en',
-                    parts: [
-                      {
-                        str: 'Other: '
-                      },
-                    ]
-                  },
-                  {
-                    code: 'de',
-                    parts: [
-                      {
-                        str: 'Andere:'
-                      },
-                    ]
-                  },
-                ],
-                disabled: {
-                  name: 'isDefined',
-                  data: [
-                    {
-                      dtype: 'exp',
-                      exp: {
-                        name: 'getResponseItem',
-                        data: [
-                          {
-                            str: '0.5.5b'
-                          },
-                          {
-                            str: '1.1.5'
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                },
-              },
-              {
-                key: '1.1.1',
+                key: '1',
                 role: 'option',
                 content: [
                   {
@@ -1608,7 +1567,7 @@ const Q5b: SurveySingleItem = {
                 },
               },
               {
-                key: '1.1.2',
+                key: '2',
                 role: 'option',
                 content: [
                   {
@@ -1649,7 +1608,7 @@ const Q5b: SurveySingleItem = {
                 },
               },
               {
-                key: '1.1.3',
+                key: '3',
                 role: 'option',
                 content: [
                   {
@@ -1690,7 +1649,7 @@ const Q5b: SurveySingleItem = {
                 },
               },
               {
-                key: '1.1.4',
+                key: '4',
                 role: 'option',
                 content: [
                   {
@@ -1731,7 +1690,7 @@ const Q5b: SurveySingleItem = {
                 },
               },
               {
-                key: '1.1.5',
+                key: '5',
                 role: 'option',
                 content: [
                   {
@@ -1894,7 +1853,7 @@ const Q6: SurveySingleItem = {
         },
         items: [
           {
-            key: '1.1',
+            key: '1',
             role: 'dropDownGroup',
             order: {
               name: 'sequential'
@@ -1937,7 +1896,7 @@ const Q6: SurveySingleItem = {
             ],
             items: [
               {
-                key: '1.1.1',
+                key: '1',
                 role: 'option',
                 content: [
                   {
@@ -1959,7 +1918,7 @@ const Q6: SurveySingleItem = {
                 ]
               },
               {
-                key: '1.1.2',
+                key: '2',
                 role: 'option',
                 content: [
                   {
@@ -1975,6 +1934,94 @@ const Q6: SurveySingleItem = {
                     parts: [
                       {
                         str: '1'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '3',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '4',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '5',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '6',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '5+'
                       },
                     ]
                   },
@@ -2046,6 +2093,727 @@ const Q6: SurveySingleItem = {
                     parts: [
                       {
                         str: '1'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '1.2.3',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '1.2.4',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '1.2.5',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '1.2.6',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                ]
+              },
+            ]
+          }, {
+            key: '2',
+            role: 'dropDownGroup',
+            order: {
+              name: 'sequential'
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: '5-18 years:'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: '5-18 Jahre'
+                  },
+                ]
+              },
+            ],
+            items: [
+              {
+                key: '1',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '0'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '0'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '2',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '3',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '4',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '5',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '6',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                ]
+              },
+            ]
+          }, {
+            key: '3',
+            role: 'dropDownGroup',
+            order: {
+              name: 'sequential'
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: '19-44 years:'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: '19-44 Jahre'
+                  },
+                ]
+              },
+            ],
+            items: [
+              {
+                key: '1',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '0'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '0'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '2',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '3',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '4',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '5',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '6',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                ]
+              },
+            ]
+          }, {
+            key: '4',
+            role: 'dropDownGroup',
+            order: {
+              name: 'sequential'
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: '45-64 years:'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: '45-64 Jahre'
+                  },
+                ]
+              },
+            ],
+            items: [
+              {
+                key: '1',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '0'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '0'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '2',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '3',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '4',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '5',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '6',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                ]
+              },
+            ]
+          },
+          {
+            key: '5',
+            role: 'dropDownGroup',
+            order: {
+              name: 'sequential'
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: '65+ years:'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: '65+ Jahre'
+                  },
+                ]
+              },
+            ],
+            items: [
+              {
+                key: '1',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '0'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '0'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '2',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '3',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '4',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '3'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '5',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                ]
+              },
+              {
+                key: '6',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '5+'
                       },
                     ]
                   },
@@ -2193,7 +2961,7 @@ const Q3: SurveySingleItem = {
         },
         items: [
           {
-            key: '1.1',
+            key: '1',
             role: 'dateInput',
             properties: {
               dateInputMode: { str: 'Y' },
@@ -2223,11 +2991,211 @@ const Q3: SurveySingleItem = {
   }
 }
 
+const QX1: SurveySingleItem = {
+  key: '0.6.x1',
+  version: 1,
+  validations: [],
+  components: {
+    role: 'root', items: [
+      // title
+      {
+        role: 'title',
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'Enter a text below'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Geben Sie Text ein.'
+              },
+            ]
+          },
+        ]
+      },
+
+      // responseGroup
+      {
+        key: '1',
+        role: 'responseGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            key: '1',
+            role: 'input',
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Label '
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Label DE '
+                  },
+                ]
+              },
+            ],
+          }
+        ]
+      },
+    ]
+  }
+}
+
+const QX2: SurveySingleItem = {
+  key: '0.6.x2',
+  version: 1,
+  validations: [],
+  components: {
+    role: 'root', items: [
+      // title
+      {
+        role: 'title',
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'Enter a text below'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Geben Sie Text ein.'
+              },
+            ]
+          },
+        ]
+      },
+
+      // responseGroup
+      {
+        key: '1',
+        role: 'responseGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            key: '1',
+            role: 'multilineTextInput',
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Label '
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Label DE '
+                  },
+                ]
+              },
+            ],
+          }
+        ]
+      },
+    ]
+  }
+}
+
+const QX3: SurveySingleItem = {
+  key: '0.6.x3',
+  version: 1,
+  validations: [],
+  components: {
+    role: 'root', items: [
+      // title
+      {
+        role: 'title',
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'Enter a number below'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Geben Sie eine Zahl ein.'
+              },
+            ]
+          },
+        ]
+      },
+
+      // responseGroup
+      {
+        key: '1',
+        role: 'responseGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            key: '1',
+            role: 'numberInput',
+            properties: {
+              max: { dtype: 'num', num: 4443 },
+              min: { dtype: 'num', num: -5 },
+              stepSize: { dtype: 'num', num: 0.3 },
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Label '
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Label DE '
+                  },
+                ]
+              },
+            ],
+          }
+        ]
+      },
+    ]
+  }
+}
+
 export const QG0: SurveyGroupItem = {
   key: '0',
   version: 1,
   items: [
-    Q3,
+    //Q3,
     {
       key: '0.4',
       version: 1,
@@ -2241,7 +3209,7 @@ export const QG0: SurveyGroupItem = {
       key: '0.5',
       version: 1,
       items: [
-        Q5,
+        //Q5,
         Q5b,
       ],
     },
@@ -2250,6 +3218,9 @@ export const QG0: SurveyGroupItem = {
       version: 1,
       items: [
         Q6,
+        QX1,
+        QX2,
+        QX3,
       ],
     },
   ],

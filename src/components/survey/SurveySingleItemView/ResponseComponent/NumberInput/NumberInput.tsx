@@ -49,7 +49,6 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     })
   };
 
-  console.log('props', props.compDef.properties)
   return (
     <TextField
       label={getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
