@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, Fragment } from 'react';
-import { Container, Typography, Box, Card, Paper } from '@material-ui/core';
+import { Container, Typography, Paper, Grid } from '@material-ui/core';
 import FlexGrow from '../../common/FlexGrow';
 import ParticleText from '../../common/ParticleText/ParticleText';
 
@@ -43,13 +43,13 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
 
   const NextStepsBox = (title: string) => {
     return (
-      <div style={{ display: "flex" }}>
-        <Paper elevation={0} style={{ width: 280, height: 150, padding: 16, margin: 16, borderRadius: 42 }}>
+      <Grid item xs={12} sm={8} md={4}>
+        <Paper elevation={0} style={{ height: 120, padding: 16, margin: 16, borderRadius: 42 }}>
           <Typography variant="h6" align="center">
             {title}
           </Typography>
         </Paper>
-      </div>
+      </Grid>
     );
   }
 
@@ -59,11 +59,11 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
         <Typography variant="h5" color="secondary" align="center">
           Here are some ideas for your next steps:
         </Typography>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <Grid container justify="center">
           {NextStepsBox("Learn more about this study")}
           {NextStepsBox("Read the news")}
           {NextStepsBox("Improve your health")}
-        </div>
+        </Grid>
       </Fragment>
     );
   }
