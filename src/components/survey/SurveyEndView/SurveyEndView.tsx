@@ -22,7 +22,7 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
   });
 
   const getRandomEmoji = () => {
-    let index = Math.round(Math.random() * emojiList.length) - 1;
+    let index = Math.round(Math.random() * (emojiList.length - 1));
     return emojiList[index];
   }
 
