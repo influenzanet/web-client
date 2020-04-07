@@ -5116,7 +5116,7 @@ const Qcov9: SurveySingleItem = {
         items: [
           {
             key: "1.1",
-            role: "singleChoiceGroup",
+            role: "multipleChoiceGroup",
             items: [
               {
                 key: "1",
@@ -5224,6 +5224,667 @@ const Qcov9: SurveySingleItem = {
   }
 }
 
+const Qcov9b: SurveySingleItem = {
+  key: "weekly.Qcov9b",
+  follows: [
+    "weekly.Qcov9",
+  ],
+  version: 1,
+  validations: [],
+  components: {
+    role: "root",
+    items: [
+      {
+        role: "title",
+        content: [
+          {
+            code: "en",
+            parts: [
+              {
+                str: "Have you informed people who have been in close contact with you about your suspicion of COVID-19 infection?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        key: "1",
+        role: "responseGroup",
+        items: [
+          {
+            key: "1.1",
+            role: "singleChoiceGroup",
+            items: [
+              {
+                key: "1",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Yes"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "2",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Some of them"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "0",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "No"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+const Qcov10: SurveySingleItem = {
+  key: "weekly.Qcov10",
+  version: 1,
+  validations: [],
+  components: {
+    role: "root",
+    items: [
+      {
+        role: "title",
+        content: [
+          {
+            code: "en",
+            parts: [
+              {
+                str: "Since the beginning of COVID-19 lockdown measures, do you carry out a professional activity? (Select all the relevant answers)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        key: "1",
+        role: "responseGroup",
+        items: [
+          {
+            key: "1.1",
+            role: "multipleChoiceGroup",
+            items: [
+              {
+                key: "1",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Yes, I work from home"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'isDefined',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'getResponseItem',
+                        data: [
+                          {
+                            str: 'weekly.Qcov10'
+                          },
+                          {
+                            str: '1.1.4'
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+              },
+              {
+                key: "2",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Yes, I work outside from home"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'isDefined',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'getResponseItem',
+                        data: [
+                          {
+                            str: 'weekly.Qcov10'
+                          },
+                          {
+                            str: '1.1.4'
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+              },
+              {
+                key: "3",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "No, I have a leave of absence to take care of my kid(s)"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'isDefined',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'getResponseItem',
+                        data: [
+                          {
+                            str: 'weekly.Qcov10'
+                          },
+                          {
+                            str: '1.1.4'
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+              },
+              {
+                key: "4",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "No, I have a sick leave (because of Covid-19)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "5",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "No, I have another situation (retired, job-seeker, student, house-wife/husband, other sick-leave…)"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'isDefined',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'getResponseItem',
+                        data: [
+                          {
+                            str: 'weekly.Qcov10'
+                          },
+                          {
+                            str: '1.1.4'
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+              },
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+const Qcov10b: SurveySingleItem = {
+  key: "weekly.Qcov10b",
+  follows: [
+    "weekly.Qcov10",
+  ],
+  version: 1,
+  validations: [],
+  components: {
+    role: "root",
+    items: [
+      {
+        role: "title",
+        content: [
+          {
+            code: "en",
+            parts: [
+              {
+                str: "How many days a week do you work outside from home?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        key: "1",
+        role: "responseGroup",
+        items: [
+          {
+            key: '1.1',
+            role: 'numberInput',
+            properties: {
+              max: { dtype: 'num', num: 7 },
+              min: { dtype: 'num', num: 1 },
+              stepSize: { dtype: 'num', num: 1 },
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Days'
+                  },
+                ]
+              },
+            ],
+          }
+        ]
+      }
+    ]
+  }
+}
+
+const Qcov11: SurveySingleItem = {
+  key: "weekly.Qcov11",
+  version: 1,
+  validations: [],
+  components: {
+    role: "root",
+    items: [
+      {
+        role: "title",
+        content: [
+          {
+            code: "en",
+            parts: [
+              {
+                str: "Over recent days, at which frequency did you go out of home to buy products, on average?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        key: "1",
+        role: "responseGroup",
+        items: [
+          {
+            key: "1.1",
+            role: "singleChoiceGroup",
+            items: [
+              {
+                key: "1",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "I do not go out of home anymore"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "2",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Less than once a week"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "3",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Once a week"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "4",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "2 to 6 times a week"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "5",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Once a day"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "6",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Several times per day"
+                      }
+                    ]
+                  }
+                ]
+              },
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+const Qcov12: SurveySingleItem = {
+  key: "weekly.Qcov12",
+  version: 1,
+  validations: [],
+  components: {
+    role: "root",
+    items: [
+      {
+        role: "title",
+        content: [
+          {
+            code: "en",
+            parts: [
+              {
+                str: "Over recent days, at which frequency did you go out of home to get fresh air or exercise, on average?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        key: "1",
+        role: "responseGroup",
+        items: [
+          {
+            key: "1.1",
+            role: "singleChoiceGroup",
+            items: [
+              {
+                key: "1",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "I do not go out of home anymore"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "2",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Less than once a week"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "3",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Once a week"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "4",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "2 to 6 times a week"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "5",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Once a day"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "6",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Several times per day"
+                      }
+                    ]
+                  }
+                ]
+              },
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+const Qcov13: SurveySingleItem = {
+  key: "weekly.Qcov13",
+  version: 1,
+  validations: [],
+  components: {
+    role: "root",
+    items: [
+      {
+        role: "title",
+        content: [
+          {
+            code: "en",
+            parts: [
+              {
+                str: "Over the course of yesterday, how many people (outside your household) did you approach at a distance lower than 1 meter?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        key: "1",
+        role: "responseGroup",
+        items: [
+          {
+            key: "1.1",
+            role: "singleChoiceGroup",
+            items: [
+              {
+                key: "0",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "1",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "2",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "from 2 to 5"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "3",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "from 6 to 10"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "4",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "more then 10"
+                      }
+                    ]
+                  }
+                ]
+              },
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
 export const survey: SurveyGroupItem = {
   key: 'weekly',
   version: 1,
@@ -5261,5 +5922,11 @@ export const survey: SurveyGroupItem = {
     Qcov7,
     Q11,
     Qcov9,
+    Qcov9b,
+    Qcov10,
+    Qcov10b,
+    Qcov11,
+    Qcov12,
+    Qcov13,
   ]
 }
