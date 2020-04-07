@@ -937,7 +937,7 @@ const Q2: SurveySingleItem = {
                                                   str: "1.1"
                                                 },
                                                 {
-                                                  str: "1.1.169"
+                                                  str: "169"
                                                 }
                                               ]
                                             }
@@ -2844,7 +2844,7 @@ const Q3: SurveySingleItem = {
                                                         str: "1.1"
                                                       },
                                                       {
-                                                        str: "1.1.169"
+                                                        str: "169"
                                                       }
                                                     ]
                                                   }
