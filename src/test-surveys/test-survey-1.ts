@@ -160,6 +160,24 @@ const Q4: SurveySingleItem = {
                       },
                     ]
                   },
+                ],
+                description: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Longer text, explaining the option in more detail, allowing to display on a short category first and provide info on demand'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'DE tooltip'
+                      },
+                    ]
+                  },
                 ]
               },
               {
