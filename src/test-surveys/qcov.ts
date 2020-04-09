@@ -5885,6 +5885,518 @@ const Qcov13: SurveySingleItem = {
   }
 }
 
+const Qcov14: SurveySingleItem = {
+  key: "weekly.Qcov14",
+  version: 1,
+  validations: [],
+  components: {
+    role: "root",
+    items: [
+      {
+        role: "title",
+        content: [
+          {
+            code: "en",
+            parts: [
+              {
+                str: "If lockdown measures were lifted up, but collective childcare/schools/university were closed, would you carry out a professional activity? (Select all the relevant answers)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        key: "1",
+        role: "responseGroup",
+        items: [
+          {
+            key: "1.1",
+            role: "multipleChoiceGroup",
+            items: [
+              {
+                key: "1",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Yes, I would work from home"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'or',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'isDefined',
+                        data: [
+                          {
+                            dtype: 'exp',
+                            exp: {
+                              name: 'getResponseItem',
+                              data: [
+                                {
+                                  str: 'weekly.Qcov14'
+                                },
+                                {
+                                  str: '1.1.4'
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'isDefined',
+                        data: [
+                          {
+                            dtype: 'exp',
+                            exp: {
+                              name: 'getResponseItem',
+                              data: [
+                                {
+                                  str: 'weekly.Qcov14'
+                                },
+                                {
+                                  str: '1.1.6'
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                  ]
+                },
+              },
+              {
+                key: "2",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Yes, I would work outside from home"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'or',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'isDefined',
+                        data: [
+                          {
+                            dtype: 'exp',
+                            exp: {
+                              name: 'getResponseItem',
+                              data: [
+                                {
+                                  str: 'weekly.Qcov14'
+                                },
+                                {
+                                  str: '1.1.4'
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'isDefined',
+                        data: [
+                          {
+                            dtype: 'exp',
+                            exp: {
+                              name: 'getResponseItem',
+                              data: [
+                                {
+                                  str: 'weekly.Qcov14'
+                                },
+                                {
+                                  str: '1.1.6'
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                  ]
+                },
+              },
+              {
+                key: "3",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "No, I would have a leave of absence to take care of my kid(s)"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'or',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'isDefined',
+                        data: [
+                          {
+                            dtype: 'exp',
+                            exp: {
+                              name: 'getResponseItem',
+                              data: [
+                                {
+                                  str: 'weekly.Qcov14'
+                                },
+                                {
+                                  str: '1.1.4'
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'isDefined',
+                        data: [
+                          {
+                            dtype: 'exp',
+                            exp: {
+                              name: 'getResponseItem',
+                              data: [
+                                {
+                                  str: 'weekly.Qcov14'
+                                },
+                                {
+                                  str: '1.1.6'
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                  ]
+                },
+              },
+              {
+                key: "4",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "No, I would have a sick leave (because of Covid-19) (exclusive item)"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'isDefined',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'getResponseItem',
+                        data: [
+                          {
+                            str: 'weekly.Qcov14'
+                          },
+                          {
+                            str: '1.1.6'
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+              },
+              {
+                key: "5",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "No, I would have another situation (retired, job-seeker, student, house-wife/husband, other sick-leave…)"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'or',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'isDefined',
+                        data: [
+                          {
+                            dtype: 'exp',
+                            exp: {
+                              name: 'getResponseItem',
+                              data: [
+                                {
+                                  str: 'weekly.Qcov14'
+                                },
+                                {
+                                  str: '1.1.4'
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'isDefined',
+                        data: [
+                          {
+                            dtype: 'exp',
+                            exp: {
+                              name: 'getResponseItem',
+                              data: [
+                                {
+                                  str: 'weekly.Qcov14'
+                                },
+                                {
+                                  str: '1.1.6'
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                  ]
+                },
+              },
+              {
+                key: "6",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "I don’t know (exclusive item)"
+                      }
+                    ]
+                  }
+                ],
+                disabled: {
+                  name: 'isDefined',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'getResponseItem',
+                        data: [
+                          {
+                            str: 'weekly.Qcov14'
+                          },
+                          {
+                            str: '1.1.4'
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+              },
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+const Qcov14b: SurveySingleItem = {
+  key: "weekly.Qcov14b",
+  follows: [
+    "weekly.Qcov14",
+  ],
+  version: 1,
+  validations: [],
+  components: {
+    role: "root",
+    items: [
+      {
+        role: "title",
+        content: [
+          {
+            code: "en",
+            parts: [
+              {
+                str: "How many days a week do you work outside from home?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        key: "1",
+        role: "responseGroup",
+        items: [
+          {
+            key: '1.1',
+            role: 'numberInput',
+            properties: {
+              max: { dtype: 'num', num: 7 },
+              min: { dtype: 'num', num: 1 },
+              stepSize: { dtype: 'num', num: 1 },
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Days'
+                  },
+                ]
+              },
+            ],
+          }
+        ]
+      }
+    ]
+  }
+}
+
+const Qcov15: SurveySingleItem = {
+  key: "weekly.Qcov15",
+  version: 1,
+  validations: [],
+  components: {
+    role: "root",
+    items: [
+      {
+        role: "title",
+        content: [
+          {
+            code: "en",
+            parts: [
+              {
+                str: "If lockdown measures were extended (that is to say, continued beyond the date announced by the government), do you think you would follow the recommendations with as much rigour as you do now?"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        key: "1",
+        role: "responseGroup",
+        items: [
+          {
+            key: "1.1",
+            role: "singleChoiceGroup",
+            items: [
+              {
+                key: "4",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "Yes, absolutely"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "3",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "•	Yes, moderately"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "2",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "•	No, not really"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "1",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "•	No, not at all"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                key: "99",
+                role: "option",
+                content: [
+                  {
+                    code: "en",
+                    parts: [
+                      {
+                        str: "•	I don't know"
+                      }
+                    ]
+                  }
+                ]
+              },
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
 export const survey: SurveyGroupItem = {
   key: 'weekly',
   version: 1,
@@ -5928,5 +6440,8 @@ export const survey: SurveyGroupItem = {
     Qcov11,
     Qcov12,
     Qcov13,
+    Qcov14,
+    Qcov14b,
+    Qcov15
   ]
 }
