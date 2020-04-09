@@ -3195,7 +3195,7 @@ export const QG0: SurveyGroupItem = {
   key: '0',
   version: 1,
   items: [
-    //Q3,
+    Q3,
     {
       key: '0.4',
       version: 1,
