@@ -31,7 +31,10 @@ const RadioCtrlWithTextField: React.FC<RadioCtrlWithTextFieldProps> = (props) =>
       <TextField
         fullWidth
         value={props.inputValue}
+        variant="outlined"
         margin="dense"
+        label={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
+        InputLabelProps={{ shrink: true }}
         onChange={props.onInputChange}
         disabled={props.compDef.disabled !== undefined}
       ></TextField>

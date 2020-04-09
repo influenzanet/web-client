@@ -101,6 +101,8 @@ const DateInput: React.FC<DateInputProps> = (props) => {
           onChange={handleDateChange}
           views={pickerView as DatePickerView[]}
           format={format}
+          inputVariant="outlined"
+          margin="dense"
           InputLabelProps={{ shrink: true }}
           clearable
         />

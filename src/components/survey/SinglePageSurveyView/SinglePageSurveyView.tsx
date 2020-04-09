@@ -117,6 +117,7 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
           onClick={() => {
             const resp = sEngine.getResponses();
             console.log(resp);
+            console.log(JSON.stringify(resp));
           }}
         >Submit</Button>
         <Button className={classes.btn} variant="contained" color="secondary">Cancel</Button>

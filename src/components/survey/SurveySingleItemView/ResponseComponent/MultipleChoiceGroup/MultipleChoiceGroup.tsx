@@ -165,6 +165,9 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
               fullWidth
               value={r.value ? r.value : ''}
               margin="dense"
+              variant="outlined"
+              label={getLocaleStringTextByCode(option.description, props.languageCode)}
+              InputLabelProps={{ shrink: true }}
               onChange={handleInputValueChange(option.key)}
               disabled={isDisabled(option)}
             ></TextField>
