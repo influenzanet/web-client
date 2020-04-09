@@ -1410,6 +1410,24 @@ const Q5: SurveySingleItem = {
                       },
                     ]
                   },
+                ],
+                description: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Patients are ... explain longer'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'Patientinnen und Patienten können hier erklärt werden'
+                      },
+                    ]
+                  },
                 ]
               },
               {
