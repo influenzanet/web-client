@@ -29,7 +29,7 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
     return (
       <Box pt={10} pb={10}>
         <div ref={emojiPlaceholderRef} style={{ minHeight: emojiSize }} />
-        <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, top: 0 }}>
+        <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, top: 0, pointerEvents: "none" }}>
           <ParticleText
             text={getRandomEmoji()}
             fontSize={emojiSize}
