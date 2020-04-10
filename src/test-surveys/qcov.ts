@@ -1,4 +1,4 @@
-import { SurveyGroupItem, SurveySingleItem } from "survey-engine/lib/data_types"
+import { SurveyGroupItem, SurveySingleItem, Survey } from "survey-engine/lib/data_types"
 
 const Q1: SurveySingleItem = {
   key: "weekly.32",
@@ -6397,7 +6397,7 @@ const Qcov15: SurveySingleItem = {
   }
 }
 
-export const survey: SurveyGroupItem = {
+const surveyDef: SurveyGroupItem = {
   key: 'weekly',
   version: 1,
   items: [
@@ -6444,4 +6444,11 @@ export const survey: SurveyGroupItem = {
     Qcov14b,
     Qcov15
   ]
+}
+
+
+export const survey: Survey = {
+  current: {
+    surveyDefinition: surveyDef
+  }
 }

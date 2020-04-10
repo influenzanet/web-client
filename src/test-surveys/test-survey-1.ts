@@ -1,4 +1,4 @@
-import { SurveyGroupItem, SurveySingleItem } from 'survey-engine/lib/data_types';
+import { SurveyGroupItem, SurveySingleItem, Survey } from 'survey-engine/lib/data_types';
 
 const Q4: SurveySingleItem = {
   key: '0.4.4',
@@ -3347,7 +3347,8 @@ const QX3: SurveySingleItem = {
   }
 }
 
-export const QG0: SurveyGroupItem = {
+
+const QG0: SurveyGroupItem = {
   key: '0',
   version: 1,
   items: [
@@ -3382,3 +3383,8 @@ export const QG0: SurveyGroupItem = {
   ],
 }
 
+export const testSurvey: Survey = {
+  current: {
+    surveyDefinition: QG0,
+  }
+}

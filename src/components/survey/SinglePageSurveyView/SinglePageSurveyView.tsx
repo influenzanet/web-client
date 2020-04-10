@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SurveyGroupItem, SurveySingleItem } from 'survey-engine/lib/data_types';
+import { Survey, SurveySingleItem } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import { flattenSurveyItemTree } from 'survey-engine/lib/utils';
 import SurveySingleItemView from '../SurveySingleItemView/SurveySingleItemView';
@@ -12,7 +12,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 interface SinglePageSurveyViewProps {
-  surveyDefinition: SurveyGroupItem;
+  surveyDefinition: Survey;
   // context? - with previous answers
   // submit survey
   // init with temporary loaded results

@@ -5,7 +5,9 @@ import { setPageTitle } from '../../../store/navigation/actions';
 import { Container } from '@material-ui/core';
 
 import SinglePageSurveyView from '../../../components/survey/SinglePageSurveyView/SinglePageSurveyView';
-import { QG0 } from '../../../test-surveys/test-survey-1';
+import { testSurvey } from '../../../test-surveys/test-survey-1';
+import { survey } from '../../../test-surveys/qcov';
+import SurveyEndView from '../../../components/survey/SurveyEndView/SurveyEndView';
 
 const MyStudies: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ const MyStudies: React.FC = () => {
   return (
     <Container maxWidth="lg">
       <SinglePageSurveyView
-        surveyDefinition={QG0}
+        surveyDefinition={testSurvey}
       />
     </Container>
   )

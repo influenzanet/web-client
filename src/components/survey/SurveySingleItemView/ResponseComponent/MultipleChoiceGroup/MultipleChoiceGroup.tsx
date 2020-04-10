@@ -145,7 +145,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
           />
         const description = getLocaleStringTextByCode(option.description, props.languageCode);
         if (description) {
-          return <Tooltip title={description} arrow>
+          return <Tooltip key={option.key} title={description} arrow>
             {renderedOption}
           </Tooltip>
         }
