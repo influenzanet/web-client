@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Survey, SurveySingleItem } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveyPageView from './SurveyPageView/SurveyPageView';
-import { Router, Switch, Route, useRouteMatch, Redirect } from 'react-router';
+import { Switch, Route, useRouteMatch, Redirect } from 'react-router';
+import SurveyEndView from '../SurveyEndView/SurveyEndView';
 
 interface SinglePageSurveyViewProps {
   surveyDefinition: Survey;
@@ -41,7 +42,7 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
 
   return (
     <Switch>
-      <Route path={`${path}/:index`} render={props => {
+      <Route path={`${path}/pages/:index`} render={props => {
         let index = parseInt(props.match.params.index);
 
         // If invalid index, redirect to beginning of survey.
@@ -51,14 +52,20 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
         let lastPage = index >= surveyPages.length - 1;
 
         let primaryActionLabel = (lastPage) ? "Submit" : "Next";
-        let primaryAction = (lastPage) ? onSubmit : () => props.history.push(`${path}/${index + 1}`);
+        let primaryAction = (lastPage)
+          ? () => {
+            onSubmit();
+            props.history.push(`${path}/completed`);
+          }
+          : () => props.history.push(`${path}/pages/${index + 1}`);
 
         let secondaryActionLabel = (firstPage) ? "" : "Back";
-        let secondaryAction = (firstPage) ? () => null : () => props.history.push(`${path}/${index - 1}`);
+        let secondaryAction = (firstPage) ? () => null : () => props.history.goBack();
 
         return surveyPage(surveyPages[index], primaryActionLabel, primaryAction, secondaryActionLabel, secondaryAction);
       }} />
-      <Redirect to={`${path}/0`} />
+      <Route path={`${path}/completed`} component={SurveyEndView} />
+      <Redirect to={`${path}/pages/0`} />
     </Switch>
   );
 };
