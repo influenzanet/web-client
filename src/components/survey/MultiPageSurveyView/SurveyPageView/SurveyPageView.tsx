@@ -105,11 +105,14 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
   const submitBtnGroup = (
     <Box textAlign="center" m={1}>
       <Box>
-        <Button className={classes.btn} variant="contained" color="secondary"
-          onClick={props.secondaryAction}
-        >
-          {props.secondaryActionLabel}
-        </Button>
+        {(props.secondaryActionLabel === "") ? null
+          :
+          <Button className={classes.btn} variant="contained" color="secondary"
+            onClick={props.secondaryAction}
+          >
+            {props.secondaryActionLabel}
+          </Button>
+        }
         <Button className={classes.btn} variant="contained" color="primary"
           onClick={props.primaryAction}
         >
