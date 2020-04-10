@@ -3386,5 +3386,9 @@ const QG0: SurveyGroupItem = {
 export const testSurvey: Survey = {
   current: {
     surveyDefinition: QG0,
+  },
+  maxItemsPerPage: {
+    large: 3,
+    small: 3
   }
 }
