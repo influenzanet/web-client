@@ -64,6 +64,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
       responseChanged={(response) => {
         if (response) {
           props.surveyEngine.setResponse(surveyItem.key, response);
+          // Rerender page by updating state
           props.setResponseCount(props.responseCount + 1);
         }
       }}
