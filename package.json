@@ -27,7 +27,7 @@
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "survey-engine": "^0.7.0",
+    "survey-engine": "^0.8.1",
     "typeface-roboto": "^0.0.75",
     "typescript": "3.7.4"
   },

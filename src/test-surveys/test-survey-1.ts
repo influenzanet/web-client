@@ -3347,10 +3347,17 @@ const QX3: SurveySingleItem = {
   }
 }
 
+const pb1: SurveySingleItem = {
+  key: '0.5.pb1',
+  type: 'pageBreak',
+  version: 1,
+};
+
 
 const QG0: SurveyGroupItem = {
   key: '0',
   version: 1,
+  selectionMethod: { name: 'sequential' },
   items: [
     Q3,
     {
@@ -3367,6 +3374,7 @@ const QG0: SurveyGroupItem = {
       version: 1,
       items: [
         Q5,
+        pb1,
         Q5b,
       ],
     },
@@ -3387,8 +3395,8 @@ export const testSurvey: Survey = {
   current: {
     surveyDefinition: QG0,
   },
-  maxItemsPerPage: {
+  /*maxItemsPerPage: {
     large: 3,
     small: 3
-  }
+  }*/
 }
