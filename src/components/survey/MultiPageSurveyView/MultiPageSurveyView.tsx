@@ -17,6 +17,8 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
   const [surveyEngine] = useState<SurveyEngineCore>(new SurveyEngineCore(props.surveyDefinition));
   const surveyPages = surveyEngine.getSurveyPages();
 
+  const [responseCount, setResponseCount] = useState(0);
+
   let { path } = useRouteMatch();
 
   const [selectedLanguage, setSelectedLanguage] = useState('en');
@@ -37,6 +39,8 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
       secondaryAction={secondaryAction}
       selectedLanguage={selectedLanguage}
       setSelectedLanguage={setSelectedLanguage}
+      responseCount={responseCount}
+      setResponseCount={setResponseCount}
     />
   }
 

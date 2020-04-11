@@ -19,6 +19,8 @@ interface SurveyPageViewProps {
   secondaryAction: () => void;
   selectedLanguage: string;
   setSelectedLanguage: Dispatch<SetStateAction<string>>;
+  responseCount: number;
+  setResponseCount: Dispatch<SetStateAction<number>>
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -62,6 +64,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
       responseChanged={(response) => {
         if (response) {
           props.surveyEngine.setResponse(surveyItem.key, response);
+          props.setResponseCount(props.responseCount + 1);
         }
       }}
     />

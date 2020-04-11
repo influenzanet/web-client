@@ -44,7 +44,7 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
 
   const [selectedLanguage, setSelectedLanguage] = useState('en');
 
-  const renderedSurvey = sEngine.getRenderedSurvey()
+  const renderedSurvey = sEngine.getRenderedSurvey();
 
   const surveyItems = flattenSurveyItemTree(renderedSurvey);
   const currentDisplayedKeys = surveyItems.map(item => item.key);
