@@ -43,6 +43,8 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
 
   const [displayedKeys, setDisplayedKeys] = useState<Array<string>>([]);
 
+  const responses = props.surveyEngine.getResponses();
+
   const currentDisplayedKeys = props.surveyItems.map(item => item.key);
   if (displayedKeys.length > 0 && !displayedKeys.every(key => currentDisplayedKeys.includes(key))) {
     setDisplayedKeys(prev => {
@@ -58,6 +60,9 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
       })
     }
 
+    let itemResponse = responses.find((value) => value.key === surveyItem.key);
+    let response = (itemResponse) ? itemResponse.response : undefined;
+
     return <SurveySingleItemView
       renderItem={surveyItem}
       languageCode={props.selectedLanguage}
@@ -68,6 +73,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
           props.setResponseCount(props.responseCount + 1);
         }
       }}
+      responsePrefill={response}
     />
   }
 
