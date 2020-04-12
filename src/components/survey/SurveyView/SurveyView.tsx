@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Survey, SurveySingleItem } from 'survey-engine/lib/data_types';
+import { Survey, SurveySingleItem, SurveySingleItemResponse, SurveyContext } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveyPageView from './SurveyPageView/SurveyPageView';
 import { Switch, Route, useRouteMatch, Redirect } from 'react-router';
 import SurveyEndView from '../SurveyEndView/SurveyEndView';
 
-interface SinglePageSurveyViewProps {
-  surveyDefinition: Survey;
+interface SurveyViewProps {
+  survey: Survey;
+  prefills?: SurveySingleItemResponse[];
+  context?: SurveyContext;
   // context? - with previous answers
   // submit survey
   // init with temporary loaded results
@@ -16,8 +18,8 @@ interface SinglePageSurveyViewProps {
   submitBtnText?: string;
 }
 
-const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
-  const [surveyEngine] = useState<SurveyEngineCore>(new SurveyEngineCore(props.surveyDefinition));
+const SurveyView: React.FC<SurveyViewProps> = (props) => {
+  const [surveyEngine] = useState<SurveyEngineCore>(new SurveyEngineCore(props.survey, props.context, props.prefills));
   const surveyPages = surveyEngine.getSurveyPages();
 
   const [responseCount, setResponseCount] = useState(0);
@@ -79,4 +81,4 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
   );
 };
 
-export default SinglePageSurveyView;
+export default SurveyView;
