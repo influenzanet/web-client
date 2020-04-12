@@ -11,6 +11,9 @@ interface SinglePageSurveyViewProps {
   // submit survey
   // init with temporary loaded results
   // save temporary result
+  backBtnText?: string;
+  nextBtnText?: string;
+  submitBtnText?: string;
 }
 
 const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
@@ -46,8 +49,8 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
 
   return (
     <Switch>
-      <Route path={`${path}/pages/:index`} render={props => {
-        let index = parseInt(props.match.params.index);
+      <Route path={`${path}/pages/:index`} render={rProps => {
+        let index = parseInt(rProps.match.params.index);
 
         // If invalid index, redirect to beginning of survey.
         if (index < 0 || index > surveyPages.length - 1) return <Redirect to={`${path}/0`} />
@@ -55,16 +58,18 @@ const SinglePageSurveyView: React.FC<SinglePageSurveyViewProps> = (props) => {
         let firstPage = index === 0;
         let lastPage = index >= surveyPages.length - 1;
 
-        let primaryActionLabel = (lastPage) ? "Submit" : "Next";
+        let primaryActionLabel = (lastPage) ?
+          (props.submitBtnText ? props.submitBtnText : "Submit") :
+          (props.nextBtnText ? props.nextBtnText : "Next");
         let primaryAction = (lastPage)
           ? () => {
             onSubmit();
-            props.history.push(`${path}/completed`);
+            rProps.history.push(`${path}/completed`);
           }
-          : () => props.history.push(`${path}/pages/${index + 1}`);
+          : () => rProps.history.push(`${path}/pages/${index + 1}`);
 
-        let secondaryActionLabel = (firstPage) ? "" : "Back";
-        let secondaryAction = (firstPage) ? () => null : () => props.history.goBack();
+        let secondaryActionLabel = (firstPage) ? "" : (props.backBtnText ? props.backBtnText : "Back");
+        let secondaryAction = (firstPage) ? () => null : () => rProps.history.goBack();
 
         return surveyPage(surveyPages[index], primaryActionLabel, primaryAction, secondaryActionLabel, secondaryAction);
       }} />
