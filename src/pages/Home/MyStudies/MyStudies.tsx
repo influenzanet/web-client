@@ -29,6 +29,7 @@ const MyStudies: React.FC = () => {
     <Container maxWidth="lg">
       <SurveyView
         survey={testSurvey}
+        languageCode={i18n.language}
         submitBtnText={t('survey:submitBtn')}
         nextBtnText={t('survey:nextBtn')}
         backBtnText={t('survey:backBtn')}

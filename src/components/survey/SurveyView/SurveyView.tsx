@@ -13,6 +13,7 @@ interface SurveyViewProps {
   // submit survey
   // init with temporary loaded results
   // save temporary result
+  languageCode: string;
   backBtnText?: string;
   nextBtnText?: string;
   submitBtnText?: string;
@@ -26,8 +27,6 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
 
   let { path: surveyPath } = useRouteMatch();
   let pagesPath = `${surveyPath}/pages`
-
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
 
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
@@ -43,8 +42,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
       primaryAction={primaryAction}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={secondaryAction}
-      selectedLanguage={selectedLanguage}
-      setSelectedLanguage={setSelectedLanguage}
+      selectedLanguage={props.languageCode}
       responseCount={responseCount}
       setResponseCount={setResponseCount}
     />

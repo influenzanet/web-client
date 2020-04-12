@@ -18,6 +18,7 @@ import {
   StylesProvider,
   MuiThemeProvider,
 } from '@material-ui/core';
+import AppIntegration from './pages/AppIntegration/AppIntegration';
 
 // import TestForm from './components/form/login/LoginForm';
 
@@ -52,6 +53,7 @@ const App: React.FC = () => {
             <Route path="/testForm" component={TestForm}/>*/}
             <Route path="/home" component={Home} />
             <Route path="/start" component={OnBoarding} />
+            <Route path="/app-integration" component={AppIntegration} />
             <Redirect to="/start"></Redirect>
           </Switch>
         </Router>

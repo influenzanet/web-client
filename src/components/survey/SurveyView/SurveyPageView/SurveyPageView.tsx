@@ -4,9 +4,6 @@ import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveySingleItemView from '../../SurveySingleItemView/SurveySingleItemView';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -18,22 +15,15 @@ interface SurveyPageViewProps {
   primaryAction: () => void;
   secondaryAction: () => void;
   selectedLanguage: string;
-  setSelectedLanguage: Dispatch<SetStateAction<string>>;
   responseCount: number;
   setResponseCount: Dispatch<SetStateAction<number>>
 }
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    formControl: {
-      margin: theme.spacing(1),
-    },
     btn: {
       margin: theme.spacing(1),
       minWidth: 150,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
     },
   }),
 );
@@ -77,41 +67,6 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
     />
   }
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    props.setSelectedLanguage(event.target.value as string);
-  };
-
-  const availableLanguages = [
-    { code: 'en', label: 'English' },
-    { code: 'de', label: 'Deutsch' },
-  ]
-
-  const languageSelector = (
-    <Box display="flex">
-      <Box flexGrow={1}></Box>
-      <Box>
-
-        <FormControl className={classes.formControl}>
-          <Select
-            labelId="language-select-label"
-            id="language-select"
-            color="primary"
-            value={props.selectedLanguage}
-            onChange={handleChange}
-          >
-            {
-              availableLanguages.map(item =>
-                <MenuItem key={item.code} value={item.code}>
-                  {item.label}
-                </MenuItem>)
-            }
-          </Select>
-        </FormControl>
-
-      </Box>
-    </Box>
-  )
-
   const submitBtnGroup = (
     <Box textAlign="center" m={1}>
       <Box>
@@ -134,7 +89,6 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
 
   return (
     <div >
-      {languageSelector}
       {
         props.surveyItems.map(surveyItem =>
           <Paper key={surveyItem.key}>
