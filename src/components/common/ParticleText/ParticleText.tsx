@@ -2,13 +2,13 @@ import React, { RefObject } from 'react';
 
 interface ParticleTextProps {
   text: string;
-  fontSize: string;
+  fontSize: number;
   fontFillStyle: string;
   placeholderRef: RefObject<HTMLDivElement>;
 }
 
 class ParticleText extends React.Component<ParticleTextProps> {
-  private pixelStep = 7;
+  private pixelStep = 7 * window.devicePixelRatio;
   private alphaThreshold = 127;
 
   private canvasRef = React.createRef<HTMLCanvasElement>();
@@ -31,15 +31,19 @@ class ParticleText extends React.Component<ParticleTextProps> {
       window.addEventListener("mousemove", this.onMouseMove);
       window.addEventListener("touchstart", this.onTouch);
       window.addEventListener("touchmove", this.onTouch);
+      window.addEventListener("pointercancel", this.onTouchEnd);
+      window.addEventListener("pointerup", this.onTouchEnd);
       window.addEventListener("touchend", this.onTouchEnd);
+      window.addEventListener("touchcancel", this.onTouchEnd);
       window.addEventListener("scroll", this.onScroll);
 
       if (this.canvasContext) {
         this.canvasContext.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-        this.canvasContext.font = "bold " + this.props.fontSize + " sans-serif";
+        this.canvasContext.font = `bold ${this.props.fontSize * window.devicePixelRatio}em sans-serif`;
         this.canvasContext.textAlign = "center";
         this.canvasContext.fillStyle = this.props.fontFillStyle;
+        this.canvasContext.textBaseline = "middle";
         this.canvasContext.fillText(this.props.text, this.canvasWidth / 2, this.canvasHeight / 2);
 
         let imageData = this.canvasContext.getImageData(0, 0, this.canvasWidth, this.canvasHeight).data;
@@ -58,6 +62,11 @@ class ParticleText extends React.Component<ParticleTextProps> {
 
         let canvasRect = this.canvasRef.current.getClientRects()[0];
         this.verticalPosition = canvasRect.y + canvasRect.height / 2;
+
+        this.updateVerticalPosition();
+
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
 
         this.renderFrame();
       }
@@ -129,7 +138,7 @@ class ParticleText extends React.Component<ParticleTextProps> {
     }
   }
 
-  private onTouchEnd = (ev: TouchEvent) => {
+  private onTouchEnd = (_: Event) => {
     this.mousePosition.x = -999999;
     this.mousePosition.y = -999999;
   }
@@ -150,15 +159,15 @@ class ParticleText extends React.Component<ParticleTextProps> {
 }
 
 class Particle {
-  private radiusVariable = 1;
-  private radiusConstant = 3;
-  private initialVelocityFactor = 10;
+  private radiusVariable = 1 * window.devicePixelRatio;
+  private radiusConstant = 3 * window.devicePixelRatio;
+  private initialVelocityFactor = 10 * window.devicePixelRatio;
   private frictionFactorVariable = 0.035;
   private frictionFactorConstant = 0.94;
-  private accelerationFactor = 1 / 1000;
-  private mouseAccelerationFactor = 1 / 300;
+  private accelerationFactor = (1 / 1000);
+  private mouseAccelerationFactor = (1 / 300);
   private mouseDistanceThreshold = 40 * window.devicePixelRatio;
-  private minimumSpeedThreshold = 0.03;
+  private minimumSpeedThreshold = (0.03) * window.devicePixelRatio;
 
   private position: Vector2;
   private destination: Vector2;
