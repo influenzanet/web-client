@@ -34,7 +34,7 @@ const MyStudies: React.FC = () => {
         nextBtnText={t('survey:nextBtn')}
         backBtnText={t('survey:backBtn')}
       />
-      <p>{t('title')}</p>
+      {/* <p>{t('title')}</p> */}
     </Container>
   )
 }
