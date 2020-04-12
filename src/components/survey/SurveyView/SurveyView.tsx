@@ -25,7 +25,8 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
 
   const [responseCount, setResponseCount] = useState(0);
 
-  let { path } = useRouteMatch();
+  let { path: surveyPath } = useRouteMatch();
+  let pagesPath = `${surveyPath}/pages`
 
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
@@ -49,11 +50,11 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
 
   return (
     <Switch>
-      <Route path={`${path}/pages/:index`} render={rProps => {
-        let index = parseInt(rProps.match.params.index);
+      <Route path={`${pagesPath}/:index`} render={routeProps => {
+        let index = parseInt(routeProps.match.params.index);
 
         // If invalid index, redirect to beginning of survey.
-        if (index < 0 || index > surveyPages.length - 1) return <Redirect to={`${path}/0`} />
+        if (index < 0 || index > surveyPages.length - 1) return <Redirect to={`${pagesPath}/0`} />
 
         let firstPage = index === 0;
         let lastPage = index >= surveyPages.length - 1;
@@ -64,17 +65,17 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
         let primaryAction = (lastPage)
           ? () => {
             onSubmit();
-            rProps.history.push(`${path}/completed`);
+            routeProps.history.push(`${surveyPath}/completed`);
           }
-          : () => rProps.history.push(`${path}/pages/${index + 1}`);
+          : () => routeProps.history.push(`${pagesPath}/${index + 1}`);
 
         let secondaryActionLabel = (firstPage) ? "" : (props.backBtnText ? props.backBtnText : "Back");
-        let secondaryAction = (firstPage) ? () => null : () => rProps.history.goBack();
+        let secondaryAction = (firstPage) ? () => null : () => routeProps.history.goBack();
 
         return surveyPage(surveyPages[index], primaryActionLabel, primaryAction, secondaryActionLabel, secondaryAction);
       }} />
-      <Route path={`${path}/completed`} component={SurveyEndView} />
-      <Redirect to={`${path}/pages/0`} />
+      <Route path={`${surveyPath}/completed`} component={SurveyEndView} />
+      <Redirect to={`${pagesPath}/0`} />
     </Switch>
   );
 };
