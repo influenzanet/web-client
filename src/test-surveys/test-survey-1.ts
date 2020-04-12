@@ -240,7 +240,7 @@ const Q4: SurveySingleItem = {
                     code: 'de',
                     parts: [
                       {
-                        str: 'Besuch von Kindertagesstätten/Schulen/Hochschulen/Universitäten'
+                        str: 'Besuch von Kindertagesstätten, Schulen, Hochschulen oder Universitäten'
                       },
                     ]
                   },
