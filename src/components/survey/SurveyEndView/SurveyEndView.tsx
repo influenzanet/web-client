@@ -10,7 +10,7 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const emojiPlaceholderRef = useRef<HTMLDivElement>(null);
 
-  const emojiSize = 10;
+  const emojiSize = 7.4;
 
   const emojiList = ['😃', '😊', '🙂', '😍', '😎', '🤩', '🥳', '😱', '👍', '👌', '💪', '🎊', '🎉', '❤️',];
 
