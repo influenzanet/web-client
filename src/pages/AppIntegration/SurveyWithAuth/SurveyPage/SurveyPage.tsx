@@ -5,6 +5,9 @@ import { useLocation, useHistory, useRouteMatch, RouteProps } from 'react-router
 import { survey } from '../../../../test-surveys/qcov';
 import { useTranslation } from 'react-i18next';
 
+import { setAccessTokenHeader, getAssignedSurveyRequest } from '../../../../api/api';
+import { SurveyReferenceReq } from '../../../../api/models/study-api';
+
 // A custom hook that builds on useLocation to parse
 // the query string for you.
 function useQuery() {
@@ -47,16 +50,26 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
   const [apiQuery, setApiQuery] = useState<ApiQuery | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
 
-
-
+  // Initialization
   useEffect(() => {
-    console.log('todo: set access token header');
     if (!studyKey || !surveyKey || !accessToken) {
       console.error('important query parameter missing');
       if (!error) {
         setError(true);
       }
     }
+
+    if (accessToken) {
+      setAccessTokenHeader(accessToken);
+    }
+
+    setApiQuery({
+      type: 'getSurvey',
+      payload: {
+        studyKey: studyKey,
+        surveyKey: surveyKey,
+      }
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -73,13 +86,34 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
+
+  const fetchSurveyData = async (apiQuery: ApiQuery) => {
+    setIsLoading(true);
+    try {
+      const surveyAndContext = await getAssignedSurveyRequest(apiQuery.payload as SurveyReferenceReq);
+      console.log(surveyAndContext)
+
+    } catch (error) {
+      console.error(error.response);
+      setError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // API calls
   useEffect(() => {
     if (!apiQuery) {
       return;
     }
-    console.log('todo: implement api query for');
-    console.log(apiQuery);
+    switch (apiQuery.type) {
+      case 'getSurvey':
+        fetchSurveyData(apiQuery);
+        break;
+      default:
+        console.log('query type not known');
+        break;
+    }
   }, [apiQuery]);
 
 

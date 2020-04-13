@@ -7,7 +7,7 @@ export interface SurveyReferenceReq {
 }
 
 export interface SurveyResponseReq {
-  studeyKey: string;
+  studyKey: string;
   response: SurveyResponse;
 }
 
