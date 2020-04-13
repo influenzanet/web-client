@@ -47,12 +47,19 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
   const [apiQuery, setApiQuery] = useState<ApiQuery | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
 
-  if (!studyKey || !surveyKey || !accessToken) {
-    console.error('important query parameter missing');
-    if (!error) {
-      setError(true);
+
+
+  useEffect(() => {
+    console.log('todo: set access token header');
+    if (!studyKey || !surveyKey || !accessToken) {
+      console.error('important query parameter missing');
+      if (!error) {
+        setError(true);
+      }
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
 
   // Error handling
@@ -74,9 +81,6 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
     console.log('todo: implement api query for');
     console.log(apiQuery);
   }, [apiQuery]);
-
-
-
 
 
   const languageSelector = (
