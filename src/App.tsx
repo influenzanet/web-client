@@ -17,12 +17,14 @@ import {
   createMuiTheme,
   StylesProvider,
   MuiThemeProvider,
+  responsiveFontSizes,
 } from '@material-ui/core';
+import AppIntegration from './pages/AppIntegration/AppIntegration';
 
 // import TestForm from './components/form/login/LoginForm';
 
 const App: React.FC = () => {
-  const theme = createMuiTheme({
+  const theme = responsiveFontSizes(createMuiTheme({
     palette: {
       primary: {
         light: '#475d9d',
@@ -39,7 +41,7 @@ const App: React.FC = () => {
         default: '#f2f2f2',
       }
     },
-  });
+  }));
 
 
   return (
@@ -52,6 +54,7 @@ const App: React.FC = () => {
             <Route path="/testForm" component={TestForm}/>*/}
             <Route path="/home" component={Home} />
             <Route path="/start" component={OnBoarding} />
+            <Route path="/app-integration" component={AppIntegration} />
             <Redirect to="/start"></Redirect>
           </Switch>
         </Router>

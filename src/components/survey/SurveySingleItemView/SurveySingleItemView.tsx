@@ -39,6 +39,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
   }, [response]);
 
   const renderHelpGroup = (): React.ReactNode => {
+    if (!props.renderItem.components) { return null; }
     const helpGroup = getItemComponentByRole(props.renderItem.components.items, 'helpGroup') as ItemGroupComponent;
     if (!helpGroup) {
       return null;
@@ -52,6 +53,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
   }
 
   const renderBodyComponents = (): React.ReactNode => {
+    if (!props.renderItem.components) { return null; }
     return <React.Fragment>
       {props.renderItem.components.items.map((component: ItemComponent, index: number) => {
         if (component.displayCondition === false) {
@@ -106,9 +108,10 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
     <div className={classes.root}>
       <Box display="flex">
         <Box flexGrow="1">
-          <Typography variant="h6">
-            {getItemComponentTranslationByRole(props.renderItem.components.items, 'title', props.languageCode)}
-          </Typography>
+          {props.renderItem.components ?
+            <Typography variant="h6">
+              {getItemComponentTranslationByRole(props.renderItem.components.items, 'title', props.languageCode)}
+            </Typography> : null}
         </Box>
         {renderHelpGroup()}
       </Box>

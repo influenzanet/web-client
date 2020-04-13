@@ -57,6 +57,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
       InputLabelProps={{ shrink: true }}
       value={inputValue}
       margin="dense"
+      variant="outlined"
       onChange={handleInputValueChange(props.compDef.key)}
       disabled={props.compDef.disabled !== undefined}
     ></TextField>

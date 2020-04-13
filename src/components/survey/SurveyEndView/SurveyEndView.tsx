@@ -10,7 +10,7 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const emojiPlaceholderRef = useRef<HTMLDivElement>(null);
 
-  const emojiSize = "142px";
+  const emojiSize = 10;
 
   const emojiList = ['😃', '😊', '🙂', '😍', '😎', '🤩', '🥳', '😱', '👍', '👌', '💪', '🎊', '🎉', '❤️',];
 
@@ -27,9 +27,9 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
 
   const Emoji = () => {
     return (
-      <Box pt={10} pb={10}>
-        <div ref={emojiPlaceholderRef} style={{ minHeight: emojiSize }} />
-        <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, top: 0 }}>
+      <Box py={10}>
+        <div ref={emojiPlaceholderRef} style={{ minHeight: `${emojiSize}em` }} />
+        <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, top: 0, pointerEvents: "none" }}>
           <ParticleText
             text={getRandomEmoji()}
             fontSize={emojiSize}
@@ -72,7 +72,7 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
     <Fragment>
       <Container ref={containerRef} style={{ display: "flex", flexDirection: "column" }}>
         <FlexGrow />
-        <Box pt={4} pb={4}>
+        <Box pt={4}>
           <Typography variant="h3" color="primary" align="center">
             Thank you for participating!
           </Typography>

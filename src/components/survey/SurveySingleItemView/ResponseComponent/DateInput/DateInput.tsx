@@ -85,12 +85,12 @@ const DateInput: React.FC<DateInputProps> = (props) => {
 
   return (
     <Box display="flex"
-      alignItems="flex-end"
+      alignItems="center"
       my={1}
     >
       {props.compDef.content ?
-        <Box mr={1} pb="5px" >
-          <Typography variant="body1">
+        <Box mr={1} mt={1}>
+          <Typography variant="body1" >
             {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
           </Typography>
         </Box> : null}
@@ -101,6 +101,8 @@ const DateInput: React.FC<DateInputProps> = (props) => {
           onChange={handleDateChange}
           views={pickerView as DatePickerView[]}
           format={format}
+          inputVariant="outlined"
+          margin="dense"
           InputLabelProps={{ shrink: true }}
           clearable
         />

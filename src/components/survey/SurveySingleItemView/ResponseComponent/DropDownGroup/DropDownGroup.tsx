@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
 import { FormControl, InputLabel, Select, MenuItem, Box, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -28,6 +28,9 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
 
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
+  const labelRef = useRef<HTMLLabelElement>(null);
+  const labelWidth = labelRef.current ? labelRef.current.clientWidth : 0;
+
 
   useEffect(() => {
     if (touched) {
@@ -66,22 +69,27 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
   };
 
   return (
-    <Box display="flex" alignItems="flex-end" my={1}>
-      <Box pb="5px" mr={1}>
+    <Box display="flex" alignItems="center" my={1}>
+      <Box mr={1}>
         <Typography variant="body1">
           {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
         </Typography>
       </Box>
-      <FormControl className={classes.formControl} margin="dense" style={{ margin: 0 }}>
+      <FormControl
+        className={classes.formControl}
+        variant="outlined"
+        margin="dense"
+        style={{ margin: 0 }}>
         {
           props.compDef.description ?
-            <InputLabel id={props.compDef.key + 'label'} shrink>
+            <InputLabel ref={labelRef} id={props.compDef.key + 'label'}>
               {getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
             </InputLabel> : null
         }
         <Select
           margin="dense"
           labelId={props.compDef.key + 'label'}
+          labelWidth={labelWidth}
           id={props.compDef.key}
           value={getSelectedKey()}
           onChange={handleSelectionChange}

@@ -1,4 +1,4 @@
-import { SurveyGroupItem, SurveySingleItem } from 'survey-engine/lib/data_types';
+import { SurveyGroupItem, SurveySingleItem, Survey } from 'survey-engine/lib/data_types';
 
 const Q4: SurveySingleItem = {
   key: '0.4.4',
@@ -160,6 +160,24 @@ const Q4: SurveySingleItem = {
                       },
                     ]
                   },
+                ],
+                description: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Longer text, explaining the option in more detail, allowing to display on a short category first and provide info on demand'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'DE tooltip'
+                      },
+                    ]
+                  },
                 ]
               },
               {
@@ -222,7 +240,7 @@ const Q4: SurveySingleItem = {
                     code: 'de',
                     parts: [
                       {
-                        str: 'Besuch von Kindertagesstätten/Schulen/Hochschulen/Universitäten'
+                        str: 'Besuch von Kindertagesstätten, Schulen, Hochschulen oder Universitäten'
                       },
                     ]
                   },
@@ -273,6 +291,28 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
+                key: '66',
+                role: 'input',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Other'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'Sonstige'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
                 key: '7',
                 role: 'option',
                 content: [
@@ -318,7 +358,7 @@ const Q4: SurveySingleItem = {
               },
               {
                 key: '9',
-                role: 'option',
+                role: 'input',
                 content: [
                   {
                     code: 'en',
@@ -333,6 +373,24 @@ const Q4: SurveySingleItem = {
                     parts: [
                       {
                         str: 'Sonstige'
+                      },
+                    ]
+                  },
+                ],
+                description: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Other desc'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'Sonstige desc'
                       },
                     ]
                   },
@@ -1245,6 +1303,46 @@ const Q5: SurveySingleItem = {
             },
             items: [
               {
+                key: '0',
+                role: 'input',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Content EN'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'Content DE'
+                      },
+                    ]
+                  },
+                ],
+                description: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'description EN'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'description DE'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
                 key: '1',
                 role: 'option',
                 content: [
@@ -1289,6 +1387,28 @@ const Q5: SurveySingleItem = {
                 ]
               },
               {
+                key: '-1',
+                role: 'input',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Without desc EN'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'Without desc DE'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
                 key: '3',
                 role: 'option',
                 content: [
@@ -1305,6 +1425,24 @@ const Q5: SurveySingleItem = {
                     parts: [
                       {
                         str: 'Patientinnen und Patienten'
+                      },
+                    ]
+                  },
+                ],
+                description: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Patients are ... explain longer'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'Patientinnen und Patienten können hier erklärt werden'
                       },
                     ]
                   },
@@ -2369,6 +2507,24 @@ const Q6: SurveySingleItem = {
                 ]
               },
             ],
+            description: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'desc'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'desc de'
+                  },
+                ]
+              },
+            ],
             items: [
               {
                 key: '1',
@@ -3191,11 +3347,19 @@ const QX3: SurveySingleItem = {
   }
 }
 
-export const QG0: SurveyGroupItem = {
+const pb1: SurveySingleItem = {
+  key: '0.5.pb1',
+  type: 'pageBreak',
+  version: 1,
+};
+
+
+const QG0: SurveyGroupItem = {
   key: '0',
   version: 1,
+  selectionMethod: { name: 'sequential' },
   items: [
-    //Q3,
+    Q3,
     {
       key: '0.4',
       version: 1,
@@ -3209,7 +3373,8 @@ export const QG0: SurveyGroupItem = {
       key: '0.5',
       version: 1,
       items: [
-        //Q5,
+        Q5,
+        pb1,
         Q5b,
       ],
     },
@@ -3226,3 +3391,12 @@ export const QG0: SurveyGroupItem = {
   ],
 }
 
+export const testSurvey: Survey = {
+  current: {
+    surveyDefinition: QG0,
+  },
+  /*maxItemsPerPage: {
+    large: 3,
+    small: 3
+  }*/
+}

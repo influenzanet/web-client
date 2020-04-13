@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { FormControl, FormGroup, FormControlLabel, Checkbox, Box, TextField } from '@material-ui/core';
+import { FormControl, FormGroup, FormControlLabel, Checkbox, Box, TextField, Tooltip } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { getLocaleStringTextByCode } from '../../utils';
 
@@ -132,16 +132,24 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     }
     switch (option.role) {
       case 'option':
-        return <FormControlLabel
-          key={option.key}
-          value={option.key}
-          control={
-            <Checkbox checked={isChecked(option.key ? option.key : 'no key found')}
-              onChange={handleSelectionChange}
-              value={option.key} />}
-          label={getLocaleStringTextByCode(option.content, props.languageCode)}
-          disabled={isDisabled(option)}
-        />
+        const renderedOption =
+          <FormControlLabel
+            key={option.key}
+            value={option.key}
+            control={
+              <Checkbox checked={isChecked(option.key ? option.key : 'no key found')}
+                onChange={handleSelectionChange}
+                value={option.key} />}
+            label={getLocaleStringTextByCode(option.content, props.languageCode)}
+            disabled={isDisabled(option)}
+          />
+        const description = getLocaleStringTextByCode(option.description, props.languageCode);
+        if (description) {
+          return <Tooltip key={option.key} title={description} arrow>
+            {renderedOption}
+          </Tooltip>
+        }
+        return renderedOption;
       case 'input':
         let r = inputValues.find(v => v.key === option.key);
         if (!r) {
@@ -165,6 +173,9 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
               fullWidth
               value={r.value ? r.value : ''}
               margin="dense"
+              variant="outlined"
+              label={getLocaleStringTextByCode(option.description, props.languageCode)}
+              InputLabelProps={{ shrink: true }}
               onChange={handleInputValueChange(option.key)}
               disabled={isDisabled(option)}
             ></TextField>
@@ -185,13 +196,16 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
       default:
         return <p key={option.key}>role inside multiple choice group not implemented yet: {option.role}</p>
     }
+
   }
 
   return (
     <FormControl component="fieldset">
       <FormGroup>
         {
-          (props.compDef as ItemGroupComponent).items.map(option => renderResponseOption(option))
+          (props.compDef as ItemGroupComponent).items.map(option =>
+            renderResponseOption(option)
+          )
         }
       </FormGroup>
     </FormControl>

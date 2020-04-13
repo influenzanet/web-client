@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
 import { ResponseItem } from 'survey-engine/lib/data_types/response';
-import { FormControl, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import { FormControl, RadioGroup, FormControlLabel, Radio, Tooltip } from '@material-ui/core';
 import { getLocaleStringTextByCode } from '../../utils';
 import RadioCtrlWithTextField from './RadioCtrlWithTextField/RadioCtrlWithTextField';
 
@@ -92,13 +92,20 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     }
     switch (option.role) {
       case 'option':
-        return <FormControlLabel
+        const renderedOption = <FormControlLabel
           key={option.key}
           value={option.key}
           control={<Radio />}
           label={getLocaleStringTextByCode(option.content, props.languageCode)}
           disabled={option.disabled !== undefined}
         />;
+        const description = getLocaleStringTextByCode(option.description, props.languageCode);
+        if (description) {
+          return <Tooltip key={option.key} title={description} arrow>
+            {renderedOption}
+          </Tooltip>
+        }
+        return renderedOption;
       case 'input':
         let r = inputValues.find(v => v.key === option.key);
         if (!r) {
