@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from 'react';
+import React, { useState, Dispatch, SetStateAction, useEffect } from 'react';
 import { SurveySingleItem } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveySingleItemView from '../../SurveySingleItemView/SurveySingleItemView';
@@ -41,6 +41,11 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
       return prev.filter(key => currentDisplayedKeys.includes(key));
     })
   }
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, [props.surveyItems]);
 
   const mapSurveyItemToComp = (surveyItem: SurveySingleItem): React.ReactFragment => {
     if (!displayedKeys.includes(surveyItem.key)) {
