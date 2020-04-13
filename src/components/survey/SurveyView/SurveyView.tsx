@@ -26,7 +26,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
   const [responseCount, setResponseCount] = useState(0);
 
   let { path: surveyPath } = useRouteMatch();
-  let pagesPath = `${surveyPath}/pages`
+  let pagesPath = `${surveyPath}/pages`;
 
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
