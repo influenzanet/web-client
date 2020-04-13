@@ -119,15 +119,15 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
         response: apiQuery.payload as SurveyResponse
       });
       console.log(response);
+    } catch (error) {
+      console.error(error.response);
+      // setError(true);
+    } finally {
+      setIsLoading(false);
       let to = rootPath.lastIndexOf('/');
       to = to === -1 ? rootPath.length : to;
       const newUrl = rootPath.substring(0, to);
       history.push(`${newUrl}/survey-end`);
-    } catch (error) {
-      console.error(error.response);
-      setError(true);
-    } finally {
-      setIsLoading(false);
     }
   };
 
