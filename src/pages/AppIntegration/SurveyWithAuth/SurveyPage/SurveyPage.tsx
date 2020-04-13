@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Box, CircularProgress, Typography } from '@material-ui/core';
+import { Box, CircularProgress, Typography, Container } from '@material-ui/core';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import { useLocation, useHistory, useRouteMatch, RouteProps } from 'react-router-dom';
-import { survey } from '../../../../test-surveys/qcov';
 import { useTranslation } from 'react-i18next';
 
 import { setAccessTokenHeader, getAssignedSurveyRequest } from '../../../../api/api';
-import { SurveyReferenceReq } from '../../../../api/models/study-api';
+import { SurveyReferenceReq, SurveyAndContextMsg } from '../../../../api/models/study-api';
+import SurveyView from '../../../../components/survey/SurveyView/SurveyView';
 
 // A custom hook that builds on useLocation to parse
 // the query string for you.
@@ -49,6 +49,8 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
   const [error, setError] = useState(false);
   const [apiQuery, setApiQuery] = useState<ApiQuery | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
+  const [surveyWithContext, setSurveyWithContext] = useState<SurveyAndContextMsg | undefined>();
+
 
   // Initialization
   useEffect(() => {
@@ -90,9 +92,8 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
   const fetchSurveyData = async (apiQuery: ApiQuery) => {
     setIsLoading(true);
     try {
-      const surveyAndContext = await getAssignedSurveyRequest(apiQuery.payload as SurveyReferenceReq);
-      console.log(surveyAndContext)
-
+      const response = await getAssignedSurveyRequest(apiQuery.payload as SurveyReferenceReq);
+      setSurveyWithContext(response.data);
     } catch (error) {
       console.error(error.response);
       setError(true);
@@ -154,15 +155,25 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
     </Box>
   );
 
-
   return (
-    <React.Fragment>
+    <Container maxWidth="lg">
       {languageSelector}
       {
         isLoading ?
-          loadingWidget : null
+          loadingWidget :
+          surveyWithContext ?
+            <SurveyView
+              survey={surveyWithContext.survey}
+              prefills={surveyWithContext.prefill?.responses}
+              context={surveyWithContext.context}
+              languageCode={selectedLanguage}
+              submitBtnText={t('survey:submitBtn')}
+              nextBtnText={t('survey:nextBtn')}
+              backBtnText={t('survey:backBtn')}
+            />
+            : null
       }
-    </React.Fragment>
+    </Container>
   );
 };
 
