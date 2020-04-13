@@ -33,7 +33,7 @@ export const AppBar: React.FC = () => {
     <div className={classes.root}>
       <MuiAppBar position="static" className={classes.appBar} elevation={0}>
         <Toolbar style={{ padding: 0 }}>
-          <Box width="100%" textAlign="center">
+          <Box width="100%" textAlign="center" px={2} ml={2}>
             <Typography variant="h6" className={classes.title} color="primary">
               {'Name der Umfrage'}
             </Typography>
