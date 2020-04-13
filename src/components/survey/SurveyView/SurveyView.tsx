@@ -9,14 +9,13 @@ interface SurveyViewProps {
   survey: Survey;
   prefills?: SurveySingleItemResponse[];
   context?: SurveyContext;
-  // context? - with previous answers
-  // submit survey
-  // init with temporary loaded results
-  // save temporary result
+  onSubmit: (responses: SurveySingleItemResponse[]) => void;
   languageCode: string;
   backBtnText?: string;
   nextBtnText?: string;
   submitBtnText?: string;
+  // init with temporary loaded results
+  // save temporary result
 }
 
 const SurveyView: React.FC<SurveyViewProps> = (props) => {
@@ -30,8 +29,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
 
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
-    console.log(resp);
-    console.log(JSON.stringify(resp));
+    props.onSubmit(resp);
   }
 
   const surveyPage = (surveyPageItems: SurveySingleItem[], primaryActionLabel: string, primaryAction: () => void, secondaryActionLabel: string, secondaryAction: () => void) => {
@@ -65,7 +63,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
         let primaryAction = (lastPage)
           ? () => {
             onSubmit();
-            routeProps.history.push(`${surveyPath}/completed`);
+            // routeProps.history.push(`${surveyPath}/completed`);
           }
           : () => routeProps.history.push(`${pagesPath}/${index + 1}`);
 
@@ -74,7 +72,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
 
         return surveyPage(surveyPages[index], primaryActionLabel, primaryAction, secondaryActionLabel, secondaryAction);
       }} />
-      <Route path={`${surveyPath}/completed`} component={SurveyEndView} />
+      {/*<Route path={`${surveyPath}/completed`} component={SurveyEndView} />*/}
       <Redirect to={`${pagesPath}/0`} />
     </Switch>
   );

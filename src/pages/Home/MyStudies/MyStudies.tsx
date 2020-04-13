@@ -30,6 +30,9 @@ const MyStudies: React.FC = () => {
       <SurveyView
         survey={testSurvey}
         languageCode={i18n.language}
+        onSubmit={(resp) => {
+          console.log(resp)
+        }}
         submitBtnText={t('survey:submitBtn')}
         nextBtnText={t('survey:nextBtn')}
         backBtnText={t('survey:backBtn')}

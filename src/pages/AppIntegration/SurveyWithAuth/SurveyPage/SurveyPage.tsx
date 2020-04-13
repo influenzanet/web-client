@@ -4,9 +4,12 @@ import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import { useLocation, useHistory, useRouteMatch, RouteProps } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { setAccessTokenHeader, getAssignedSurveyRequest } from '../../../../api/api';
+import { setAccessTokenHeader, getAssignedSurveyRequest, submitSurveyResponseRequest } from '../../../../api/api';
 import { SurveyReferenceReq, SurveyAndContextMsg } from '../../../../api/models/study-api';
 import SurveyView from '../../../../components/survey/SurveyView/SurveyView';
+import { SurveySingleItemResponse, SurveyResponse } from 'survey-engine/lib/data_types';
+import moment from 'moment';
+
 
 // A custom hook that builds on useLocation to parse
 // the query string for you.
@@ -31,9 +34,9 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
 
 
   const locale = query.get('locale');
-  const locationID = query.get('locationID');
+  const locationIDParam = query.get('locationID');
   const surveyKey = query.get('surveyKey');
-  const studyKey = query.get('studyKey');
+  const studyKeyParam = query.get('studyKey');
   const accessToken = query.get('accessToken');
 
   // Language settings
@@ -51,10 +54,12 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [surveyWithContext, setSurveyWithContext] = useState<SurveyAndContextMsg | undefined>();
 
+  const [locationID, setLocationID] = useState('');
+  const [studyKey, setStudyKey] = useState('');
 
   // Initialization
   useEffect(() => {
-    if (!studyKey || !surveyKey || !accessToken) {
+    if (!studyKeyParam || !surveyKey || !accessToken) {
       console.error('important query parameter missing');
       if (!error) {
         setError(true);
@@ -64,18 +69,22 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
     if (accessToken) {
       setAccessTokenHeader(accessToken);
     }
+    if (locationIDParam) {
+      setLocationID(locationIDParam);
+    }
+    if (studyKeyParam) {
+      setStudyKey(studyKeyParam);
+    }
 
     setApiQuery({
       type: 'getSurvey',
       payload: {
-        studyKey: studyKey,
+        studyKey: studyKeyParam,
         surveyKey: surveyKey,
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-
 
   // Error handling
   useEffect(() => {
@@ -102,6 +111,22 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
     }
   };
 
+  const submitSurveyResponse = async (apiQuery: ApiQuery) => {
+    setIsLoading(true);
+    try {
+      const response = await submitSurveyResponseRequest({
+        studyKey: studyKey,
+        response: apiQuery.payload as SurveyResponse
+      });
+      console.log(response);
+    } catch (error) {
+      console.error(error.response);
+      setError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   // API calls
   useEffect(() => {
     if (!apiQuery) {
@@ -111,17 +136,21 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       case 'getSurvey':
         fetchSurveyData(apiQuery);
         break;
+      case 'submitResponse':
+        submitSurveyResponse(apiQuery);
+        break;
       default:
         console.log('query type not known');
         break;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiQuery]);
 
 
   const languageSelector = (
     <Box display="flex">
       <Box flexGrow={1}></Box>
-      <Box pr={2}>
+      <Box>
         <LanguageSelector
           selected={selectedLanguage}
           availableLanguages={availableLanguages}
@@ -155,6 +184,29 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
     </Box>
   );
 
+  const onSubmitSurvey = (responses: SurveySingleItemResponse[]) => {
+    // TODO: call api to submit responses
+
+    const surveyResponse: SurveyResponse = {
+      key: surveyWithContext ? surveyWithContext.survey.current.surveyDefinition.key : surveyKey ? surveyKey : 'unknown',
+      submittedAt: moment().unix(),
+      responses: [...responses],
+      context: {
+        locationID: locationID
+      }
+    }
+
+    console.log(surveyResponse);
+    const query: ApiQuery = {
+      type: 'submitResponse',
+      payload: surveyResponse,
+    }
+    setApiQuery(query);
+
+    console.log('todo: navigate to survey end');
+    // TODO: navigate to survey end
+  }
+
   return (
     <Container maxWidth="lg">
       {languageSelector}
@@ -167,6 +219,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
               prefills={surveyWithContext.prefill?.responses}
               context={surveyWithContext.context}
               languageCode={selectedLanguage}
+              onSubmit={onSubmitSurvey}
               submitBtnText={t('survey:submitBtn')}
               nextBtnText={t('survey:nextBtn')}
               backBtnText={t('survey:backBtn')}
