@@ -9,7 +9,6 @@ import { SurveyReferenceReq, SurveyAndContextMsg } from '../../../../api/models/
 import SurveyView from '../../../../components/survey/SurveyView/SurveyView';
 import { SurveySingleItemResponse, SurveyResponse } from 'survey-engine/lib/data_types';
 import moment from 'moment';
-import { setShowBackBtn } from '../../../../store/navigation/actions';
 import { useDispatch } from 'react-redux';
 
 
@@ -67,6 +66,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       console.error('important query parameter missing');
       if (!error) {
         setError(true);
+        return;
       }
     }
 
@@ -79,6 +79,13 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
     if (studyKeyParam) {
       setStudyKey(studyKeyParam);
     }
+
+    // try to prevent navigating away...
+    window.onbeforeunload = () => true
+    /*window.onpopstate = () => true
+    window.addEventListener('popstate', (ev: PopStateEvent) => {
+      ev.preventDefault();
+    });*/
 
     setApiQuery({
       type: 'getSurvey',
@@ -96,7 +103,6 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       let to = rootPath.lastIndexOf('/');
       to = to === -1 ? rootPath.length : to;
       const newUrl = rootPath.substring(0, to);
-      dispatch(setShowBackBtn(false));
       history.push(`${newUrl}/error`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -133,6 +139,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       to = to === -1 ? rootPath.length : to;
       const newUrl = rootPath.substring(0, to);
       history.push(`${newUrl}/survey-end`);
+      window.onbeforeunload = null;
     }
   };
 
@@ -208,7 +215,6 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       type: 'submitResponse',
       payload: surveyResponse,
     }
-    dispatch(setShowBackBtn(false));
     setApiQuery(query);
   }
 
@@ -228,13 +234,6 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
               submitBtnText={t('survey:submitBtn')}
               nextBtnText={t('survey:nextBtn')}
               backBtnText={t('survey:backBtn')}
-              onPageChange={(currentPage, totalPages) => {
-                if (currentPage > 0) {
-                  dispatch(setShowBackBtn(true));
-                } else {
-                  dispatch(setShowBackBtn(false));
-                }
-              }}
             />
             : null
       }
