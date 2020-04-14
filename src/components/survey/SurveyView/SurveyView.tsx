@@ -3,7 +3,6 @@ import { Survey, SurveySingleItem, SurveySingleItemResponse, SurveyContext } fro
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveyPageView from './SurveyPageView/SurveyPageView';
 import { Switch, Route, useRouteMatch, Redirect } from 'react-router';
-import SurveyEndView from '../SurveyEndView/SurveyEndView';
 
 interface SurveyViewProps {
   survey: Survey;

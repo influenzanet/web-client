@@ -8,7 +8,7 @@ interface ParticleTextProps {
 }
 
 class ParticleText extends React.Component<ParticleTextProps> {
-  private pixelStep = 7 * window.devicePixelRatio;
+  private pixelStep = 6 * window.devicePixelRatio;
   private alphaThreshold = 127;
 
   private canvasRef = React.createRef<HTMLCanvasElement>();
