@@ -360,9 +360,6 @@ const Q1: SurveySingleItem = {
 
 const Q2: SurveySingleItem = {
   key: "weekly.33",
-  follows: [
-    "weekly.32",
-  ],
   condition: {
     name: "and",
     data: [
@@ -975,6 +972,9 @@ const Q2: SurveySingleItem = {
       },
     ]
   },
+  follows: [
+    "weekly.32",
+  ],
   version: 1,
   validations: [],
   components: {
@@ -1940,6 +1940,469 @@ const Qcov2b: SurveySingleItem = {
 
 const Qcov3: SurveySingleItem = {
   key: "weekly.Qcov3",
+  condition: {
+    name: "and",
+    data: [
+      {
+        // if report any symptoms
+        dtype: "exp",
+        exp: {
+          name: "or",
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.142'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.143'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.144'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.145'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.146'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.147'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.148'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.149'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.150'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.151'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.152'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.153'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.154'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.155'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.156'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.157'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.158'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.159'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.160'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+          ]
+        }
+      },
+      // answers to Q2 weekly other than « Yes »
+      {
+        dtype: "exp",
+        exp: {
+          name: "not",
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.33'
+                        },
+                        {
+                          str: '1.1.161'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+          ]
+        }
+      }
+    ]
+  },
   follows: [
     "weekly.32",
   ],
@@ -2021,6 +2484,26 @@ const Qcov3: SurveySingleItem = {
 
 const Qcov3b: SurveySingleItem = {
   key: "weekly.Qcov3b",
+  // “yes” to Qcov3
+  condition: {
+    name: 'isDefined',
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'getResponseItem',
+          data: [
+            {
+              str: 'weekly.Qcov3'
+            },
+            {
+              str: '1.1.1'
+            }
+          ]
+        }
+      }
+    ]
+  },
   follows: [
     "weekly.Qcov3",
   ],
@@ -2102,6 +2585,430 @@ const Qcov3b: SurveySingleItem = {
 
 const Qcov8: SurveySingleItem = {
   key: "weekly.Qcov8",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   follows: [],
   version: 1,
   validations: [],
@@ -2181,6 +3088,26 @@ const Qcov8: SurveySingleItem = {
 
 const Qcov8b: SurveySingleItem = {
   key: "weekly.Qcov8b",
+  // “yes” to Qcov8
+  condition: {
+    name: 'isDefined',
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'getResponseItem',
+          data: [
+            {
+              str: 'weekly.Qcov8'
+            },
+            {
+              str: '1.1.1'
+            }
+          ]
+        }
+      }
+    ]
+  },
   follows: [
     "weekly.Qcov8",
   ],
@@ -2262,629 +3189,433 @@ const Qcov8b: SurveySingleItem = {
 
 const Q3: SurveySingleItem = {
   key: "weekly.35",
-  follows: [
-    "weekly.32",
-  ],
+  // if report any symptoms
   condition: {
-    name: "not",
+    name: "or",
     data: [
       {
-        dtype: "exp",
+        dtype: 'exp',
         exp: {
-          name: "and",
+          name: 'isDefined',
           data: [
-            // if report any symptoms
             {
               dtype: 'exp',
               exp: {
-                name: "or",
+                name: 'getResponseItem',
                 data: [
                   {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.142'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
+                    str: 'weekly.32'
                   },
                   {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.143'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.144'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.145'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.146'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.147'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.148'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.149'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.150'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.151'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.152'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.153'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.154'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.155'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.156'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.157'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.158'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.159'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: 'exp',
-                    exp: {
-                      name: 'isDefined',
-                      data: [
-                        {
-                          dtype: 'exp',
-                          exp: {
-                            name: 'getResponseItem',
-                            data: [
-                              {
-                                str: 'weekly.32'
-                              },
-                              {
-                                str: '1.1.160'
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                ]
-              }
-            },
-            // participant STILL ILL when they last completed the Weekly survey (i.e. they said “I am still ill” in response to Weekly Q4 below last time?)
-            {
-              dtype: "exp",
-              exp: {
-                name: "isDefined",
-                data: [
-                  {
-                    dtype: "exp",
-                    exp: {
-                      name: "getObjectByHierarchicalKey",
-                      data: [
-                        {
-                          dtype: "exp",
-                          exp: {
-                            name: "getAttribute",
-                            data: [
-                              {
-                                dtype: "exp",
-                                exp: {
-                                  name: "getLastFromSurveyItemResponses",
-                                  data: [
-                                    {
-                                      dtype: "exp",
-                                      exp: {
-                                        name: "getPreviousResponses",
-                                        data: [
-                                          {
-                                            str: "weekly.36"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              {
-                                str: "response"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          str: "1.1.169"
-                        }
-                      ]
-                    }
+                    str: '1.1.142'
                   }
                 ]
               }
-            },
-            // have fewer than 15 days elapsed since they last completed the Weekly Survey
-            {
-              dtype: "exp",
-              exp: {
-                name: "lt",
-                data: [
-                  {
-                    dtype: "exp",
-                    exp: {
-                      name: "getSecondsSince",
-                      data: [
-                        {
-                          dtype: "exp",
-                          exp: {
-                            name: "getAttribute",
-                            data: [
-                              {
-                                dtype: "exp",
-                                exp: {
-                                  name: "getLastFromSurveyResponses",
-                                  data: [
-                                    {
-                                      str: "weekly"
-                                    }
-                                  ]
-                                }
-                              },
-                              {
-                                str: "submittedAt"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: "num",
-                    num: 1296000,
-                  }
-                ]
-              }
-            },
-            // fewer than 15 days have elapsed since their previous date of symptom onset
-            {
-              dtype: "exp",
-              exp: {
-                name: "lt",
-                data: [
-                  {
-                    dtype: "exp",
-                    exp: {
-                      name: "getSecondsSince",
-                      data: [
-                        {
-                          dtype: "exp",
-                          exp: {
-                            name: "getAttribute",
-                            data: [
-                              {
-                                dtype: "exp",
-                                exp: {
-                                  name: "getObjectByHierarchicalKey",
-                                  data: [
-                                    {
-                                      dtype: "exp",
-                                      exp: {
-                                        name: "getAttribute",
-                                        data: [
-                                          {
-                                            dtype: "exp",
-                                            exp: {
-                                              name: "getLastFromSurveyItemResponses",
-                                              data: [
-                                                {
-                                                  dtype: "exp",
-                                                  exp: {
-                                                    name: "filterResponsesByIncludesKeys",
-                                                    data: [
-                                                      {
-                                                        dtype: "exp",
-                                                        exp: {
-                                                          name: "getPreviousResponses",
-                                                          data: [
-                                                            {
-                                                              str: "weekly.35"
-                                                            }
-                                                          ]
-                                                        }
-                                                      },
-                                                      {
-                                                        str: "1.1"
-                                                      },
-                                                      {
-                                                        str: "169"
-                                                      }
-                                                    ]
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          },
-                                          {
-                                            str: "response"
-                                          }
-                                        ]
-                                      }
-                                    },
-                                    {
-                                      str: "1.1.169"
-                                    }
-                                  ]
-                                }
-                              },
-                              {
-                                str: "value"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    dtype: "num",
-                    num: 1296000,
-                  }
-                ]
-              }
-            },
+            }
           ]
         }
-      }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
     ]
   },
+  follows: [
+    "weekly.32",
+  ],
   version: 1,
   validations: [],
   components: {
@@ -2949,6 +3680,430 @@ const Q3: SurveySingleItem = {
 
 const Q4: SurveySingleItem = {
   key: "weekly.36",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -3027,6 +4182,430 @@ const Q4: SurveySingleItem = {
 
 const Q5: SurveySingleItem = {
   key: "weekly.37",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -3105,6 +4684,26 @@ const Q5: SurveySingleItem = {
 
 const Q6: SurveySingleItem = {
   key: "weekly.38",
+  // fever
+  condition: {
+    name: 'isDefined',
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'getResponseItem',
+          data: [
+            {
+              str: 'weekly.32'
+            },
+            {
+              str: '1.1.142'
+            }
+          ]
+        }
+      }
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -3169,6 +4768,26 @@ const Q6: SurveySingleItem = {
 
 const Q6b: SurveySingleItem = {
   key: "weekly.39",
+  // fever
+  condition: {
+    name: 'isDefined',
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'getResponseItem',
+          data: [
+            {
+              str: 'weekly.32'
+            },
+            {
+              str: '1.1.142'
+            }
+          ]
+        }
+      }
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -3247,6 +4866,430 @@ const Q6b: SurveySingleItem = {
 
 const Q6c: SurveySingleItem = {
   key: "weekly.40",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -3325,6 +5368,464 @@ const Q6c: SurveySingleItem = {
 
 const Q6d: SurveySingleItem = {
   key: "weekly.41",
+  condition: {
+    name: "and",
+    data: [
+      {
+        // if report any symptoms
+        dtype: "exp",
+        exp: {
+          name: "or",
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.142'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.143'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.144'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.145'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.146'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.147'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.148'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.149'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.150'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.151'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.152'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.153'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.154'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.155'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.156'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.157'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.158'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.159'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.160'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+          ]
+        }
+      },
+      // took temperature
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.40'
+                  },
+                  {
+                    str: '1.1.178'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
+  follows: [
+    "weekly.40",
+  ],
   version: 1,
   validations: [],
   components: {
@@ -3459,6 +5960,430 @@ const Q6d: SurveySingleItem = {
 
 const Q7: SurveySingleItem = {
   key: "weekly.42",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -3579,6 +6504,433 @@ const Q7: SurveySingleItem = {
 
 const Q7b: SurveySingleItem = {
   key: "weekly.64",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
+  follows: [
+    "weekly.42",
+  ],
   version: 1,
   validations: [],
   components: {
@@ -3614,6 +6966,430 @@ const Q7b: SurveySingleItem = {
 
 const Qcov4: SurveySingleItem = {
   key: "weekly.Qcov4",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -3692,6 +7468,430 @@ const Qcov4: SurveySingleItem = {
 
 const Qcov5: SurveySingleItem = {
   key: "weekly.Qcov5",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -3770,6 +7970,430 @@ const Qcov5: SurveySingleItem = {
 
 const Q8: SurveySingleItem = {
   key: "weekly.44",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -3890,6 +8514,433 @@ const Q8: SurveySingleItem = {
 
 const Q8b: SurveySingleItem = {
   key: "weekly.65",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
+  follows: [
+    "weekly.44",
+  ],
   version: 1,
   validations: [],
   components: {
@@ -3925,6 +8976,430 @@ const Q8b: SurveySingleItem = {
 
 const Q9: SurveySingleItem = {
   key: "weekly.46",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -4087,6 +9562,28 @@ const Q9: SurveySingleItem = {
 
 const Q9b: SurveySingleItem = {
   key: "weekly.47",
+  condition: {
+    name: 'isDefined',
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'getResponseItem',
+          data: [
+            {
+              str: 'weekly.46'
+            },
+            {
+              str: '1.1.219'
+            }
+          ]
+        }
+      }
+    ]
+  },
+  follows: [
+    "weekly.46",
+  ],
   version: 1,
   validations: [],
   components: {
@@ -4235,6 +9732,430 @@ const Q9b: SurveySingleItem = {
 
 const Q14: SurveySingleItem = {
   key: "weekly.Q14",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   follows: [
     "weekly.32",
   ],
@@ -4302,6 +10223,430 @@ const Q14: SurveySingleItem = {
 
 const Q10: SurveySingleItem = {
   key: "weekly.48",
+  // if report any symptoms
+  condition: {
+    name: "or",
+    data: [
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.142'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.143'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.144'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.145'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.146'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.147'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.148'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.149'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.150'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.151'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.152'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.153'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.154'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.155'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.156'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.157'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.158'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.159'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.32'
+                  },
+                  {
+                    str: '1.1.160'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
   version: 1,
   validations: [],
   components: {
@@ -4380,6 +10725,464 @@ const Q10: SurveySingleItem = {
 
 const Q10b: SurveySingleItem = {
   key: "weekly.49",
+  condition: {
+    name: "and",
+    data: [
+      {
+        // if report any symptoms
+        dtype: "exp",
+        exp: {
+          name: "or",
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.142'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.143'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.144'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.145'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.146'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.147'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.148'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.149'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.150'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.151'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.152'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.153'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.154'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.155'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.156'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.157'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.158'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.159'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.160'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+          ]
+        }
+      },
+      // taken time off work/school
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.48'
+                  },
+                  {
+                    str: '1.1.233'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
+  follows: [
+    "weekly.48",
+  ],
   version: 1,
   validations: [],
   components: {
@@ -4458,6 +11261,464 @@ const Q10b: SurveySingleItem = {
 
 const Q10c: SurveySingleItem = {
   key: "weekly.50",
+  condition: {
+    name: "and",
+    data: [
+      {
+        // if report any symptoms
+        dtype: "exp",
+        exp: {
+          name: "or",
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.142'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.143'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.144'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.145'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.146'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.147'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.148'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.149'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.150'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.151'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.152'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.153'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.154'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.155'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.156'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.157'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.158'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.159'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'weekly.32'
+                        },
+                        {
+                          str: '1.1.160'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+          ]
+        }
+      },
+      // taken time off work/school
+      {
+        dtype: 'exp',
+        exp: {
+          name: 'isDefined',
+          data: [
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'getResponseItem',
+                data: [
+                  {
+                    str: 'weekly.48'
+                  },
+                  {
+                    str: '1.1.233'
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+    ]
+  },
+  follows: [
+    "weekly.48",
+  ],
   version: 1,
   validations: [],
   components: {
@@ -4606,6 +11867,7 @@ const Q10c: SurveySingleItem = {
 
 const Qcov6: SurveySingleItem = {
   key: "weekly.Qcov6",
+  // if report any symptoms
   condition: {
     name: "or",
     data: [
@@ -5107,6 +12369,7 @@ const Qcov6: SurveySingleItem = {
 
 const Qcov7: SurveySingleItem = {
   key: "weekly.Qcov7",
+  // if report any symptoms
   condition: {
     name: "or",
     data: [
@@ -6037,6 +13300,7 @@ const Qcov7: SurveySingleItem = {
 
 const Q11: SurveySingleItem = {
   key: "weekly.52",
+  // if report any symptoms
   condition: {
     name: "or",
     data: [
@@ -7999,9 +15263,9 @@ const surveyDef: SurveyGroupItem = {
     Q1,
     Q2,
     Qcov1,
-    Qcov1b,
-    Qcov2,
-    Qcov2b,
+    // Qcov1b,
+    // Qcov2,
+    // Qcov2b,
     Qcov3,
     Qcov3b,
     Qcov8,
