@@ -4,9 +4,11 @@ import MuiAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { Box, IconButton } from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import CloseIcon from '@material-ui/icons/Close';
 import { useHistory, useRouteMatch } from 'react-router';
-
+import { useSelector } from 'react-redux';
+import { NavigationState } from '../../../../store/navigation/types';
 
 
 const useStyles = makeStyles(theme => ({
@@ -17,7 +19,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#ffffff',
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
   title: {
     flexGrow: 1,
@@ -29,13 +32,28 @@ export const AppBar: React.FC = () => {
   const history = useHistory();
   let { path: rootPath } = useRouteMatch();
 
+  const pageTitle = useSelector((state: { navigation: NavigationState }) => state.navigation.appBar.currentPageTitle)
+  const showBackButton = useSelector((state: { navigation: NavigationState }) => state.navigation.appBar.showBackBtn)
+
   return (
     <div className={classes.root}>
       <MuiAppBar position="static" className={classes.appBar} elevation={0}>
         <Toolbar style={{ padding: 0 }}>
-          <Box width="100%" textAlign="center" px={2} ml={2}>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="default"
+            aria-label="close"
+            onClick={() =>
+              history.goBack()
+            }
+          >
+            {showBackButton ? <ArrowBackIcon /> : null}
+
+          </IconButton>
+          <Box width="100%" textAlign="center" ml={showBackButton ? 0 : 3}>
             <Typography variant="h6" className={classes.title} color="primary">
-              {'Name der Umfrage'}
+              {pageTitle}
             </Typography>
           </Box>
 

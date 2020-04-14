@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 export const NavBar: React.FC = () => {
   const classes = useStyles();
 
-  const pageTitle = useSelector((state: {navigation: NavigationState}) => state.navigation.currentPageTitle)
+  const pageTitle = useSelector((state: { navigation: NavigationState }) => state.navigation.appBar.currentPageTitle)
   const dispatch = useDispatch();
 
   return (
@@ -46,7 +46,7 @@ export const NavBar: React.FC = () => {
             color="secondary"
             aria-label="menu"
             onClick={() => dispatch(openNavigationDrawer())}
-            >
+          >
             <MenuIcon />
           </IconButton>
 

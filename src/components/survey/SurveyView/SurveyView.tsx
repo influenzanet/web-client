@@ -13,6 +13,7 @@ interface SurveyViewProps {
   backBtnText?: string;
   nextBtnText?: string;
   submitBtnText?: string;
+  onPageChange?: (currentPage: number, totalPages: number) => void;
   // init with temporary loaded results
   // save temporary result
 }
@@ -68,6 +69,10 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
 
         let secondaryActionLabel = (firstPage) ? "" : (props.backBtnText ? props.backBtnText : "Back");
         let secondaryAction = (firstPage) ? () => null : () => routeProps.history.goBack();
+
+        if (props.onPageChange) {
+          props.onPageChange(index, surveyPages.length);
+        }
 
         return surveyPage(surveyPages[index], primaryActionLabel, primaryAction, secondaryActionLabel, secondaryAction);
       }} />

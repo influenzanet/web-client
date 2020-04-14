@@ -9,6 +9,8 @@ import { SurveyReferenceReq, SurveyAndContextMsg } from '../../../../api/models/
 import SurveyView from '../../../../components/survey/SurveyView/SurveyView';
 import { SurveySingleItemResponse, SurveyResponse } from 'survey-engine/lib/data_types';
 import moment from 'moment';
+import { setShowBackBtn } from '../../../../store/navigation/actions';
+import { useDispatch } from 'react-redux';
 
 
 // A custom hook that builds on useLocation to parse
@@ -32,6 +34,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
   const history = useHistory();
   let { path: rootPath } = useRouteMatch();
 
+  const dispatch = useDispatch();
 
   const locale = query.get('locale');
   const locationIDParam = query.get('locationID');
@@ -93,6 +96,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       let to = rootPath.lastIndexOf('/');
       to = to === -1 ? rootPath.length : to;
       const newUrl = rootPath.substring(0, to);
+      dispatch(setShowBackBtn(false));
       history.push(`${newUrl}/error`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -190,8 +194,6 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
   );
 
   const onSubmitSurvey = (responses: SurveySingleItemResponse[]) => {
-    // TODO: call api to submit responses
-
     const surveyResponse: SurveyResponse = {
       key: surveyWithContext ? surveyWithContext.survey.current.surveyDefinition.key : surveyKey ? surveyKey : 'unknown',
       submittedAt: moment().unix(),
@@ -206,10 +208,8 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       type: 'submitResponse',
       payload: surveyResponse,
     }
+    dispatch(setShowBackBtn(false));
     setApiQuery(query);
-
-    console.log('todo: navigate to survey end');
-    // TODO: navigate to survey end
   }
 
   return (
@@ -228,6 +228,13 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
               submitBtnText={t('survey:submitBtn')}
               nextBtnText={t('survey:nextBtn')}
               backBtnText={t('survey:backBtn')}
+              onPageChange={(currentPage, totalPages) => {
+                if (currentPage > 0) {
+                  dispatch(setShowBackBtn(true));
+                } else {
+                  dispatch(setShowBackBtn(false));
+                }
+              }}
             />
             : null
       }
