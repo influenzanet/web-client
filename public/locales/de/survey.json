@@ -1,5 +1,6 @@
 {
-  "loadingMsg": "Umfrage wird geladen...",
+  "loadingSurveyMsg": "Umfrage wird geladen...",
+  "submittingSurveyResponsesMsg": "Antworten werden übermittelt...",
   "nextBtn": "Nächste",
   "submitBtn": "Absenden",
   "backBtn": "Zurück"

@@ -1,5 +1,6 @@
 {
-  "loadingMsg": "Loading survey...",
+  "loadingSurveyMsg": "Loading survey...",
+  "submittingSurveyResponsesMsg": "Submitting responses...",
   "nextBtn": "Next",
   "submitBtn": "Submit",
   "backBtn": "Back"

@@ -12,7 +12,7 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
 
   const emojiSize = 7.4;
 
-  const emojiList = ['😃', '😊', '🙂', '😍', '😎', '🤩', '🥳', '😱', '👍', '👏', '👌', '💪', '🎊', '🎉', '❤️', '😷',];
+  const emojiList = ['😃', '😊', '🙂', '😍', '😎', '🤩', '🥳', '😱', '👍', '👏', '👌', '💪', '🎊', '🎉', '❤️', '😷', '🧼🖐️'];
 
   useEffect(() => {
     if (containerRef.current) {
@@ -21,7 +21,7 @@ const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
   });
 
   const getRandomEmoji = () => {
-    let index = Math.round(Math.random() * (emojiList.length - 1));
+    let index = Math.floor(Math.random() * Math.floor(emojiList.length));
     return emojiList[index];
   }
 

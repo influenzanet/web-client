@@ -51,7 +51,8 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
   // API call states
   const [error, setError] = useState(false);
   const [apiQuery, setApiQuery] = useState<ApiQuery | undefined>(undefined);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loadingMsg, setLoadingMsg] = useState('');
+  const isLoading = loadingMsg.length > 0;
   const [surveyWithContext, setSurveyWithContext] = useState<SurveyAndContextMsg | undefined>();
 
   const [locationID, setLocationID] = useState('');
@@ -99,7 +100,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
 
 
   const fetchSurveyData = async (apiQuery: ApiQuery) => {
-    setIsLoading(true);
+    setLoadingMsg(t('survey:loadingSurveyMsg'));
     try {
       const response = await getAssignedSurveyRequest(apiQuery.payload as SurveyReferenceReq);
       setSurveyWithContext(response.data);
@@ -107,12 +108,12 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       console.error(error.response);
       setError(true);
     } finally {
-      setIsLoading(false);
+      setLoadingMsg('');
     }
   };
 
   const submitSurveyResponse = async (apiQuery: ApiQuery) => {
-    setIsLoading(true);
+    setLoadingMsg(t('survey:submittingSurveyResponsesMsg'));
     try {
       const response = await submitSurveyResponseRequest({
         studyKey: studyKey,
@@ -123,7 +124,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       console.error(error.response);
       // setError(true);
     } finally {
-      setIsLoading(false);
+      setLoadingMsg('');
       let to = rootPath.lastIndexOf('/');
       to = to === -1 ? rootPath.length : to;
       const newUrl = rootPath.substring(0, to);
@@ -180,7 +181,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
         </Box>
         <Box width="100%" mt={2}>
           <Typography variant="body1">
-            {t('survey:loadingMsg')}
+            {loadingMsg}
           </Typography>
         </Box>
       </Box>
