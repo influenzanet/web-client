@@ -35,7 +35,6 @@ class ParticleText extends React.Component<ParticleTextProps> {
       window.addEventListener("pointerup", this.onTouchEnd);
       window.addEventListener("touchend", this.onTouchEnd);
       window.addEventListener("touchcancel", this.onTouchEnd);
-      window.addEventListener("scroll", this.onScroll);
 
       if (this.canvasContext) {
         this.canvasContext.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
@@ -63,8 +62,6 @@ class ParticleText extends React.Component<ParticleTextProps> {
         let canvasRect = this.canvasRef.current.getClientRects()[0];
         this.verticalPosition = canvasRect.y + canvasRect.height / 2;
 
-        this.updateVerticalPosition();
-
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
 
@@ -75,7 +72,7 @@ class ParticleText extends React.Component<ParticleTextProps> {
 
   private renderFrame = () => {
     if (this.canvasRef && this.canvasRef.current && this.canvasContext) {
-      //this.updateVerticalPosition();
+      this.updateVerticalPosition();
       this.canvasContext.clearRect(0, 0, this.canvasRef.current.width, this.canvasRef.current.height);
       this.particles.forEach((particle) => particle.renderFrame(this.mousePosition));
     }
@@ -93,12 +90,6 @@ class ParticleText extends React.Component<ParticleTextProps> {
 
       this.particles.forEach((particle) => particle.teleport(new Vector2(deltaX, 0)));
     }
-
-    this.updateVerticalPosition();
-  }
-
-  private onScroll = () => {
-    this.updateVerticalPosition();
   }
 
   private udpdateCanvasDimensions(canvas: HTMLCanvasElement) {
@@ -114,10 +105,12 @@ class ParticleText extends React.Component<ParticleTextProps> {
       let placeholderRect = placeholder.getClientRects()[0];
       let newVerticalPosition = placeholderRect.y + placeholderRect.height / 2;
       let deltaVerticalPosition = (newVerticalPosition - this.verticalPosition) * window.devicePixelRatio;
-      this.particles.forEach(particle => {
-        particle.teleport(new Vector2(0, deltaVerticalPosition));
-      });
-      this.verticalPosition = newVerticalPosition;
+      if (Math.abs(deltaVerticalPosition) > 0) {
+        this.particles.forEach(particle => {
+          particle.teleport(new Vector2(0, deltaVerticalPosition));
+        });
+        this.verticalPosition = newVerticalPosition;
+      }
     }
   }
 
