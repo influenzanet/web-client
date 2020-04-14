@@ -212,6 +212,14 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
     setApiQuery(query);
   }
 
+  const onPageChange = (currentPage: number, totalPages: number) => {
+    if (currentPage > 0) {
+      dispatch(setShowBackBtn(true));
+    } else {
+      dispatch(setShowBackBtn(false));
+    }
+  }
+
   return (
     <Container maxWidth="lg">
       {languageSelector}
@@ -228,13 +236,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
               submitBtnText={t('survey:submitBtn')}
               nextBtnText={t('survey:nextBtn')}
               backBtnText={t('survey:backBtn')}
-              onPageChange={(currentPage, totalPages) => {
-                if (currentPage > 0) {
-                  dispatch(setShowBackBtn(true));
-                } else {
-                  dispatch(setShowBackBtn(false));
-                }
-              }}
+              onPageChange={onPageChange}
             />
             : null
       }

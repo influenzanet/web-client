@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Survey, SurveySingleItem, SurveySingleItemResponse, SurveyContext } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveyPageView from './SurveyPageView/SurveyPageView';
-import { Switch, Route, useRouteMatch, Redirect } from 'react-router';
 
 interface SurveyViewProps {
   survey: Survey;
@@ -22,23 +21,57 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
   const [surveyEngine] = useState<SurveyEngineCore>(new SurveyEngineCore(props.survey, props.context, props.prefills));
   const surveyPages = surveyEngine.getSurveyPages();
 
-  const [responseCount, setResponseCount] = useState(0);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
-  let { path: surveyPath } = useRouteMatch();
-  let pagesPath = `${surveyPath}/pages`;
+  const [responseCount, setResponseCount] = useState(0);
 
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
     props.onSubmit(resp);
   }
 
+  const onPageChange = (newPageIndex: number) => {
+    if (props.onPageChange) {
+      props.onPageChange(newPageIndex, surveyPages.length);
+    }
+  }
+
+  const goToNextPage = () => {
+    if (currentPageIndex < surveyPages.length - 1) {
+      let newPageIndex = currentPageIndex + 1;
+      setCurrentPageIndex(newPageIndex);
+      onPageChange(newPageIndex);
+    }
+    resetScrollPosition();
+  }
+
+  const goToPreviousPage = () => {
+    if (currentPageIndex > 0) {
+      let newPageIndex = currentPageIndex - 1;
+      setCurrentPageIndex(newPageIndex);
+      onPageChange(newPageIndex);
+    }
+  }
+
   const resetScrollPosition = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-
   }
 
-  const surveyPage = (surveyPageItems: SurveySingleItem[], primaryActionLabel: string, primaryAction: () => void, secondaryActionLabel: string, secondaryAction: () => void) => {
+  const surveyPage = (surveyPageItems: SurveySingleItem[]) => {
+    let firstPage = currentPageIndex === 0;
+    let lastPage = currentPageIndex >= surveyPages.length - 1;
+
+    let primaryActionLabel = (lastPage) ?
+      (props.submitBtnText ? props.submitBtnText : "Submit") :
+      (props.nextBtnText ? props.nextBtnText : "Next");
+    let primaryAction = (lastPage)
+      ? onSubmit
+      : goToNextPage
+
+    let secondaryActionLabel = (firstPage) ? "" : (props.backBtnText ? props.backBtnText : "Back");
+    let secondaryAction = (firstPage) ? () => null : goToPreviousPage;
+
     return <SurveyPageView
       surveyEngine={surveyEngine}
       surveyItems={surveyPageItems}
@@ -52,43 +85,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
     />
   }
 
-  return (
-    <Switch>
-      <Route path={`${pagesPath}/:index`} render={routeProps => {
-        let index = parseInt(routeProps.match.params.index);
-
-        // If invalid index, redirect to beginning of survey.
-        if (index < 0 || index > surveyPages.length - 1) return <Redirect to={`${pagesPath}/0`} />
-
-        let firstPage = index === 0;
-        let lastPage = index >= surveyPages.length - 1;
-
-        let primaryActionLabel = (lastPage) ?
-          (props.submitBtnText ? props.submitBtnText : "Submit") :
-          (props.nextBtnText ? props.nextBtnText : "Next");
-        let primaryAction = (lastPage)
-          ? () => {
-            onSubmit();
-            // routeProps.history.push(`${surveyPath}/completed`);
-          }
-          : () => {
-            routeProps.history.push(`${pagesPath}/${index + 1}`);
-            resetScrollPosition();
-          }
-
-        let secondaryActionLabel = (firstPage) ? "" : (props.backBtnText ? props.backBtnText : "Back");
-        let secondaryAction = (firstPage) ? () => null : () => routeProps.history.goBack();
-
-        if (props.onPageChange) {
-          props.onPageChange(index, surveyPages.length);
-        }
-
-        return surveyPage(surveyPages[index], primaryActionLabel, primaryAction, secondaryActionLabel, secondaryAction);
-      }} />
-      {/*<Route path={`${surveyPath}/completed`} component={SurveyEndView} />*/}
-      <Redirect to={`${pagesPath}/0`} />
-    </Switch>
-  );
+  return surveyPage(surveyPages[currentPageIndex]);
 };
 
 export default SurveyView;
