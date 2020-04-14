@@ -32,6 +32,12 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
     props.onSubmit(resp);
   }
 
+  const resetScrollPosition = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+  }
+
   const surveyPage = (surveyPageItems: SurveySingleItem[], primaryActionLabel: string, primaryAction: () => void, secondaryActionLabel: string, secondaryAction: () => void) => {
     return <SurveyPageView
       surveyEngine={surveyEngine}
@@ -65,7 +71,10 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
             onSubmit();
             // routeProps.history.push(`${surveyPath}/completed`);
           }
-          : () => routeProps.history.push(`${pagesPath}/${index + 1}`);
+          : () => {
+            routeProps.history.push(`${pagesPath}/${index + 1}`);
+            resetScrollPosition();
+          }
 
         let secondaryActionLabel = (firstPage) ? "" : (props.backBtnText ? props.backBtnText : "Back");
         let secondaryAction = (firstPage) ? () => null : () => routeProps.history.goBack();
