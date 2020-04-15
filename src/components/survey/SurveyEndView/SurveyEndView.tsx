@@ -3,10 +3,7 @@ import { Container, Typography, Paper, Grid, Box } from '@material-ui/core';
 import FlexGrow from '../../common/FlexGrow';
 import ParticleText from '../../common/ParticleText/ParticleText';
 
-interface SurveyEndViewProps {
-}
-
-const SurveyEndView: React.FC<SurveyEndViewProps> = (props) => {
+const SurveyEndView: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const emojiPlaceholderRef = useRef<HTMLDivElement>(null);
 
