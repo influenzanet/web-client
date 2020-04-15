@@ -33,7 +33,7 @@ export function navigationReducer(
       return updateObject(state, {
         appBar: {
           ...state.appBar,
-          title: action.title
+          currentPageTitle: action.title
         }
       });
     case SET_SHOW_BACK_BTN:

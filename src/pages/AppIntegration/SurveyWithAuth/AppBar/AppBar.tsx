@@ -22,12 +22,6 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
   },
-  closeButton: {
-    color: "red",
-    '&:hover': {
-      background: "#ffebee",
-    }
-  },
   title: {
     flexGrow: 1,
   },
@@ -37,7 +31,7 @@ export const AppBar: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
-  console.log(location.pathname);
+
   let { path: rootPath } = useRouteMatch();
 
   const pageTitle = useSelector((state: { navigation: NavigationState }) => state.navigation.appBar.currentPageTitle)
@@ -78,7 +72,7 @@ export const AppBar: React.FC = () => {
 
           <IconButton
             edge="end"
-            className={`${classes.menuButton} ${classes.closeButton}`}
+            className={classes.menuButton}
             color="default"
             aria-label="close"
             onClick={() =>

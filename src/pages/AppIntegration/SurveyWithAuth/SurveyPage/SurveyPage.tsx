@@ -7,10 +7,18 @@ import { useTranslation } from 'react-i18next';
 import { setAccessTokenHeader, getAssignedSurveyRequest, submitSurveyResponseRequest } from '../../../../api/api';
 import { SurveyReferenceReq, SurveyAndContextMsg } from '../../../../api/models/study-api';
 import SurveyView from '../../../../components/survey/SurveyView/SurveyView';
-import { SurveySingleItemResponse, SurveyResponse } from 'survey-engine/lib/data_types';
+import { SurveySingleItemResponse, SurveyResponse, LocalizedObject, LocalizedString } from 'survey-engine/lib/data_types';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../../../store/navigation/actions';
+import { getLocaleStringTextByCode } from '../../../../components/survey/SurveySingleItemView/utils';
 
+const getSurveyNameByLocaleCode = (translations: LocalizedObject[] | undefined, code: string): string | undefined => {
+  if (!translations) { return; }
+  const translation = (translations.find(cont => cont.code === code) as LocalizedString);
+  if (!translation) { return }
+  return translation.parts.map(p => p.str).join('');
+}
 
 // A custom hook that builds on useLocation to parse
 // the query string for you.
@@ -113,6 +121,8 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
     setLoadingMsg(t('survey:loadingSurveyMsg'));
     try {
       const response = await getAssignedSurveyRequest(apiQuery.payload as SurveyReferenceReq);
+      const surveyName = getSurveyNameByLocaleCode(response.data.survey.name, selectedLanguage);
+      dispatch(setPageTitle(surveyName ? surveyName : ''));
       setSurveyWithContext(response.data);
     } catch (error) {
       console.error(error.response);
@@ -169,6 +179,8 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
         selected={selectedLanguage}
         availableLanguages={availableLanguages}
         onChange={(lng) => {
+          const surveyName = getSurveyNameByLocaleCode(surveyWithContext?.survey.name, lng);
+          dispatch(setPageTitle(surveyName ? surveyName : ''));
           setSelectedLanguage(lng);
         }}
       />
