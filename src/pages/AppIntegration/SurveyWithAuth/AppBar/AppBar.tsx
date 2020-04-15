@@ -22,6 +22,12 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
   },
+  closeButton: {
+    color: "red",
+    '&:hover': {
+      background: "#ffebee",
+    }
+  },
   title: {
     flexGrow: 1,
   },
@@ -72,7 +78,7 @@ export const AppBar: React.FC = () => {
 
           <IconButton
             edge="end"
-            className={classes.menuButton}
+            className={`${classes.menuButton} ${classes.closeButton}`}
             color="default"
             aria-label="close"
             onClick={() =>
