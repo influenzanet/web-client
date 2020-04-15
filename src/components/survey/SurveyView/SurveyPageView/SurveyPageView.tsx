@@ -10,10 +10,8 @@ import Button from '@material-ui/core/Button';
 interface SurveyPageViewProps {
   surveyEngine: SurveyEngineCore;
   surveyItems: SurveySingleItem[];
-  primaryActionLabel: string;
-  secondaryActionLabel: string;
-  primaryAction: () => void;
-  secondaryAction: () => void;
+  actionLabel: string;
+  action: () => void;
   selectedLanguage: string;
   responseCount: number;
   setResponseCount: Dispatch<SetStateAction<number>>
@@ -67,23 +65,13 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
     />
   }
 
-  const submitBtnGroup = (
+  const actionButton = (
     <Box textAlign="center" m={1}>
-      <Box>
-        {(props.secondaryActionLabel === "") ? null
-          :
-          <Button className={classes.btn} variant="contained" color="secondary"
-            onClick={props.secondaryAction}
-          >
-            {props.secondaryActionLabel}
-          </Button>
-        }
-        <Button className={classes.btn} variant="contained" color="primary"
-          onClick={props.primaryAction}
-        >
-          {props.primaryActionLabel}
-        </Button>
-      </Box>
+      <Button className={classes.btn} variant="contained" color="primary"
+        onClick={props.action}
+      >
+        {props.actionLabel}
+      </Button>
     </Box>
   )
 
@@ -98,7 +86,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
           </Paper>
         )
       }
-      {submitBtnGroup}
+      {actionButton}
     </div>
   );
 };
