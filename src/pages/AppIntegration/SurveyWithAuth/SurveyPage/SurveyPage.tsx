@@ -19,8 +19,8 @@ function useQuery() {
 }
 
 const availableLanguages = [
-  { code: 'en', label: 'English' },
-  { code: 'de', label: 'Deutsch' },
+  { code: 'en', label: '🇬🇧 English' },
+  { code: 'de', label: '🇩🇪 Deutsch' },
 ]
 
 interface ApiQuery {
@@ -164,17 +164,14 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
 
 
   const languageSelector = (
-    <Box display="flex">
-      <Box flexGrow={1}></Box>
-      <Box>
-        <LanguageSelector
-          selected={selectedLanguage}
-          availableLanguages={availableLanguages}
-          onChange={(lng) => {
-            setSelectedLanguage(lng);
-          }}
-        />
-      </Box>
+    <Box display="flex" justifyContent="center">
+      <LanguageSelector
+        selected={selectedLanguage}
+        availableLanguages={availableLanguages}
+        onChange={(lng) => {
+          setSelectedLanguage(lng);
+        }}
+      />
     </Box>
   )
 

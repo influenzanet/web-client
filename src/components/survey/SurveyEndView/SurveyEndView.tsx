@@ -2,6 +2,7 @@ import React, { useRef, useEffect, Fragment } from 'react';
 import { Container, Typography, Paper, Grid, Box } from '@material-ui/core';
 import FlexGrow from '../../common/FlexGrow';
 import ParticleText from '../../common/ParticleText/ParticleText';
+import RoundedBox from '../../ui/RoundedBox';
 
 const SurveyEndView: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -41,11 +42,11 @@ const SurveyEndView: React.FC = () => {
   const NextStepsBox = (title: string) => {
     return (
       <Grid item xs={12} sm={8} md={4}>
-        <Paper elevation={0} style={{ height: 120, padding: 16, margin: 16, borderRadius: 42 }}>
+        <RoundedBox style={{ height: 120, margin: 16 }}>
           <Typography variant="h6" align="center">
             {title}
           </Typography>
-        </Paper>
+        </RoundedBox>
       </Grid>
     );
   }

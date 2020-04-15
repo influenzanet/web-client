@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import PrimaryButton from '../../../../components/ui/buttons/PrimaryButton';
 
 
 const ErrorPage: React.FC = () => {
@@ -8,11 +8,11 @@ const ErrorPage: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Button
+      <PrimaryButton
         onClick={() => history.goBack()}
       >
         Retry
-      </Button>
+      </PrimaryButton>
     </React.Fragment>
   );
 };
