@@ -127,7 +127,7 @@ class ParticleText extends React.Component<ParticleTextProps> {
       let rect = this.canvasContext.canvas.getBoundingClientRect();
       this.mousePosition.x = (ev.touches[0].clientX - rect.left) * window.devicePixelRatio;
       this.mousePosition.y = (ev.touches[0].clientY - rect.top) * window.devicePixelRatio;
-      ev.preventDefault();
+      // ev.preventDefault();
     }
   }
 
