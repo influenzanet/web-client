@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import PrimaryButton from '../../../../components/ui/buttons/PrimaryButton';
+import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 
 
 const ErrorPage: React.FC = () => {
@@ -8,11 +8,12 @@ const ErrorPage: React.FC = () => {
 
   return (
     <React.Fragment>
-      <PrimaryButton
+      <RoundedButton
+        color="primary"
         onClick={() => history.goBack()}
       >
         Retry
-      </PrimaryButton>
+      </RoundedButton>
     </React.Fragment>
   );
 };

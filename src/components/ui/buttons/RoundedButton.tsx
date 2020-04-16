@@ -1,12 +1,13 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 
-interface PrimaryButtonProps {
+interface RoundedButtonProps {
+  color?: "primary" | "secondary";
   className?: string | undefined;
   onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
 }
 
-const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
+const RoundedButton: React.FC<RoundedButtonProps> = (props) => {
   return (
     <Button
       disableElevation={true}
@@ -15,7 +16,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
         textTransform: "none",
       }}
       variant="contained"
-      color="primary"
+      color={props.color}
       className={props.className}
       onClick={props.onClick}
     >
@@ -24,4 +25,4 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
   );
 };
 
-export default PrimaryButton;
+export default RoundedButton;

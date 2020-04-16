@@ -4,7 +4,7 @@ import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveySingleItemView from '../../SurveySingleItemView/SurveySingleItemView';
 import Box from '@material-ui/core/Box';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import PrimaryButton from '../../../ui/buttons/PrimaryButton';
+import RoundedButton from '../../../ui/buttons/RoundedButton';
 import RoundedBox from '../../../ui/RoundedBox';
 
 interface SurveyPageViewProps {
@@ -67,11 +67,12 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
 
   const actionButton = (
     <Box textAlign="center" m={1}>
-      <PrimaryButton className={classes.btn}
+      <RoundedButton className={classes.btn}
+        color="primary"
         onClick={props.action}
       >
         {props.actionLabel}
-      </PrimaryButton>
+      </RoundedButton>
     </Box>
   )
 
