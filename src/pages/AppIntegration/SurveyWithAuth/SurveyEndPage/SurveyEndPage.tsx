@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SurveyEndView from '../../../../components/survey/SurveyEndViews/EmojiActionPage/EmojiActionPage';
 import { useTranslation } from 'react-i18next';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 
 const SurveyEndPage: React.FC = () => {
-  const { t, i18n } = useTranslation(['survey']);
+  const { t } = useTranslation(['survey']);
   let { path: rootPath } = useRouteMatch();
   const history = useHistory();
-
-  useEffect(() => {
-    i18n.changeLanguage('de');
-  }, [])
-
 
   const actionHandler = (action: string) => {
     console.log('action', action);
