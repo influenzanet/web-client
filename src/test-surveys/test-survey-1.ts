@@ -3589,7 +3589,7 @@ const slider3: SurveySingleItem = {
                     code: 'en',
                     parts: [
                       {
-                        str: '1'
+                        str: 'first option'
                       },
                     ]
                   },
@@ -3597,7 +3597,7 @@ const slider3: SurveySingleItem = {
                     code: 'de',
                     parts: [
                       {
-                        str: '1'
+                        str: 'erste Option'
                       },
                     ]
                   },
@@ -3611,6 +3611,113 @@ const slider3: SurveySingleItem = {
                     code: 'en',
                     parts: [
                       {
+                        str: 'middle option'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'mittel'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
+                key: '3',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '😶'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '😶'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
+                key: '4',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'option three'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'Option drei'
+                      },
+                    ]
+                  },
+                ],
+              },
+            ]
+          },
+          {
+            key: 'sc2',
+            role: 'sliderCategorical',
+            items: [
+              {
+                key: '-1',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '0'
+                      },
+                    ]
+                  }
+                ],
+              }, {
+                key: '0',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
+                key: '1',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
                         str: '2'
                       },
                     ]
@@ -3626,14 +3733,14 @@ const slider3: SurveySingleItem = {
                 ],
               },
               {
-                key: '3',
+                key: '2',
                 role: 'option',
                 content: [
                   {
                     code: 'en',
                     parts: [
                       {
-                        str: 'three'
+                        str: '3'
                       },
                     ]
                   },
@@ -3641,7 +3748,51 @@ const slider3: SurveySingleItem = {
                     code: 'de',
                     parts: [
                       {
-                        str: 'drei'
+                        str: '3'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
+                key: '3',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '4'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
+                key: '4',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '5+'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '5+'
                       },
                     ]
                   },

@@ -3,7 +3,6 @@ import { SurveySingleItem } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveySingleItemView from '../../SurveySingleItemView/SurveySingleItemView';
 import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import PrimaryButton from '../../../ui/buttons/PrimaryButton';
 import RoundedBox from '../../../ui/RoundedBox';

@@ -11,7 +11,6 @@ import { SurveySingleItemResponse, SurveyResponse, LocalizedObject, LocalizedStr
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../../store/navigation/actions';
-import { getLocaleStringTextByCode } from '../../../../components/survey/SurveySingleItemView/utils';
 
 const getSurveyNameByLocaleCode = (translations: LocalizedObject[] | undefined, code: string): string | undefined => {
   if (!translations) { return; }
