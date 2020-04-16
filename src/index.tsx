@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import 'typeface-roboto';
 import './index.scss';
@@ -11,7 +11,9 @@ import './i18n';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Suspense fallback="loading">
+      <App />
+    </Suspense>
   </Provider>
   , document.getElementById('root'));
 

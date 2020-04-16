@@ -16,7 +16,7 @@ i18n
       escapeValue: false // react already safes from xss
     },
     react: {
-      useSuspense: false
+      useSuspense: true
     }
 
   });

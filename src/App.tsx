@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import { Helmet } from 'react-helmet';
 
 import {
   BrowserRouter as Router,
@@ -20,10 +21,13 @@ import {
   responsiveFontSizes,
 } from '@material-ui/core';
 import AppIntegration from './pages/AppIntegration/AppIntegration';
+import { useTranslation } from 'react-i18next';
 
 // import TestForm from './components/form/login/LoginForm';
 
 const App: React.FC = () => {
+  const { t } = useTranslation(['app']);
+
   const theme = responsiveFontSizes(createMuiTheme({
     palette: {
       primary: {
@@ -47,6 +51,10 @@ const App: React.FC = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
+        <Helmet>
+          <title>{t('header.title')}</title>
+          <meta name="description" content={t('header.metaDescription')} />
+        </Helmet>
         <Router>
           <Switch>
             {/*<Route path="/login" component={Login}/>

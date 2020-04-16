@@ -1,4 +1,8 @@
 {
+  "header": {
+    "title": "Influenzanet",
+    "metaDescription": "A participatory survey system for fighting epidemics"
+  },
   "closeMsgBig": "Survey Completed",
   "closeMsgSmall": "Please close this page now."
 }

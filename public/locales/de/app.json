@@ -1,4 +1,8 @@
 {
+  "header": {
+    "title": "Influenzanet",
+    "metaDescription": "Partizipatives Umfragesystem für Bekämpfung von Epidemien"
+  },
   "closeMsgBig": "Umfrage abgeschlossen",
   "closeMsgSmall": "Bitte Seite schließen."
 }
