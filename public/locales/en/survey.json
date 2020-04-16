@@ -3,5 +3,12 @@
   "submittingSurveyResponsesMsg": "Submitting responses...",
   "nextBtn": "Next",
   "submitBtn": "Submit",
-  "backBtn": "Back"
+  "backBtn": "Back",
+  "surveyEnd": {
+    "title": "Thank you for participating!",
+    "subtitle": "Stay healthy!",
+    "actionHeader": "Here are some ideas for your next steps:",
+    "showStatisticBtn": "Show statistics",
+    "backToAppBtn": "Back to the app"
+  }
 }
