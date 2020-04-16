@@ -3494,9 +3494,9 @@ const slider2: SurveySingleItem = {
             key: '1',
             role: 'sliderNumericRange',
             properties: {
-              max: { dtype: 'num', num: 4443 },
-              min: { dtype: 'num', num: -5 },
-              stepSize: { dtype: 'num', num: 0.3 },
+              max: { dtype: 'num', num: 60 },
+              min: { dtype: 'num', num: -15 },
+              stepSize: { dtype: 'num', num: 5 },
             },
             content: [
               {
