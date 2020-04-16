@@ -3353,6 +3353,301 @@ const pb1: SurveySingleItem = {
   version: 1,
 };
 
+const slider1: SurveySingleItem = {
+  key: '0.sliders.1',
+  version: 1,
+  components: {
+    role: 'root', items: [
+      // title
+      {
+        role: 'title',
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'Numeric slider example'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Numerischer Schieberegler Beispiel'
+              },
+            ]
+          },
+        ]
+      },
+
+      // responseGroup
+      {
+        key: '1',
+        role: 'responseGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            key: '1',
+            role: 'sliderNumeric',
+            properties: {
+              max: { dtype: 'num', num: 4443 },
+              min: { dtype: 'num', num: -5 },
+              stepSize: { dtype: 'num', num: 0.3 },
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Custom label (optional)'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Optionale Beschriftung'
+                  },
+                ]
+              },
+            ],
+          }
+        ]
+      },
+    ]
+  }
+};
+
+const slider2: SurveySingleItem = {
+  key: '0.sliders.2',
+  version: 1,
+  components: {
+    role: 'root', items: [
+      // title
+      {
+        role: 'title',
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'Numeric range slider example'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Numerischer Schieberegler für Intervalle - Beispiel'
+              },
+            ]
+          },
+        ]
+      },
+
+      // responseGroup
+      {
+        key: '1',
+        role: 'responseGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            key: '1',
+            role: 'sliderNumericRange',
+            properties: {
+              max: { dtype: 'num', num: 4443 },
+              min: { dtype: 'num', num: -5 },
+              stepSize: { dtype: 'num', num: 0.3 },
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Custom label (optional)'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Optionale Beschriftung'
+                  },
+                ]
+              },
+            ],
+          }
+        ]
+      },
+    ]
+  }
+};
+
+const slider3: SurveySingleItem = {
+  key: '0.sliders.3',
+  version: 1,
+  components: {
+    role: 'root', items: [
+      // title
+      {
+        role: 'title',
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'Categorical slider example'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Single Choice Schieberegler Beispiel'
+              },
+            ]
+          },
+        ]
+      },
+
+      // responseGroup
+      {
+        key: '1',
+        role: 'responseGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            key: '1',
+            role: 'sliderCategorical',
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Custom label (optional)'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Optionale Beschriftung'
+                  },
+                ]
+              },
+            ],
+            items: [
+              {
+                key: '1',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '1'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
+                key: '2',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: '2'
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
+                key: '3',
+                role: 'option',
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'three'
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'drei'
+                      },
+                    ]
+                  },
+                ],
+              },
+            ]
+          }
+        ]
+      },
+    ]
+  }
+};
+
+
+
+const sliders: SurveyGroupItem = {
+  key: '0.sliders',
+  version: 1,
+  selectionMethod: {
+    name: 'sequential'
+  },
+  items: [
+    {
+      key: '0.sliders.pb1',
+      type: 'pageBreak',
+      version: 1,
+    },
+    slider1,
+    slider2,
+    slider3,
+    {
+      key: '0.sliders.pb2',
+      type: 'pageBreak',
+      version: 1,
+    }
+  ]
+};
+
 
 const QG0: SurveyGroupItem = {
   key: '0',
@@ -3369,6 +3664,7 @@ const QG0: SurveyGroupItem = {
         Q4c,
       ],
     },
+    sliders,
     {
       key: '0.5',
       version: 1,

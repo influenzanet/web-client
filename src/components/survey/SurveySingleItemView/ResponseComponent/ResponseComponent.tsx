@@ -13,6 +13,9 @@ import "moment/locale/de";
 
 // pick a date util library
 import MomentUtils from '@date-io/moment';
+import SliderNumeric from './Sliders/SliderNumeric/SliderNumeric';
+import SliderNumericRange from './Sliders/SliderNumericRange/SliderNumericRange';
+import SliderCategorical from './Sliders/SliderCategorical/SliderCategorical';
 
 interface ResponseComponentProps {
   compDef: ItemComponent;
@@ -127,6 +130,30 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           />
         case 'dateInput':
           return <DateInput
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'sliderNumeric':
+          return <SliderNumeric
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'sliderNumericRange':
+          return <SliderNumericRange
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'sliderCategorical':
+          return <SliderCategorical
             key={respComp.key}
             languageCode={props.languageCode}
             compDef={respComp}
