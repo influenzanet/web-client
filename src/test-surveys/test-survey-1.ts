@@ -3393,9 +3393,9 @@ const slider1: SurveySingleItem = {
             key: '1',
             role: 'sliderNumeric',
             properties: {
-              max: { dtype: 'num', num: 4443 },
-              min: { dtype: 'num', num: -5 },
-              stepSize: { dtype: 'num', num: 0.3 },
+              max: { dtype: 'num', num: 50 },
+              min: { dtype: 'num', num: 10 },
+              stepSize: { dtype: 'num', num: 2 },
             },
             content: [
               {
@@ -3415,7 +3415,39 @@ const slider1: SurveySingleItem = {
                 ]
               },
             ],
-          }
+          },
+
+          {
+            key: '2',
+            role: 'sliderNumeric',
+            properties: {
+              max: { dtype: 'num', num: 200 },
+              min: { dtype: 'num', num: -200 },
+            },
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Custom label (optional)'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Optionale Beschriftung'
+                  },
+                ]
+              },
+            ],
+          },
+
+          {
+            key: '3',
+            role: 'sliderNumeric',
+          },
         ]
       },
     ]

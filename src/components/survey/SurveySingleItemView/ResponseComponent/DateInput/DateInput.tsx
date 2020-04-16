@@ -105,6 +105,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
           margin="dense"
           InputLabelProps={{ shrink: true }}
           clearable
+          disabled={props.compDef.disabled !== undefined}
         />
       </Box>
     </Box>
