@@ -228,7 +228,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
 
   return (
     <Container maxWidth="lg">
-      {languageSelector}
+      {/* {languageSelector} */}
       {
         isLoading ?
           loadingWidget :
