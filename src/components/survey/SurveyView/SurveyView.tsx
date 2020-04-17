@@ -32,8 +32,6 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
     ? parseInt(window.location.href.split("/").slice(-1)[0])
     : 0;
 
-  let progress = ((currentPage + 1) / surveyPages.length) * 100;
-
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
     props.onSubmit(resp);
@@ -64,7 +62,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
         >
           <Box>
             <SurveyProgress
-              currentIndex={2}
+              currentIndex={currentPage}
               totalCount={surveyPages.length}
             />
           </Box>
