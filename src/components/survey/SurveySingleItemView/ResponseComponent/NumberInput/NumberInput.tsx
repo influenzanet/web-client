@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import { getLocaleStringTextByCode } from '../../utils';
-import { TextField } from '@material-ui/core';
+import { TextField, Tooltip } from '@material-ui/core';
 
 interface NumberInputProps {
   compDef: ItemComponent;
@@ -49,25 +49,38 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     })
   };
 
-  return (
-    <TextField
-      label={getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
-      InputLabelProps={{ shrink: true }}
-      value={inputValue.toString()}
-      margin="dense"
-      variant="outlined"
-      type="number"
-      InputProps={{
-        inputProps: {
-          min: props.compDef.properties?.min,
-          max: props.compDef.properties?.max,
-          step: props.compDef.properties?.stepSize,
-        }
-      }}
-      onChange={handleInputValueChange(props.compDef.key)}
-      disabled={props.compDef.disabled !== undefined}
-    ></TextField>
-  );
+  let renderedInput = <TextField
+    value={inputValue.toString()}
+    margin="dense"
+    variant="filled"
+    type="number"
+    inputProps={{
+      style: {
+        padding: "8px 16px",
+      },
+      min: props.compDef.properties?.min,
+      max: props.compDef.properties?.max,
+      step: props.compDef.properties?.stepSize,
+    }}
+    InputProps={{
+      disableUnderline: true,
+      style: {
+        borderRadius: 1000,
+      },
+    }}
+    onChange={handleInputValueChange(props.compDef.key)}
+    disabled={props.compDef.disabled !== undefined}
+  ></TextField>;
+
+  let content = getLocaleStringTextByCode(props.compDef.content, props.languageCode);
+
+  if (content) {
+    return <Tooltip title={content} arrow>
+      {renderedInput}
+    </Tooltip>
+  } else {
+    return renderedInput;
+  }
 };
 
 export default NumberInput;

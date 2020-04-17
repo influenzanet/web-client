@@ -135,6 +135,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
         const renderedOption =
           <FormControlLabel
             key={option.key}
+            style={{ marginRight: "auto" }}
             value={option.key}
             control={
               <Checkbox checked={isChecked(option.key ? option.key : 'no key found')}
@@ -173,9 +174,19 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
               fullWidth
               value={r.value ? r.value : ''}
               margin="dense"
-              variant="outlined"
-              label={getLocaleStringTextByCode(option.description, props.languageCode)}
-              InputLabelProps={{ shrink: true }}
+              variant="filled"
+              inputProps={{
+                style: {
+                  padding: "8px 16px",
+                }
+              }}
+              InputProps={{
+                disableUnderline: true,
+                style: {
+                  borderRadius: 1000,
+                }
+              }}
+              placeholder={getLocaleStringTextByCode(option.description, props.languageCode)}
               onChange={handleInputValueChange(option.key)}
               disabled={isDisabled(option)}
             ></TextField>
@@ -184,6 +195,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
 
         return <FormControlLabel
           classes={{ label: classes.inputLabel }}
+          style={{ marginRight: 0 }}
           key={option.key}
           value={option.key}
           control={
@@ -200,7 +212,9 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
   }
 
   return (
-    <FormControl component="fieldset">
+    <FormControl component="fieldset"
+      style={{ width: "100%" }}
+    >
       <FormGroup>
         {
           (props.compDef as ItemGroupComponent).items.map(option =>

@@ -93,6 +93,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     switch (option.role) {
       case 'option':
         const renderedOption = <FormControlLabel
+          style={{ marginRight: "auto" }}
           key={option.key}
           value={option.key}
           control={<Radio />}
@@ -129,7 +130,8 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
   }
   return (
     <FormControl component="fieldset"
-    //className={classes.formControl}
+      //className={classes.formControl}
+      style={{ width: "100%" }}
     >
       <RadioGroup aria-label="options"
         name={props.compDef.key}

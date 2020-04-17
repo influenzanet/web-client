@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       width: '100%',
       height: 5,
+      alignItems: 'center',
       justifyContent: 'center'
     },
     item: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: 40,
     },
     itemActive: {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: theme.palette.secondary.main,
     }
   }),
 );

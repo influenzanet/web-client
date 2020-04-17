@@ -53,11 +53,21 @@ const TextInput: React.FC<TextInputProps> = (props) => {
   return (
     <TextField
       fullWidth
-      label={getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
-      InputLabelProps={{ shrink: true }}
+      placeholder={getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
       value={inputValue}
       margin="dense"
-      variant="outlined"
+      variant="filled"
+      inputProps={{
+        style: {
+          padding: "8px 16px",
+        }
+      }}
+      InputProps={{
+        disableUnderline: true,
+        style: {
+          borderRadius: 1000,
+        }
+      }}
       onChange={handleInputValueChange(props.compDef.key)}
       disabled={props.compDef.disabled !== undefined}
     ></TextField>

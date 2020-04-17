@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     inputLabel: {
       width: "100%",
-    }
+    },
   }),
 );
 
@@ -31,18 +31,29 @@ const RadioCtrlWithTextField: React.FC<RadioCtrlWithTextFieldProps> = (props) =>
       <TextField
         fullWidth
         value={props.inputValue}
-        variant="outlined"
-        margin="dense"
-        label={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
-        InputLabelProps={{ shrink: true }}
+        margin="none"
+        variant="filled"
+        inputProps={{
+          style: {
+            padding: "8px 16px",
+          }
+        }}
+        InputProps={{
+          disableUnderline: true,
+          style: {
+            borderRadius: 1000,
+          }
+        }}
+        placeholder={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
         onChange={props.onInputChange}
         disabled={props.compDef.disabled !== undefined}
       ></TextField>
     </Box>
-  </Box>;
+  </Box >;
 
   return <FormControlLabel
     classes={{ label: classes.inputLabel }}
+    style={{ marginRight: 0 }}
     key={props.compDef.key}
     value={props.compDef.key}
     control={<Radio />}

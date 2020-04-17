@@ -54,11 +54,22 @@ const MultilineTextInput: React.FC<MultilineTextInputProps> = (props) => {
   return (
     <TextField
       fullWidth
-      label={getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
-      InputLabelProps={{ shrink: true }}
+      placeholder={getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
       value={inputValue}
       margin="dense"
-      variant="outlined"
+      variant="filled"
+      inputProps={{
+        style: {
+          padding: "8px 16px",
+        }
+      }}
+      InputProps={{
+        disableUnderline: true,
+        style: {
+          borderRadius: 16,
+          padding: 0,
+        }
+      }}
       rowsMax={15}
       rows={3}
       multiline

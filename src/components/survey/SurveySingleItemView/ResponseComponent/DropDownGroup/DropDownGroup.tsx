@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { FormControl, InputLabel, Select, MenuItem, Box, Typography } from '@material-ui/core';
+import { FormControl, InputLabel, Select, MenuItem, Box, Typography, Tooltip } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { getLocaleStringTextByCode } from '../../utils';
 
@@ -68,6 +68,49 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
     });
   };
 
+  let renderedInput = <FormControl
+    className={classes.formControl}
+    variant="filled"
+    margin="dense"
+    style={{ margin: 0 }}
+  >
+    <Select
+      margin="dense"
+      labelId={props.compDef.key + 'label'}
+      labelWidth={labelWidth}
+      id={props.compDef.key}
+      SelectDisplayProps={{
+        style: {
+          padding: "8px 16px",
+        }
+      }}
+      disableUnderline={true}
+      style={{
+        borderRadius: 1000,
+        padding: 0,
+      }}
+      value={getSelectedKey()}
+      onChange={handleSelectionChange}
+    >
+      {
+        (props.compDef as ItemGroupComponent).items.map(
+          item =>
+            <MenuItem value={item.key} key={item.key} >
+              {getLocaleStringTextByCode(item.content, props.languageCode)}
+            </MenuItem>
+        )
+      }
+    </Select>
+  </FormControl>;
+
+  let description = getLocaleStringTextByCode(props.compDef.description, props.languageCode);
+
+  if (description) {
+    renderedInput = <Tooltip title={description} arrow>
+      {renderedInput}
+    </Tooltip>;
+  }
+
   return (
     <Box display="flex" alignItems="center" my={1}>
       <Box mr={1}>
@@ -75,36 +118,8 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
           {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
         </Typography>
       </Box>
-      <FormControl
-        className={classes.formControl}
-        variant="outlined"
-        margin="dense"
-        style={{ margin: 0 }}>
-        {
-          props.compDef.description ?
-            <InputLabel ref={labelRef} id={props.compDef.key + 'label'}>
-              {getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
-            </InputLabel> : null
-        }
-        <Select
-          margin="dense"
-          labelId={props.compDef.key + 'label'}
-          labelWidth={labelWidth}
-          id={props.compDef.key}
-          value={getSelectedKey()}
-          onChange={handleSelectionChange}
-        >
-          {
-            (props.compDef as ItemGroupComponent).items.map(
-              item =>
-                <MenuItem value={item.key} key={item.key}>
-                  {getLocaleStringTextByCode(item.content, props.languageCode)}
-                </MenuItem>
-            )
-          }
-        </Select>
-      </FormControl>
-    </Box>
+      {renderedInput}
+    </Box >
   );
 };
 

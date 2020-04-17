@@ -89,21 +89,31 @@ const DateInput: React.FC<DateInputProps> = (props) => {
       my={1}
     >
       {props.compDef.content ?
-        <Box mr={1} mt={1}>
+        <Box mr={1}>
           <Typography variant="body1" >
             {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
           </Typography>
         </Box> : null}
       <Box>
         <DatePicker
-          label={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
           value={selectedDate}
           onChange={handleDateChange}
           views={pickerView as DatePickerView[]}
           format={format}
-          inputVariant="outlined"
+          inputVariant="filled"
           margin="dense"
-          InputLabelProps={{ shrink: true }}
+          inputProps={{
+            style: {
+              padding: "8px 16px",
+            }
+          }}
+          InputProps={{
+            disableUnderline: true,
+            style: {
+              borderRadius: 1000,
+            }
+          }}
+          placeholder={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
           clearable
           disabled={props.compDef.disabled !== undefined}
         />
