@@ -27,12 +27,12 @@ const SurveyEndPage: React.FC = () => {
   return (
     <SurveyEndView
       actions={[
-        { key: 'showStat', label: t('surveyEnd.showStatisticBtn'), color: "secondary" },
-        { key: 'backToApp', label: t('surveyEnd.backToAppBtn'), color: "primary" }
+        //{ key: 'showStat', label: t('surveyEnd.showStatisticBtn'), color: "secondary" },
+        { key: 'backToApp', label: t('surveyEnd.backToAppBtn') }
       ]}
       onActionClicked={actionHandler}
       titleText={t('surveyEnd.title')}
-      subtitleText={t('surveyEnd.subtitle')}
+      // subtitleText={t('surveyEnd.subtitle')}
       actionHeaderText={t('surveyEnd.actionHeader')}
     />
   );

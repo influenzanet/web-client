@@ -90,9 +90,10 @@ const EmojiActionPage: React.FC<EmojiActionPageProps> = (props) => {
           <Typography variant="h3" color="primary" align="center">
             {props.titleText ? props.titleText : 'Thank you for participating!'}
           </Typography>
-          <Typography variant="h3" color="secondary" align="center">
-            {props.subtitleText ? props.subtitleText : 'Stay healthy!'}
-          </Typography>
+          {props.subtitleText ?
+            <Typography variant="h3" color="secondary" align="center">
+              {props.subtitleText}
+            </Typography> : null}
         </Box>
         <FlexGrow />
         <Emoji />
