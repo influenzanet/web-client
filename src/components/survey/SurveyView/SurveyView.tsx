@@ -24,10 +24,15 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
   const surveyPages = surveyEngine.getSurveyPages();
 
   const [responseCount, setResponseCount] = useState(0);
-  const [progress, setProgress] = useState(0);
 
   let { path: surveyPath } = useRouteMatch();
   let pagesPath = `${surveyPath}/pages`;
+
+  let currentPage = (window.location.href.includes(pagesPath))
+    ? parseInt(window.location.href.split("/").slice(-1)[0])
+    : 0;
+
+  let progress = ((currentPage + 1) / surveyPages.length) * 100;
 
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
@@ -85,8 +90,6 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
               routeProps.history.push(`${pagesPath}/${index + 1}`);
               resetScrollPosition();
             }
-
-          setProgress(((index + 1) / surveyPages.length) * 100);
 
           return surveyPage(surveyPages[index], primaryActionLabel, primaryAction);
         }} />
