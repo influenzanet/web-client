@@ -9,6 +9,7 @@ interface DropDownGroupProps {
   prefill?: ResponseItem;
   responseChanged: (response: ResponseItem | undefined) => void;
   languageCode: string;
+  fullWidth?: boolean;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -73,6 +74,7 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
     variant="filled"
     margin="dense"
     style={{ margin: 0 }}
+    fullWidth={props.fullWidth}
   >
     <Select
       margin="dense"
@@ -94,10 +96,14 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
     >
       {
         (props.compDef as ItemGroupComponent).items.map(
-          item =>
-            <MenuItem value={item.key} key={item.key} >
+          item => {
+            if (item.displayCondition) {
+              return null;
+            }
+            return <MenuItem value={item.key} key={item.key} >
               {getLocaleStringTextByCode(item.content, props.languageCode)}
             </MenuItem>
+          }
         )
       }
     </Select>
@@ -113,11 +119,13 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
 
   return (
     <Box display="flex" alignItems="center" my={1}>
-      <Box mr={1}>
-        <Typography variant="body1">
-          {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
-        </Typography>
-      </Box>
+      {props.compDef.content ?
+        <Box mr={1} minWidth={80} flexShrink={1}>
+          <Typography variant="body1">
+            {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
+          </Typography>
+        </Box>
+        : null}
       {renderedInput}
     </Box >
   );

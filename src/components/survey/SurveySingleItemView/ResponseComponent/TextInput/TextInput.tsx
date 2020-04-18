@@ -60,7 +60,8 @@ const TextInput: React.FC<TextInputProps> = (props) => {
       inputProps={{
         style: {
           padding: "8px 16px",
-        }
+        },
+        maxLength: 4000,
       }}
       InputProps={{
         disableUnderline: true,

@@ -4011,14 +4011,74 @@ const tableMixed: SurveySingleItem = {
                 key: 't3', role: 'responseRow',
                 // displayCondition:
                 items: [
-                  { key: 'l', role: 'label', content: [{ code: 'en', parts: [{ str: 'label 2' }] }] }
-                  // TODO: normal row items
+                  { key: 'l', role: 'label', content: [{ code: 'en', parts: [{ str: 'label 2' }] }] },
+                  { key: 'i1', role: 'input', content: [{ code: 'en', parts: [{ str: 'with hint ' },] }], },
+                  { key: 'l2', role: 'label', content: [{ code: 'en', parts: [{ str: 'int. blank' }] }] },
+                  {
+                    key: 'i2', role: 'numberInput', description: [{ code: 'en', parts: [{ str: 'number' }] }],
+                    properties: {
+                      max: { dtype: 'num', num: 4443 },
+                      min: { dtype: 'num', num: -5 },
+                      stepSize: { dtype: 'num', num: 0.3 },
+                    },
+                  },
+                  { key: 'i3', role: 'numberInput' },
+                  { key: 'i4', role: 'input' },
+                  {
+                    key: 'i5', role: 'numberInput', properties: {
+                      max: { dtype: 'num', num: 40 },
+                      min: { dtype: 'num', num: -5 },
+                    },
+                  },
                 ]
               },
               {
                 key: 't4', role: 'responseRow', items: [
-                  { key: 'l', role: 'label', content: [{ code: 'en', parts: [{ str: 'label 3' }] }] }
-                  // TODO: normal row items
+                  { key: 'l', role: 'label', content: [{ code: 'en', parts: [{ str: 'label 3' }] }] },
+                  {
+                    key: 'd1', role: 'dropDownGroup', description: [{ code: 'en', parts: [{ str: 'dropdown' }] }], items: [
+                      { key: '1', role: 'option', content: [{ code: 'en', parts: [{ str: '1' }] }] },
+                      { key: '2', role: 'option', content: [{ code: 'en', parts: [{ str: '2' }] }] },
+                      { key: '3', role: 'option', content: [{ code: 'en', parts: [{ str: '3' }] }] },
+                      { key: '4', role: 'option', content: [{ code: 'en', parts: [{ str: '4' }] }] },
+                    ]
+                  }, {
+                    key: 'd2', role: 'dropDownGroup', items: [
+                      { key: '1', role: 'option', content: [{ code: 'en', parts: [{ str: '1' }] }] },
+                      { key: '2', role: 'option', content: [{ code: 'en', parts: [{ str: '2' }] }] },
+                      { key: '3', role: 'option', content: [{ code: 'en', parts: [{ str: '3' }] }] },
+                      { key: '4', role: 'option', content: [{ code: 'en', parts: [{ str: '4' }] }] },
+                    ]
+                  }, {
+                    key: 'd3', role: 'dropDownGroup', items: [
+                      { key: '1', role: 'option', content: [{ code: 'en', parts: [{ str: '1' }] }] },
+                      { key: '2', role: 'option', content: [{ code: 'en', parts: [{ str: '2' }] }] },
+                      { key: '3', role: 'option', content: [{ code: 'en', parts: [{ str: '3' }] }] },
+                      { key: '4', role: 'option', content: [{ code: 'en', parts: [{ str: '4' }] }] },
+                    ]
+                  }, {
+                    key: 'd4', role: 'dropDownGroup', items: [
+                      { key: '1', role: 'option', content: [{ code: 'en', parts: [{ str: '1' }] }] },
+                      { key: '2', role: 'option', content: [{ code: 'en', parts: [{ str: '2' }] }] },
+                      { key: '3', role: 'option', content: [{ code: 'en', parts: [{ str: '3' }] }] },
+                      { key: '4', role: 'option', content: [{ code: 'en', parts: [{ str: '4' }] }] },
+                    ]
+                  }, {
+                    key: 'd5', role: 'dropDownGroup', items: [
+                      { key: '1', role: 'option', content: [{ code: 'en', parts: [{ str: '1' }] }] },
+                      { key: '2', role: 'option', content: [{ code: 'en', parts: [{ str: '2' }] }] },
+                      { key: '3', role: 'option', content: [{ code: 'en', parts: [{ str: '3' }] }] },
+                      { key: '4', role: 'option', content: [{ code: 'en', parts: [{ str: '4' }] }] },
+                    ]
+                  },
+                  {
+                    key: 'd6', role: 'dropDownGroup', items: [
+                      { key: '1', role: 'option', content: [{ code: 'en', parts: [{ str: '1' }] }] },
+                      { key: '2', role: 'option', content: [{ code: 'en', parts: [{ str: '2' }] }] },
+                      { key: '3', role: 'option', content: [{ code: 'en', parts: [{ str: '3' }] }] },
+                      { key: '4', role: 'option', content: [{ code: 'en', parts: [{ str: '4' }] }] },
+                    ]
+                  },
                 ]
               },
 

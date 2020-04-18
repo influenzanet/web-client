@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import { getLocaleStringTextByCode } from '../../utils';
-import { TextField, Tooltip } from '@material-ui/core';
+import { TextField, Tooltip, Box, Typography } from '@material-ui/core';
 
 interface NumberInputProps {
   compDef: ItemComponent;
@@ -51,11 +51,20 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     })
   };
 
-  let renderedInput = <TextField
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (!event || !event.currentTarget) { return; }
+    (event.currentTarget as HTMLInputElement).select();
+  };
+
+  const renderedInput = <TextField
     value={inputValue.toString()}
     margin="dense"
     variant="filled"
     type="number"
+    style={{
+      minWidth: 90,
+      width: "100%",
+    }}
     inputProps={{
       style: {
         padding: "8px 16px",
@@ -70,19 +79,28 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
         borderRadius: 1000,
       },
     }}
+    onFocus={handleFocus}
+    onClick={(e) => (e.target as HTMLInputElement).select()}
     onChange={handleInputValueChange(props.compDef.key)}
     disabled={props.compDef.disabled !== undefined}
   ></TextField>;
 
-  let content = getLocaleStringTextByCode(props.compDef.content, props.languageCode);
+  const content = getLocaleStringTextByCode(props.compDef.content, props.languageCode);
+  const description = getLocaleStringTextByCode(props.compDef.description, props.languageCode);
 
-  if (content) {
-    return <Tooltip title={content} arrow>
+  return <Box display="flex" alignItems="center">
+    {content ?
+      <Box mr={1} minWidth={80} flexShrink={1} >
+        <Typography variant="body1">
+          {content}
+        </Typography>
+      </Box>
+      : null}
+    {description ? <Tooltip title={description} arrow>
       {renderedInput}
-    </Tooltip>
-  } else {
-    return renderedInput;
-  }
+    </Tooltip> : renderedInput}
+  </Box>
+
 };
 
 export default NumberInput;

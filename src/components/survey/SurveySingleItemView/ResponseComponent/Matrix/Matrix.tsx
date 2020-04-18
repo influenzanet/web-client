@@ -3,6 +3,9 @@ import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/l
 import { getLocaleStringTextByCode, getItemComponentByRole } from '../../utils';
 import { makeStyles, Theme, createStyles, Tooltip, Radio, Checkbox } from '@material-ui/core';
 import clsx from 'clsx';
+import NumberInput from '../NumberInput/NumberInput';
+import DropDownGroup from '../DropDownGroup/DropDownGroup';
+import TextInput from '../TextInput/TextInput';
 
 interface MatrixProps {
   compDef: ItemComponent;
@@ -44,7 +47,20 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     rowBackground2: {
       backgroundColor: '#e5e5e5',
-    }
+    },
+    textfield: {
+      minWidth: 120,
+      width: "100%",
+    },
+    numberInput: {
+      minWidth: 90,
+      width: 95,
+    },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+      width: "100%",
+    },
   }),
 );
 
@@ -53,8 +69,6 @@ const Matrix: React.FC<MatrixProps> = (props) => {
 
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
-
-
 
   useEffect(() => {
     if (touched) {
@@ -156,6 +170,52 @@ const Matrix: React.FC<MatrixProps> = (props) => {
 
   }
 
+  const handleCellResponseChange = (rowKey: string | undefined, itemKey: string | undefined) => (response: ResponseItem | undefined) => {
+    if (!rowKey || !itemKey) { return; }
+    setTouched(true);
+
+    setResponse(prev => {
+      if (!prev || !prev.items) {
+        return {
+          key: props.compDef.key ? props.compDef.key : 'no key found',
+          items: [{
+            key: rowKey, items: response ? [response] : []
+          }]
+        }
+      }
+
+      const rowIndex = prev.items.findIndex(item => item.key === rowKey);
+      const items = [...prev.items];
+      if (rowIndex > -1) {
+        const currentItems = items[rowIndex].items;
+        if (!currentItems) {
+          console.warn('row doesnt have items');
+          return prev;
+        }
+        const itemIndex = currentItems.findIndex(it => it.key === itemKey);
+        if (itemIndex > -1) {
+          if (!response) {
+            currentItems.splice(itemIndex, 1);
+          } else {
+            currentItems[itemIndex] = response;
+          }
+        } else if (response) {
+          currentItems.push(response);
+        }
+        items[rowIndex].items = [...currentItems];
+      } else {
+        items.push({
+          key: rowKey, items: response ? [response] : []
+        });
+      }
+
+      return {
+        ...prev,
+        items: items
+      }
+    });
+  }
+
   const getCellResponse = (rowKey: string | undefined, itemKey: string | undefined): ResponseItem | undefined => {
     if (!rowKey || !itemKey) { return undefined; }
 
@@ -226,8 +286,37 @@ const Matrix: React.FC<MatrixProps> = (props) => {
             value={cell.key}
             onChange={checkboxSelectionChanged(compDef.key)}
             inputProps={{ 'aria-label': cell.key }}
+            disabled={compDef.disabled !== undefined || cell.disabled !== undefined}
           />;
           break
+        case 'input':
+          currentCellContent = <div className={classes.textfield}>
+            <TextInput
+              compDef={cell}
+              languageCode={props.languageCode}
+              responseChanged={handleCellResponseChange(compDef.key, cell.key)}
+              prefill={getCellResponse(compDef.key, cell.key)}
+            />
+          </div>
+          break
+        case 'numberInput':
+          currentCellContent = <div className={classes.numberInput}>
+            <NumberInput
+              compDef={cell}
+              languageCode={props.languageCode}
+              responseChanged={handleCellResponseChange(compDef.key, cell.key)}
+              prefill={getCellResponse(compDef.key, cell.key)}
+            /></div>
+          break
+        case 'dropDownGroup':
+          currentCellContent = <DropDownGroup
+            compDef={cell}
+            languageCode={props.languageCode}
+            responseChanged={handleCellResponseChange(compDef.key, cell.key)}
+            prefill={getCellResponse(compDef.key, cell.key)}
+            fullWidth={true}
+          />
+          break;
         default:
           console.warn('cell role for matrix question unknown: ', cell.role);
           break;
@@ -282,9 +371,6 @@ const Matrix: React.FC<MatrixProps> = (props) => {
           break;
       }
       const description = getLocaleStringTextByCode(cell.description, props.languageCode);
-      if (description) {
-
-      }
       return <th
         key={cell.key ? cell.key : index.toString()}
         className={classes.cell}
