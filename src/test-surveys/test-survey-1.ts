@@ -3806,8 +3806,6 @@ const slider3: SurveySingleItem = {
   }
 };
 
-
-
 const sliders: SurveyGroupItem = {
   key: '0.sliders',
   version: 1,
@@ -3832,6 +3830,200 @@ const sliders: SurveyGroupItem = {
 };
 
 
+const tableSingleChoice: SurveySingleItem = {
+  key: '0.tables.1',
+  version: 1,
+  components: {
+    role: 'root', items: [
+      // title
+      {
+        role: 'title',
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'Matrix question - single choice'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Tabellen-Layout Frage'
+              },
+            ]
+          },
+        ]
+      },
+
+      // responseGroup
+      {
+        key: '1',
+        role: 'responseGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            key: 'matrresp',
+            role: 'matrix',
+            order: {
+              name: 'sequential'
+            },
+            items: [
+              {
+                key: 't1', role: 'headerRow', items: [
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header text 1' }] }] },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header text with longer text' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header 3' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header with a longer text again' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'last col' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] }
+                ]
+              },
+              {
+                key: 't2', role: 'radioRow', items: [
+                  { key: 'label', role: 'label', content: [{ code: 'en', parts: [{ str: 'row label 1 with a longertext' }] }] },
+                  { key: 'o1', role: 'option' },
+                  { key: 'o2', role: 'option' },
+                  { key: 'o3', role: 'option' },
+                  { key: 'o4', role: 'option' },
+                ]
+              },
+              {
+                key: 't3', role: 'radioRow',
+                // displayCondition:
+                items: [
+                  { key: 'label', role: 'label', content: [{ code: 'en', parts: [{ str: 'row label 2 ' }] }] },
+                  { key: 'o1', role: 'option' },
+                  { key: 'o2', role: 'option' },
+                  { key: 'o3', role: 'option' },
+                  { key: 'o4', role: 'option' },
+                ]
+              },
+              {
+                key: 't4', role: 'radioRow', items: [
+                  { key: 'label', role: 'label', content: [{ code: 'en', parts: [{ str: 'row label 3' }] }] },
+                  { key: 'o1', role: 'option' },
+                  { key: 'o2', role: 'option' },
+                  { key: 'o3', role: 'option' },
+                  { key: 'o4', role: 'option' },
+                ]
+              },
+            ]
+          },
+        ]
+      },
+    ]
+  }
+};
+
+const tableMixed: SurveySingleItem = {
+  key: '0.tables.2',
+  version: 1,
+  components: {
+    role: 'root', items: [
+      // title
+      {
+        role: 'title',
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'Matrix question - mixed types'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Tabellen-Layout Frage - Variationen'
+              },
+            ]
+          },
+        ]
+      },
+
+      // responseGroup
+      {
+        key: '1',
+        role: 'responseGroup',
+        order: {
+          name: 'sequential'
+        },
+        items: [
+          {
+            key: '1',
+            role: 'matrix',
+            order: {
+              name: 'sequential'
+            },
+            items: [
+              {
+                key: 't1', role: 'headerRow', items: [
+                  { role: 'text' },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header text with longer text' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header 3' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header 4' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header 5' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header 6' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] },
+                  { role: 'text', content: [{ code: 'en', parts: [{ str: 'header 7' }] }], description: [{ code: 'en', parts: [{ str: 'add longer explanations rather here and use short text in the header' }] }] },
+                ]
+              },
+              {
+                key: 't2', role: 'responseRow', items: [
+                  // TODO: normal row items
+                ]
+              },
+              {
+                key: 't3', role: 'responseRow',
+                // displayCondition:
+                items: [
+                  // TODO: normal row items
+                ]
+              },
+              {
+                key: 't4', role: 'responseRow', items: [
+                  // TODO: normal row items
+                ]
+              },
+
+            ]
+          },
+        ]
+      },
+    ]
+  }
+};
+
+
+
+const tableQuestions: SurveyGroupItem = {
+  key: '0.tables',
+  version: 1,
+  selectionMethod: {
+    name: 'sequential'
+  },
+  items: [
+    {
+      key: '0.tables.pb1',
+      type: 'pageBreak',
+      version: 1,
+    },
+    tableSingleChoice,
+    tableMixed,
+    {
+      key: '0.tables.pb2',
+      type: 'pageBreak',
+      version: 1,
+    }
+  ]
+};
+
+
 const QG0: SurveyGroupItem = {
   key: '0',
   version: 1,
@@ -3848,6 +4040,7 @@ const QG0: SurveyGroupItem = {
       ],
     },
     sliders,
+    tableQuestions,
     {
       key: '0.5',
       version: 1,

@@ -18,7 +18,6 @@ export const getLocaleStringTextByCode = (translations: LocalizedObject[] | unde
   if (!translations) { return; }
   const translation = (translations.find(cont => cont.code === code) as LocalizedString);
   if (!translation) {
-    console.log(translations)
     if (translations.length > 0) {
       return (translations[0] as LocalizedString).parts.map(p => p).join('');
     }

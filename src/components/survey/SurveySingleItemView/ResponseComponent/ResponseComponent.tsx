@@ -16,6 +16,7 @@ import MomentUtils from '@date-io/moment';
 import SliderNumeric from './Sliders/SliderNumeric/SliderNumeric';
 import SliderNumericRange from './Sliders/SliderNumericRange/SliderNumericRange';
 import SliderCategorical from './Sliders/SliderCategorical/SliderCategorical';
+import Matrix from './Matrix/Matrix';
 
 interface ResponseComponentProps {
   compDef: ItemComponent;
@@ -154,6 +155,14 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           />
         case 'sliderCategorical':
           return <SliderCategorical
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'matrix':
+          return <Matrix
             key={respComp.key}
             languageCode={props.languageCode}
             compDef={respComp}
