@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
 import { getLocaleStringTextByCode, getItemComponentByRole } from '../../utils';
-import { makeStyles, Theme, createStyles, Tooltip, Radio } from '@material-ui/core';
+import { makeStyles, Theme, createStyles, Tooltip, Radio, Checkbox } from '@material-ui/core';
 import clsx from 'clsx';
 
 interface MatrixProps {
@@ -98,17 +98,81 @@ const Matrix: React.FC<MatrixProps> = (props) => {
     });
   }
 
-  const radioSelected = (rowKey: string | undefined, itemKey: string | undefined): boolean => {
-    if (!rowKey || !itemKey) { return false; }
+  const checkboxSelectionChanged = (rowKey: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!rowKey) { return; }
+    setTouched(true);
+    const selectedValue = event.target.value;
+    const checked = event.target.checked;
+    if (checked) {
+      const newRI: ResponseItem = {
+        key: selectedValue,
+      }
+      setResponse(prev => {
+        if (!prev || !prev.items) {
+          return {
+            key: props.compDef.key ? props.compDef.key : 'no key found',
+            items: [{
+              key: rowKey, items: [newRI]
+            }]
+          }
+        }
+        const rowIndex = prev.items.findIndex(item => item.key === rowKey);
+        const items = [...prev.items];
+        if (rowIndex > -1) {
+          const currentItems = items[rowIndex];
+          items[rowIndex].items = currentItems.items ? [...currentItems.items, newRI] : [newRI];
+        } else {
+          items.push({
+            key: rowKey, items: [newRI]
+          });
+        }
+        return {
+          ...prev,
+          items: items
+        }
 
-    if (!response || !response.items || response.items.length < 1) {
-      return false;
+      });
+    } else {
+      setResponse(prev => {
+        if (!prev || !prev.items) {
+          return {
+            key: props.compDef.key ? props.compDef.key : 'no key found',
+            items: []
+          }
+        }
+        const rowIndex = prev.items.findIndex(item => item.key === rowKey);
+        const items = [...prev.items];
+        if (rowIndex > -1) {
+          const currentItems = items[rowIndex];
+          items[rowIndex].items = currentItems.items?.filter(i => i.key !== selectedValue);
+        }
+        return {
+          ...prev,
+          items: items,
+        }
+
+      });
     }
 
-    const rowResponse = response.items.find(item => item.key === rowKey);
-    if (!rowResponse || !rowResponse.items || rowResponse.items.length < 1) { return false; }
+  }
 
-    return rowResponse.items[0].key === itemKey;
+  const getCellResponse = (rowKey: string | undefined, itemKey: string | undefined): ResponseItem | undefined => {
+    if (!rowKey || !itemKey) { return undefined; }
+
+    if (!response || !response.items || response.items.length < 1) {
+      return undefined;
+    }
+    const rowResponse = response.items.find(item => item.key === rowKey);
+    if (!rowResponse || !rowResponse.items || rowResponse.items.length < 1) { return undefined; }
+    const resp = rowResponse.items.find(item => item.key === itemKey);
+    return resp;
+  }
+
+  const isResponseSet = (rowKey: string | undefined, itemKey: string | undefined): boolean => {
+    if (!getCellResponse(rowKey, itemKey)) {
+      return false;
+    }
+    return true;
   }
 
   const renderRadioRow = (compDef: ItemGroupComponent, index: number): React.ReactNode => {
@@ -121,9 +185,7 @@ const Matrix: React.FC<MatrixProps> = (props) => {
           break;
         case 'option':
           currentCellContent = <Radio
-            checked={radioSelected(compDef.key, cell.key)}
-            // checked={selectedValue === 'a'}
-            // onChange={handleChange}
+            checked={isResponseSet(compDef.key, cell.key)}
             onChange={radioSelectionChanged(compDef.key)}
             value={cell.key}
             disabled={compDef.disabled !== undefined || cell.disabled !== undefined}
@@ -152,19 +214,31 @@ const Matrix: React.FC<MatrixProps> = (props) => {
   }
 
   const renderResponseRow = (compDef: ItemGroupComponent, index: number): React.ReactNode => {
-    const cells = (compDef as ItemGroupComponent).items.map((cell, index) => {
+    const cells = (compDef as ItemGroupComponent).items.map((cell, cIndex) => {
       let currentCellContent: React.ReactNode | null;
       switch (cell.role) {
-        case 'text':
+        case 'label':
           currentCellContent = getLocaleStringTextByCode(cell.content, props.languageCode);
           break;
+        case 'check':
+          currentCellContent = <Checkbox
+            checked={isResponseSet(compDef.key, cell.key)}
+            value={cell.key}
+            onChange={checkboxSelectionChanged(compDef.key)}
+            inputProps={{ 'aria-label': cell.key }}
+          />;
+          break
         default:
           console.warn('cell role for matrix question unknown: ', cell.role);
           break;
       }
       return <td
-        key={cell.key ? cell.key : index.toString()}
-        className={classes.cell}
+        key={cell.key ? cell.key : cIndex.toString()}
+        className={clsx(classes.cell, {
+          // [classes.cellRadio]: cell.role === 'option',
+          [classes.rowBackground1]: index % 2 === 1,
+          [classes.rowBackground2]: index % 2 === 0,
+        })}
       >{currentCellContent}</td>
     }
 

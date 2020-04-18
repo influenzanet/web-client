@@ -3857,6 +3857,29 @@ const tableSingleChoice: SurveySingleItem = {
           },
         ]
       },
+      // text
+      {
+        role: 'text',
+        style: [{ key: 'variant', value: 'body1' }],
+        content: [
+          {
+            code: 'en',
+            parts: [
+              {
+                str: 'Select all options that apply, if any'
+              },
+            ]
+          },
+          {
+            code: 'de',
+            parts: [
+              {
+                str: 'Wählen Sie alle entsprechenden Optionen aus, falls diese zutreffen'
+              },
+            ]
+          },
+        ]
+      },
 
       // responseGroup
       {
@@ -3975,18 +3998,26 @@ const tableMixed: SurveySingleItem = {
               },
               {
                 key: 't2', role: 'responseRow', items: [
-                  // TODO: normal row items
+                  { key: 'l', role: 'label', content: [{ code: 'en', parts: [{ str: 'label 1' }] }] },
+                  { key: 'o1', role: 'check' },
+                  { key: 'o2', role: 'check' },
+                  { key: 'o3', role: 'check' },
+                  { key: 'o4', role: 'check' },
+                  { key: 'o5', role: 'check' },
+                  { key: 'o6', role: 'check' }
                 ]
               },
               {
                 key: 't3', role: 'responseRow',
                 // displayCondition:
                 items: [
+                  { key: 'l', role: 'label', content: [{ code: 'en', parts: [{ str: 'label 2' }] }] }
                   // TODO: normal row items
                 ]
               },
               {
                 key: 't4', role: 'responseRow', items: [
+                  { key: 'l', role: 'label', content: [{ code: 'en', parts: [{ str: 'label 3' }] }] }
                   // TODO: normal row items
                 ]
               },
