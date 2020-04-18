@@ -38,11 +38,13 @@ const SliderNumeric: React.FC<SliderNumericProps> = (props) => {
       if (!prev) {
         return {
           key: props.compDef.key ? props.compDef.key : 'no key found',
+          dtype: 'number',
           value: newValue.toString()
         }
       }
       return {
         ...prev,
+        dtype: 'number',
         value: newValue.toString()
       }
     })

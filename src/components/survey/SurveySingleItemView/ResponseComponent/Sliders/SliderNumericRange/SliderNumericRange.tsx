@@ -53,16 +53,16 @@ const SliderNumericRange: React.FC<SliderNumericRangeProps> = (props) => {
         return {
           key: props.compDef.key ? props.compDef.key : 'no key found',
           items: [
-            { key: 'start', value: newValue[0].toString() },
-            { key: 'end', value: newValue[1].toString() }
+            { key: 'start', dtype: 'number', value: newValue[0].toString() },
+            { key: 'end', dtype: 'number', value: newValue[1].toString() }
           ]
         }
       }
       return {
         ...prev,
         items: [
-          { key: 'start', value: newValue[0].toString() },
-          { key: 'end', value: newValue[1].toString() }
+          { key: 'start', dtype: 'number', value: newValue[0].toString() },
+          { key: 'end', dtype: 'number', value: newValue[1].toString() }
         ]
       }
     })

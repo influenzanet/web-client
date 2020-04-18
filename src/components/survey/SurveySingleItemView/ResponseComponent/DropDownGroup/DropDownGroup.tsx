@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { FormControl, InputLabel, Select, MenuItem, Box, Typography, Tooltip } from '@material-ui/core';
+import { FormControl, Select, MenuItem, Box, Typography, Tooltip } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { getLocaleStringTextByCode } from '../../utils';
 

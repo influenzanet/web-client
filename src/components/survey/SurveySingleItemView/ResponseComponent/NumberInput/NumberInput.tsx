@@ -39,11 +39,13 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
       if (!prev) {
         return {
           key: props.compDef.key ? props.compDef.key : 'no key found',
+          dtype: 'number',
           value: value.toString()
         }
       }
       return {
         ...prev,
+        dtype: 'number',
         value: value.toString()
       }
     })

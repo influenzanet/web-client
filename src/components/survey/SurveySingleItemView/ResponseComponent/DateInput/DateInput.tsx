@@ -61,6 +61,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
 
       return {
         ...prev,
+        dtype: 'date',
         value: date.unix().toString(),
       }
     });
