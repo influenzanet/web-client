@@ -22,30 +22,15 @@ import {
 } from '@material-ui/core';
 import AppIntegration from './pages/AppIntegration/AppIntegration';
 import { useTranslation } from 'react-i18next';
+import InfluenzaNetThemeData from './themes/influenzanet-theme';
+import SISThemeData from './themes/sis-theme';
 
 // import TestForm from './components/form/login/LoginForm';
 
 const App: React.FC = () => {
   const { t } = useTranslation(['app']);
 
-  const theme = responsiveFontSizes(createMuiTheme({
-    palette: {
-      primary: {
-        light: '#475d9d',
-        dark: '#000e42',
-        main: '#0f346e',
-      },
-      secondary: {
-        light: '#93e3e2',
-        dark: '#2d8181',
-        main: '#61b1b0',
-        contrastText: '#ffffff',
-      },
-      background: {
-        default: '#f2f2f2',
-      }
-    },
-  }));
+  const theme = responsiveFontSizes(createMuiTheme(InfluenzaNetThemeData));
 
   theme.overrides = {
     MuiSlider: {
