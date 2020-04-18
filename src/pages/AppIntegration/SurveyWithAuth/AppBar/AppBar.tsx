@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MuiAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { Box, IconButton } from '@material-ui/core';
+import { Box, IconButton, useScrollTrigger } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import CloseIcon from '@material-ui/icons/Close';
 import { useHistory, useRouteMatch, useLocation } from 'react-router-dom';
@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  appBarSpacer: theme.mixins.toolbar,
 }));
 
 export const AppBar: React.FC = () => {
@@ -48,9 +49,14 @@ export const AppBar: React.FC = () => {
   }
 
 
+  const scrollTriggered = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
+
   return (
     <div className={classes.root}>
-      <MuiAppBar position="static" className={classes.appBar} elevation={0}>
+      <MuiAppBar className={classes.appBar} elevation={(scrollTriggered) ? 2 : 0}>
         <Toolbar style={{ padding: 0 }}>
           <IconButton
             edge="start"
@@ -83,6 +89,7 @@ export const AppBar: React.FC = () => {
           </IconButton>
         </Toolbar>
       </MuiAppBar>
+      <div className={classes.appBarSpacer} />
     </div >
   );
 }
