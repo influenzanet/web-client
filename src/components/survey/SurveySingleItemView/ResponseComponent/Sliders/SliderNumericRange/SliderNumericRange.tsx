@@ -76,6 +76,7 @@ const SliderNumericRange: React.FC<SliderNumericRangeProps> = (props) => {
         </Typography>
         : null}
       <Slider
+        color="secondary"
         aria-labelledby={props.compDef.content ? "slider-numeric" : undefined}
         value={inputValues}
         onChange={handleSliderChange(props.compDef.key)}

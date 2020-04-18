@@ -59,6 +59,7 @@ const SliderNumeric: React.FC<SliderNumericProps> = (props) => {
         </Typography>
         : null}
       <Slider
+        color="secondary"
         aria-labelledby={props.compDef.content ? "slider-numeric" : undefined}
         value={typeof inputValue === 'number' ? inputValue : 0}
         onChange={handleSliderChange(props.compDef.key)}

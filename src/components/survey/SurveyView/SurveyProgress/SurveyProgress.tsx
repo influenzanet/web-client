@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: 40,
     },
     itemActive: {
-      backgroundColor: theme.palette.secondary.main,
+      backgroundColor: theme.palette.primary.main,
     }
   }),
 );

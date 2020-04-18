@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { Slider, Typography, Box, makeStyles } from '@material-ui/core';
+import { Slider, Typography, Box } from '@material-ui/core';
 import { getLocaleStringTextByCode } from '../../../utils';
 
 interface SliderCategoricalProps {
@@ -10,43 +10,8 @@ interface SliderCategoricalProps {
   languageCode: string;
 }
 
-const useStyles = makeStyles({
-  root: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    borderRadius: 3,
-    border: 0,
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-  },
-  label: {
-    textTransform: 'capitalize',
-  },
-  thumb: {
-    height: 17,
-    width: 17,
-    backgroundColor: '#fff',
-    border: '4px solid currentColor',
-    marginTop: -8,
-    marginLeft: -9,
-    boxShadow: '#ebebeb 0px 2px 2px',
-    '&:focus, &:hover, &$active': {
-      boxShadow: '#ccc 0px 2px 3px 1px',
-    },
-  },
-  mark: {
-    height: 5,
-    width: 2,
-    marginTop: -2,
-  },
-  active: {},
-});
-
 
 const SliderCategorical: React.FC<SliderCategoricalProps> = (props) => {
-  const classes = useStyles();
-
   const groupDef = (props.compDef as ItemGroupComponent);
 
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
@@ -120,10 +85,7 @@ const SliderCategorical: React.FC<SliderCategoricalProps> = (props) => {
         : null}
       <Box px={5}>
         <Slider
-          classes={{
-            thumb: classes.thumb,
-            mark: classes.mark,
-          }}
+          color="secondary"
           aria-labelledby={props.compDef.content ? "slider-numeric" : undefined}
           value={selectedIndex}
           onChange={handleSliderChange(props.compDef.key)}
