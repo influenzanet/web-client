@@ -5,10 +5,10 @@
   "submitBtn": "Absenden",
   "backBtn": "Zurück",
   "surveyEnd": {
-    "title": "Vielen Dank für Ihre Teilnahme.",
-    "subtitle": "Bleib gesund!",
+    "title": "Vielen Dank für Ihre Teilnahme!",
+    "subtitle": "Bleiben Sie gesund!",
     "actionHeader": "Nächste Schritte:",
     "showStatisticBtn": "Statistik anzeigen",
-    "backToAppBtn": "Zurück zur App"
+    "backToAppBtn": "Zurück zur Übersicht"
   }
 }

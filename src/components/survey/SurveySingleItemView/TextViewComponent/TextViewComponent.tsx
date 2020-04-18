@@ -10,7 +10,9 @@ interface TextViewComponentProps {
 }
 
 const TextViewComponent: React.FC<TextViewComponentProps> = (props) => {
-  let variant = 'body1' as Variant;
+  let style = {};
+
+  let variant = 'body1' as Variant | 'annotation';
   if (props.compDef.style) {
     const v = props.compDef.style.find(st => st.key === 'variant')
     if (v) {
@@ -18,8 +20,13 @@ const TextViewComponent: React.FC<TextViewComponentProps> = (props) => {
     }
   }
 
+  if (variant === 'annotation') {
+    variant = 'body1';
+    style = { color: "#757575" }
+  }
+
   return (
-    <Typography variant={variant}>
+    <Typography variant={variant} style={style}>
       {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
     </Typography>
   );

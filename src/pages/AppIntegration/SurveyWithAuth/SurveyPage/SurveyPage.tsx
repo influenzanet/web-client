@@ -243,7 +243,7 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
               nextBtnText={t('survey:nextBtn')}
               backBtnText={t('survey:backBtn')}
             />
-            : null
+            : <div />
       }
     </Container>
   );
