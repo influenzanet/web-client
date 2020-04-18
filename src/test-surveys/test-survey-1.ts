@@ -1137,7 +1137,7 @@ const Q5: SurveySingleItem = {
       // text
       {
         role: 'text',
-        style: [{ key: 'variant', value: 'body1' }],
+        style: [{ key: 'variant', value: 'annotation' }],
         content: [
           {
             code: 'en',
@@ -1531,7 +1531,7 @@ const Q5b: SurveySingleItem = {
       // text
       {
         role: 'text',
-        style: [{ key: 'variant', value: 'body1' }],
+        style: [{ key: 'variant', value: 'annotation' }],
         content: [
           {
             code: 'en',
@@ -3860,7 +3860,7 @@ const tableSingleChoice: SurveySingleItem = {
       // text
       {
         role: 'text',
-        style: [{ key: 'variant', value: 'body1' }],
+        style: [{ key: 'variant', value: 'annotation' }],
         content: [
           {
             code: 'en',
