@@ -45,43 +45,44 @@ const App: React.FC = () => {
         default: '#f2f2f2',
       }
     },
-    overrides: {
-      MuiSlider: {
-        root: {
-          height: 6,
-        },
-        thumb: {
-          height: 16,
-          width: 16,
-          marginTop: -5,
-        },
-        rail: {
-          height: 6,
-          borderRadius: 1000,
-          color: "#9e9e9e",
-        },
-        track: {
-          height: 6,
-          borderRadius: 1000,
-        },
-        mark: {
-          height: 6,
-          width: 6,
-          marginLeft: -1.5,
-          borderRadius: 1000,
-          backgroundColor: "grey",
-        },
-        markActive: {
-          opacity: 1,
-          backgroundColor: "#61b1b0",
-          height: 10,
-          width: 10,
-          marginLeft: -2.5,
-          marginTop: -2,
-        }
-      },
-    }
   }));
+
+  theme.overrides = {
+    MuiSlider: {
+      root: {
+        height: 6,
+      },
+      thumb: {
+        height: 16,
+        width: 16,
+        marginTop: -5,
+      },
+      rail: {
+        height: 6,
+        borderRadius: 1000,
+        color: "#9e9e9e",
+      },
+      track: {
+        height: 6,
+        borderRadius: 1000,
+      },
+      mark: {
+        height: 6,
+        width: 6,
+        marginLeft: -1.5,
+        borderRadius: 1000,
+        backgroundColor: "grey",
+      },
+      markActive: {
+        opacity: 1,
+        backgroundColor: theme.palette.secondary.main,
+        height: 10,
+        width: 10,
+        marginLeft: -2.5,
+        marginTop: -2,
+      }
+    },
+  };
 
 
   return (
