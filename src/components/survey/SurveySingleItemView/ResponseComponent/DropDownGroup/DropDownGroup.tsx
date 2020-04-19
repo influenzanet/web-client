@@ -84,6 +84,7 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
       SelectDisplayProps={{
         style: {
           padding: "8px 16px",
+          borderRadius: 1000,
         }
       }}
       disableUnderline={true}
