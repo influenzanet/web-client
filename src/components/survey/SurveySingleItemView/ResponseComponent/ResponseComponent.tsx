@@ -80,6 +80,9 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
 
   return <MuiPickersUtilsProvider utils={MomentUtils} locale={props.languageCode}>
     {(props.compDef as ItemGroupComponent).items.map(respComp => {
+      if (respComp.displayCondition === false) {
+        return <div key={respComp.key} hidden></div>;
+      }
       switch (respComp.role) {
         case 'singleChoiceGroup':
           return <SingleChoiceGroup

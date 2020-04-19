@@ -37,7 +37,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     if (touched) {
       const timer = setTimeout(() => {
         props.responseChanged(response);
-      }, 20);
+      }, 200);
       return () => clearTimeout(timer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,7 +67,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
   const setResponseForKey = (key: string | undefined) => (response: ResponseItem | undefined) => {
     if (!key || !props.compDef.key) { return; }
     setTouched(true);
-    console.log(response);
+    // console.log(response);
 
     setSubResponseCache(prev => {
       const ind = prev.findIndex(pr => pr.key === key);
@@ -142,6 +142,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
             prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
             languageCode={props.languageCode}
             responseChanged={setResponseForKey(option.key)}
+            updateDelay={5}
           />
           }
           disabled={option.disabled !== undefined}

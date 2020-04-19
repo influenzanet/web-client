@@ -8,6 +8,7 @@ interface TextInputProps {
   prefill?: ResponseItem;
   responseChanged: (response: ResponseItem | undefined) => void;
   languageCode: string;
+  updateDelay?: number;
 }
 
 const TextInput: React.FC<TextInputProps> = (props) => {
@@ -22,7 +23,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
     if (touched) {
       const timer = setTimeout(() => {
         props.responseChanged(response);
-      }, 200);
+      }, props.updateDelay !== undefined ? props.updateDelay : 200);
       return () => clearTimeout(timer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,7 +1,7 @@
 import { SurveyGroupItem, SurveySingleItem, Survey } from "survey-engine/lib/data_types"
 
 const Q1: SurveySingleItem = {
-  key: "weekly.32",
+  key: 'covidweekly.32',
   version: 1,
   validations: [],
   components: {
@@ -21,11 +21,11 @@ const Q1: SurveySingleItem = {
         ]
       },
       {
-        key: "1",
+        key: '1',
         role: "responseGroup",
         items: [
           {
-            key: "1",
+            key: '1',
             role: "multipleChoiceGroup",
             items: [
               {
@@ -71,7 +71,7 @@ const Q1: SurveySingleItem = {
                 ]
               },
               {
-                key: "144",
+                key: '144',
                 role: "option",
                 content: [
                   {
@@ -359,7 +359,7 @@ const Q1: SurveySingleItem = {
 }
 
 const Q2: SurveySingleItem = {
-  key: "weekly.33",
+  key: "covidweekly.33",
   condition: {
     name: "and",
     data: [
@@ -380,7 +380,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.142'
@@ -402,7 +402,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.143'
@@ -424,7 +424,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.144'
@@ -446,7 +446,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.145'
@@ -468,7 +468,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.146'
@@ -490,7 +490,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.147'
@@ -512,7 +512,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.148'
@@ -534,7 +534,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.149'
@@ -556,7 +556,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.150'
@@ -578,7 +578,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.151'
@@ -600,7 +600,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.152'
@@ -622,7 +622,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.153'
@@ -644,7 +644,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.154'
@@ -666,7 +666,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.155'
@@ -688,7 +688,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.156'
@@ -710,7 +710,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.157'
@@ -732,7 +732,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.158'
@@ -754,7 +754,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.159'
@@ -776,7 +776,7 @@ const Q2: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.160'
@@ -790,7 +790,7 @@ const Q2: SurveySingleItem = {
           ]
         }
       },
-      // participant STILL ILL when they last completed the Weekly survey (i.e. they said “I am still ill” in response to Weekly Q4 below last time?)
+      // participant STILL ILL when they last completed the covidweekly survey (i.e. they said “I am still ill” in response to covidweekly Q4 below last time?)
       {
         dtype: "exp",
         exp: {
@@ -799,7 +799,7 @@ const Q2: SurveySingleItem = {
             {
               dtype: "exp",
               exp: {
-                name: "getObjectByHierarchicalKey",
+                name: "getNestedObjectByKey",
                 data: [
                   {
                     dtype: "exp",
@@ -817,7 +817,7 @@ const Q2: SurveySingleItem = {
                                   name: "getPreviousResponses",
                                   data: [
                                     {
-                                      str: "weekly.36"
+                                      str: "covidweekly.36"
                                     }
                                   ]
                                 }
@@ -840,7 +840,7 @@ const Q2: SurveySingleItem = {
           ]
         }
       },
-      // have fewer than 15 days elapsed since they last completed the Weekly Survey
+      // have fewer than 15 days elapsed since they last completed the covidweekly Survey
       {
         dtype: "exp",
         exp: {
@@ -862,7 +862,7 @@ const Q2: SurveySingleItem = {
                             name: "getLastFromSurveyResponses",
                             data: [
                               {
-                                str: "weekly"
+                                str: "covidweekly"
                               }
                             ]
                           }
@@ -902,7 +902,7 @@ const Q2: SurveySingleItem = {
                         {
                           dtype: "exp",
                           exp: {
-                            name: "getObjectByHierarchicalKey",
+                            name: "getNestedObjectByKey",
                             data: [
                               {
                                 dtype: "exp",
@@ -925,7 +925,7 @@ const Q2: SurveySingleItem = {
                                                     name: "getPreviousResponses",
                                                     data: [
                                                       {
-                                                        str: "weekly.35"
+                                                        str: "covidweekly.35"
                                                       }
                                                     ]
                                                   }
@@ -973,7 +973,7 @@ const Q2: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.32",
+    "covidweekly.32",
   ],
   version: 1,
   validations: [],
@@ -1052,7 +1052,7 @@ const Q2: SurveySingleItem = {
 }
 
 const Qcov1: SurveySingleItem = {
-  key: "weekly.Qcov1",
+  key: "covidweekly.Qcov1",
   condition: {
     name: "and",
     data: [
@@ -1073,7 +1073,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.142'
@@ -1095,7 +1095,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.143'
@@ -1117,7 +1117,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.144'
@@ -1139,7 +1139,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.145'
@@ -1161,7 +1161,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.146'
@@ -1183,7 +1183,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.147'
@@ -1205,7 +1205,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.148'
@@ -1227,7 +1227,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.149'
@@ -1249,7 +1249,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.150'
@@ -1271,7 +1271,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.151'
@@ -1293,7 +1293,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.152'
@@ -1315,7 +1315,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.153'
@@ -1337,7 +1337,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.154'
@@ -1359,7 +1359,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.155'
@@ -1381,7 +1381,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.156'
@@ -1403,7 +1403,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.157'
@@ -1425,7 +1425,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.158'
@@ -1447,7 +1447,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.159'
@@ -1469,7 +1469,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.160'
@@ -1483,7 +1483,7 @@ const Qcov1: SurveySingleItem = {
           ]
         }
       },
-      // answers to Q2 weekly other than « Yes »
+      // answers to Q2 covidweekly other than « Yes »
       {
         dtype: "exp",
         exp: {
@@ -1500,7 +1500,7 @@ const Qcov1: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.33'
+                          str: 'covidweekly.33'
                         },
                         {
                           str: '1.1.161'
@@ -1607,7 +1607,7 @@ const Qcov1: SurveySingleItem = {
 }
 
 const Qcov1b: SurveySingleItem = {
-  key: "weekly.Qcov1b",
+  key: "covidweekly.Qcov1b",
   condition: {
     name: "and",
     data: [
@@ -1623,7 +1623,7 @@ const Qcov1b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.Qcov1'
+                    str: 'covidweekly.Qcov1'
                   },
                   {
                     str: '1.1.1'
@@ -1741,7 +1741,7 @@ const Qcov1b: SurveySingleItem = {
 }
 
 const Qcov2: SurveySingleItem = {
-  key: "weekly.Qcov2",
+  key: "covidweekly.Qcov2",
   version: 1,
   validations: [],
   components: {
@@ -1833,7 +1833,7 @@ const Qcov2: SurveySingleItem = {
 }
 
 const Qcov2b: SurveySingleItem = {
-  key: "weekly.Qcov2b",
+  key: "covidweekly.Qcov2b",
   version: 1,
   validations: [],
   components: {
@@ -1939,7 +1939,7 @@ const Qcov2b: SurveySingleItem = {
 }
 
 const Qcov3: SurveySingleItem = {
-  key: "weekly.Qcov3",
+  key: "covidweekly.Qcov3",
   condition: {
     name: "and",
     data: [
@@ -1960,7 +1960,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.142'
@@ -1982,7 +1982,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.143'
@@ -2004,7 +2004,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.144'
@@ -2026,7 +2026,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.145'
@@ -2048,7 +2048,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.146'
@@ -2070,7 +2070,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.147'
@@ -2092,7 +2092,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.148'
@@ -2114,7 +2114,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.149'
@@ -2136,7 +2136,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.150'
@@ -2158,7 +2158,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.151'
@@ -2180,7 +2180,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.152'
@@ -2202,7 +2202,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.153'
@@ -2224,7 +2224,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.154'
@@ -2246,7 +2246,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.155'
@@ -2268,7 +2268,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.156'
@@ -2290,7 +2290,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.157'
@@ -2312,7 +2312,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.158'
@@ -2334,7 +2334,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.159'
@@ -2356,7 +2356,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.160'
@@ -2370,7 +2370,7 @@ const Qcov3: SurveySingleItem = {
           ]
         }
       },
-      // answers to Q2 weekly other than « Yes »
+      // answers to Q2 covidweekly other than « Yes »
       {
         dtype: "exp",
         exp: {
@@ -2387,7 +2387,7 @@ const Qcov3: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.33'
+                          str: 'covidweekly.33'
                         },
                         {
                           str: '1.1.161'
@@ -2404,7 +2404,7 @@ const Qcov3: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.32",
+    "covidweekly.32",
   ],
   version: 1,
   validations: [],
@@ -2483,7 +2483,7 @@ const Qcov3: SurveySingleItem = {
 }
 
 const Qcov3b: SurveySingleItem = {
-  key: "weekly.Qcov3b",
+  key: "covidweekly.Qcov3b",
   // “yes” to Qcov3
   condition: {
     name: 'isDefined',
@@ -2494,7 +2494,7 @@ const Qcov3b: SurveySingleItem = {
           name: 'getResponseItem',
           data: [
             {
-              str: 'weekly.Qcov3'
+              str: 'covidweekly.Qcov3'
             },
             {
               str: '1.1.1'
@@ -2505,7 +2505,7 @@ const Qcov3b: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.Qcov3",
+    "covidweekly.Qcov3",
   ],
   version: 1,
   validations: [],
@@ -2584,7 +2584,7 @@ const Qcov3b: SurveySingleItem = {
 }
 
 const Qcov8: SurveySingleItem = {
-  key: "weekly.Qcov8",
+  key: "covidweekly.Qcov8",
   // if report any symptoms
   condition: {
     name: "or",
@@ -2600,7 +2600,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -2622,7 +2622,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -2644,7 +2644,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -2666,7 +2666,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -2688,7 +2688,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -2710,7 +2710,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -2732,7 +2732,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -2754,7 +2754,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -2776,7 +2776,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -2798,7 +2798,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -2820,7 +2820,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -2842,7 +2842,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -2864,7 +2864,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -2886,7 +2886,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -2908,7 +2908,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -2930,7 +2930,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -2952,7 +2952,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -2974,7 +2974,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -2996,7 +2996,7 @@ const Qcov8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -3087,7 +3087,7 @@ const Qcov8: SurveySingleItem = {
 }
 
 const Qcov8b: SurveySingleItem = {
-  key: "weekly.Qcov8b",
+  key: "covidweekly.Qcov8b",
   // “yes” to Qcov8
   condition: {
     name: 'isDefined',
@@ -3098,7 +3098,7 @@ const Qcov8b: SurveySingleItem = {
           name: 'getResponseItem',
           data: [
             {
-              str: 'weekly.Qcov8'
+              str: 'covidweekly.Qcov8'
             },
             {
               str: '1.1.1'
@@ -3109,7 +3109,7 @@ const Qcov8b: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.Qcov8",
+    "covidweekly.Qcov8",
   ],
   version: 1,
   validations: [],
@@ -3188,7 +3188,7 @@ const Qcov8b: SurveySingleItem = {
 }
 
 const Q3: SurveySingleItem = {
-  key: "weekly.35",
+  key: "covidweekly.35",
   // if report any symptoms
   condition: {
     name: "or",
@@ -3204,7 +3204,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -3226,7 +3226,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -3248,7 +3248,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -3270,7 +3270,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -3292,7 +3292,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -3314,7 +3314,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -3336,7 +3336,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -3358,7 +3358,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -3380,7 +3380,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -3402,7 +3402,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -3424,7 +3424,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -3446,7 +3446,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -3468,7 +3468,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -3490,7 +3490,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -3512,7 +3512,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -3534,7 +3534,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -3556,7 +3556,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -3578,7 +3578,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -3600,7 +3600,7 @@ const Q3: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -3614,7 +3614,7 @@ const Q3: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.32",
+    "covidweekly.32",
   ],
   version: 1,
   validations: [],
@@ -3644,7 +3644,7 @@ const Q3: SurveySingleItem = {
             items: [
               {
                 key: "165",
-                role: "option",
+                role: "dateInput",
                 content: [
                   {
                     code: "en",
@@ -3679,7 +3679,7 @@ const Q3: SurveySingleItem = {
 }
 
 const Q4: SurveySingleItem = {
-  key: "weekly.36",
+  key: "covidweekly.36",
   // if report any symptoms
   condition: {
     name: "or",
@@ -3695,7 +3695,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -3717,7 +3717,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -3739,7 +3739,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -3761,7 +3761,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -3783,7 +3783,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -3805,7 +3805,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -3827,7 +3827,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -3849,7 +3849,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -3871,7 +3871,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -3893,7 +3893,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -3915,7 +3915,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -3937,7 +3937,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -3959,7 +3959,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -3981,7 +3981,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -4003,7 +4003,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -4025,7 +4025,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -4047,7 +4047,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -4069,7 +4069,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -4091,7 +4091,7 @@ const Q4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -4132,7 +4132,7 @@ const Q4: SurveySingleItem = {
             items: [
               {
                 key: "167",
-                role: "option",
+                role: "dateInput",
                 content: [
                   {
                     code: "en",
@@ -4181,7 +4181,7 @@ const Q4: SurveySingleItem = {
 }
 
 const Q5: SurveySingleItem = {
-  key: "weekly.37",
+  key: "covidweekly.37",
   // if report any symptoms
   condition: {
     name: "or",
@@ -4197,7 +4197,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -4219,7 +4219,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -4241,7 +4241,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -4263,7 +4263,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -4285,7 +4285,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -4307,7 +4307,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -4329,7 +4329,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -4351,7 +4351,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -4373,7 +4373,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -4395,7 +4395,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -4417,7 +4417,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -4439,7 +4439,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -4461,7 +4461,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -4483,7 +4483,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -4505,7 +4505,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -4527,7 +4527,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -4549,7 +4549,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -4571,7 +4571,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -4593,7 +4593,7 @@ const Q5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -4683,7 +4683,7 @@ const Q5: SurveySingleItem = {
 }
 
 const Q6: SurveySingleItem = {
-  key: "weekly.38",
+  key: "covidweekly.38",
   // fever
   condition: {
     name: 'isDefined',
@@ -4694,7 +4694,7 @@ const Q6: SurveySingleItem = {
           name: 'getResponseItem',
           data: [
             {
-              str: 'weekly.32'
+              str: 'covidweekly.32'
             },
             {
               str: '1.1.142'
@@ -4732,7 +4732,7 @@ const Q6: SurveySingleItem = {
             items: [
               {
                 key: "173",
-                role: "option",
+                role: "dateInput",
                 content: [
                   {
                     code: "en",
@@ -4767,7 +4767,7 @@ const Q6: SurveySingleItem = {
 }
 
 const Q6b: SurveySingleItem = {
-  key: "weekly.39",
+  key: "covidweekly.39",
   // fever
   condition: {
     name: 'isDefined',
@@ -4778,7 +4778,7 @@ const Q6b: SurveySingleItem = {
           name: 'getResponseItem',
           data: [
             {
-              str: 'weekly.32'
+              str: 'covidweekly.32'
             },
             {
               str: '1.1.142'
@@ -4865,7 +4865,7 @@ const Q6b: SurveySingleItem = {
 }
 
 const Q6c: SurveySingleItem = {
-  key: "weekly.40",
+  key: "covidweekly.40",
   // if report any symptoms
   condition: {
     name: "or",
@@ -4881,7 +4881,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -4903,7 +4903,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -4925,7 +4925,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -4947,7 +4947,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -4969,7 +4969,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -4991,7 +4991,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -5013,7 +5013,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -5035,7 +5035,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -5057,7 +5057,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -5079,7 +5079,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -5101,7 +5101,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -5123,7 +5123,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -5145,7 +5145,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -5167,7 +5167,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -5189,7 +5189,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -5211,7 +5211,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -5233,7 +5233,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -5255,7 +5255,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -5277,7 +5277,7 @@ const Q6c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -5367,7 +5367,7 @@ const Q6c: SurveySingleItem = {
 }
 
 const Q6d: SurveySingleItem = {
-  key: "weekly.41",
+  key: "covidweekly.41",
   condition: {
     name: "and",
     data: [
@@ -5388,7 +5388,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.142'
@@ -5410,7 +5410,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.143'
@@ -5432,7 +5432,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.144'
@@ -5454,7 +5454,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.145'
@@ -5476,7 +5476,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.146'
@@ -5498,7 +5498,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.147'
@@ -5520,7 +5520,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.148'
@@ -5542,7 +5542,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.149'
@@ -5564,7 +5564,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.150'
@@ -5586,7 +5586,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.151'
@@ -5608,7 +5608,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.152'
@@ -5630,7 +5630,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.153'
@@ -5652,7 +5652,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.154'
@@ -5674,7 +5674,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.155'
@@ -5696,7 +5696,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.156'
@@ -5718,7 +5718,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.157'
@@ -5740,7 +5740,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.158'
@@ -5762,7 +5762,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.159'
@@ -5784,7 +5784,7 @@ const Q6d: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.160'
@@ -5810,7 +5810,7 @@ const Q6d: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.40'
+                    str: 'covidweekly.40'
                   },
                   {
                     str: '1.1.178'
@@ -5824,7 +5824,7 @@ const Q6d: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.40",
+    "covidweekly.40",
   ],
   version: 1,
   validations: [],
@@ -5959,7 +5959,7 @@ const Q6d: SurveySingleItem = {
 }
 
 const Q7: SurveySingleItem = {
-  key: "weekly.42",
+  key: "covidweekly.42",
   // if report any symptoms
   condition: {
     name: "or",
@@ -5975,7 +5975,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -5997,7 +5997,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -6019,7 +6019,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -6041,7 +6041,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -6063,7 +6063,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -6085,7 +6085,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -6107,7 +6107,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -6129,7 +6129,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -6151,7 +6151,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -6173,7 +6173,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -6195,7 +6195,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -6217,7 +6217,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -6239,7 +6239,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -6261,7 +6261,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -6283,7 +6283,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -6305,7 +6305,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -6327,7 +6327,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -6349,7 +6349,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -6371,7 +6371,7 @@ const Q7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -6503,7 +6503,7 @@ const Q7: SurveySingleItem = {
 }
 
 const Q7b: SurveySingleItem = {
-  key: "weekly.64",
+  key: "covidweekly.64",
   // if report any symptoms
   condition: {
     name: "or",
@@ -6519,7 +6519,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -6541,7 +6541,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -6563,7 +6563,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -6585,7 +6585,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -6607,7 +6607,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -6629,7 +6629,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -6651,7 +6651,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -6673,7 +6673,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -6695,7 +6695,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -6717,7 +6717,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -6739,7 +6739,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -6761,7 +6761,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -6783,7 +6783,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -6805,7 +6805,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -6827,7 +6827,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -6849,7 +6849,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -6871,7 +6871,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -6893,7 +6893,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -6915,7 +6915,7 @@ const Q7b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -6929,7 +6929,7 @@ const Q7b: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.42",
+    "covidweekly.42",
   ],
   version: 1,
   validations: [],
@@ -6965,7 +6965,7 @@ const Q7b: SurveySingleItem = {
 }
 
 const Qcov4: SurveySingleItem = {
-  key: "weekly.Qcov4",
+  key: "covidweekly.Qcov4",
   // if report any symptoms
   condition: {
     name: "or",
@@ -6981,7 +6981,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -7003,7 +7003,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -7025,7 +7025,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -7047,7 +7047,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -7069,7 +7069,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -7091,7 +7091,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -7113,7 +7113,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -7135,7 +7135,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -7157,7 +7157,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -7179,7 +7179,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -7201,7 +7201,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -7223,7 +7223,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -7245,7 +7245,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -7267,7 +7267,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -7289,7 +7289,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -7311,7 +7311,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -7333,7 +7333,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -7355,7 +7355,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -7377,7 +7377,7 @@ const Qcov4: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -7467,7 +7467,7 @@ const Qcov4: SurveySingleItem = {
 }
 
 const Qcov5: SurveySingleItem = {
-  key: "weekly.Qcov5",
+  key: "covidweekly.Qcov5",
   // if report any symptoms
   condition: {
     name: "or",
@@ -7483,7 +7483,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -7505,7 +7505,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -7527,7 +7527,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -7549,7 +7549,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -7571,7 +7571,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -7593,7 +7593,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -7615,7 +7615,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -7637,7 +7637,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -7659,7 +7659,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -7681,7 +7681,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -7703,7 +7703,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -7725,7 +7725,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -7747,7 +7747,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -7769,7 +7769,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -7791,7 +7791,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -7813,7 +7813,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -7835,7 +7835,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -7857,7 +7857,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -7879,7 +7879,7 @@ const Qcov5: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -7968,8 +7968,9 @@ const Qcov5: SurveySingleItem = {
   }
 }
 
+
 const Q8: SurveySingleItem = {
-  key: "weekly.44",
+  key: "covidweekly.44",
   // if report any symptoms
   condition: {
     name: "or",
@@ -7985,7 +7986,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -8007,7 +8008,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -8029,7 +8030,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -8051,7 +8052,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -8073,7 +8074,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -8095,7 +8096,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -8117,7 +8118,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -8139,7 +8140,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -8161,7 +8162,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -8183,7 +8184,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -8205,7 +8206,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -8227,7 +8228,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -8249,7 +8250,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -8271,7 +8272,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -8293,7 +8294,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -8315,7 +8316,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -8337,7 +8338,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -8359,7 +8360,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -8381,7 +8382,7 @@ const Q8: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -8513,433 +8514,455 @@ const Q8: SurveySingleItem = {
 }
 
 const Q8b: SurveySingleItem = {
-  key: "weekly.65",
+  key: "covidweekly.65",
   // if report any symptoms
   condition: {
-    name: "or",
+    name: 'and',
     data: [
       {
         dtype: 'exp',
         exp: {
-          name: 'isDefined',
+          name: 'responseHasKeysAny',
           data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.142'
-                  }
-                ]
-              }
-            }
+            { str: 'covidweekly.44' },
+            { str: '1.1' },
+            { str: '203' },
+            { str: '204' },
+            { str: '205' },
+            { str: '206' },
           ]
         }
       },
       {
         dtype: 'exp',
         exp: {
-          name: 'isDefined',
+          name: "or",
           data: [
             {
               dtype: 'exp',
               exp: {
-                name: 'getResponseItem',
+                name: 'isDefined',
                 data: [
                   {
-                    str: 'weekly.32'
-                  },
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.142'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
                   {
-                    str: '1.1.143'
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.143'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.144'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.145'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.146'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.147'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.148'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.149'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.150'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.151'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.152'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.153'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.154'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.155'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.156'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.157'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.158'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.159'
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              dtype: 'exp',
+              exp: {
+                name: 'isDefined',
+                data: [
+                  {
+                    dtype: 'exp',
+                    exp: {
+                      name: 'getResponseItem',
+                      data: [
+                        {
+                          str: 'covidweekly.32'
+                        },
+                        {
+                          str: '1.1.160'
+                        }
+                      ]
+                    }
                   }
                 ]
               }
             }
           ]
         }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.144'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.145'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.146'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.147'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.148'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.149'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.150'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.151'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.152'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.153'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.154'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.155'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.156'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.157'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.158'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.159'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        dtype: 'exp',
-        exp: {
-          name: 'isDefined',
-          data: [
-            {
-              dtype: 'exp',
-              exp: {
-                name: 'getResponseItem',
-                data: [
-                  {
-                    str: 'weekly.32'
-                  },
-                  {
-                    str: '1.1.160'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
+      }
     ]
   },
   follows: [
-    "weekly.44",
+    "covidweekly.44",
   ],
   version: 1,
   validations: [],
@@ -8964,10 +8987,133 @@ const Q8b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1",
-            role: "undefined",
-            items: []
-          }
+            key: '0', role: 'dropDownGroup', content: [{ code: 'en', parts: [{ str: 'GP - spoke to receptionist only' }] }],
+            displayCondition: {
+              name: 'isDefined',
+              data: [
+                {
+                  dtype: 'exp',
+                  exp: {
+                    name: 'getResponseItem',
+                    data: [
+                      {
+                        str: 'covidweekly.44'
+                      },
+                      {
+                        str: '1.1.203'
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            items: [
+              { key: 'o1', role: 'option', content: [{ code: 'en', parts: [{ str: 'Same day' }] }] },
+              { key: 'o2', role: 'option', content: [{ code: 'en', parts: [{ str: '1 day' }] }] },
+              { key: 'o3', role: 'option', content: [{ code: 'en', parts: [{ str: '2 days' }] }] },
+              { key: 'o4', role: 'option', content: [{ code: 'en', parts: [{ str: '3 days' }] }] },
+              { key: 'o5', role: 'option', content: [{ code: 'en', parts: [{ str: '4 days' }] }] },
+              { key: 'o6', role: 'option', content: [{ code: 'en', parts: [{ str: '5-7 days' }] }] },
+              { key: 'o7', role: 'option', content: [{ code: 'en', parts: [{ str: 'more than 7 days' }] }] },
+              { key: 'o8', role: 'option', content: [{ code: 'en', parts: [{ str: 'I don\'t know/can\'t remember' }] }] },
+            ]
+          },
+          {
+            key: '1', role: 'dropDownGroup', content: [{ code: 'en', parts: [{ str: 'GP - spoke to doctor or nurse' }] }],
+            displayCondition: {
+              name: 'isDefined',
+              data: [
+                {
+                  dtype: 'exp',
+                  exp: {
+                    name: 'getResponseItem',
+                    data: [
+                      {
+                        str: 'covidweekly.44'
+                      },
+                      {
+                        str: '1.1.204'
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            items: [
+              { key: 'o1', role: 'option', content: [{ code: 'en', parts: [{ str: 'Same day' }] }] },
+              { key: 'o2', role: 'option', content: [{ code: 'en', parts: [{ str: '1 day' }] }] },
+              { key: 'o3', role: 'option', content: [{ code: 'en', parts: [{ str: '2 days' }] }] },
+              { key: 'o4', role: 'option', content: [{ code: 'en', parts: [{ str: '3 days' }] }] },
+              { key: 'o5', role: 'option', content: [{ code: 'en', parts: [{ str: '4 days' }] }] },
+              { key: 'o6', role: 'option', content: [{ code: 'en', parts: [{ str: '5-7 days' }] }] },
+              { key: 'o7', role: 'option', content: [{ code: 'en', parts: [{ str: 'more than 7 days' }] }] },
+              { key: 'o8', role: 'option', content: [{ code: 'en', parts: [{ str: 'I don\'t know/can\'t remember' }] }] },
+            ]
+          },
+          {
+            key: '2', role: 'dropDownGroup', content: [{ code: 'en', parts: [{ str: 'NHS Direct / NHS 24 / NHS Choices' }] }],
+            displayCondition: {
+              name: 'isDefined',
+              data: [
+                {
+                  dtype: 'exp',
+                  exp: {
+                    name: 'getResponseItem',
+                    data: [
+                      {
+                        str: 'covidweekly.44'
+                      },
+                      {
+                        str: '1.1.205'
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            items: [
+              { key: 'o1', role: 'option', content: [{ code: 'en', parts: [{ str: 'Same day' }] }] },
+              { key: 'o2', role: 'option', content: [{ code: 'en', parts: [{ str: '1 day' }] }] },
+              { key: 'o3', role: 'option', content: [{ code: 'en', parts: [{ str: '2 days' }] }] },
+              { key: 'o4', role: 'option', content: [{ code: 'en', parts: [{ str: '3 days' }] }] },
+              { key: 'o5', role: 'option', content: [{ code: 'en', parts: [{ str: '4 days' }] }] },
+              { key: 'o6', role: 'option', content: [{ code: 'en', parts: [{ str: '5-7 days' }] }] },
+              { key: 'o7', role: 'option', content: [{ code: 'en', parts: [{ str: 'more than 7 days' }] }] },
+              { key: 'o8', role: 'option', content: [{ code: 'en', parts: [{ str: 'I don\'t know/can\'t remember' }] }] },
+            ]
+          },
+          {
+            key: '3', role: 'dropDownGroup', content: [{ code: 'en', parts: [{ str: 'NPFS' }] }],
+            displayCondition: {
+              name: 'isDefined',
+              data: [
+                {
+                  dtype: 'exp',
+                  exp: {
+                    name: 'getResponseItem',
+                    data: [
+                      {
+                        str: 'covidweekly.44'
+                      },
+                      {
+                        str: '1.1.206'
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            items: [
+              { key: 'o1', role: 'option', content: [{ code: 'en', parts: [{ str: 'Same day' }] }] },
+              { key: 'o2', role: 'option', content: [{ code: 'en', parts: [{ str: '1 day' }] }] },
+              { key: 'o3', role: 'option', content: [{ code: 'en', parts: [{ str: '2 days' }] }] },
+              { key: 'o4', role: 'option', content: [{ code: 'en', parts: [{ str: '3 days' }] }] },
+              { key: 'o5', role: 'option', content: [{ code: 'en', parts: [{ str: '4 days' }] }] },
+              { key: 'o6', role: 'option', content: [{ code: 'en', parts: [{ str: '5-7 days' }] }] },
+              { key: 'o7', role: 'option', content: [{ code: 'en', parts: [{ str: 'more than 7 days' }] }] },
+              { key: 'o8', role: 'option', content: [{ code: 'en', parts: [{ str: 'I don\'t know/can\'t remember' }] }] },
+            ]
+          },
         ]
       }
     ]
@@ -8975,7 +9121,7 @@ const Q8b: SurveySingleItem = {
 }
 
 const Q9: SurveySingleItem = {
-  key: "weekly.46",
+  key: "covidweekly.46",
   // if report any symptoms
   condition: {
     name: "or",
@@ -8991,7 +9137,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -9013,7 +9159,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -9035,7 +9181,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -9057,7 +9203,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -9079,7 +9225,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -9101,7 +9247,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -9123,7 +9269,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -9145,7 +9291,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -9167,7 +9313,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -9189,7 +9335,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -9211,7 +9357,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -9233,7 +9379,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -9255,7 +9401,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -9277,7 +9423,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -9299,7 +9445,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -9321,7 +9467,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -9343,7 +9489,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -9365,7 +9511,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -9387,7 +9533,7 @@ const Q9: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -9561,7 +9707,7 @@ const Q9: SurveySingleItem = {
 }
 
 const Q9b: SurveySingleItem = {
-  key: "weekly.47",
+  key: "covidweekly.47",
   condition: {
     name: 'isDefined',
     data: [
@@ -9571,7 +9717,7 @@ const Q9b: SurveySingleItem = {
           name: 'getResponseItem',
           data: [
             {
-              str: 'weekly.46'
+              str: 'covidweekly.46'
             },
             {
               str: '1.1.219'
@@ -9582,7 +9728,7 @@ const Q9b: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.46",
+    "covidweekly.46",
   ],
   version: 1,
   validations: [],
@@ -9731,7 +9877,7 @@ const Q9b: SurveySingleItem = {
 }
 
 const Q14: SurveySingleItem = {
-  key: "weekly.Q14",
+  key: "covidweekly.Q14",
   // if report any symptoms
   condition: {
     name: "or",
@@ -9747,7 +9893,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -9769,7 +9915,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -9791,7 +9937,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -9813,7 +9959,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -9835,7 +9981,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -9857,7 +10003,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -9879,7 +10025,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -9901,7 +10047,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -9923,7 +10069,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -9945,7 +10091,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -9967,7 +10113,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -9989,7 +10135,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -10011,7 +10157,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -10033,7 +10179,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -10055,7 +10201,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -10077,7 +10223,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -10099,7 +10245,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -10121,7 +10267,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -10143,7 +10289,7 @@ const Q14: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -10157,7 +10303,7 @@ const Q14: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.32",
+    "covidweekly.32",
   ],
   version: 1,
   validations: [],
@@ -10222,7 +10368,7 @@ const Q14: SurveySingleItem = {
 }
 
 const Q10: SurveySingleItem = {
-  key: "weekly.48",
+  key: "covidweekly.48",
   // if report any symptoms
   condition: {
     name: "or",
@@ -10238,7 +10384,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -10260,7 +10406,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -10282,7 +10428,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -10304,7 +10450,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -10326,7 +10472,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -10348,7 +10494,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -10370,7 +10516,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -10392,7 +10538,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -10414,7 +10560,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -10436,7 +10582,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -10458,7 +10604,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -10480,7 +10626,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -10502,7 +10648,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -10524,7 +10670,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -10546,7 +10692,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -10568,7 +10714,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -10590,7 +10736,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -10612,7 +10758,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -10634,7 +10780,7 @@ const Q10: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -10724,7 +10870,7 @@ const Q10: SurveySingleItem = {
 }
 
 const Q10b: SurveySingleItem = {
-  key: "weekly.49",
+  key: "covidweekly.49",
   condition: {
     name: "and",
     data: [
@@ -10745,7 +10891,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.142'
@@ -10767,7 +10913,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.143'
@@ -10789,7 +10935,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.144'
@@ -10811,7 +10957,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.145'
@@ -10833,7 +10979,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.146'
@@ -10855,7 +11001,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.147'
@@ -10877,7 +11023,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.148'
@@ -10899,7 +11045,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.149'
@@ -10921,7 +11067,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.150'
@@ -10943,7 +11089,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.151'
@@ -10965,7 +11111,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.152'
@@ -10987,7 +11133,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.153'
@@ -11009,7 +11155,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.154'
@@ -11031,7 +11177,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.155'
@@ -11053,7 +11199,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.156'
@@ -11075,7 +11221,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.157'
@@ -11097,7 +11243,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.158'
@@ -11119,7 +11265,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.159'
@@ -11141,7 +11287,7 @@ const Q10b: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.160'
@@ -11167,7 +11313,7 @@ const Q10b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.48'
+                    str: 'covidweekly.48'
                   },
                   {
                     str: '1.1.233'
@@ -11181,7 +11327,7 @@ const Q10b: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.48",
+    "covidweekly.48",
   ],
   version: 1,
   validations: [],
@@ -11260,7 +11406,7 @@ const Q10b: SurveySingleItem = {
 }
 
 const Q10c: SurveySingleItem = {
-  key: "weekly.50",
+  key: "covidweekly.50",
   condition: {
     name: "and",
     data: [
@@ -11281,7 +11427,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.142'
@@ -11303,7 +11449,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.143'
@@ -11325,7 +11471,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.144'
@@ -11347,7 +11493,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.145'
@@ -11369,7 +11515,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.146'
@@ -11391,7 +11537,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.147'
@@ -11413,7 +11559,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.148'
@@ -11435,7 +11581,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.149'
@@ -11457,7 +11603,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.150'
@@ -11479,7 +11625,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.151'
@@ -11501,7 +11647,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.152'
@@ -11523,7 +11669,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.153'
@@ -11545,7 +11691,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.154'
@@ -11567,7 +11713,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.155'
@@ -11589,7 +11735,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.156'
@@ -11611,7 +11757,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.157'
@@ -11633,7 +11779,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.158'
@@ -11655,7 +11801,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.159'
@@ -11677,7 +11823,7 @@ const Q10c: SurveySingleItem = {
                       name: 'getResponseItem',
                       data: [
                         {
-                          str: 'weekly.32'
+                          str: 'covidweekly.32'
                         },
                         {
                           str: '1.1.160'
@@ -11703,7 +11849,7 @@ const Q10c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.48'
+                    str: 'covidweekly.48'
                   },
                   {
                     str: '1.1.233'
@@ -11717,7 +11863,7 @@ const Q10c: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.48",
+    "covidweekly.48",
   ],
   version: 1,
   validations: [],
@@ -11866,7 +12012,7 @@ const Q10c: SurveySingleItem = {
 }
 
 const Qcov6: SurveySingleItem = {
-  key: "weekly.Qcov6",
+  key: "covidweekly.Qcov6",
   // if report any symptoms
   condition: {
     name: "or",
@@ -11882,7 +12028,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -11904,7 +12050,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -11926,7 +12072,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -11948,7 +12094,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -11970,7 +12116,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -11992,7 +12138,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -12014,7 +12160,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -12036,7 +12182,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -12058,7 +12204,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -12080,7 +12226,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -12102,7 +12248,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -12124,7 +12270,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -12146,7 +12292,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -12168,7 +12314,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -12190,7 +12336,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -12212,7 +12358,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -12234,7 +12380,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -12256,7 +12402,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -12278,7 +12424,7 @@ const Qcov6: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -12368,7 +12514,7 @@ const Qcov6: SurveySingleItem = {
 }
 
 const Qcov7: SurveySingleItem = {
-  key: "weekly.Qcov7",
+  key: "covidweekly.Qcov7",
   // if report any symptoms
   condition: {
     name: "or",
@@ -12384,7 +12530,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -12406,7 +12552,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -12428,7 +12574,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -12450,7 +12596,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -12472,7 +12618,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -12494,7 +12640,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -12516,7 +12662,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -12538,7 +12684,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -12560,7 +12706,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -12582,7 +12728,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -12604,7 +12750,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -12626,7 +12772,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -12648,7 +12794,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -12670,7 +12816,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -12692,7 +12838,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -12714,7 +12860,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -12736,7 +12882,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -12758,7 +12904,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -12780,7 +12926,7 @@ const Qcov7: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -12841,7 +12987,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -12874,7 +13020,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -12935,7 +13081,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -12968,7 +13114,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13001,7 +13147,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13034,7 +13180,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13067,7 +13213,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13100,7 +13246,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13133,7 +13279,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13166,7 +13312,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13199,7 +13345,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13232,7 +13378,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13265,7 +13411,7 @@ const Qcov7: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov7'
+                            str: 'covidweekly.Qcov7'
                           },
                           {
                             str: '1.1.12'
@@ -13299,7 +13445,7 @@ const Qcov7: SurveySingleItem = {
 }
 
 const Q11: SurveySingleItem = {
-  key: "weekly.52",
+  key: "covidweekly.52",
   // if report any symptoms
   condition: {
     name: "or",
@@ -13315,7 +13461,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.142'
@@ -13337,7 +13483,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.143'
@@ -13359,7 +13505,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.144'
@@ -13381,7 +13527,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.145'
@@ -13403,7 +13549,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.146'
@@ -13425,7 +13571,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.147'
@@ -13447,7 +13593,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.148'
@@ -13469,7 +13615,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.149'
@@ -13491,7 +13637,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.150'
@@ -13513,7 +13659,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.151'
@@ -13535,7 +13681,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.152'
@@ -13557,7 +13703,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.153'
@@ -13579,7 +13725,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.154'
@@ -13601,7 +13747,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.155'
@@ -13623,7 +13769,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.156'
@@ -13645,7 +13791,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.157'
@@ -13667,7 +13813,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.158'
@@ -13689,7 +13835,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.159'
@@ -13711,7 +13857,7 @@ const Q11: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: 'weekly.32'
+                    str: 'covidweekly.32'
                   },
                   {
                     str: '1.1.160'
@@ -13871,7 +14017,7 @@ const Q11: SurveySingleItem = {
 }
 
 const Qcov9: SurveySingleItem = {
-  key: "weekly.Qcov9",
+  key: "covidweekly.Qcov9",
   condition: {
     name: 'isDefined',
     data: [
@@ -13881,7 +14027,7 @@ const Qcov9: SurveySingleItem = {
           name: 'getResponseItem',
           data: [
             {
-              str: 'weekly.52'
+              str: 'covidweekly.52'
             },
             {
               str: '1.1.9'
@@ -13892,7 +14038,7 @@ const Qcov9: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.52",
+    "covidweekly.52",
   ],
   version: 1,
   validations: [],
@@ -14027,7 +14173,7 @@ const Qcov9: SurveySingleItem = {
 }
 
 const Qcov9b: SurveySingleItem = {
-  key: "weekly.Qcov9b",
+  key: "covidweekly.Qcov9b",
   condition: {
     name: 'isDefined',
     data: [
@@ -14037,7 +14183,7 @@ const Qcov9b: SurveySingleItem = {
           name: 'getResponseItem',
           data: [
             {
-              str: 'weekly.52'
+              str: 'covidweekly.52'
             },
             {
               str: '1.1.9'
@@ -14048,7 +14194,7 @@ const Qcov9b: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.52",
+    "covidweekly.52",
   ],
   version: 1,
   validations: [],
@@ -14127,7 +14273,7 @@ const Qcov9b: SurveySingleItem = {
 }
 
 const Qcov10: SurveySingleItem = {
-  key: "weekly.Qcov10",
+  key: "covidweekly.Qcov10",
   version: 1,
   validations: [],
   components: {
@@ -14176,7 +14322,7 @@ const Qcov10: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov10'
+                            str: 'covidweekly.Qcov10'
                           },
                           {
                             str: '1.1.4'
@@ -14209,7 +14355,7 @@ const Qcov10: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov10'
+                            str: 'covidweekly.Qcov10'
                           },
                           {
                             str: '1.1.4'
@@ -14242,7 +14388,7 @@ const Qcov10: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov10'
+                            str: 'covidweekly.Qcov10'
                           },
                           {
                             str: '1.1.4'
@@ -14289,7 +14435,7 @@ const Qcov10: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov10'
+                            str: 'covidweekly.Qcov10'
                           },
                           {
                             str: '1.1.4'
@@ -14309,7 +14455,7 @@ const Qcov10: SurveySingleItem = {
 }
 
 const Qcov10b: SurveySingleItem = {
-  key: "weekly.Qcov10b",
+  key: "covidweekly.Qcov10b",
   condition: {
     name: 'isDefined',
     data: [
@@ -14319,7 +14465,7 @@ const Qcov10b: SurveySingleItem = {
           name: 'getResponseItem',
           data: [
             {
-              str: 'weekly.Qcov10'
+              str: 'covidweekly.Qcov10'
             },
             {
               str: '1.1.2'
@@ -14330,7 +14476,7 @@ const Qcov10b: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.Qcov10",
+    "covidweekly.Qcov10",
   ],
   version: 1,
   validations: [],
@@ -14380,7 +14526,7 @@ const Qcov10b: SurveySingleItem = {
 }
 
 const Qcov11: SurveySingleItem = {
-  key: "weekly.Qcov11",
+  key: "covidweekly.Qcov11",
   version: 1,
   validations: [],
   components: {
@@ -14500,7 +14646,7 @@ const Qcov11: SurveySingleItem = {
 }
 
 const Qcov12: SurveySingleItem = {
-  key: "weekly.Qcov12",
+  key: "covidweekly.Qcov12",
   version: 1,
   validations: [],
   components: {
@@ -14620,7 +14766,7 @@ const Qcov12: SurveySingleItem = {
 }
 
 const Qcov13: SurveySingleItem = {
-  key: "weekly.Qcov13",
+  key: "covidweekly.Qcov13",
   version: 1,
   validations: [],
   components: {
@@ -14726,7 +14872,7 @@ const Qcov13: SurveySingleItem = {
 }
 
 const Qcov14: SurveySingleItem = {
-  key: "weekly.Qcov14",
+  key: "covidweekly.Qcov14",
   version: 1,
   validations: [],
   components: {
@@ -14780,7 +14926,7 @@ const Qcov14: SurveySingleItem = {
                               name: 'getResponseItem',
                               data: [
                                 {
-                                  str: 'weekly.Qcov14'
+                                  str: 'covidweekly.Qcov14'
                                 },
                                 {
                                   str: '1.1.4'
@@ -14802,7 +14948,7 @@ const Qcov14: SurveySingleItem = {
                               name: 'getResponseItem',
                               data: [
                                 {
-                                  str: 'weekly.Qcov14'
+                                  str: 'covidweekly.Qcov14'
                                 },
                                 {
                                   str: '1.1.6'
@@ -14843,7 +14989,7 @@ const Qcov14: SurveySingleItem = {
                               name: 'getResponseItem',
                               data: [
                                 {
-                                  str: 'weekly.Qcov14'
+                                  str: 'covidweekly.Qcov14'
                                 },
                                 {
                                   str: '1.1.4'
@@ -14865,7 +15011,7 @@ const Qcov14: SurveySingleItem = {
                               name: 'getResponseItem',
                               data: [
                                 {
-                                  str: 'weekly.Qcov14'
+                                  str: 'covidweekly.Qcov14'
                                 },
                                 {
                                   str: '1.1.6'
@@ -14906,7 +15052,7 @@ const Qcov14: SurveySingleItem = {
                               name: 'getResponseItem',
                               data: [
                                 {
-                                  str: 'weekly.Qcov14'
+                                  str: 'covidweekly.Qcov14'
                                 },
                                 {
                                   str: '1.1.4'
@@ -14928,7 +15074,7 @@ const Qcov14: SurveySingleItem = {
                               name: 'getResponseItem',
                               data: [
                                 {
-                                  str: 'weekly.Qcov14'
+                                  str: 'covidweekly.Qcov14'
                                 },
                                 {
                                   str: '1.1.6'
@@ -14964,7 +15110,7 @@ const Qcov14: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov14'
+                            str: 'covidweekly.Qcov14'
                           },
                           {
                             str: '1.1.6'
@@ -15002,7 +15148,7 @@ const Qcov14: SurveySingleItem = {
                               name: 'getResponseItem',
                               data: [
                                 {
-                                  str: 'weekly.Qcov14'
+                                  str: 'covidweekly.Qcov14'
                                 },
                                 {
                                   str: '1.1.4'
@@ -15024,7 +15170,7 @@ const Qcov14: SurveySingleItem = {
                               name: 'getResponseItem',
                               data: [
                                 {
-                                  str: 'weekly.Qcov14'
+                                  str: 'covidweekly.Qcov14'
                                 },
                                 {
                                   str: '1.1.6'
@@ -15060,7 +15206,7 @@ const Qcov14: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: 'weekly.Qcov14'
+                            str: 'covidweekly.Qcov14'
                           },
                           {
                             str: '1.1.4'
@@ -15080,7 +15226,7 @@ const Qcov14: SurveySingleItem = {
 }
 
 const Qcov14b: SurveySingleItem = {
-  key: "weekly.Qcov14b",
+  key: "covidweekly.Qcov14b",
   condition: {
     name: 'isDefined',
     data: [
@@ -15090,7 +15236,7 @@ const Qcov14b: SurveySingleItem = {
           name: 'getResponseItem',
           data: [
             {
-              str: 'weekly.Qcov14'
+              str: 'covidweekly.Qcov14'
             },
             {
               str: '1.1.2'
@@ -15101,7 +15247,7 @@ const Qcov14b: SurveySingleItem = {
     ]
   },
   follows: [
-    "weekly.Qcov14",
+    "covidweekly.Qcov14",
   ],
   version: 1,
   validations: [],
@@ -15151,7 +15297,7 @@ const Qcov14b: SurveySingleItem = {
 }
 
 const Qcov15: SurveySingleItem = {
-  key: "weekly.Qcov15",
+  key: "covidweekly.Qcov15",
   version: 1,
   validations: [],
   components: {
@@ -15257,8 +15403,11 @@ const Qcov15: SurveySingleItem = {
 }
 
 const surveyDef: SurveyGroupItem = {
-  key: 'weekly',
+  key: 'covidweekly',
   version: 1,
+  selectionMethod: {
+    name: 'sequential',
+  },
   items: [
     Q1,
     Q2,
@@ -15277,6 +15426,7 @@ const surveyDef: SurveyGroupItem = {
     Q6b,
     Q6c,
     Q6d,
+    // { key: 'covidweekly', version: 1, type: 'pageBreak' },
     Q7,
     Q7b,
     Qcov4,
@@ -15307,6 +15457,10 @@ const surveyDef: SurveyGroupItem = {
 
 
 export const survey: Survey = {
+  name: [
+    { code: 'en', parts: [{ 'str': 'COVID-19' }] },
+    { code: 'de', parts: [{ 'str': 'COVID-19' }] }
+  ],
   current: {
     surveyDefinition: surveyDef
   }

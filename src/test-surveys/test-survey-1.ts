@@ -1800,6 +1800,25 @@ const Q5b: SurveySingleItem = {
               {
                 key: '3',
                 role: 'option',
+                displayCondition: {
+                  name: 'isDefined',
+                  data: [
+                    {
+                      dtype: 'exp',
+                      exp: {
+                        name: 'getResponseItem',
+                        data: [
+                          {
+                            str: surveyKey + '.5.5'
+                          },
+                          {
+                            str: '1.1.4'
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
                 content: [
                   {
                     code: 'en',
@@ -2045,6 +2064,25 @@ const Q6: SurveySingleItem = {
           {
             key: '1',
             role: 'dropDownGroup',
+            displayCondition: {
+              name: 'isDefined',
+              data: [
+                {
+                  dtype: 'exp',
+                  exp: {
+                    name: 'getResponseItem',
+                    data: [
+                      {
+                        str: surveyKey + '.5.5'
+                      },
+                      {
+                        str: '1.1.4'
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
             order: {
               name: 'sequential'
             },
