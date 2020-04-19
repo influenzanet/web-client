@@ -15200,7 +15200,7 @@ const Qcov15: SurveySingleItem = {
                     code: "en",
                     parts: [
                       {
-                        str: "•	Yes, moderately"
+                        str: "Yes, moderately"
                       }
                     ]
                   }
@@ -15214,7 +15214,7 @@ const Qcov15: SurveySingleItem = {
                     code: "en",
                     parts: [
                       {
-                        str: "•	No, not really"
+                        str: "No, not really"
                       }
                     ]
                   }
@@ -15228,7 +15228,7 @@ const Qcov15: SurveySingleItem = {
                     code: "en",
                     parts: [
                       {
-                        str: "•	No, not at all"
+                        str: "No, not at all"
                       }
                     ]
                   }
@@ -15242,7 +15242,7 @@ const Qcov15: SurveySingleItem = {
                     code: "en",
                     parts: [
                       {
-                        str: "•	I don't know"
+                        str: "I don't know"
                       }
                     ]
                   }
