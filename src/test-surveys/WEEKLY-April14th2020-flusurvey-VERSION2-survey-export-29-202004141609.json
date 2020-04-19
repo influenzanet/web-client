@@ -3,11 +3,11 @@
     "name": "Weekly Questionnaire",
     "current": {
         "surveyDefinition": {
-            "key": "0",
+            "key": "weekly",
             "version": 1,
             "items": [
                 {
-                    "key": "timestamp",
+                    "key": "weekly.timestamp",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -39,7 +39,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "undefined",
                                         "items": []
                                     }
@@ -49,7 +49,7 @@
                     }
                 },
                 {
-                    "key": "NOTE",
+                    "key": "weekly.NOTE",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -81,7 +81,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": []
                                     }
@@ -91,7 +91,7 @@
                     }
                 },
                 {
-                    "key": "Q1",
+                    "key": "weekly.Q1",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -123,7 +123,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -640,7 +640,7 @@
                     }
                 },
                 {
-                    "key": "Q2",
+                    "key": "weekly.Q2",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -672,7 +672,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -771,7 +771,7 @@
                     }
                 },
                 {
-                    "key": "Qcov1",
+                    "key": "weekly.Qcov1",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -803,7 +803,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -880,7 +880,7 @@
                     }
                 },
                 {
-                    "key": "Qcov1b",
+                    "key": "weekly.Qcov1b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -912,7 +912,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -17561,7 +17561,7 @@
                     }
                 },
                 {
-                    "key": "Qcov2",
+                    "key": "weekly.Qcov2",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -17593,7 +17593,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -17670,7 +17670,7 @@
                     }
                 },
                 {
-                    "key": "Qcov2b",
+                    "key": "weekly.Qcov2b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -17702,7 +17702,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -34351,7 +34351,7 @@
                     }
                 },
                 {
-                    "key": "Qcov3",
+                    "key": "weekly.Qcov3",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -34383,7 +34383,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -34460,7 +34460,7 @@
                     }
                 },
                 {
-                    "key": "Qcov3b",
+                    "key": "weekly.Qcov3b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -34492,7 +34492,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -34569,7 +34569,7 @@
                     }
                 },
                 {
-                    "key": "Qcov8",
+                    "key": "weekly.Qcov8",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -34601,7 +34601,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -34678,7 +34678,7 @@
                     }
                 },
                 {
-                    "key": "Qcov8b",
+                    "key": "weekly.Qcov8b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -34710,7 +34710,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -34787,7 +34787,7 @@
                     }
                 },
                 {
-                    "key": "N1",
+                    "key": "weekly.N1",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -34819,7 +34819,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": []
                                     }
@@ -34829,7 +34829,7 @@
                     }
                 },
                 {
-                    "key": "Q3",
+                    "key": "weekly.Q3",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -34861,7 +34861,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -34916,7 +34916,7 @@
                     }
                 },
                 {
-                    "key": "Q4",
+                    "key": "weekly.Q4",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -34948,7 +34948,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -35025,7 +35025,7 @@
                     }
                 },
                 {
-                    "key": "Q5",
+                    "key": "weekly.Q5",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -35057,7 +35057,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -35134,7 +35134,7 @@
                     }
                 },
                 {
-                    "key": "Q6",
+                    "key": "weekly.Q6",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -35166,7 +35166,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -35221,7 +35221,7 @@
                     }
                 },
                 {
-                    "key": "Q6b",
+                    "key": "weekly.Q6b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -35253,7 +35253,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -35330,7 +35330,7 @@
                     }
                 },
                 {
-                    "key": "Q6c",
+                    "key": "weekly.Q6c",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -35362,7 +35362,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -35439,7 +35439,7 @@
                     }
                 },
                 {
-                    "key": "Q6d",
+                    "key": "weekly.Q6d",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -35471,7 +35471,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -35636,7 +35636,7 @@
                     }
                 },
                 {
-                    "key": "Q7",
+                    "key": "weekly.Q7",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -35668,7 +35668,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -35811,7 +35811,7 @@
                     }
                 },
                 {
-                    "key": "Q7b",
+                    "key": "weekly.Q7b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -35843,7 +35843,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -36742,7 +36742,7 @@
                     }
                 },
                 {
-                    "key": "Qcov4",
+                    "key": "weekly.Qcov4",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -36774,7 +36774,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -36851,7 +36851,7 @@
                     }
                 },
                 {
-                    "key": "Qcov5",
+                    "key": "weekly.Qcov5",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -36883,7 +36883,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -36960,7 +36960,7 @@
                     }
                 },
                 {
-                    "key": "Q8",
+                    "key": "weekly.Q8",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -36992,7 +36992,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -37135,7 +37135,7 @@
                     }
                 },
                 {
-                    "key": "Q8b",
+                    "key": "weekly.Q8b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -37167,7 +37167,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -38066,7 +38066,7 @@
                     }
                 },
                 {
-                    "key": "Q9",
+                    "key": "weekly.Q9",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -38098,7 +38098,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -38307,7 +38307,7 @@
                     }
                 },
                 {
-                    "key": "Q9b",
+                    "key": "weekly.Q9b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -38339,7 +38339,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -38526,7 +38526,7 @@
                     }
                 },
                 {
-                    "key": "Q14",
+                    "key": "weekly.Q14",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -38558,7 +38558,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -38613,7 +38613,7 @@
                     }
                 },
                 {
-                    "key": "Q10",
+                    "key": "weekly.Q10",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -38645,7 +38645,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -38722,7 +38722,7 @@
                     }
                 },
                 {
-                    "key": "Q10b",
+                    "key": "weekly.Q10b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -38754,7 +38754,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -38831,7 +38831,7 @@
                     }
                 },
                 {
-                    "key": "Q10c",
+                    "key": "weekly.Q10c",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -38863,7 +38863,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -39050,7 +39050,7 @@
                     }
                 },
                 {
-                    "key": "Qcov6",
+                    "key": "weekly.Qcov6",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -39082,7 +39082,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -39159,7 +39159,7 @@
                     }
                 },
                 {
-                    "key": "Qcov7",
+                    "key": "weekly.Qcov7",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -39191,7 +39191,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -39554,7 +39554,7 @@
                     }
                 },
                 {
-                    "key": "Q11",
+                    "key": "weekly.Q11",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -39586,7 +39586,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -39773,7 +39773,7 @@
                     }
                 },
                 {
-                    "key": "Qcov9",
+                    "key": "weekly.Qcov9",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -39805,7 +39805,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -39970,7 +39970,7 @@
                     }
                 },
                 {
-                    "key": "Qcov9b",
+                    "key": "weekly.Qcov9b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -40002,7 +40002,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -40079,7 +40079,7 @@
                     }
                 },
                 {
-                    "key": "Qcov10",
+                    "key": "weekly.Qcov10",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -40111,7 +40111,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -40232,7 +40232,7 @@
                     }
                 },
                 {
-                    "key": "Qcov10b",
+                    "key": "weekly.Qcov10b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -40264,7 +40264,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -40429,7 +40429,7 @@
                     }
                 },
                 {
-                    "key": "Qcov11",
+                    "key": "weekly.Qcov11",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -40461,7 +40461,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -40604,7 +40604,7 @@
                     }
                 },
                 {
-                    "key": "Qcov12",
+                    "key": "weekly.Qcov12",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -40636,7 +40636,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -40779,7 +40779,7 @@
                     }
                 },
                 {
-                    "key": "Qcov13",
+                    "key": "weekly.Qcov13",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -40811,7 +40811,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -40932,7 +40932,7 @@
                     }
                 },
                 {
-                    "key": "Qcov14",
+                    "key": "weekly.Qcov14",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -40964,7 +40964,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "multipleChoiceGroup",
                                         "items": [
                                             {
@@ -41107,7 +41107,7 @@
                     }
                 },
                 {
-                    "key": "Qcov14b",
+                    "key": "weekly.Qcov14b",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -41139,7 +41139,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -41304,7 +41304,7 @@
                     }
                 },
                 {
-                    "key": "Qcov15",
+                    "key": "weekly.Qcov15",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -41336,7 +41336,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": [
                                             {
@@ -41457,7 +41457,7 @@
                     }
                 },
                 {
-                    "key": "Q12",
+                    "key": "weekly.Q12",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -41489,7 +41489,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "undefined",
                                         "items": []
                                     }
@@ -41499,7 +41499,7 @@
                     }
                 },
                 {
-                    "key": "NOTE2",
+                    "key": "weekly.NOTE2",
                     "version": 1,
                     "validations": [],
                     "components": {
@@ -41531,7 +41531,7 @@
                                 "role": "responseGroup",
                                 "items": [
                                     {
-                                        "key": "1.1",
+                                        "key": "1",
                                         "role": "singleChoiceGroup",
                                         "items": []
                                     }
