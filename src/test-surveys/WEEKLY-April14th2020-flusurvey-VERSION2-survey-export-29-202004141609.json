@@ -1,6 +1,23 @@
 {
     "id": "survey-29",
-    "name": "Weekly Questionnaire",
+    "name": [
+        {
+            "code": "en",
+            "parts": [
+                {
+                    "str": "Weekly Questionnaire"
+                }
+            ]
+        },
+        {
+            "code": "de",
+            "parts": [
+                {
+                    "str": "de"
+                }
+            ]
+        }
+    ],
     "current": {
         "surveyDefinition": {
             "key": "weekly",
