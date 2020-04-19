@@ -3,7 +3,8 @@ import { ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/
 import { ResponseItem } from 'survey-engine/lib/data_types/response';
 import { FormControl, RadioGroup, FormControlLabel, Radio, Tooltip } from '@material-ui/core';
 import { getLocaleStringTextByCode } from '../../utils';
-import RadioCtrlWithTextField from './RadioCtrlWithTextField/RadioCtrlWithTextField';
+import DateInput from '../DateInput/DateInput';
+import TextInput from '../TextInput/TextInput';
 
 interface SingleChoiceGroupProps {
   compDef: ItemComponent;
@@ -16,16 +17,15 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
 
-  const [inputValues, setInputValues] = useState<ResponseItem[]>(
-    props.prefill && props.prefill.items ? props.prefill.items.slice() : []
+  const [subResponseCache, setSubResponseCache] = useState<Array<ResponseItem>>(
+    (props.prefill && props.prefill.items) ? [...props.prefill.items] : []
   );
-
 
   useEffect(() => {
     if (touched) {
       const timer = setTimeout(() => {
         props.responseChanged(response);
-      }, 200);
+      }, 20);
       return () => clearTimeout(timer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,42 +42,51 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           items: [{ key: key }]
         }
       }
-      const value = inputValues.find(v => v.key === key);
+      const subResp = subResponseCache.find(sr => sr.key === key);
       return {
         ...prev,
         items: [
-          value ? { key, value: value.value } : { key }
+          subResp ? subResp : { key }
         ]
       }
     });
   };
 
-  const handleInputValueChange = (key: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!key) { return; }
+  const setResponseForKey = (key: string | undefined) => (response: ResponseItem | undefined) => {
+    if (!key || !props.compDef.key) { return; }
     setTouched(true);
+    console.log(response);
 
-    const value = (event.target as HTMLInputElement).value;
-
-    setInputValues(prev => {
-      setResponse(prevResp => {
-        if (!prevResp) { return { key: 'no key found', items: [] } }
-        return {
-          ...prevResp,
-          items: [{
-            key,
-            value
-          }]
+    setSubResponseCache(prev => {
+      const ind = prev.findIndex(pr => pr.key === key);
+      if (!response) {
+        if (ind < 0) {
+          return prev;
         }
-      });
-      const ind = prev.findIndex(v => v.key === key);
-      if (ind > -1) {
-        prev[ind] = { key, value }
+        prev = prev.splice(ind, 1);
+      } else {
+        if (ind < 0) {
+          prev.push(response);
+        }
+        else {
+          prev[ind] = response;
+        }
       }
-      return [
-        ...prev
-      ]
+      return [...prev];
     })
-  };
+    if (!response) {
+      setResponse({ key: props.compDef.key, items: [] });
+    } else {
+      setResponse({ key: props.compDef.key, items: [{ ...response }] });
+    }
+  }
+
+  const getSelectedItem = (): ResponseItem | undefined => {
+    if (!response || !response.items || response.items.length < 1) {
+      return undefined;
+    }
+    return response.items[0];
+  }
 
   const getSelectedKey = (): string | undefined => {
     if (!response || !response.items || response.items.length < 1) {
@@ -90,6 +99,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     if (option.displayCondition === false) {
       return null;
     }
+    const prefill = getSelectedItem();
     switch (option.role) {
       case 'option':
         const renderedOption = <FormControlLabel
@@ -108,22 +118,36 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
         }
         return renderedOption;
       case 'input':
-        let r = inputValues.find(v => v.key === option.key);
-        if (!r) {
-          r = { key: option.key ? option.key : 'errorkey', value: '' };
-          const nr = r;
-          setInputValues(prev => [
-            ...prev,
-            nr
-          ]);
-        }
-        return <RadioCtrlWithTextField
+        return <FormControlLabel
+          style={{ marginRight: "auto" }}
           key={option.key}
-          compDef={option}
-          inputValue={r.value ? r.value : ''}
-          languageCode={props.languageCode}
-          onInputChange={handleInputValueChange(option.key)}
-        />
+          value={option.key}
+          control={<Radio />}
+          label={<TextInput
+            key={option.key}
+            compDef={option}
+            prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+            languageCode={props.languageCode}
+            responseChanged={setResponseForKey(option.key)}
+          />}
+          disabled={option.disabled !== undefined}
+        />;
+      case 'dateInput':
+        return <FormControlLabel
+          style={{ marginRight: "auto" }}
+          key={option.key}
+          value={option.key}
+          control={<Radio />}
+          label={<DateInput
+            key={option.key}
+            compDef={option}
+            prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+            languageCode={props.languageCode}
+            responseChanged={setResponseForKey(option.key)}
+          />}
+          disabled={option.disabled !== undefined}
+        />;
+
       default:
         return <p key={option.key}>role inside single choice group not implemented yet: {option.role}</p>
     }

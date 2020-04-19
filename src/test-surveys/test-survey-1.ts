@@ -183,6 +183,31 @@ const Q4: SurveySingleItem = {
                 ]
               },
               {
+                key: 'dateOption',
+                role: 'dateInput',
+                properties: {
+                  dateInputMode: { str: 'YM' },
+                },
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'In '
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'In '
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
                 key: '2',
                 role: 'option',
                 content: [
