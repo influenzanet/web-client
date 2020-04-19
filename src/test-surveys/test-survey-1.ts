@@ -1,7 +1,9 @@
 import { SurveyGroupItem, SurveySingleItem, Survey } from 'survey-engine/lib/data_types';
 
+const surveyKey = 'weekly';
+
 const Q4: SurveySingleItem = {
-  key: '0.4.4',
+  key: surveyKey + '.4.4',
   version: 1,
   validations: [],
   components: {
@@ -405,7 +407,7 @@ const Q4: SurveySingleItem = {
 }
 
 const Q4b: SurveySingleItem = {
-  key: '0.4.4b',
+  key: surveyKey + '.4.4b',
   condition: {
     name: 'or',
     data: [
@@ -420,7 +422,7 @@ const Q4b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: '0.4.4'
+                    str: surveyKey + '.4.4'
                   },
                   {
                     str: '1.1.1'
@@ -442,7 +444,7 @@ const Q4b: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: '0.4.4'
+                    str: surveyKey + '.4.4'
                   },
                   {
                     str: '1.1.2'
@@ -650,7 +652,7 @@ const Q4b: SurveySingleItem = {
 }
 
 const Q4c: SurveySingleItem = {
-  key: '0.4.4c',
+  key: surveyKey + '.4.4c',
   condition: {
     name: 'or',
     data: [
@@ -665,7 +667,7 @@ const Q4c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: '0.4.4'
+                    str: surveyKey + '.4.4'
                   },
                   {
                     str: '1.1.1'
@@ -687,7 +689,7 @@ const Q4c: SurveySingleItem = {
                 name: 'getResponseItem',
                 data: [
                   {
-                    str: '0.4.4'
+                    str: surveyKey + '.4.4'
                   },
                   {
                     str: '1.1.2'
@@ -979,7 +981,7 @@ const Q4c: SurveySingleItem = {
 }
 
 const Q5: SurveySingleItem = {
-  key: '0.5.5',
+  key: surveyKey + '.5.5',
   version: 1,
   validations: [
     {
@@ -999,7 +1001,7 @@ const Q5: SurveySingleItem = {
                     name: 'getResponseItem',
                     data: [
                       {
-                        str: '0.5.5'
+                        str: surveyKey + '.5.5'
                       },
                       {
                         str: '1.1.5'
@@ -1026,7 +1028,7 @@ const Q5: SurveySingleItem = {
                           name: 'getResponseItem',
                           data: [
                             {
-                              str: '0.5.5'
+                              str: surveyKey + '.5.5'
                             },
                             {
                               str: '1.1.1'
@@ -1048,7 +1050,7 @@ const Q5: SurveySingleItem = {
                           name: 'getResponseItem',
                           data: [
                             {
-                              str: '0.5.5'
+                              str: surveyKey + '.5.5'
                             },
                             {
                               str: '1.1.2'
@@ -1070,7 +1072,7 @@ const Q5: SurveySingleItem = {
                           name: 'getResponseItem',
                           data: [
                             {
-                              str: '0.5.5'
+                              str: surveyKey + '.5.5'
                             },
                             {
                               str: '1.1.3'
@@ -1092,7 +1094,7 @@ const Q5: SurveySingleItem = {
                           name: 'getResponseItem',
                           data: [
                             {
-                              str: '0.5.5'
+                              str: surveyKey + '.5.5'
                             },
                             {
                               str: '1.1.4'
@@ -1501,7 +1503,7 @@ const Q5: SurveySingleItem = {
 }
 
 const Q5b: SurveySingleItem = {
-  key: '0.5.5b',
+  key: surveyKey + '.5.5b',
   version: 1,
   validations: [],
   components: {
@@ -1693,7 +1695,7 @@ const Q5b: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: '0.5.5b'
+                            str: surveyKey + '.5.5b'
                           },
                           {
                             str: '1.1.5'
@@ -1734,7 +1736,7 @@ const Q5b: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: '0.5.5b'
+                            str: surveyKey + '.5.5b'
                           },
                           {
                             str: '1.1.5'
@@ -1775,7 +1777,7 @@ const Q5b: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: '0.5.5b'
+                            str: surveyKey + '.5.5b'
                           },
                           {
                             str: '1.1.5'
@@ -1816,7 +1818,7 @@ const Q5b: SurveySingleItem = {
                         name: 'getResponseItem',
                         data: [
                           {
-                            str: '0.5.5b'
+                            str: surveyKey + '.5.5b'
                           },
                           {
                             str: '1.1.5'
@@ -1858,7 +1860,7 @@ const Q5b: SurveySingleItem = {
 }
 
 const Q6: SurveySingleItem = {
-  key: '0.6.6',
+  key: surveyKey + '.6.6',
   version: 1,
   validations: [],
   components: {
@@ -2984,7 +2986,7 @@ const Q6: SurveySingleItem = {
 }
 
 const Q3: SurveySingleItem = {
-  key: '0.3',
+  key: surveyKey + '.3',
   version: 1,
   validations: [],
   components: {
@@ -3120,14 +3122,14 @@ const Q3: SurveySingleItem = {
             key: '1',
             role: 'dateInput',
             properties: {
-              dateInputMode: { str: 'Y' },
+              dateInputMode: { str: 'YM' },
             },
             content: [
               {
                 code: 'en',
                 parts: [
                   {
-                    str: 'On '
+                    str: 'In '
                   },
                 ]
               },
@@ -3135,7 +3137,7 @@ const Q3: SurveySingleItem = {
                 code: 'de',
                 parts: [
                   {
-                    str: 'Am '
+                    str: 'In '
                   },
                 ]
               },
@@ -3148,7 +3150,7 @@ const Q3: SurveySingleItem = {
 }
 
 const QX1: SurveySingleItem = {
-  key: '0.6.x1',
+  key: surveyKey + '.6.x1',
   version: 1,
   validations: [],
   components: {
@@ -3213,7 +3215,7 @@ const QX1: SurveySingleItem = {
 }
 
 const QX2: SurveySingleItem = {
-  key: '0.6.x2',
+  key: surveyKey + '.6.x2',
   version: 1,
   validations: [],
   components: {
@@ -3278,7 +3280,7 @@ const QX2: SurveySingleItem = {
 }
 
 const QX3: SurveySingleItem = {
-  key: '0.6.x3',
+  key: surveyKey + '.6.x3',
   version: 1,
   validations: [],
   components: {
@@ -3348,13 +3350,13 @@ const QX3: SurveySingleItem = {
 }
 
 const pb1: SurveySingleItem = {
-  key: '0.5.pb1',
+  key: surveyKey + '.5.pb1',
   type: 'pageBreak',
   version: 1,
 };
 
 const slider1: SurveySingleItem = {
-  key: '0.sliders.1',
+  key: surveyKey + '.sliders.1',
   version: 1,
   components: {
     role: 'root', items: [
@@ -3455,7 +3457,7 @@ const slider1: SurveySingleItem = {
 };
 
 const slider2: SurveySingleItem = {
-  key: '0.sliders.2',
+  key: surveyKey + '.sliders.2',
   version: 1,
   components: {
     role: 'root', items: [
@@ -3524,7 +3526,7 @@ const slider2: SurveySingleItem = {
 };
 
 const slider3: SurveySingleItem = {
-  key: '0.sliders.3',
+  key: surveyKey + '.sliders.3',
   version: 1,
   components: {
     role: 'root', items: [
@@ -3807,14 +3809,14 @@ const slider3: SurveySingleItem = {
 };
 
 const sliders: SurveyGroupItem = {
-  key: '0.sliders',
+  key: surveyKey + '.sliders',
   version: 1,
   selectionMethod: {
     name: 'sequential'
   },
   items: [
     {
-      key: '0.sliders.pb1',
+      key: surveyKey + '.sliders.pb1',
       type: 'pageBreak',
       version: 1,
     },
@@ -3822,7 +3824,7 @@ const sliders: SurveyGroupItem = {
     slider2,
     slider3,
     {
-      key: '0.sliders.pb2',
+      key: surveyKey + '.sliders.pb2',
       type: 'pageBreak',
       version: 1,
     }
@@ -3831,7 +3833,7 @@ const sliders: SurveyGroupItem = {
 
 
 const tableSingleChoice: SurveySingleItem = {
-  key: '0.tables.1',
+  key: surveyKey + '.tables.1',
   version: 1,
   components: {
     role: 'root', items: [
@@ -3943,7 +3945,7 @@ const tableSingleChoice: SurveySingleItem = {
 };
 
 const tableMixed: SurveySingleItem = {
-  key: '0.tables.2',
+  key: surveyKey + '.tables.2',
   version: 1,
   components: {
     role: 'root', items: [
@@ -4093,21 +4095,21 @@ const tableMixed: SurveySingleItem = {
 
 
 const tableQuestions: SurveyGroupItem = {
-  key: '0.tables',
+  key: surveyKey + '.tables',
   version: 1,
   selectionMethod: {
     name: 'sequential'
   },
   items: [
     {
-      key: '0.tables.pb1',
+      key: surveyKey + '.tables.pb1',
       type: 'pageBreak',
       version: 1,
     },
     tableSingleChoice,
     tableMixed,
     {
-      key: '0.tables.pb2',
+      key: surveyKey + '.tables.pb2',
       type: 'pageBreak',
       version: 1,
     }
@@ -4116,13 +4118,13 @@ const tableQuestions: SurveyGroupItem = {
 
 
 const QG0: SurveyGroupItem = {
-  key: '0',
+  key: surveyKey,
   version: 1,
   selectionMethod: { name: 'sequential' },
   items: [
     Q3,
     {
-      key: '0.4',
+      key: surveyKey + '.4',
       version: 1,
       items: [
         Q4,
@@ -4133,7 +4135,7 @@ const QG0: SurveyGroupItem = {
     sliders,
     tableQuestions,
     {
-      key: '0.5',
+      key: surveyKey + '.5',
       version: 1,
       items: [
         Q5,
@@ -4142,7 +4144,7 @@ const QG0: SurveyGroupItem = {
       ],
     },
     {
-      key: '0.6',
+      key: surveyKey + '.6',
       version: 1,
       items: [
         Q6,
@@ -4155,6 +4157,10 @@ const QG0: SurveyGroupItem = {
 }
 
 export const testSurvey: Survey = {
+  name: [
+    { code: 'en', parts: [{ 'str': 'How are you today?' }] },
+    { code: 'de', parts: [{ 'str': 'Wie fühlen Sie sich?' }] }
+  ],
   current: {
     surveyDefinition: QG0,
   },
