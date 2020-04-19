@@ -218,7 +218,7 @@ const Q4: SurveySingleItem = {
                     code: 'en',
                     parts: [
                       {
-                        str: 'Number:  '
+                        str: 'Number:'
                       },
                     ]
                   },
@@ -226,7 +226,7 @@ const Q4: SurveySingleItem = {
                     code: 'de',
                     parts: [
                       {
-                        str: 'Zahl: '
+                        str: 'Zahl:'
                       },
                     ]
                   },

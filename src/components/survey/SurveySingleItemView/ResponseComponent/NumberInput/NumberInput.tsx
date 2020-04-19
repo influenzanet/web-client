@@ -90,7 +90,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
 
   return <Box display="flex" alignItems="center">
     {content ?
-      <Box mr={1} minWidth={80} flexShrink={1} >
+      <Box mr={1} flexShrink={1} >
         <Typography variant="body1">
           {content}
         </Typography>

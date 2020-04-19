@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
 import { ResponseItem } from 'survey-engine/lib/data_types/response';
-import { FormControl, RadioGroup, FormControlLabel, Radio, Tooltip } from '@material-ui/core';
+import { FormControl, RadioGroup, FormControlLabel, Radio, Tooltip, createStyles, makeStyles, Theme } from '@material-ui/core';
 import { getLocaleStringTextByCode } from '../../utils';
 import DateInput from '../DateInput/DateInput';
 import TextInput from '../TextInput/TextInput';
@@ -14,7 +14,18 @@ interface SingleChoiceGroupProps {
   languageCode: string;
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    inputLabel: {
+      width: "100%",
+    },
+  }),
+);
+
+
 const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
+  const classes = useStyles();
+
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
 
@@ -120,7 +131,8 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
         return renderedOption;
       case 'input':
         return <FormControlLabel
-          style={{ marginRight: "auto" }}
+          style={{ marginRight: "auto", width: "100%" }}
+          classes={{ label: classes.inputLabel }}
           key={option.key}
           value={option.key}
           control={<Radio />}
@@ -130,7 +142,8 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
             prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
             languageCode={props.languageCode}
             responseChanged={setResponseForKey(option.key)}
-          />}
+          />
+          }
           disabled={option.disabled !== undefined}
         />;
       case 'numberInput':
