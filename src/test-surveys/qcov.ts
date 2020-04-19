@@ -25,7 +25,7 @@ const Q1: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -998,7 +998,7 @@ const Q2: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -1553,7 +1553,7 @@ const Qcov1: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -1659,7 +1659,7 @@ const Qcov1b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -1779,7 +1779,7 @@ const Qcov2: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -1857,7 +1857,7 @@ const Qcov2b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -2429,7 +2429,7 @@ const Qcov3: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -2530,7 +2530,7 @@ const Qcov3b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -3033,7 +3033,7 @@ const Qcov8: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -3134,7 +3134,7 @@ const Qcov8b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -3639,7 +3639,7 @@ const Q3: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -4127,7 +4127,7 @@ const Q4: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -4629,7 +4629,7 @@ const Q5: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -4727,7 +4727,7 @@ const Q6: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -4811,7 +4811,7 @@ const Q6b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -5313,7 +5313,7 @@ const Q6c: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -5849,7 +5849,7 @@ const Q6d: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -6407,7 +6407,7 @@ const Q7: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -6954,7 +6954,7 @@ const Q7b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "undefined",
             items: []
           }
@@ -7413,7 +7413,7 @@ const Qcov4: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -7915,7 +7915,7 @@ const Qcov5: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -8417,7 +8417,7 @@ const Q8: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -8964,7 +8964,7 @@ const Q8b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "undefined",
             items: []
           }
@@ -9423,7 +9423,7 @@ const Q9: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -9607,7 +9607,7 @@ const Q9b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -10182,7 +10182,7 @@ const Q14: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -10670,7 +10670,7 @@ const Q10: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -11206,7 +11206,7 @@ const Q10b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -11742,7 +11742,7 @@ const Q10c: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -12314,7 +12314,7 @@ const Qcov6: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -12816,7 +12816,7 @@ const Qcov7: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -13747,7 +13747,7 @@ const Q11: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -13917,7 +13917,7 @@ const Qcov9: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -14073,7 +14073,7 @@ const Qcov9b: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -14151,7 +14151,7 @@ const Qcov10: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -14404,7 +14404,7 @@ const Qcov11: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -14524,7 +14524,7 @@ const Qcov12: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -14644,7 +14644,7 @@ const Qcov13: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
@@ -14750,7 +14750,7 @@ const Qcov14: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "multipleChoiceGroup",
             items: [
               {
@@ -15175,7 +15175,7 @@ const Qcov15: SurveySingleItem = {
         role: "responseGroup",
         items: [
           {
-            key: "1.1",
+            key: "1",
             role: "singleChoiceGroup",
             items: [
               {
