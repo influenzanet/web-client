@@ -208,6 +208,31 @@ const Q4: SurveySingleItem = {
                 ],
               },
               {
+                key: 'numberOption',
+                role: 'numberInput',
+                properties: {
+                  stepSize: { dtype: 'num', num: 5 },
+                },
+                content: [
+                  {
+                    code: 'en',
+                    parts: [
+                      {
+                        str: 'Number:  '
+                      },
+                    ]
+                  },
+                  {
+                    code: 'de',
+                    parts: [
+                      {
+                        str: 'Zahl: '
+                      },
+                    ]
+                  },
+                ],
+              },
+              {
                 key: '2',
                 role: 'option',
                 content: [

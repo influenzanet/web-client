@@ -5,6 +5,7 @@ import { FormControl, RadioGroup, FormControlLabel, Radio, Tooltip } from '@mate
 import { getLocaleStringTextByCode } from '../../utils';
 import DateInput from '../DateInput/DateInput';
 import TextInput from '../TextInput/TextInput';
+import NumberInput from '../NumberInput/NumberInput';
 
 interface SingleChoiceGroupProps {
   compDef: ItemComponent;
@@ -124,6 +125,21 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           value={option.key}
           control={<Radio />}
           label={<TextInput
+            key={option.key}
+            compDef={option}
+            prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+            languageCode={props.languageCode}
+            responseChanged={setResponseForKey(option.key)}
+          />}
+          disabled={option.disabled !== undefined}
+        />;
+      case 'numberInput':
+        return <FormControlLabel
+          style={{ marginRight: "auto" }}
+          key={option.key}
+          value={option.key}
+          control={<Radio />}
+          label={<NumberInput
             key={option.key}
             compDef={option}
             prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
