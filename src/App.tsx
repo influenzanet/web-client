@@ -41,6 +41,7 @@ const App: React.FC = () => {
         height: 16,
         width: 16,
         marginTop: -5,
+        marginLeft: -8,
       },
       rail: {
         height: 6,
@@ -54,7 +55,7 @@ const App: React.FC = () => {
       mark: {
         height: 6,
         width: 6,
-        marginLeft: -1.5,
+        marginLeft: -3,
         borderRadius: 1000,
         backgroundColor: "grey",
       },
@@ -63,7 +64,7 @@ const App: React.FC = () => {
         backgroundColor: theme.palette.secondary.main,
         height: 10,
         width: 10,
-        marginLeft: -2.5,
+        marginLeft: -5,
         marginTop: -2,
       }
     },
