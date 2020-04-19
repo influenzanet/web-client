@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
     },
     numberInput: {
-      minWidth: 90,
-      width: 95,
+      //minWidth: 90,
+      //width: 95,
     },
     formControl: {
       margin: theme.spacing(1),

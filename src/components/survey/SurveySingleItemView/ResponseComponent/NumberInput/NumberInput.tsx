@@ -63,7 +63,8 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     type="number"
     style={{
       minWidth: 90,
-      width: "100%",
+      maxWidth: 300,
+      flexGrow: 1,
     }}
     inputProps={{
       style: {
