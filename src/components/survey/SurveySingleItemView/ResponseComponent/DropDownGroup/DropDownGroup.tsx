@@ -83,7 +83,7 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
       id={props.compDef.key}
       SelectDisplayProps={{
         style: {
-          padding: "8px 16px",
+          padding: "8px 32px 8px 16px",
           borderRadius: 1000,
         }
       }}
