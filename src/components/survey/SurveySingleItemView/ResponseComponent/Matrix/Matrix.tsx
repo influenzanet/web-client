@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
       overflow: 'hidden'
     },
     headerRow: {
-      backgroundColor: '#e5e5e5',
+      backgroundColor: 'white',
     },
     cell: {
       padding: theme.spacing(2),
@@ -43,10 +43,10 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: 'center'
     },
     rowBackground1: {
-      backgroundColor: '#dedede',
+      backgroundColor: '#f8f8f8',
     },
     rowBackground2: {
-      backgroundColor: '#e5e5e5',
+      backgroundColor: 'white',
     },
     textfield: {
       minWidth: 120,
