@@ -17,6 +17,8 @@ import SliderNumeric from './Sliders/SliderNumeric/SliderNumeric';
 import SliderNumericRange from './Sliders/SliderNumericRange/SliderNumericRange';
 import SliderCategorical from './Sliders/SliderCategorical/SliderCategorical';
 import Matrix from './Matrix/Matrix';
+import RoundedBox from '../../../ui/RoundedBox';
+import TextViewComponent from '../TextViewComponent/TextViewComponent';
 
 interface ResponseComponentProps {
   compDef: ItemComponent;
@@ -79,104 +81,112 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
   };
 
   return <MuiPickersUtilsProvider utils={MomentUtils} locale={props.languageCode}>
-    {(props.compDef as ItemGroupComponent).items.map(respComp => {
-      if (respComp.displayCondition === false) {
-        return <div key={respComp.key} hidden></div>;
+    <RoundedBox color="#f2f2f2" style={{ padding: "8px 16px" }}>
+      {(props.compDef as ItemGroupComponent).items.map((respComp, index) => {
+        if (respComp.displayCondition === false) {
+          return <div key={respComp.key} hidden></div>;
+        }
+        switch (respComp.role) {
+          case 'text':
+            return <TextViewComponent
+              key={respComp.key ? respComp.key : index.toString()}
+              compDef={respComp}
+              languageCode={props.languageCode}
+            />
+          case 'singleChoiceGroup':
+            return <SingleChoiceGroup
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'multipleChoiceGroup':
+            return <MultipleChoiceGroup
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'dropDownGroup':
+            return <DropDownGroup
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'input':
+            return <TextInput
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'multilineTextInput':
+            return <MultilineTextInput
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'numberInput':
+            return <NumberInput
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'dateInput':
+            return <DateInput
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'sliderNumeric':
+            return <SliderNumeric
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'sliderNumericRange':
+            return <SliderNumericRange
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'sliderCategorical':
+            return <SliderCategorical
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          case 'matrix':
+            return <Matrix
+              key={respComp.key}
+              languageCode={props.languageCode}
+              compDef={respComp}
+              prefill={getPrefillForItem(respComp)}
+              responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            />
+          default:
+            return <p key={respComp.key ? respComp.key : index.toString()}>{respComp.role}</p>
+        }
+      })
       }
-      switch (respComp.role) {
-        case 'singleChoiceGroup':
-          return <SingleChoiceGroup
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'multipleChoiceGroup':
-          return <MultipleChoiceGroup
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'dropDownGroup':
-          return <DropDownGroup
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'input':
-          return <TextInput
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'multilineTextInput':
-          return <MultilineTextInput
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'numberInput':
-          return <NumberInput
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'dateInput':
-          return <DateInput
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'sliderNumeric':
-          return <SliderNumeric
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'sliderNumericRange':
-          return <SliderNumericRange
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'sliderCategorical':
-          return <SliderCategorical
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        case 'matrix':
-          return <Matrix
-            key={respComp.key}
-            languageCode={props.languageCode}
-            compDef={respComp}
-            prefill={getPrefillForItem(respComp)}
-            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
-          />
-        default:
-          return <p key={respComp.key}>{respComp.role}</p>
-      }
-    })
-    }
+    </RoundedBox>
   </MuiPickersUtilsProvider>
 };
 

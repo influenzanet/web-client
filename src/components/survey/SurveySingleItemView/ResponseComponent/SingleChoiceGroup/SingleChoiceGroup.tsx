@@ -120,7 +120,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           value={option.key}
           control={<Radio />}
           label={getLocaleStringTextByCode(option.content, props.languageCode)}
-          disabled={option.disabled !== undefined}
+          disabled={option.disabled === true}
         />;
         const description = getLocaleStringTextByCode(option.description, props.languageCode);
         if (description) {

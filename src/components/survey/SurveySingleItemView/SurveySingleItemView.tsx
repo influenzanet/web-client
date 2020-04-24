@@ -9,7 +9,7 @@ import TextViewComponent from './TextViewComponent/TextViewComponent';
 import ErrorComponent from './ErrorComponent/ErrorComponent';
 import WarningComponent from './WarningComponent/WarningComponent';
 import ResponseComponent from './ResponseComponent/ResponseComponent';
-import RoundedBox from '../../ui/RoundedBox';
+
 
 interface SurveySingleItemViewProps {
   renderItem: SurveySingleItem;
@@ -53,56 +53,59 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
     )
   }
 
+
   const renderBodyComponents = (): React.ReactNode => {
     if (!props.renderItem.components) { return null; }
-    return <RoundedBox color="#f2f2f2" style={{ padding: "8px 16px" }}>
-      {props.renderItem.components.items.map((component: ItemComponent, index: number) => {
-        if (component.displayCondition === false) {
-          return null;
-        }
-        switch (component.role) {
-          case 'title':
+    return <React.Fragment>
+      {
+        props.renderItem.components.items.map((component: ItemComponent, index: number) => {
+          if (component.displayCondition === false) {
             return null;
-          case 'helpGroup':
-            return null;
-          case 'responseGroup':
-            if (!response) {
-              setResponse({
-                key: component.key ? component.key : 'no key found',
-                items: []
-              })
-            }
-            return <ResponseComponent key={index.toFixed()}
-              languageCode={props.languageCode}
-              compDef={component}
-              prefill={props.responsePrefill}
-              responseChanged={(response) => {
-                console.log('new response set', response)
-                setTouched(true);
-                setResponse(response);
-              }}
-            />
-          case 'text':
-            return <TextViewComponent key={index.toFixed()}
-              compDef={component}
-              languageCode={props.languageCode}
-            />
-          case 'error':
-            return <ErrorComponent key={index.toFixed()}
-              compDef={component}
-              languageCode={props.languageCode}
-            />
-          case 'warning':
-            return <WarningComponent key={index.toFixed()}
-              compDef={component}
-              languageCode={props.languageCode}
-            />
-          default:
-            console.warn('compment role not implemented: ' + component.role);
-            return <p key={index.toFixed()}>{component.role} not implemented</p>
-        }
-      })}
-    </RoundedBox>;
+          }
+          switch (component.role) {
+            case 'title':
+              return null;
+            case 'helpGroup':
+              return null;
+            case 'responseGroup':
+              if (!response) {
+                setResponse({
+                  key: component.key ? component.key : 'no key found',
+                  items: []
+                })
+              }
+              return <ResponseComponent key={index.toFixed()}
+                languageCode={props.languageCode}
+                compDef={component}
+                prefill={props.responsePrefill}
+                responseChanged={(response) => {
+                  console.log('new response set', response)
+                  setTouched(true);
+                  setResponse(response);
+                }}
+              />
+            case 'text':
+              return <TextViewComponent key={index.toFixed()}
+                compDef={component}
+                languageCode={props.languageCode}
+              />
+            case 'error':
+              return <ErrorComponent key={index.toFixed()}
+                compDef={component}
+                languageCode={props.languageCode}
+              />
+            case 'warning':
+              return <WarningComponent key={index.toFixed()}
+                compDef={component}
+                languageCode={props.languageCode}
+              />
+            default:
+              console.warn('compment role not implemented: ' + component.role);
+              return <p key={index.toFixed()}>{component.role} not implemented</p>
+          }
+        })
+      }
+    </React.Fragment>;
   }
 
   return (
