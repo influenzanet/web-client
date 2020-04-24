@@ -3,6 +3,13 @@
     "title": "Influenzanet",
     "metaDescription": "Partizipatives Umfragesystem für Bekämpfung von Epidemien"
   },
-  "closeMsgBig": "Umfrage abgeschlossen",
-  "closeMsgSmall": "Bitte Seite schließen."
+  "errorPage": {
+    "errorMsgBig": "Bitte erneut versuchen",
+    "errorMsgSmall": "Etwas ist schief gegangen :(",
+    "retryButtonLabel": "Wiederholen"
+  },
+  "closePage": {
+    "closeMsgBig": "Umfrage abgeschlossen",
+    "closeMsgSmall": "Bitte Seite schließen."
+  }
 }

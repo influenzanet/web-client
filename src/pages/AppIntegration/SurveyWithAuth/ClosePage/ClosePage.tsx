@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Typography, Container } from '@material-ui/core';
 import FlexGrow from '../../../../components/common/FlexGrow';
 import { useTranslation } from 'react-i18next';
@@ -18,19 +18,17 @@ const ClosePage: React.FC = () => {
 
 
   return (
-    <Fragment>
-      <Container ref={containerRef} style={{ display: "flex", flexDirection: "column" }}>
-        <FlexGrow />
-        <Typography variant="h3" color="primary" align="center">
-          {t("app:closeMsgBig")}
-        </Typography>
-        <div style={{ height: 8 }} />
-        <Typography variant="h5" color="secondary" align="center">
-          {t("app:closeMsgSmall")}
-        </Typography>
-        <FlexGrow />
-      </Container>
-    </Fragment>
+    <Container ref={containerRef} style={{ display: "flex", flexDirection: "column" }}>
+      <FlexGrow />
+      <Typography variant="h3" color="primary" align="center">
+        {t("app:closePage.closeMsgBig")}
+      </Typography>
+      <div style={{ height: 8 }} />
+      <Typography variant="h5" color="secondary" align="center">
+        {t("app:closePage.closeMsgSmall")}
+      </Typography>
+      <FlexGrow />
+    </Container>
   );
 };
 

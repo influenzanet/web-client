@@ -3,6 +3,13 @@
     "title": "Influenzanet",
     "metaDescription": "A participatory survey system for fighting epidemics"
   },
-  "closeMsgBig": "Survey Completed",
-  "closeMsgSmall": "Please close this page now."
+  "errorPage": {
+    "errorMsgBig": "Please Try Again",
+    "errorMsgSmall": "Something went wrong :(",
+    "retryButtonLabel": "Retry"
+  },
+  "closePage": {
+    "closeMsgBig": "Survey Completed",
+    "closeMsgSmall": "Please close this page now."
+  }
 }
