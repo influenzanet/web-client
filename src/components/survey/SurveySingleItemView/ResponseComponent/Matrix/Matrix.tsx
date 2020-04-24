@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: '0 auto',
       borderCollapse: 'collapse',
       borderRadius: 15,
-      overflow: 'hidden'
+      overflow: 'hidden',
+      width: "100%",
     },
     headerRow: {
       backgroundColor: 'white',
