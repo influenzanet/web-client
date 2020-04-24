@@ -50,12 +50,19 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
 
   // Language settings
   const [selectedLanguage, setSelectedLanguage] = useState(
-    locale ? locale : 'en'
+    locale ? locale : 'de'
   );
+
   const { t, i18n } = useTranslation(['common', 'survey']);
-  if (selectedLanguage !== i18n.language) {
-    i18n.changeLanguage(selectedLanguage);
-  }
+
+  useEffect(() => {
+    if (selectedLanguage !== i18n.language) {
+      i18n.changeLanguage(selectedLanguage);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLanguage])
+
+
 
   // API call states
   const [error, setError] = useState(false);
