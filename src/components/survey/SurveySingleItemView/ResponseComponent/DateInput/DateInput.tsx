@@ -101,6 +101,8 @@ const DateInput: React.FC<DateInputProps> = (props) => {
           onChange={handleDateChange}
           views={pickerView as DatePickerView[]}
           format={format}
+          maxDate={props.compDef.properties?.max ? moment.unix(props.compDef.properties?.max as number) : undefined}
+          minDate={props.compDef.properties?.min ? moment.unix(props.compDef.properties?.min as number) : undefined}
           inputVariant="filled"
           margin="dense"
           inputProps={{
