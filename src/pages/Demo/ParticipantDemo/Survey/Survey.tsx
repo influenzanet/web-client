@@ -47,7 +47,7 @@ const SurveyComp: React.FC = () => {
         languageCode={selectedLanguage}
         onSubmit={(resp) => {
           console.log(resp);
-          const url = location.pathname.slice(0, location.pathname.lastIndexOf('/') + 1) + 'survey-end';
+          const url = location.pathname.slice(0, location.pathname.lastIndexOf('/', location.pathname.lastIndexOf('/', location.pathname.lastIndexOf('/') - 1) - 1) + 1) + 'survey-end';
           history.replace(url);
         }}
         submitBtnText={'Submit'}
