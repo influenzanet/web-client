@@ -3,6 +3,8 @@ import LanguageSelector from './LanguageSelector/LanguageSelector';
 import { Box, CircularProgress, Container, Typography } from '@material-ui/core';
 import SurveyView from '../../../../components/survey/SurveyView/SurveyView';
 import { Survey } from 'survey-engine/lib/data_types';
+import { useLocation, useHistory } from 'react-router-dom';
+import { demoSurvey } from '../../../../test-surveys/demo-survey';
 
 const availableLanguages = [
   { code: 'en', label: '🇬🇧 English' },
@@ -14,11 +16,13 @@ const SurveyComp: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('de');
   const [survey, setSurvey] = useState<Survey | undefined>();
 
+  const location = useLocation();
+  const history = useHistory();
+
   useEffect(() => {
     setTimeout(() => {
       setSurvey(
-        undefined
-        // TODO
+        demoSurvey
       );
     }, 600);
   }, [])
@@ -42,11 +46,13 @@ const SurveyComp: React.FC = () => {
         survey={survey}
         languageCode={selectedLanguage}
         onSubmit={(resp) => {
-          console.log(resp)
+          console.log(resp);
+          const url = location.pathname.slice(0, location.pathname.lastIndexOf('/') + 1) + 'survey-end';
+          history.replace(url);
         }}
-        submitBtnText={'submit'}
-        nextBtnText={'next'}
-        backBtnText={'previous'}
+        submitBtnText={'Submit'}
+        nextBtnText={'Next'}
+        backBtnText={'Previous'}
       /> : <Box textAlign="center" mt={12} p={12}>
           <Typography>
             Loading...
@@ -55,7 +61,6 @@ const SurveyComp: React.FC = () => {
             <CircularProgress />
           </Box>
         </Box>}
-      {/* <p>{t('title')}</p> */}
     </Container>
   );
 };
