@@ -24,6 +24,7 @@ import AppIntegration from './pages/AppIntegration/AppIntegration';
 import { useTranslation } from 'react-i18next';
 import InfluenzaNetThemeData from './themes/influenzanet-theme';
 import SISThemeData from './themes/sis-theme';
+import Demo from './pages/Demo/Demo';
 
 // import TestForm from './components/form/login/LoginForm';
 
@@ -83,6 +84,7 @@ const App: React.FC = () => {
             {/*<Route path="/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/testForm" component={TestForm}/>*/}
+            <Route path="/demo" component={Demo} />
             <Route path="/home" component={Home} />
             <Route path="/start" component={OnBoarding} />
             <Route path="/app-integration" component={AppIntegration} />
