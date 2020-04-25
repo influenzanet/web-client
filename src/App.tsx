@@ -78,7 +78,7 @@ const App: React.FC = () => {
           <title>{t('header.title')}</title>
           <meta name="description" content={t('header.metaDescription')} />
         </Helmet>
-        <Router>
+        <Router basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : undefined}>
           <Switch>
             {/*<Route path="/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
