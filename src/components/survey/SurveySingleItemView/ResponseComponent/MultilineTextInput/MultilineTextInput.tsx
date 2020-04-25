@@ -61,7 +61,8 @@ const MultilineTextInput: React.FC<MultilineTextInputProps> = (props) => {
       inputProps={{
         style: {
           padding: "8px 16px",
-        }
+        },
+        maxLength: 4000,
       }}
       InputProps={{
         disableUnderline: true,
@@ -70,6 +71,7 @@ const MultilineTextInput: React.FC<MultilineTextInputProps> = (props) => {
           padding: 0,
         }
       }}
+
       rowsMax={15}
       rows={3}
       multiline

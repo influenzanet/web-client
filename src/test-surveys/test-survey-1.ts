@@ -3947,29 +3947,7 @@ const tableSingleChoice: SurveySingleItem = {
           },
         ]
       },
-      // text
-      {
-        role: 'text',
-        style: [{ key: 'variant', value: 'annotation' }],
-        content: [
-          {
-            code: 'en',
-            parts: [
-              {
-                str: 'Select all options that apply, if any'
-              },
-            ]
-          },
-          {
-            code: 'de',
-            parts: [
-              {
-                str: 'Wählen Sie alle entsprechenden Optionen aus, falls diese zutreffen'
-              },
-            ]
-          },
-        ]
-      },
+
 
       // responseGroup
       {
@@ -3979,6 +3957,29 @@ const tableSingleChoice: SurveySingleItem = {
           name: 'sequential'
         },
         items: [
+          // text
+          {
+            role: 'text',
+            style: [{ key: 'variant', value: 'annotation' }],
+            content: [
+              {
+                code: 'en',
+                parts: [
+                  {
+                    str: 'Select all options that apply, if any'
+                  },
+                ]
+              },
+              {
+                code: 'de',
+                parts: [
+                  {
+                    str: 'Wählen Sie alle entsprechenden Optionen aus, falls diese zutreffen'
+                  },
+                ]
+              },
+            ]
+          },
           {
             key: 'matrresp',
             role: 'matrix',

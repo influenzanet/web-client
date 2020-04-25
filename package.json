@@ -2,6 +2,7 @@
   "name": "inet-hier",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/webapp",
   "dependencies": {
     "@date-io/moment": "1.x",
     "@material-ui/core": "^4.9.6",
