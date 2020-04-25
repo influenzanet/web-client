@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { Box, IconButton, useScrollTrigger } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { useHistory, useRouteMatch, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,8 +29,6 @@ const AppBar: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
-
-  let { path: rootPath } = useRouteMatch();
 
   const showBackButton = (): boolean => {
     if (location.pathname.includes('survey/pages')) {
