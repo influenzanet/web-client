@@ -1438,11 +1438,6 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/clone@~0.1.30":
-  version "0.1.30"
-  resolved "https://registry.yarnpkg.com/@types/clone/-/clone-0.1.30.tgz#e7365648c1b42136a59c7d5040637b3b5c83b614"
-  integrity sha1-5zZWSMG0ITalnH1QQGN7O1yDthQ=
-
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -10686,9 +10681,9 @@ supports-color@^7.0.0, supports-color@^7.1.0:
     has-flag "^4.0.0"
 
 survey-engine@^0.8.2:
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/survey-engine/-/survey-engine-0.8.8.tgz#8145974dd9d53ade9e372d13f0fe33afe8676ca0"
-  integrity sha512-T/KN8ERdLxgfVsUMAiIFZG4tmIE51mNkrbuET7yXRZkGfl42u3O2xk55M0cdtADt+FOJWHayRSW+++GudxsUXw==
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/survey-engine/-/survey-engine-0.8.10.tgz#911adaae0be397c20e00ad08559fb6b069de2eac"
+  integrity sha512-grkScVXXw6ZxuTKCWvkuorjiV423j/Z3QbLTIpeqqy/P6OWbLK/E3iwQMtAQFAO393OOiQQ/oxHTMR1AdF71fw==
 
 svg-parser@^2.0.0:
   version "2.0.4"

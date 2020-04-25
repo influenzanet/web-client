@@ -187,6 +187,7 @@ const Q4: SurveySingleItem = {
                 role: 'dateInput',
                 properties: {
                   dateInputMode: { str: 'YM' },
+                  max: { dtype: 'num', num: 1587846548 },
                 },
                 content: [
                   {
@@ -3211,6 +3212,8 @@ const Q3: SurveySingleItem = {
             role: 'dateInput',
             properties: {
               dateInputMode: { str: 'YM' },
+              min: { dtype: 'exp', exp: { name: 'timestampWithOffset', data: [{ dtype: 'num', num: -31536000 * 100 }] } },
+              max: { dtype: 'exp', exp: { name: 'timestampWithOffset', data: [{ dtype: 'num', num: 0 }] } }
             },
             content: [
               {
