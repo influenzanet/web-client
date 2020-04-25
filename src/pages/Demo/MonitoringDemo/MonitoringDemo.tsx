@@ -4,6 +4,7 @@ import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import Dashboard from './Dashboard/Dashboard';
 import AppDrawer from './AppDrawer/AppDrawer';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import Analytics from './Analytics/Analytics';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -39,6 +40,7 @@ const MonitoringDemo: React.FC = () => {
         <div className={classes.content}>
           <Switch>
             <Route path={`${rootPath}/dashboard`} component={Dashboard} />
+            <Route path={`${rootPath}/analytics`} component={Analytics} />
             <Redirect to={`${rootPath}/dashboard`}></Redirect>
           </Switch>
         </div>
