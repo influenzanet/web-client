@@ -1,0 +1,24 @@
+{
+  "description": "A simple bar chart with embedded data.",
+  "mark": "bar",
+  "title": "Reported Cases" ,
+  "data": {
+	"values": [
+    { "days": "01.04", "Cases": 4345 }, { "days": "02.04", "Cases": 2134 },
+    { "days": "03.04", "Cases": 4567 }, { "days": "04.04", "Cases": 5684 }, { "days": "05.04", "Cases": 2543 },
+	{ "days": "06.04", "Cases": 8785 }, { "days": "07.04", "Cases": 2364 }, { "days": "08.04", "Cases": 3795 },
+	{ "days": "09.04", "Cases": 3272 }, { "days": "10.04", "Cases": 2466 }, { "days": "11.04", "Cases": 2435 },
+    { "days": "12.04", "Cases": 3256 }, { "days": "13.04", "Cases": 8745 }, { "days": "14.04", "Cases": 7833 },
+	{ "days": "15.04", "Cases": 3566 }, { "days": "16.04", "Cases": 3467 }, { "days": "17.04", "Cases": 4356 },
+    { "days": "18.04", "Cases": 6586 }, { "days": "19.04", "Cases": 3467 }, { "days": "20.04", "Cases": 4571 },
+    { "days": "21.04", "Cases": 5477 }, { "days": "22.04", "Cases": 4577 }, { "days": "23.04", "Cases": 5357 },
+	{ "days": "24.04", "Cases": 9546 }, { "days": "25.04", "Cases": 7457 }, { "days": "26.04", "Cases": 8665 }
+  ]
+  },
+  "width": 800,
+  "height":500,
+  "encoding": {
+    "x": { "field": "days", "type": "ordinal", "sort" : "null"},
+    "y": { "field": "Cases", "type": "quantitative" }
+  }
+}

@@ -3,14 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import { VegaLite } from 'react-vega';
 import map from './map.png';
 
-import Users_temp from './Users.json';
+import Cases_temp from './ReportedCases.json';
+import Symptoms_temp from './Symptoms.json';
 import Surveys_temp from './Surveys.json';
-import Account_temp from './Account.json';
 
-
-const Users = JSON.stringify(Users_temp);
+const Cases = JSON.stringify(Cases_temp);
+const Symptoms = JSON.stringify(Symptoms_temp);
 const Surveys = JSON.stringify(Surveys_temp);
-const Account = JSON.stringify(Account_temp);
 
 
 
@@ -38,9 +37,9 @@ const Dashboard = () => {
 		</div>
 		
 		<div>
-		<VegaLite className={classes.chart} spec={JSON.parse(Users)}/>
+		<VegaLite className={classes.chart} spec={JSON.parse(Cases)}/>
+		<VegaLite className={classes.chart} spec={JSON.parse(Symptoms)}/>
 		<VegaLite className={classes.chart} spec={JSON.parse(Surveys)}/>
-		<VegaLite className={classes.chart} spec={JSON.parse(Account)}/>
 		
 	
 		</div>
