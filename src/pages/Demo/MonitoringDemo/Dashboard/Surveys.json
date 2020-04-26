@@ -1,19 +1,25 @@
+
 {
-  "description": "A simple bar chart with embedded data.",
-  "mark": "bar",
-  "title": "Surveys per Month" ,
+  "description": "A simple LineChart",
+  "mark": "line",
+  "title": "Submitted Surveys" ,
   "data": {
 	"values": [
-    { "Months": "1", "Participants": 20000 }, { "Months": "2", "Participants": 23456 }, { "Months": "3", "Participants": 87566 },
-    { "Months": "4", "Participants": 46503 }, { "Months": "5", "Participants": 65434 }, { "Months": "6", "Participants":56432 },
-    { "Months": "7", "Participants": 85632 }, { "Months": "8", "Participants": 63424 }, { "Months": "9", "Participants":45665 },
-	{ "Months": "10", "Participants": 23423 }, { "Months": "11", "Participants": 23426}, { "Months": "12", "Participants": 34677 }
+    { "days": "01.04", "surveys": 4345 }, { "days": "02.04", "surveys": 2134 },
+    { "days": "03.04", "surveys": 4567 }, { "days": "04.04", "surveys": 5684 }, { "days": "05.04", "surveys": 2543 },
+	{ "days": "06.04", "surveys": 8785 }, { "days": "07.04", "surveys": 2364 }, { "days": "08.04", "surveys": 3795 },
+	{ "days": "09.04", "surveys": 3272 }, { "days": "10.04", "surveys": 2466 }, { "days": "11.04", "surveys": 2435 },
+    { "days": "12.04", "surveys": 3256 }, { "days": "13.04", "surveys": 8745 }, { "days": "14.04", "surveys": 7833 },
+	{ "days": "15.04", "surveys": 3566 }, { "days": "16.04", "surveys": 3467 }, { "days": "17.04", "surveys": 4356 },
+    { "days": "18.04", "surveys": 6586 }, { "days": "19.04", "surveys": 3467 }, { "days": "20.04", "surveys": 4571 },
+    { "days": "21.04", "surveys": 5477 }, { "days": "22.04", "surveys": 4577 }, { "days": "23.04", "surveys": 5357 },
+	{ "days": "24.04", "surveys": 9546 }, { "days": "25.04", "surveys": 7457 }, { "days": "26.04", "surveys": 8665 }
   ]
   },
-  "width": 300,
-  "heigth":300,
+  "width": "800",
+  "height": "500",
   "encoding": {
-    "x": { "field": "Months", "type": "ordinal", "sort" : "null"},
-    "y": { "field": "Participants", "type": "quantitative" }
+    "x": { "field": "days", "type": "ordinal", "sort" : "null"},
+    "y": { "field": "surveys", "type": "quantitative" }
   }
 }
