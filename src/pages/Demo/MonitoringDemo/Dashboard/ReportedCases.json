@@ -15,8 +15,7 @@
 	{ "days": "24.04", "Cases": 9546 }, { "days": "25.04", "Cases": 7457 }, { "days": "26.04", "Cases": 8665 }
   ]
   },
-  "width": 800,
-  "height":500,
+
   "encoding": {
     "x": { "field": "days", "type": "ordinal", "sort" : "null"},
     "y": { "field": "Cases", "type": "quantitative" }

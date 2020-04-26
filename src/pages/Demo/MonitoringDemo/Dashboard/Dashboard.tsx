@@ -1,45 +1,89 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { VegaLite } from 'react-vega';
-import map from './map.png';
+import map from './map.svg';
 
-import Cases_temp from './ReportedCases.json';
-import Symptoms_temp from './Symptoms.json';
-import Surveys_temp from './Surveys.json';
+import cases from './cases.svg';
+import symptoms from './symptoms.svg';
+import survey from './surveys.svg';
 
-const Cases = JSON.stringify(Cases_temp);
-const Symptoms = JSON.stringify(Symptoms_temp);
-const Surveys = JSON.stringify(Surveys_temp);
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 
 
-const useStyles = makeStyles(theme => ({
-	map:{
-		height: 500,
-		padding: ' 30px',
-	},
-	chart:{
-		padding: ' 30px',
-	}
-}));
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+	padding: "30px",
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.primary,
+    },
+	table: {
+	color: theme.palette.text.primary,
+	bottom: "30px",
+    minWidth: 50,
+  },
+  }),
+);
 	
 const Dashboard = () => {
 	const classes = useStyles();
   return (
     <div>
+	 <div className={classes.root}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+			<Paper className={classes.paper}><b>Map of Participants</b></Paper>
+			<img src={map} alt="Participants Map"/> 
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+			<img src={survey} alt="Participants Map"/> 
+			<TableContainer component={Paper}>
+				<Table className={classes.table} aria-label="simple table">
+				<TableRow>
+					<TableCell>Surveys last week</TableCell>
+					<TableCell align="right">4937</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>Total Surveys</TableCell>
+					<TableCell align="right">26355</TableCell>
+				</TableRow>
+				</Table>
+			</TableContainer>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+			<img src={cases} alt="Participants Map"/> 
+        </Grid>
+        <Grid item xs={12} sm={6}>
+			<img src={symptoms} alt="Participants Map"/> 
+        </Grid>
+        
+      </Grid>
+    </div>
+	
 		<div >
-		<img  className={classes.map} src={map} alt="Distribution of participants in Europe" />
-		<ul>
-			<li>Users online:</li>
-			<li>Users total:</li>
-			<li>Users this week:</li>
-			</ul>
+		
+		
+		
 		</div>
 		
 		<div>
-		<VegaLite className={classes.chart} spec={JSON.parse(Cases)}/>
-		<VegaLite className={classes.chart} spec={JSON.parse(Symptoms)}/>
-		<VegaLite className={classes.chart} spec={JSON.parse(Surveys)}/>
+		
+		
+		
 		
 	
 		</div>
