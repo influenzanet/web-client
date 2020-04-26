@@ -51,26 +51,30 @@ const Dashboard = () => {
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <Paper><Box p={2}>
+            <Paper><Box p={2} mb={4}>
               <img src={survey} alt="Participants Map" width="100%" />
             </Box></Paper>
 
-            <Box p={2}></Box>
-            <Typography variant="h6">
-              Overview
-            </Typography>
-            <TableContainer component={Paper}>
-              <Table className={classes.table} aria-label="simple table">
-                <TableRow>
-                  <TableCell>Surveys last week</TableCell>
-                  <TableCell align="right">4937</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Total Surveys</TableCell>
-                  <TableCell align="right">26355</TableCell>
-                </TableRow>
-              </Table>
-            </TableContainer>
+            <Paper>
+              <Box p={2} textAlign="center">
+                <Typography variant="caption" style={{ fontWeight: 'bold' }}>
+                  Overview
+              </Typography>
+
+                <TableContainer>
+                  <Table className={classes.table} aria-label="simple table">
+                    <TableRow>
+                      <TableCell>Surveys last week</TableCell>
+                      <TableCell align="right">4937</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Total Surveys</TableCell>
+                      <TableCell align="right">26355</TableCell>
+                    </TableRow>
+                  </Table>
+                </TableContainer>
+              </Box>
+            </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paper>
