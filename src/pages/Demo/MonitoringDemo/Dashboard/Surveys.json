@@ -16,8 +16,7 @@
 	{ "days": "24.04", "surveys": 9546 }, { "days": "25.04", "surveys": 7457 }, { "days": "26.04", "surveys": 8665 }
   ]
   },
-  "width": "800",
-  "height": "500",
+
   "encoding": {
     "x": { "field": "days", "type": "ordinal", "sort" : "null"},
     "y": { "field": "surveys", "type": "quantitative" }
