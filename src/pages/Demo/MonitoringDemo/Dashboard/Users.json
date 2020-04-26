@@ -1,0 +1,19 @@
+{
+  "description": "A simple bar chart with embedded data.",
+  "mark": "bar",
+  "title": "Users per Month" ,
+  "data": {
+	"values": [
+    { "Months": "1", "Participants": 20 }, { "Months": "2", "Participants": 34 }, { "Months": "3", "Participants": 55 },
+    { "Months": "4", "Participants": 19 }, { "Months": "5", "Participants": 40 }, { "Months": "6", "Participants": 34 },
+    { "Months": "7", "Participants": 91 }, { "Months": "8", "Participants": 78 }, { "Months": "9", "Participants": 25 },
+	{ "Months": "10", "Participants": 91 }, { "Months": "11", "Participants": 78 }, { "Months": "12", "Participants": 25 }
+  ]
+  },
+  "width": 300,
+  "heigth":300,
+  "encoding": {
+    "x": { "field": "Months", "type": "ordinal", "sort" : "null"},
+    "y": { "field": "Participants", "type": "quantitative" }
+  }
+}

@@ -1,30 +1,50 @@
 import React from 'react';
-
+import { makeStyles } from '@material-ui/core/styles';
 import { VegaLite } from 'react-vega';
+import map from './map.png';
+
+import Users_temp from './Users.json';
+import Surveys_temp from './Surveys.json';
+import Account_temp from './Account.json';
 
 
-const spec = JSON.stringify({
-  "description": "A simple bar chart with embedded data.",
-  "mark": "bar",
-  data: { name: 'values' },
-  "encoding": {
-    "x": { "field": "a", "type": "ordinal" },
-    "y": { "field": "b", "type": "quantitative" }
-  }
-})
+const Users = JSON.stringify(Users_temp);
+const Surveys = JSON.stringify(Surveys_temp);
+const Account = JSON.stringify(Account_temp);
 
-const barData = {
-  "values": [
-    { "a": "A", "b": 20 }, { "a": "B", "b": 34 }, { "a": "C", "b": 55 },
-    { "a": "D", "b": 19 }, { "a": "E", "b": 40 }, { "a": "F", "b": 34 },
-    { "a": "G", "b": 91 }, { "a": "H", "b": 78 }, { "a": "I", "b": 25 }
-  ]
-};
 
+
+const useStyles = makeStyles(theme => ({
+	map:{
+		height: 500,
+		padding: ' 30px',
+	},
+	chart:{
+		padding: ' 30px',
+	}
+}));
+	
 const Dashboard = () => {
+	const classes = useStyles();
   return (
     <div>
-      <VegaLite spec={JSON.parse(spec)} data={barData} />
+		<div >
+		<img  className={classes.map} src={map} alt="Distribution of participants in Europe" />
+		<ul>
+			<li>Users online:</li>
+			<li>Users total:</li>
+			<li>Users this week:</li>
+			</ul>
+		</div>
+		
+		<div>
+		<VegaLite className={classes.chart} spec={JSON.parse(Users)}/>
+		<VegaLite className={classes.chart} spec={JSON.parse(Surveys)}/>
+		<VegaLite className={classes.chart} spec={JSON.parse(Account)}/>
+		
+	
+		</div>
+		
     </div>
 
   );
