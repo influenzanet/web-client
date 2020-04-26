@@ -1,0 +1,19 @@
+{
+  "description": "A simple bar chart with embedded data.",
+  "mark": "bar",
+  "title": "Surveys per Month" ,
+  "data": {
+	"values": [
+    { "Months": "1", "Participants": 20000 }, { "Months": "2", "Participants": 23456 }, { "Months": "3", "Participants": 87566 },
+    { "Months": "4", "Participants": 46503 }, { "Months": "5", "Participants": 65434 }, { "Months": "6", "Participants":56432 },
+    { "Months": "7", "Participants": 85632 }, { "Months": "8", "Participants": 63424 }, { "Months": "9", "Participants":45665 },
+	{ "Months": "10", "Participants": 23423 }, { "Months": "11", "Participants": 23426}, { "Months": "12", "Participants": 34677 }
+  ]
+  },
+  "width": 300,
+  "heigth":300,
+  "encoding": {
+    "x": { "field": "Months", "type": "ordinal", "sort" : "null"},
+    "y": { "field": "Participants", "type": "quantitative" }
+  }
+}
