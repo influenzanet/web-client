@@ -47,34 +47,32 @@ const Dashboard = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}><b>Map of Participants</b></Paper>
+			<Paper><Box p={2}>
             <img src={map} alt="Participants Map" width="100%" />
+			</Box></Paper>
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <Paper><Box p={2} mb={4}>
+            <Paper><Box p={2}>
               <img src={survey} alt="Participants Map" width="100%" />
             </Box></Paper>
 
-            <Paper>
-              <Box p={2} textAlign="center">
-                <Typography variant="caption" style={{ fontWeight: 'bold' }}>
-                  Overview
-              </Typography>
-
-                <TableContainer>
-                  <Table className={classes.table} aria-label="simple table">
-                    <TableRow>
-                      <TableCell>Surveys last week</TableCell>
-                      <TableCell align="right">4937</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Total Surveys</TableCell>
-                      <TableCell align="right">26355</TableCell>
-                    </TableRow>
-                  </Table>
-                </TableContainer>
-              </Box>
-            </Paper>
+            <Box p={2}></Box>
+            <Typography variant="h6">
+              Overview
+            </Typography>
+            <TableContainer component={Paper}>
+              <Table className={classes.table} aria-label="simple table">
+                <TableRow>
+                  <TableCell>Surveys last week</TableCell>
+                  <TableCell align="right">4937</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Total Surveys</TableCell>
+                  <TableCell align="right">26355</TableCell>
+                </TableRow>
+              </Table>
+            </TableContainer>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paper>
