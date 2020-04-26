@@ -83,25 +83,23 @@ const EmojiActionPage: React.FC<EmojiActionPageProps> = (props) => {
   }
 
   return (
-    <Fragment>
-      <Container ref={containerRef} style={{ display: "flex", flexDirection: "column" }}>
-        <FlexGrow />
-        <Box pt={4}>
-          <Typography variant="h3" color="primary" align="center">
-            {props.titleText ? props.titleText : 'Thank you for participating!'}
-          </Typography>
-          {props.subtitleText ?
-            <Typography variant="h3" color="secondary" align="center">
-              {props.subtitleText}
-            </Typography> : null}
-        </Box>
-        <FlexGrow />
-        <Emoji />
-        <FlexGrow />
-
-        <NextSteps />
-      </Container>
-    </Fragment>
+    <Container ref={containerRef} style={{ display: "flex", flexDirection: "column" }}>
+      <FlexGrow />
+      <Box pt={4}>
+        <Typography variant="h3" color="primary" align="center">
+          {props.titleText ? props.titleText : 'Thank you for participating!'}
+        </Typography>
+        {props.subtitleText ?
+          <Typography variant="h3" color="secondary" align="center">
+            {props.subtitleText}
+          </Typography> : null}
+      </Box>
+      <FlexGrow />
+      <Emoji />
+      <FlexGrow />
+      <NextSteps />
+      <FlexGrow />
+    </Container>
   );
 };
 

@@ -26,7 +26,7 @@ const SurveyEnd: React.FC = () => {
       onActionClicked={actionHandler}
       titleText={'Thank you for your participation!'}
       subtitleText={'Stay healthy'}
-      actionHeaderText={'Next steps'}
+      actionHeaderText={'Next step:'}
     />
   );
 };
