@@ -35,14 +35,16 @@ const Landing: React.FC = () => {
           {'You have one new survey assigned:'}
         </Typography>
         <Box textAlign="center" p={1}>
-          <RoundedButton onClick={
-            () => {
-              alert("In this demo, your answers won't be recorded.")
-              const url = location.pathname.slice(0, location.pathname.lastIndexOf('/') + 1) + 'survey';
-              history.replace(url);
+          <RoundedButton
+            color="primary"
+            onClick={
+              () => {
+                alert("In this demo, your answers won't be recorded.")
+                const url = location.pathname.slice(0, location.pathname.lastIndexOf('/') + 1) + 'survey';
+                history.replace(url);
 
-            }
-          }>
+              }
+            }>
             Take me to the survey
         </RoundedButton>
         </Box>
