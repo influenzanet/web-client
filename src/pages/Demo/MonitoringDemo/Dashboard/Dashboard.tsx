@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { VegaLite } from 'react-vega';
 import map from './map.svg';
 
 import cases from './cases.svg';
@@ -47,9 +46,9 @@ const Dashboard = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}><b>Map of Participants</b></Paper>
-			<Paper><Box p={2}>
-            <img src={map} alt="Participants Map" width="100%" />
-			</Box></Paper>
+            <Paper><Box p={2}>
+              <img src={map} alt="Participants Map" width="100%" />
+            </Box></Paper>
           </Grid>
 
           <Grid item xs={12} sm={6}>
@@ -63,14 +62,16 @@ const Dashboard = () => {
             </Typography>
             <TableContainer component={Paper}>
               <Table className={classes.table} aria-label="simple table">
-                <TableRow>
-                  <TableCell>Surveys last week</TableCell>
-                  <TableCell align="right">4937</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Total Surveys</TableCell>
-                  <TableCell align="right">26355</TableCell>
-                </TableRow>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>Surveys last week</TableCell>
+                    <TableCell align="right">4937</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Total Surveys</TableCell>
+                    <TableCell align="right">26355</TableCell>
+                  </TableRow>
+                </TableBody>
               </Table>
             </TableContainer>
           </Grid>

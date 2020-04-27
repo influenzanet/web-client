@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { VegaLite } from 'react-vega';
+
 import map from './map.svg';
 
 import source1 from './source (1).svg';
@@ -56,76 +56,76 @@ const Dashboard = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <Paper><Box p={2}>
-            <img src={source1} alt="Participants Map" width="100%" />
-			</Box></Paper>
+              <img src={source1} alt="Participants Map" width="100%" />
+            </Box></Paper>
           </Grid>
-		  
-		   <Grid item xs={12} sm={6}>
-            <Paper><Box p={2}>
-            <img src={source2} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		   <Grid item xs={12} sm={6}>
-            <Paper><Box p={2}>
-            <img src={source4} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		   <Grid item xs={12} sm={6}>
-            <Paper><Box p={2}>
-            <img src={source5} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		   <Grid item xs={12}>
-            <Paper><Box p={2}>
-            <img src={source3} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		   <Grid item xs={12} sm={6}>
-            <Paper><Box p={2}>
-            <img src={source6} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		  
-		   <Grid item xs={12} sm={6}>
-            <Paper><Box p={2}>
-            <img src={source7} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		   <Grid item xs={12} >
-            <Paper><Box p={2}>
-            <img src={source8} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		   <Grid item xs={12} >
-            <Paper><Box p={2}>
-            <img src={source10} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		   <Grid item xs={12} sm={6}>
-            <Paper><Box p={2}>
-            <img src={source9} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		   <Grid item xs={12} sm={6}>
-            <Paper><Box p={2}>
-            <img src={source11} alt="Participants Map" width="100%" />
-			</Box></Paper>
-          </Grid>
-		  
-		  
-		  </Grid>
 
-          
-      
+          <Grid item xs={12} sm={6}>
+            <Paper><Box p={2}>
+              <img src={source2} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Paper><Box p={2}>
+              <img src={source4} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Paper><Box p={2}>
+              <img src={source5} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Paper><Box p={2}>
+              <img src={source3} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Paper><Box p={2}>
+              <img src={source6} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+
+          <Grid item xs={12} sm={6}>
+            <Paper><Box p={2}>
+              <img src={source7} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+          <Grid item xs={12} >
+            <Paper><Box p={2}>
+              <img src={source8} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+          <Grid item xs={12} >
+            <Paper><Box p={2}>
+              <img src={source10} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Paper><Box p={2}>
+              <img src={source9} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Paper><Box p={2}>
+              <img src={source11} alt="Participants Map" width="100%" />
+            </Box></Paper>
+          </Grid>
+
+
+        </Grid>
+
+
+
       </div>
 
       <div >
