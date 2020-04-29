@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { FormControl, Select, MenuItem, Box, Typography, Tooltip } from '@material-ui/core';
+import { FormControl, Select, MenuItem, Box, Typography, Tooltip, NativeSelect } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { getLocaleStringTextByCode } from '../../utils';
+import { isMobile } from 'react-device-detect';
 
 interface DropDownGroupProps {
   compDef: ItemComponent;
@@ -76,38 +77,71 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
     style={{ margin: 0 }}
     fullWidth={props.fullWidth}
   >
-    <Select
-      margin="dense"
-      labelId={props.compDef.key + 'label'}
-      labelWidth={labelWidth}
-      id={props.compDef.key}
-      SelectDisplayProps={{
-        style: {
-          padding: "8px 32px 8px 16px",
-          borderRadius: 1000,
-        }
-      }}
-      disableUnderline={true}
-      style={{
-        borderRadius: 1000,
-        padding: 0,
-      }}
-      value={getSelectedKey()}
-      onChange={handleSelectionChange}
-    >
-      {
-        (props.compDef as ItemGroupComponent).items.map(
-          item => {
-            if (item.displayCondition) {
-              return null;
-            }
-            return <MenuItem value={item.key} key={item.key} >
-              {getLocaleStringTextByCode(item.content, props.languageCode)}
-            </MenuItem>
+    {isMobile ?
+      <NativeSelect
+        margin="dense"
+        id={props.compDef.key}
+        inputProps={{
+          style: {
+            padding: "8px 32px 8px 16px",
+            backgroundColor: 'rgba(0, 200, 0, 0.09)',
+            borderRadius: 1000,
           }
-        )
-      }
-    </Select>
+        }}
+        disableUnderline={true}
+        style={{
+          borderRadius: 1000,
+          padding: 0,
+        }}
+        value={getSelectedKey()}
+        onChange={handleSelectionChange}
+      >
+        {
+          (props.compDef as ItemGroupComponent).items.map(
+            item => {
+              if (item.displayCondition) {
+                return null;
+              }
+              return <option value={item.key} key={item.key}>
+                {getLocaleStringTextByCode(item.content, props.languageCode)}
+              </option>
+            }
+          )
+        }
+      </NativeSelect> :
+      <Select
+        margin="dense"
+        labelId={props.compDef.key + 'label'}
+        labelWidth={labelWidth}
+        id={props.compDef.key}
+        SelectDisplayProps={{
+          style: {
+            padding: "8px 32px 8px 16px",
+            borderRadius: 1000,
+          }
+        }}
+        disableUnderline={true}
+        style={{
+          borderRadius: 1000,
+          padding: 0,
+        }}
+        value={getSelectedKey()}
+        onChange={handleSelectionChange}
+      >
+        {
+          (props.compDef as ItemGroupComponent).items.map(
+            item => {
+              if (item.displayCondition) {
+                return null;
+              }
+              return <MenuItem value={item.key} key={item.key} >
+                {getLocaleStringTextByCode(item.content, props.languageCode)}
+              </MenuItem>
+            }
+          )
+        }
+      </Select>
+    }
   </FormControl>;
 
   let description = getLocaleStringTextByCode(props.compDef.description, props.languageCode);
