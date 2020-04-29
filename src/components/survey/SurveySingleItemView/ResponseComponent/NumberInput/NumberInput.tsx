@@ -35,6 +35,12 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
 
     let value = (event.target as HTMLInputElement).value;
 
+    if (props.compDef.properties?.stepSize === 1.0) {
+      const numVal = parseFloat(value);
+      if (!isNaN(numVal) && !Number.isInteger(numVal)) {
+        value = Math.round(numVal).toString();
+      }
+    }
     if (props.compDef.properties?.min !== undefined) {
       const numVal = parseFloat(value);
       if (numVal < props.compDef.properties?.min) {
@@ -47,6 +53,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
         value = props.compDef.properties?.max.toString();
       }
     }
+
     setInputValue(value);
     setResponse(prev => {
       if (!prev) {
