@@ -30,7 +30,24 @@ import SISThemeData from './themes/sis-theme';
 const App: React.FC = () => {
   const { t } = useTranslation(['app']);
 
-  const theme = responsiveFontSizes(createMuiTheme(InfluenzaNetThemeData));
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const themeParam = urlParams.get('theme');
+
+  let themeData = {};
+
+  switch (themeParam) {
+    case 'influenzaNet':
+      themeData = InfluenzaNetThemeData;
+      break;
+    case 'sis':
+      themeData = SISThemeData;
+      break;
+    default:
+      themeData = InfluenzaNetThemeData;
+  }
+
+  const theme = responsiveFontSizes(createMuiTheme(themeData));
 
   theme.overrides = {
     MuiSlider: {
