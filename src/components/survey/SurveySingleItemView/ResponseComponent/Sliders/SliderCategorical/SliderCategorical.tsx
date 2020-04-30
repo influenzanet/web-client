@@ -83,7 +83,7 @@ const SliderCategorical: React.FC<SliderCategoricalProps> = (props) => {
           {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
         </Typography>
         : null}
-      <Box px={5}>
+      <Box>
         <Slider
           color="secondary"
           aria-labelledby={props.compDef.content ? "slider-numeric" : undefined}

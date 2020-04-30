@@ -57,6 +57,8 @@ const App: React.FC = () => {
     MuiSlider: {
       root: {
         height: 6,
+        display: "flex",
+        justifyContent: "space-between",
       },
       thumb: {
         height: 16,
@@ -87,7 +89,31 @@ const App: React.FC = () => {
         width: 10,
         marginLeft: -5,
         marginTop: -2,
-      }
+      },
+      markLabel: {
+        '&&:nth-of-type(4)': {
+          textAlign: "left",
+          flexGrow: 1,
+          marginLeft: -4,
+          marginRight: 4,
+        },
+        '&&:nth-last-of-type(2)': {
+          textAlign: "right",
+          flexGrow: 1,
+          marginLeft: 4,
+          marginRight: -4,
+        },
+        marginTop: 8,
+        height: 20,
+        position: "static",
+        textAlign: "center",
+        transform: "",
+        flexGrow: 2,
+        flexShrink: 1,
+        flexBasis: 0,
+        // textOverflow: "ellipsis",
+        // overflow: "hidden",
+      },
     },
   };
 
