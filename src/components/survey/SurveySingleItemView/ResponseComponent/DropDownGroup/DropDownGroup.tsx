@@ -84,7 +84,7 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
         inputProps={{
           style: {
             padding: "8px 32px 8px 16px",
-            backgroundColor: 'rgba(0, 200, 0, 0.09)',
+            backgroundColor: 'rgba(0, 0, 0, 0.09)',
             borderRadius: 1000,
           }
         }}
