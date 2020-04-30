@@ -1,14 +1,15 @@
 const PWCThemeData = {
   palette: {
     primary: {
-      light: '#d05a02',
-      dark: '#e0301e',
-      main: '#d93954',
+      light: '#ff7b38',
+      dark: '#981300',
+      main: '#d04a02',
+      contrastText: '#ffffff',
     },
     secondary: {
-      light: '#ffb600',
-      dark: '#eb8c00',
-      main: '#eb8c00',
+      light: '#ff7b38',
+      dark: '#981300',
+      main: '#d04a02',
       contrastText: '#ffffff',
     },
     background: {
