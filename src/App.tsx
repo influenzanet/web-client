@@ -24,6 +24,7 @@ import AppIntegration from './pages/AppIntegration/AppIntegration';
 import { useTranslation } from 'react-i18next';
 import InfluenzaNetThemeData from './themes/influenzanet-theme';
 import SISThemeData from './themes/sis-theme';
+import PWCThemeData from './themes/pwc-theme';
 
 // import TestForm from './components/form/login/LoginForm';
 
@@ -39,6 +40,9 @@ const App: React.FC = () => {
   switch (themeParam) {
     case 'influenzaNet':
       themeData = InfluenzaNetThemeData;
+      break;
+    case 'pwc':
+      themeData = PWCThemeData;
       break;
     case 'sis':
       themeData = SISThemeData;
