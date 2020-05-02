@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { Typography, Slider } from '@material-ui/core';
+import { Typography, Slider, Box } from '@material-ui/core';
 import { getLocaleStringTextByCode } from '../../../utils';
 
 interface SliderNumericRangeProps {
@@ -75,18 +75,20 @@ const SliderNumericRange: React.FC<SliderNumericRangeProps> = (props) => {
           {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
         </Typography>
         : null}
-      <Slider
-        color="secondary"
-        aria-labelledby={props.compDef.content ? "slider-numeric" : undefined}
-        value={inputValues}
-        onChange={handleSliderChange(props.compDef.key)}
-        valueLabelDisplay="auto"
-        min={props.compDef.properties?.min as number}
-        max={props.compDef.properties?.max as number}
-        step={props.compDef.properties?.stepSize as number}
-        marks={props.compDef.properties?.stepSize ? true : false}
-        disabled={props.compDef.disabled !== undefined}
-      />
+      <Box p={1}>
+        <Slider
+          color="secondary"
+          aria-labelledby={props.compDef.content ? "slider-numeric" : undefined}
+          value={inputValues}
+          onChange={handleSliderChange(props.compDef.key)}
+          valueLabelDisplay="auto"
+          min={props.compDef.properties?.min as number}
+          max={props.compDef.properties?.max as number}
+          step={props.compDef.properties?.stepSize as number}
+          marks={props.compDef.properties?.stepSize ? true : false}
+          disabled={props.compDef.disabled !== undefined}
+        />
+      </Box>
     </React.Fragment>
   );
 };
