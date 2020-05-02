@@ -56,7 +56,7 @@ export const AppBar: React.FC = () => {
 
   return (
     <div className={classes.root}>
-      <MuiAppBar className={classes.appBar} elevation={(scrollTriggered) ? 4 : 0}>
+      <MuiAppBar className={classes.appBar} elevation={(scrollTriggered) ? 3 : 0}>
         <Toolbar style={{ padding: 0 }}>
           <IconButton
             edge="start"
