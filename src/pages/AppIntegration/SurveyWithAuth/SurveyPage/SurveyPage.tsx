@@ -221,7 +221,8 @@ const SurveyPage: React.FC<RouteProps> = (props) => {
       submittedAt: moment().unix(),
       responses: [...responses],
       context: {
-        locationID: locationID
+        locationID: locationID,
+        engineVersion: process.env.REACT_APP_SURVEY_ENGINE_VERSION,
       }
     }
 
