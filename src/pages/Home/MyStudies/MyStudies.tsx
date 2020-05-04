@@ -8,7 +8,7 @@ import SurveyView from '../../../components/survey/SurveyView/SurveyView';
 import { testSurvey } from '../../../test-surveys/test-survey-1';
 import { survey } from '../../../test-surveys/qcov';
 import SurveyEndView from '../../../components/survey/SurveyEndViews/EmojiActionPage/EmojiActionPage';
-
+import jsonSurvey from '../../../test-surveys/survey.json';
 import { useTranslation } from 'react-i18next';
 import { Survey } from 'survey-engine/lib/data_types';
 
@@ -18,13 +18,15 @@ const MyStudies: React.FC = () => {
   const dispatch = useDispatch();
   const { t, i18n, ready } = useTranslation(['common', 'survey']);
 
-  const [survey, setSurvey] = useState<Survey | undefined>(testSurvey);
+  const [survey, setSurvey] = useState<Survey | undefined>(undefined);
 
   if (i18n.language !== 'de') {
     i18n.changeLanguage('de');
   }
 
   useEffect(() => {
+    //setSurvey(jsonSurvey as Survey);
+    setSurvey(testSurvey);
     dispatch(setPageTitle('My Studies'));
   }, []);
 
