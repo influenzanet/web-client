@@ -103,7 +103,7 @@ const App: React.FC = () => {
           marginLeft: 4,
           marginRight: -4,
         },
-        marginTop: 8,
+        marginTop: 12,
         height: 20,
         position: "static",
         textAlign: "center",
