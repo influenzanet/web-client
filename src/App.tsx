@@ -25,6 +25,7 @@ import { useTranslation } from 'react-i18next';
 import InfluenzaNetThemeData from './themes/influenzanet-theme';
 import SISThemeData from './themes/sis-theme';
 import PWCThemeData from './themes/pwc-theme';
+import ProfileSelection from './pages/Profile/ProfileSelection/ProfileSelection';
 
 // import TestForm from './components/form/login/LoginForm';
 
@@ -133,6 +134,7 @@ const App: React.FC = () => {
             <Route path="/home" component={Home} />
             <Route path="/start" component={OnBoarding} />
             <Route path="/app-integration" component={AppIntegration} />
+            <Route path="/profile-selection" component={ProfileSelection} />
             <Redirect to="/start"></Redirect>
           </Switch>
         </Router>
