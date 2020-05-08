@@ -104,6 +104,12 @@ const App: React.FC = () => {
           marginLeft: 4,
           marginRight: -4,
         },
+        '&&:nth-last-of-type(3)': {
+          textAlign: "right",
+          flexGrow: 1,
+          marginLeft: 4,
+          marginRight: -4,
+        },
         marginTop: 12,
         height: 20,
         position: "static",

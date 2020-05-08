@@ -3485,6 +3485,7 @@ const slider1: SurveySingleItem = {
           {
             key: '1',
             role: 'sliderNumeric',
+            style: [{ key: 'step-labels', value: 'true' }],
             properties: {
               max: { dtype: 'num', num: 50 },
               min: { dtype: 'num', num: 10 },
@@ -3586,6 +3587,7 @@ const slider2: SurveySingleItem = {
           {
             key: '1',
             role: 'sliderNumericRange',
+            style: [{ key: 'step-labels', value: 'true' }],
             properties: {
               max: { dtype: 'num', num: 60 },
               min: { dtype: 'num', num: -15 },

@@ -68,6 +68,32 @@ const SliderNumericRange: React.FC<SliderNumericRangeProps> = (props) => {
     })
   };
 
+  const marks = () => {
+    if (props.compDef.style) {
+      const labels = props.compDef.style.find(st => st.key === 'step-labels');
+      if (labels && labels.value === "true") {
+        if (props.compDef.properties?.min && props.compDef.properties?.max && props.compDef.properties?.stepSize) {
+          const min = props.compDef.properties?.min as number;
+          const max = props.compDef.properties?.max as number;
+          const stepSize = props.compDef.properties?.stepSize as number;
+
+          const marks = [];
+
+          for (let i = min; i <= max; i += stepSize) {
+            marks.push({
+              value: i,
+              label: i.toString()
+            });
+          }
+
+          return marks;
+        }
+      }
+    }
+
+    return props.compDef.properties?.stepSize ? true : false;
+  };
+
   return (
     <React.Fragment>
       {props.compDef.content ?
@@ -85,7 +111,7 @@ const SliderNumericRange: React.FC<SliderNumericRangeProps> = (props) => {
           min={props.compDef.properties?.min as number}
           max={props.compDef.properties?.max as number}
           step={props.compDef.properties?.stepSize as number}
-          marks={props.compDef.properties?.stepSize ? true : false}
+          marks={marks()}
           disabled={props.compDef.disabled !== undefined}
         />
       </Box>
