@@ -1,10 +1,10 @@
-import { UserCredentials } from "../../api/models/auth-api";
+import { LoginMsg, SignupMsg } from "../../api/types/auth-api";
 import { AppThunk } from "../utils";
 import { loginStart, loginSuccess, loginFailed } from "./actions";
 import API, { loginWithEmailRequest, signupWithEmailRequest } from '../../api/api';
 
 export function login(
-  credentials: UserCredentials,
+  credentials: LoginMsg,
   rememberMe?: boolean
 ): AppThunk<void> {
   return async dispatch => {
@@ -41,7 +41,7 @@ export function login(
 }
 
 export function signup(
-  credentials: UserCredentials,
+  credentials: SignupMsg,
   rememberMe?: boolean
 ): AppThunk<void> {
   return async dispatch => {

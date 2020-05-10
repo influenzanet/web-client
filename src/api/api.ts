@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { UserCredentials, TokenResponse } from './models/auth-api';
-import { SurveyReferenceReq, SurveyResponseReq, SurveyAndContextMsg } from './models/study-api';
+import { SignupMsg, LoginMsg, TokenResponse } from './types/auth-api';
+import { SurveyReferenceReq, SurveyResponseReq, SurveyAndContextMsg } from './types/study-api';
 
 const api = axios.create({
   // baseURL: `http://localhost:3231`
@@ -14,8 +14,8 @@ export const setAccessTokenHeader = (token: string) => {
 };
 
 // Auth API
-export const signupWithEmailRequest = (creds: UserCredentials) => api.post<TokenResponse>('/v1/auth/signupWithEmail', creds);
-export const loginWithEmailRequest = (creds: UserCredentials) => api.post<TokenResponse>('/v1/auth/loginWithEmail', creds);
+export const signupWithEmailRequest = (creds: SignupMsg) => api.post<TokenResponse>('/v1/auth/signupWithEmail', creds);
+export const loginWithEmailRequest = (creds: LoginMsg) => api.post<TokenResponse>('/v1/auth/loginWithEmail', creds);
 
 // Study API
 export const getAssignedSurveyRequest = (payload: SurveyReferenceReq) => api.post<SurveyAndContextMsg>('/v1/study-system/study/get-assigned-survey', payload);
