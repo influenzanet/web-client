@@ -14,8 +14,10 @@ export const setAccessTokenHeader = (token: string) => {
 };
 
 // Auth API
-export const signupWithEmailRequest = (creds: SignupMsg) => api.post<TokenResponse>('/v1/auth/signupWithEmail', creds);
-export const loginWithEmailRequest = (creds: LoginMsg) => api.post<TokenResponse>('/v1/auth/loginWithEmail', creds);
+export const signupWithEmailRequest = (creds: SignupMsg) => api.post<TokenResponse>('/v1/auth/signup-with-email', creds);
+export const loginWithEmailRequest = (creds: LoginMsg) => api.post<TokenResponse>('/v1/auth/login-with-email', creds);
+export const switchProfileReq = (profileReq: { profileId: string, refreshToken: string }) => api.post<TokenResponse>('/v1/auth/switch-profile', profileReq);
+export const renewTokenReq = (refreshToken: string) => api.post<TokenResponse>('/v1/auth/renew-token', { refreshToken: refreshToken });
 
 // Study API
 export const getAssignedSurveyRequest = (payload: SurveyReferenceReq) => api.post<SurveyAndContextMsg>('/v1/study-system/study/get-assigned-survey', payload);
