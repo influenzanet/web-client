@@ -1,5 +1,5 @@
 import React from 'react';
-import SurveyEndView from '../../../../components/survey/SurveyEndViews/EmojiActionPage/EmojiActionPage';
+import SurveyEndView from '../../../../components/survey/SurveyEndViews/SimpleEndView/SimpleEndView';
 import { useTranslation } from 'react-i18next';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 
