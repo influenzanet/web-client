@@ -87,13 +87,14 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
   return <MuiPickersUtilsProvider utils={MomentUtils} locale={props.languageCode}>
     <RoundedBox color="#f2f2f2" style={{ padding: "8px 16px" }}>
       {(props.compDef as ItemGroupComponent).items.map((respComp, index) => {
+
         if (respComp.displayCondition === false) {
-          return <div key={respComp.key} hidden></div>;
+          return <div key={respComp.key ? respComp.key : 'p' + index.toString()} hidden></div>;
         }
         switch (respComp.role) {
           case 'text':
             return <TextViewComponent
-              key={respComp.key ? respComp.key : index.toString()}
+              key={respComp.key ? respComp.key : 'p' + index.toString()}
               compDef={respComp}
               languageCode={props.languageCode}
             />

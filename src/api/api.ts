@@ -20,5 +20,5 @@ export const switchProfileReq = (profileReq: { profileId: string, refreshToken: 
 export const renewTokenReq = (refreshToken: string) => api.post<TokenResponse>('/v1/auth/renew-token', { refreshToken: refreshToken });
 
 // Study API
-export const getAssignedSurveyRequest = (payload: SurveyReferenceReq) => api.post<SurveyAndContextMsg>('/v1/study-system/study/get-assigned-survey', payload);
-export const submitSurveyResponseRequest = (payload: SurveyResponseReq) => api.post('/v1/study-system/study/submit-response', payload);
+export const getAssignedSurveyRequest = (payload: SurveyReferenceReq) => api.post<SurveyAndContextMsg>('/v1/studies/study/get-assigned-survey', payload);
+export const submitSurveyResponseRequest = (payload: SurveyResponseReq) => api.post('/v1/studies/study/submit-response', payload);
