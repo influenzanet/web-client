@@ -20,7 +20,7 @@ export interface User {
 
 export interface Profile {
   id: string;
-  nickname: string;
+  alias: string;
   consentConfirmedAt: number;
   avatarId: string;
   createdAt: number;
