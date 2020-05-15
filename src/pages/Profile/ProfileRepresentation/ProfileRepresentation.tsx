@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
       cursor: "pointer",
       borderRadius: 16,
       '&:hover': {
-        backgroundColor: "lightgrey",
+        backgroundColor: "white",
       },
     },
     spacer: {
