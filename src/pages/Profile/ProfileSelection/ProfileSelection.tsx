@@ -54,9 +54,9 @@ const profiles: Profile[] = [
   },
   {
     id: "7",
-    alias: "Elongated Hippopotamusasdfasdfasdfasdf blablala asddfasdfasdf ",
+    alias: "Elongated Hippopotamus",
     consentConfirmedAt: 0,
-    avatarId: "Black",
+    avatarId: "#556677",
     createdAt: 0,
   },
 ];
