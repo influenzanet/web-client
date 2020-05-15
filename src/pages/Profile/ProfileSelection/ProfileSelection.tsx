@@ -11,42 +11,42 @@ interface ProfileSelectionProps {
 
 const profiles: Profile[] = [
   {
-    id: "",
+    id: "1",
     alias: "Pink Hamster",
     consentConfirmedAt: 0,
     avatarId: "orange",
     createdAt: 0,
   },
   {
-    id: "",
+    id: "2",
     alias: "Joyful Elephant",
     consentConfirmedAt: 0,
     avatarId: "red",
     createdAt: 0,
   },
   {
-    id: "",
+    id: "3",
     alias: "Old Panda",
     consentConfirmedAt: 0,
     avatarId: "purple",
     createdAt: 0,
   },
   {
-    id: "",
+    id: "4",
     alias: "Daring Goose",
     consentConfirmedAt: 0,
     avatarId: "indigo",
     createdAt: 0,
   },
   {
-    id: "",
+    id: "5",
     alias: "Majestic Hamster",
     consentConfirmedAt: 0,
     avatarId: "SteelBlue",
     createdAt: 0,
   },
   {
-    id: "",
+    id: "6",
     alias: "Kind Bear",
     consentConfirmedAt: 0,
     avatarId: "LightSlateGray",
@@ -74,7 +74,7 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
   }, []);
 
   const profileList = profiles.map((profile) =>
-    <ProfileRepresenation profile={profile} onSelected={(profile) => { }}>
+    <ProfileRepresenation key={profile.id} profile={profile} onSelected={(profile) => { }}>
     </ProfileRepresenation>);
 
   const avatarRow = () => {
