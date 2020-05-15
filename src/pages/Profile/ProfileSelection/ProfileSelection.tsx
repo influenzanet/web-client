@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Typography, makeStyles, Theme, createStyles, Grid, Avatar } from '@material-ui/core';
+import { Container, Typography, makeStyles, Theme, createStyles, Grid, Avatar, Box } from '@material-ui/core';
 import FlexGrow from '../../../components/common/FlexGrow';
 import RoundedButton from '../../../components/ui/buttons/RoundedButton';
 import { Profile } from '../../../types/user';
@@ -52,6 +52,13 @@ const profiles: Profile[] = [
     avatarId: "LightSlateGray",
     createdAt: 0,
   },
+  {
+    id: "7",
+    alias: "Elongated Hippopotamusasdfasdfasdfasdf blablala asddfasdfasdf ",
+    consentConfirmedAt: 0,
+    avatarId: "Black",
+    createdAt: 0,
+  },
 ];
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -59,6 +66,9 @@ const useStyles = makeStyles((theme: Theme) =>
     btn: {
       width: 200,
     },
+    spacer: {
+      height: 32,
+    }
   }),
 );
 
@@ -69,16 +79,16 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
 
   useEffect(() => {
     if (containerRef.current) {
-      containerRef.current.style.height = `calc(100vh - ${containerRef.current.offsetTop}px)`;
+      containerRef.current.style.minHeight = `calc(100vh - ${containerRef.current.offsetTop}px)`;
     }
   }, []);
 
   const profileList = profiles.map((profile) =>
-    <ProfileRepresenation key={profile.id} profile={profile} onSelected={(profile) => { }}>
+    <ProfileRepresenation key={profile.id} profile={profile} onSelected={(profile) => { console.log(profile.alias) }}>
     </ProfileRepresenation>);
 
-  const avatarRow = () => {
-    return <Grid item container direction="row" spacing={4} justify="center">
+  const avatars = () => {
+    return <Grid item container direction="row" spacing={4} justify="center" style={{ minHeight: "auto", width: "100%" }}>
       {profileList}
     </Grid>
   }
@@ -86,17 +96,19 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
   return (
     <Container ref={containerRef} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <FlexGrow />
+      <div className={classes.spacer} />
       <Typography variant="h3" color="primary" align="center">
         Who are you?
       </Typography>
-      <div style={{ height: 32 }} />
-      {avatarRow()}
-      <div style={{ height: 32 }} />
+      <div className={classes.spacer} />
+      {avatars()}
+      <div className={classes.spacer} />
       <RoundedButton
         className={classes.btn}
       >
         Manage Profiles
       </RoundedButton>
+      <div className={classes.spacer} />
       <FlexGrow />
     </Container>
   );

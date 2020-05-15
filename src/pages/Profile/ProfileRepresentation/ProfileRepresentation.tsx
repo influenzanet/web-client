@@ -41,7 +41,12 @@ const ProfileRepresenation: React.FC<ProfileRepresentationProps> = (props) => {
 
   let words = props.profile.alias.split(" ");
   let initials = "";
-  words.forEach((word) => initials = initials + word[0].toUpperCase());
+  words.forEach((word) => {
+    word = word.trim();
+    if (word.length > 0) {
+      initials = initials + word[0].toUpperCase();
+    }
+  });
 
   const onSelected = () => {
     props.onSelected(props.profile);
@@ -53,7 +58,7 @@ const ProfileRepresenation: React.FC<ProfileRepresentationProps> = (props) => {
         {initials}
       </Avatar>
       <div className={classes.spacer} />
-      <Typography variant="subtitle1" className={classes.alias}>
+      <Typography variant="subtitle1" className={classes.alias} noWrap={true} >
         {props.profile.alias}
       </Typography>
     </Grid>
