@@ -17,8 +17,21 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 120,
       fontSize: 42,
     },
+    alias: {
+      width: 136,
+      textAlign: "center",
+    },
     avatarContainer: {
       width: "auto",
+      userSelect: "all",
+      cursor: "pointer",
+      borderRadius: 16,
+      '&:hover': {
+        backgroundColor: "lightgrey",
+      },
+    },
+    spacer: {
+      height: 12,
     }
   }),
 );
@@ -30,13 +43,17 @@ const ProfileRepresenation: React.FC<ProfileRepresentationProps> = (props) => {
   let initials = "";
   words.forEach((word) => initials = initials + word[0].toUpperCase());
 
+  const onSelected = () => {
+    props.onSelected(props.profile);
+  }
+
   return (
-    <Grid item container className={classes.avatarContainer} direction="column" alignItems="center">
+    <Grid item container className={classes.avatarContainer} direction="column" alignItems="center" onClick={onSelected}>
       <Avatar className={classes.avatar} style={{ backgroundColor: props.profile.avatarId }}>
         {initials}
       </Avatar>
-      <div style={{ height: 12 }} />
-      <Typography variant="subtitle1">
+      <div className={classes.spacer} />
+      <Typography variant="subtitle1" className={classes.alias}>
         {props.profile.alias}
       </Typography>
     </Grid>
