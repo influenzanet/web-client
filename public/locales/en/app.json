@@ -3,6 +3,10 @@
     "title": "Influenzanet",
     "metaDescription": "A participatory survey system for fighting epidemics"
   },
+  "profileSelectionPage": {
+    "headline": "Who are you?",
+    "manageProfilesButtonLabel": "Manage Profiles"
+  },
   "errorPage": {
     "errorMsgBig": "Please Try Again",
     "errorMsgSmall": "Something went wrong :(",

@@ -3,6 +3,10 @@
     "title": "Influenzanet",
     "metaDescription": "Partizipatives Umfragesystem für Bekämpfung von Epidemien"
   },
+  "profileSelectionPage": {
+    "headline": "Wer bist du?",
+    "manageProfilesButtonLabel": "Profile verwalten"
+  },
   "errorPage": {
     "errorMsgBig": "Bitte erneut versuchen",
     "errorMsgSmall": "Etwas ist schief gegangen :(",

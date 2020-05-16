@@ -98,7 +98,7 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
       <FlexGrow />
       <div className={classes.spacer} />
       <Typography variant="h3" color="primary" align="center">
-        Who are you?
+        {t('app:profileSelectionPage.headline')}
       </Typography>
       <div className={classes.spacer} />
       {avatars()}
@@ -106,7 +106,7 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
       <RoundedButton
         className={classes.btn}
       >
-        Manage Profiles
+        {t('app:profileSelectionPage.manageProfilesButtonLabel')}
       </RoundedButton>
       <div className={classes.spacer} />
       <FlexGrow />
