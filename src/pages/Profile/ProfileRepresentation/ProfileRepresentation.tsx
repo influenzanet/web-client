@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     alias: {
       width: 136,
       textAlign: "center",
+      userSelect: "none",
     },
     avatarContainer: {
       width: "auto",
