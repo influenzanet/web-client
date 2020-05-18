@@ -1,6 +1,6 @@
 import React from 'react';
 import { Profile } from '../../../types/user';
-import { Grid, makeStyles, Theme, createStyles, Typography, Avatar } from '@material-ui/core';
+import { Grid, makeStyles, Theme, createStyles, Typography } from '@material-ui/core';
 
 interface ProfileRepresentationProps {
   profile: Profile;
@@ -97,7 +97,7 @@ const ProfileRepresenation: React.FC<ProfileRepresentationProps> = (props) => {
 
   return (
     <Grid item container className={classes.avatarContainer} direction="column" alignItems="center" onClick={onSelected}>
-      <img className={classes.avatar} src={process.env.PUBLIC_URL + avatarPath} />
+      <img className={classes.avatar} alt="" src={process.env.PUBLIC_URL + avatarPath} />
       <div className={classes.spacer} />
       <Typography variant="subtitle1" className={classes.alias} noWrap={true} >
         {props.profile.alias}
