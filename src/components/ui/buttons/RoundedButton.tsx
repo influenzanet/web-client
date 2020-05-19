@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 interface RoundedButtonProps {
   color?: "primary" | "secondary";
   className?: string | undefined;
+  disabled?: boolean | undefined;
   onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
 }
 
@@ -19,6 +20,7 @@ const RoundedButton: React.FC<RoundedButtonProps> = (props) => {
       color={props.color}
       className={props.className}
       onClick={props.onClick}
+      disabled={props.disabled}
     >
       {props.children}
     </Button>

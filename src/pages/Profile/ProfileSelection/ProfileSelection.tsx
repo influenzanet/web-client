@@ -1,15 +1,17 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Typography, makeStyles, Theme, createStyles, Grid } from '@material-ui/core';
+import { Container, Typography, makeStyles, Theme, createStyles, Grid, useTheme } from '@material-ui/core';
 import FlexGrow from '../../../components/common/FlexGrow';
 import RoundedButton from '../../../components/ui/buttons/RoundedButton';
 import { Profile } from '../../../types/user';
 import ProfileRepresenation from '../ProfileRepresentation/ProfileRepresentation';
+import RoundedBox from '../../../components/ui/RoundedBox';
+import ProfileCreateDialog from '../ProfileCreateDialog/ProfileCreateDialog';
 
 interface ProfileSelectionProps {
 }
 
-const profiles: Profile[] = [
+const profilesList: Profile[] = [
   {
     id: "1",
     alias: "Average Alpaca",
@@ -103,14 +105,48 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     spacer: {
       height: 32,
+    },
+    profileCreateBox: {
+      //margin: 0,
+      width: 136,
+      height: 136,
+      alignSelf: "center",
+      textAlign: "center",
+      verticalAlign: "middle",
+      cursor: "pointer",
+      margin: 16,
+      "&:hover": {
+        backgroundColor: theme.palette.action.disabledBackground
+      },
+    },
+    profileCreateText: {
+      userSelect: "none",
     }
   }),
 );
 
 const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
   const classes = useStyles();
+  const theme = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation(['app']);
+
+  const getCurrentDefaultProfile = () => {
+    return {
+      id: new Date().toUTCString(),
+      alias: "",
+      consentConfirmedAt: 0,
+      avatarId: "",
+      createdAt: 0,
+    };
+  }
+
+  let [editMode, setEditMode] = useState(false);
+  let [profiles, setProfiles] = useState(profilesList);
+  let [defaultProfile, setDefaultProfile] = useState<Profile>(getCurrentDefaultProfile());
+
+  let [createProfileDialogOpen, setCreateProfileDialogOpen] = useState(false);
+
 
   useEffect(() => {
     if (containerRef.current) {
@@ -118,13 +154,46 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
     }
   }, []);
 
+  const onCreateProfileDialogClosed = () => {
+    setCreateProfileDialogOpen(false);
+  }
+
+  const onProfileCreated = (profile: Profile) => {
+    console.log(profile.consentConfirmedAt);
+    onCreateProfileDialogClosed();
+    setProfiles([...profiles, profile]);
+  }
+
+  const onProfileSelected = (profile: Profile) => {
+    console.log(profile.alias)
+  };
+
+  const onProfileDeleted = (profile: Profile) => {
+    setProfiles(profiles.filter((p) => p != profile));
+  };
+
+  const onProfileUpdated = (profile: Profile) => {
+    setProfiles(profiles.slice());
+  }
+
+  const onNewProfileClicked = () => {
+    setDefaultProfile(getCurrentDefaultProfile());
+    setCreateProfileDialogOpen(true);
+  }
+
   const profileList = profiles.map((profile) =>
-    <ProfileRepresenation key={profile.id} profile={profile} onSelected={(profile) => { console.log(profile.alias) }}>
-    </ProfileRepresenation>);
+    <ProfileRepresenation key={profile.id} profile={profile} editMode={editMode} createMode={false} onSelected={onProfileSelected} onDeleted={onProfileDeleted} onUpdated={onProfileUpdated} />);
 
   const avatars = () => {
-    return <Grid item container direction="row" spacing={4} justify="center" style={{ minHeight: "auto", width: "100%" }}>
+    return <Grid item container direction="row" spacing={0} justify="center" style={{ minHeight: "auto", width: "100%" }}>
       {profileList}
+      {editMode
+        ? <RoundedBox color={theme.palette.action.selected} classNames={[classes.profileCreateBox]} onClick={onNewProfileClicked}>
+          <Typography variant="h1" className={classes.profileCreateText}>+</Typography>
+          <Typography variant="body1" className={classes.profileCreateText}>{t('app:profileSelectionPage.newProfileButtonLabel')}</Typography>
+        </RoundedBox>
+        : null
+      }
     </Grid>
   }
 
@@ -140,11 +209,13 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
       <div className={classes.spacer} />
       <RoundedButton
         className={classes.btn}
+        onClick={() => setEditMode(!editMode)}
       >
-        {t('app:profileSelectionPage.manageProfilesButtonLabel')}
+        {(editMode) ? t('app:profileSelectionPage.selectProfilesButtonLabel') : t('app:profileSelectionPage.manageProfilesButtonLabel')}
       </RoundedButton>
       <div className={classes.spacer} />
       <FlexGrow />
+      <ProfileCreateDialog defaultProfile={defaultProfile} open={createProfileDialogOpen} onCreated={onProfileCreated} onClose={onCreateProfileDialogClosed} />
     </Container>
   );
 };

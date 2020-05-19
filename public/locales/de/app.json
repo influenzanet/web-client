@@ -1,11 +1,28 @@
 {
+  "buttons": {
+    "cancel": "Abbrechen"
+  },
   "header": {
     "title": "Influenzanet",
     "metaDescription": "Partizipatives Umfragesystem für Bekämpfung von Epidemien"
   },
+  "profileRepresentation": {
+    "nicknamePlaceholder": "Spitzname",
+    "deleteButtonLabel": "Löschen"
+  },
+  "profileCreateDialog": {
+    "title": "Neues Profil",
+    "consentLabel": "Diese Person stimmt der Erstellung dieses Profils zu.",
+    "createProfileButton": "Profil erstellen"
+  },
+  "avatarDialog": {
+    "title": "Avatar auswählen"
+  },
   "profileSelectionPage": {
     "headline": "Wer bist du?",
-    "manageProfilesButtonLabel": "Profile verwalten"
+    "manageProfilesButtonLabel": "Profile verwalten",
+    "selectProfilesButtonLabel": "Profil auswählen",
+    "newProfileButtonLabel": "Neues Profil"
   },
   "errorPage": {
     "errorMsgBig": "Bitte erneut versuchen",
