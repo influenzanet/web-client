@@ -104,7 +104,7 @@ const Signup: React.FC = () => {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="new-password"
             />
           </Tooltip>
           <TextField
@@ -116,7 +116,7 @@ const Signup: React.FC = () => {
             label="Confirm Password"
             type="password"
             id="confirmPassword"
-            autoComplete="current-password"
+            autoComplete="new-password"
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
