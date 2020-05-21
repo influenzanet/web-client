@@ -117,7 +117,7 @@ const Signup: React.FC = () => {
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label={
-              <Fragment><span>I have read and accept the </span> <Link variant="body1" component={LinkRef} to="/privacy">privacy statement</Link><span>.</span></Fragment>
+              <Fragment><span>I have read and accept the </span> <Link variant="body1" component={LinkRef} to="/privacy">privacy statement</Link><span>.*</span></Fragment>
             }
           />
           <Tooltip title="If you want to, we will remind you via E-Mail when new surveys are available in your subscribed studies. We will also send you updates about the project every few weeks.">
