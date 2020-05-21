@@ -31,8 +31,9 @@ const useStyles = makeStyles(theme => ({
   formContainer: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
+    width: "100%",
   },
-  avatar: {
+  logo: {
     margin: theme.spacing(1),
     // backgroundColor: theme.palette.secondary.main,
   },
@@ -47,6 +48,9 @@ const useStyles = makeStyles(theme => ({
   },
   errorText: {
     color: "white",
+  },
+  checkBox: {
+    width: "100%",
   }
 }));
 
@@ -64,7 +68,7 @@ const Signup: React.FC = () => {
   return (
     <Container ref={containerRef} className={classes.pageContainer} maxWidth="xs" >
       <FlexGrow />
-      <Box className={classes.avatar} height="80px">
+      <Box className={classes.logo} height="80px">
         <img src={logo} alt="logo" height="100%" />
       </Box>
       <Typography variant="h3" color="primary">
@@ -75,7 +79,7 @@ const Signup: React.FC = () => {
           Register now to support the global fight against the novel coronavirus and influenza-like-illnesses!
         </Typography>
       </RoundedBox>
-      <RoundedBox classNames={[classes.formContainer]}>
+      <RoundedBox classNames={[classes.formContainer]} >
         <form className={classes.form} noValidate>
           <Tooltip title="We need this so we can identify you.">
             <TextField
@@ -116,6 +120,7 @@ const Signup: React.FC = () => {
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
+            className={classes.checkBox}
             label={
               <Fragment><span>I have read and accept the </span> <Link variant="body1" component={LinkRef} to="/privacy">privacy statement</Link><span>.*</span></Fragment>
             }
@@ -123,6 +128,7 @@ const Signup: React.FC = () => {
           <Tooltip title="If you want to, we will remind you via E-Mail when new surveys are available in your subscribed studies. We will also send you updates about the project every few weeks.">
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
+              className={classes.checkBox}
               label="I want to receive the newsletter and survey reminders."
             />
           </Tooltip>
