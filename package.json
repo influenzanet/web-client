@@ -1,13 +1,12 @@
 {
-  "name": "inet-hier",
+  "name": "influenzanet-webapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/webapp",
   "dependencies": {
     "@date-io/moment": "1.x",
-    "@material-ui/core": "^4.9.6",
+    "@material-ui/core": "^4.9.14",
     "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.46",
+    "@material-ui/lab": "^4.0.0-alpha.53",
     "@material-ui/pickers": "^3.2.10",
     "@types/jest": "24.0.25",
     "@types/moment": "^2.13.0",
