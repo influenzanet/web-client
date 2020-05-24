@@ -17,6 +17,7 @@ export const setPreferredLanguageReq = (languageCode: string) => api.post<User>(
 export const saveProfileReq = (profile: Profile) => api.post<User>('/v1/user/profile/save', { profile });
 export const removeProfileReq = (profileId: string) => api.post<User>('/v1/user/profile/remove', { profile: { id: profileId } });
 // Contact settings:
+export const verifyContactReq = (token: string) => api.post<User>('/v1/user/contact-verification', { token });
 export const updateContactPreferencesReq = (contactPrefs: ContactPreferences) => api.post<User>('/v1/user/contact-preferences', { contactPreferences: contactPrefs });
 export const addEmailReq = (contactInfo: ContactInfo) => api.post<User>('/v1/user/contact/add-email', { contactInfo });
 export const removeEmailReq = (contactInfoID: string) => api.post<User>('/v1/user/contact/remove-email', { contactInfo: { id: contactInfoID } });
