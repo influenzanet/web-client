@@ -16,3 +16,14 @@ export interface SurveyAndContextMsg {
   context?: SurveyContext;
   prefill?: SurveyResponse;
 }
+
+export interface AssignedSurvey {
+  studyKey: string;
+  surveyKey: string;
+  validFrom?: number;
+  validUntil?: number;
+}
+
+export interface AssignedSurveys {
+  surveys: AssignedSurvey[];
+}
