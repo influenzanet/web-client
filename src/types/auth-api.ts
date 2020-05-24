@@ -1,4 +1,4 @@
-import { Profile } from "../../types/user";
+import { Profile } from "./user";
 
 export interface SignupMsg {
   email: string;

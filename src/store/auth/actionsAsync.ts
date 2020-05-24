@@ -1,7 +1,8 @@
-import { LoginMsg, SignupMsg } from "../../api/types/auth-api";
+import { LoginMsg, SignupMsg } from "../../types/auth-api";
 import { AppThunk } from "../utils";
 import { loginStart, loginSuccess, loginFailed } from "./actions";
-import API, { loginWithEmailRequest, signupWithEmailRequest } from '../../api/api';
+import { loginWithEmailRequest, signupWithEmailRequest } from '../../api/auth-api';
+
 
 export function login(
   credentials: LoginMsg,

@@ -4,8 +4,9 @@ import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import { useLocation, useHistory, useRouteMatch, RouteProps } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { setAccessTokenHeader, getAssignedSurveyRequest, submitSurveyResponseRequest } from '../../../../api/api';
-import { SurveyReferenceReq, SurveyAndContextMsg } from '../../../../api/types/study-api';
+import { setAccessTokenHeader } from '../../../../api/api';
+import { getAssignedSurveyRequest, submitSurveyResponseRequest } from '../../../../api/study-api';
+import { SurveyReferenceReq, SurveyAndContextMsg } from '../../../../types/study-api';
 import SurveyView from '../../../../components/survey/SurveyView/SurveyView';
 import { SurveySingleItemResponse, SurveyResponse, LocalizedObject, LocalizedString } from 'survey-engine/lib/data_types';
 import moment from 'moment';
