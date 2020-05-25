@@ -20,7 +20,6 @@ import {
   MuiThemeProvider,
   responsiveFontSizes,
 } from '@material-ui/core';
-import AppIntegration from './pages/AppIntegration/AppIntegration';
 import { useTranslation } from 'react-i18next';
 import InfluenzaNetThemeData from './themes/influenzanet-theme';
 import SISThemeData from './themes/sis-theme';
@@ -139,7 +138,6 @@ const App: React.FC = () => {
             <Route path="/testForm" component={TestForm}/>*/}
             <Route path="/home" component={Home} />
             <Route path="/start" component={OnBoarding} />
-            <Route path="/app-integration" component={AppIntegration} />
             <Route path="/profile-selection" component={ProfileSelection} />
             <Redirect to="/start"></Redirect>
           </Switch>
