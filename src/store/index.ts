@@ -1,11 +1,11 @@
-import { createStore, combineReducers, applyMiddleware} from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { authReducer } from './auth/reducers';
-import { navigationReducer } from './navigation/reducers';
+import navigationSlice from './navigation/navigationSlice';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  navigation: navigationReducer
+  navigation: navigationSlice.reducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>

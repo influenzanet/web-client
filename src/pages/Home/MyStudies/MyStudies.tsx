@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux'
-import { setPageTitle } from '../../../store/navigation/actions';
 import { Container } from '@material-ui/core';
 
 import SurveyView from '../../../components/survey/SurveyView/SurveyView';
@@ -13,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { Survey } from 'survey-engine/lib/data_types';
 
 import Axios from 'axios';
+import { navigationActions } from '../../../store/navigation/navigationSlice';
 
 const MyStudies: React.FC = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const MyStudies: React.FC = () => {
   useEffect(() => {
     //setSurvey(jsonSurvey as Survey);
     setSurvey(testSurvey);
-    dispatch(setPageTitle('My Studies'));
+    dispatch(navigationActions.setPageTitle('My Studies'));
   }, []);
 
   return (

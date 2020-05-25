@@ -10,8 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Link } from "react-router-dom";
-import { openNavigationDrawer } from '../../../store/navigation/actions';
-import { NavigationState } from '../../../store/navigation/types';
+import { navigationActions, NavigationState } from '../../../store/navigation/navigationSlice';
 
 
 
@@ -45,7 +44,7 @@ export const NavBar: React.FC = () => {
             className={classes.menuButton}
             color="secondary"
             aria-label="menu"
-            onClick={() => dispatch(openNavigationDrawer())}
+            onClick={() => dispatch(navigationActions.openNavigationDrawer())}
           >
             <MenuIcon />
           </IconButton>

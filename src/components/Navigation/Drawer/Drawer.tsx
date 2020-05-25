@@ -17,11 +17,10 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import styles from './Drawer.module.scss';
 import logo from '../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
-import { NavigationState } from '../../../store/navigation/types';
-import { closeNavigationDrawer } from '../../../store/navigation/actions';
 // import { LinkRef } from '../../../common/link';
 import { Redirect, useRouteMatch } from 'react-router-dom';
 import { LinkRef } from '../../common/link';
+import { navigationActions, NavigationState } from '../../../store/navigation/navigationSlice';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
@@ -64,7 +63,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
       return;
     }
     console.log('close drawer - call action');
-    dispatch(closeNavigationDrawer());
+    dispatch(navigationActions.closeNavigationDrawer());
 
     /*setState(oldState => ({
         ...oldState,
@@ -104,7 +103,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
           <ListItem button key={'Home'}
             className={checkRouteMatch(matchHomeRoute, true) ? classes.currentRoute : ''}
             onClick={() => {
-              dispatch(closeNavigationDrawer());
+              dispatch(navigationActions.closeNavigationDrawer());
             }}
             component={LinkRef} to="/home"
           >
@@ -115,7 +114,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
           </ListItem>
           <ListItem button key={'My Studies'}
             onClick={() => {
-              dispatch(closeNavigationDrawer());
+              dispatch(navigationActions.closeNavigationDrawer());
             }}
             className={checkRouteMatch(matchMyStudiesRoute, true) ? classes.currentRoute : ''}
             component={LinkRef} to="/home/my-studies"
@@ -156,7 +155,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
               className={styles.drawerBtn}
               variant="outlined" color="secondary"
               onClick={() => {
-                dispatch(closeNavigationDrawer());
+                dispatch(navigationActions.closeNavigationDrawer());
               }}
               component={LinkRef} to="/start"
             >

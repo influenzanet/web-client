@@ -1,21 +1,21 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setPageTitle } from '../../../store/navigation/actions';
+import { navigationActions } from '../../../store/navigation/navigationSlice';
 
 
 const Dashboard: React.FC = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(setPageTitle('Influenzanet'));
-    });
+  useEffect(() => {
+    dispatch(navigationActions.setPageTitle('InfluenzaNet'));
+  });
 
-    return (
-        <div>
-            Dashboard
-        </div>
-    )
+  return (
+    <div>
+      Dashboard
+    </div>
+  )
 }
 
 export default Dashboard;
