@@ -169,7 +169,7 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
   };
 
   const onProfileDeleted = (profile: Profile) => {
-    setProfiles(profiles.filter((p) => p != profile));
+    setProfiles(profiles.filter((p) => p.id !== profile.id));
   };
 
   const onProfileUpdated = (profile: Profile) => {
