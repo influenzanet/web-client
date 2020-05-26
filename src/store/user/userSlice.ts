@@ -23,7 +23,7 @@ const userSlice = createSlice({
       subscribedToNewsletter: false,
       sendNewsletterTo: [],
     } as ContactPreferences,
-    contanctInfos: [],
+    contactInfos: [],
   } as User,
   reducers: {},
 });

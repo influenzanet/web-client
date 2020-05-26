@@ -15,7 +15,7 @@ export interface User {
   };
   profiles: Profile[];
   contactPreferences: ContactPreferences;
-  contanctInfos: ContactInfo[];
+  contactInfos: ContactInfo[];
 }
 
 export interface Profile {
