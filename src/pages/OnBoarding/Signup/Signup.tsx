@@ -3,11 +3,9 @@ import { LinkRef } from '../../../components/common/link';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -18,7 +16,6 @@ import RoundedBox from '../../../components/ui/RoundedBox';
 import FlexGrow from '../../../components/common/FlexGrow';
 import { Tooltip } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { signup } from '../../../store/auth/actionsAsync';
 import { signupWithEmailRequest } from '../../../api/auth-api';
 import { GeneralState } from '../../../store/general/generalSlice';
 
