@@ -17,9 +17,10 @@ import Box from '@material-ui/core/Box';
 import RoundedBox from '../../../components/ui/RoundedBox';
 import FlexGrow from '../../../components/common/FlexGrow';
 import { Tooltip } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../../../store/auth/actionsAsync';
 import { signupWithEmailRequest } from '../../../api/auth-api';
+import { GeneralState } from '../../../store/general/generalSlice';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -65,6 +66,8 @@ const Signup: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const dispatch = useDispatch();
+
+  const instanceID = useSelector((state: { general: GeneralState }) => state.general.instanceID);
 
   let [emailAddress, setEmailAddress] = useState("");
   let [password, setPassword] = useState("");
@@ -119,10 +122,13 @@ const Signup: React.FC = () => {
     //   preferredLanguage: "en",
     //   wantsNewsletter: true,
     // }, true));
+
+    console.log(instanceID);
+
     signupWithEmailRequest({
       email: emailAddress,
       password: password,
-      instanceId: 'germany',
+      instanceId: instanceID,
       preferredLanguage: "en",
       wantsNewsletter: wantsNewsletter,
     }).then(response => {
