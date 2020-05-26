@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, Fragment } from 'react';
+import React, { useRef, useEffect, Fragment, useState, ChangeEvent, useContext } from 'react';
 import { LinkRef } from '../../../components/common/link';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -17,6 +17,9 @@ import Box from '@material-ui/core/Box';
 import RoundedBox from '../../../components/ui/RoundedBox';
 import FlexGrow from '../../../components/common/FlexGrow';
 import { Tooltip } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { signup } from '../../../store/auth/actionsAsync';
+import { signupWithEmailRequest } from '../../../api/auth-api';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -46,6 +49,9 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  errorContainer: {
+    marginBottom: theme.spacing(1),
+  },
   errorText: {
     color: "white",
   },
@@ -58,12 +64,75 @@ const Signup: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
+  const dispatch = useDispatch();
+
+  let [emailAddress, setEmailAddress] = useState("");
+  let [password, setPassword] = useState("");
+  let [confirmPassword, setConfirmPassword] = useState("");
+  let [acceptedPrivacyPolicy, setAcceptedPrivacyPolicy] = useState(false);
+  let [wantsNewsletter, setWantsNewsletter] = useState(false);
+
+  let [errorMessages, setErrorMessages] = useState<string[]>([]);
 
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.style.minHeight = `calc(100vh - ${containerRef.current.offsetTop}px)`;
     }
   }, []);
+
+  const handleEmailAdressChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setEmailAddress(event.target.value);
+  }
+
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setPassword(event.target.value);
+  }
+
+  const handleConfirmPasswordChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setConfirmPassword(event.target.value);
+  }
+
+  const handleAcceptedPrivacyPolicyChange = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+    setAcceptedPrivacyPolicy(checked);
+  }
+
+  const handleReceiveNewsletterChange = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+    setWantsNewsletter(checked);
+  }
+
+  const signupButtonEnabled = () => {
+    return acceptedPrivacyPolicy && emailAddress.length > 0 && password.length > 0 && passwordsMatch();
+  }
+
+  const passwordsMatch = () => {
+    return password === confirmPassword;
+  }
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(emailAddress);
+
+    // dispatch(signup({
+    //   email: "test@test.org",
+    //   password: "1235secure",
+    //   instanceId: "germany",
+    //   preferredLanguage: "en",
+    //   wantsNewsletter: true,
+    // }, true));
+    signupWithEmailRequest({
+      email: emailAddress,
+      password: password,
+      instanceId: 'germany',
+      preferredLanguage: "en",
+      wantsNewsletter: wantsNewsletter,
+    }).then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      let errorString = error.response.data.error;
+      // console.log(errorString);
+      if (errorMessages.findIndex((errorMessage) => errorMessage === errorString) === -1) setErrorMessages([errorString]);
+    });
+  }
 
   return (
     <Container ref={containerRef} className={classes.pageContainer} maxWidth="xs" >
@@ -73,14 +142,14 @@ const Signup: React.FC = () => {
       </Box>
       <Typography variant="h3" color="primary">
         Sign Up
-                </Typography>
+      </Typography>
       <RoundedBox classNames={[classes.textContainer]}>
         <Typography variant="body1" color="primary">
           Register now to support the global fight against the novel coronavirus and influenza-like-illnesses!
         </Typography>
       </RoundedBox>
       <RoundedBox classNames={[classes.formContainer]} >
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={onSubmit}>
           <Tooltip title="We need this so we can identify you.">
             <TextField
               variant="outlined"
@@ -92,6 +161,8 @@ const Signup: React.FC = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              value={emailAddress}
+              onChange={handleEmailAdressChange}
             />
           </Tooltip>
           <Tooltip title="Don't make it too long!">
@@ -105,6 +176,8 @@ const Signup: React.FC = () => {
               type="password"
               id="password"
               autoComplete="new-password"
+              value={password}
+              onChange={handlePasswordChange}
             />
           </Tooltip>
           <TextField
@@ -117,9 +190,11 @@ const Signup: React.FC = () => {
             type="password"
             id="confirmPassword"
             autoComplete="new-password"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value={acceptedPrivacyPolicy} onChange={handleAcceptedPrivacyPolicyChange} color="primary" />}
             className={classes.checkBox}
             label={
               <Fragment><span>I have read and accept the </span> <Link variant="body1" component={LinkRef} to="/privacy">privacy statement</Link><span>.*</span></Fragment>
@@ -127,7 +202,7 @@ const Signup: React.FC = () => {
           />
           <Tooltip title="If you want to, we will remind you via E-Mail when new surveys are available in your subscribed studies. We will also send you updates about the project every few weeks.">
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox value={wantsNewsletter} onChange={handleReceiveNewsletterChange} color="primary" />}
               className={classes.checkBox}
               label="I want to receive the newsletter and survey reminders."
             />
@@ -137,8 +212,10 @@ const Signup: React.FC = () => {
             fullWidth
             variant="contained"
             color="primary"
-            component={LinkRef} to="/home"
+            // component={LinkRef} to="/home"
             className={classes.submit}
+            disabled={!signupButtonEnabled()}
+          // onClick={onSubmit}
           >
             Sign Up
                     </Button>
@@ -147,11 +224,13 @@ const Signup: React.FC = () => {
           </Link>
         </form>
       </RoundedBox>
-      <RoundedBox color={theme.palette.error.main}>
-        <Typography variant="body1" color="inherit" className={classes.errorText}>
-          Password too long.
-        </Typography>
-      </RoundedBox>
+      {errorMessages.map(error =>
+        <RoundedBox classNames={[classes.errorContainer]} color={theme.palette.error.main} key={error}>
+          <Typography variant="body1" color="inherit" className={classes.errorText}>
+            {error}
+          </Typography>
+        </RoundedBox>
+      )}
       <FlexGrow />
     </Container>
   );
