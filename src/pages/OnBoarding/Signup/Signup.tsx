@@ -112,16 +112,6 @@ const Signup: React.FC = () => {
     e.preventDefault();
     console.log(emailAddress);
 
-    // dispatch(signup({
-    //   email: "test@test.org",
-    //   password: "1235secure",
-    //   instanceId: "germany",
-    //   preferredLanguage: "en",
-    //   wantsNewsletter: true,
-    // }, true));
-
-    console.log(instanceID);
-
     signupWithEmailRequest({
       email: emailAddress,
       password: password,
@@ -131,9 +121,13 @@ const Signup: React.FC = () => {
     }).then(response => {
       console.log(response.data);
     }).catch(error => {
-      let errorString = error.response.data.error;
-      // console.log(errorString);
-      if (errorMessages.findIndex((errorMessage) => errorMessage === errorString) === -1) setErrorMessages([errorString]);
+      try {
+        let errorString = error.response.data.error;
+        // console.log(errorString);
+        if (errorMessages.findIndex((errorMessage) => errorMessage === errorString) === -1) setErrorMessages([errorString]);
+      } catch {
+        console.log(error);
+      }
     });
   }
 
@@ -152,7 +146,7 @@ const Signup: React.FC = () => {
         </Typography>
       </RoundedBox>
       <RoundedBox classNames={[classes.formContainer]} >
-        <form className={classes.form} onSubmit={onSubmit}>
+        <form className={classes.form} onSubmit={onSubmit} noValidate={true}>
           <Tooltip title="We need this so we can identify you.">
             <TextField
               variant="outlined"

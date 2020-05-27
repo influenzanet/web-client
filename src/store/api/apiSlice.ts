@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { updateObject } from '../utils';
 
 export interface APIState {
-  loggedIn: boolean;
   accessToken: string;
   refreshToken: string;
   expiresAt: number;
@@ -9,8 +9,18 @@ export interface APIState {
 
 const apiSlice = createSlice({
   name: 'api',
-  initialState: {} as APIState,
-  reducers: {},
+  initialState: {
+    accessToken: '',
+    refreshToken: '',
+    expiresAt: 0,
+  } as APIState,
+  reducers: {
+    setState: (state, action: PayloadAction<APIState>) => {
+      updateObject(state, action.payload);
+    },
+  },
 });
+
+export const apiActions = apiSlice.actions;
 
 export default apiSlice;
