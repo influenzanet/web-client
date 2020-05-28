@@ -1,4 +1,4 @@
-import { SurveyResponse, Survey, SurveyContext } from "survey-engine/lib/data_types";
+import { SurveyResponse, Survey, SurveyContext, LocalizedString } from "survey-engine/lib/data_types";
 
 
 export interface SurveyReferenceReq {
@@ -26,4 +26,27 @@ export interface AssignedSurvey {
 
 export interface AssignedSurveys {
   surveys: AssignedSurvey[];
+}
+
+export interface StudyInfos {
+  key: string;
+  status: string;
+  props: {
+    name: LocalizedString[];
+    description: LocalizedString[];
+  }
+}
+
+export interface Studies {
+  studies: StudyInfos[];
+}
+
+export interface SurveyInfo {
+  key: string;
+  name: LocalizedString[];
+  description: LocalizedString[];
+}
+
+export interface SurveyInfos {
+  infos: SurveyInfo[];
 }

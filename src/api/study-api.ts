@@ -1,7 +1,12 @@
 import authApiInstance from './instances/authApiInstance';
-import { SurveyReferenceReq, SurveyAndContextMsg, SurveyResponseReq, AssignedSurveys } from '../types/study-api';
+import { SurveyReferenceReq, SurveyAndContextMsg, SurveyResponseReq, AssignedSurveys, Studies, SurveyInfos } from '../types/study-api';
 
 // Study API
+export const getStudiesForUserReq = () => authApiInstance.get<Studies>('/v1/studies/for-user-profiles');
+export const getAllAvailableStudiesReq = () => authApiInstance.get<Studies>('/v1/studies/active');
+export const getSurveyInfosForStudyReq = (studyKey: string) => authApiInstance.post<SurveyInfos>('/v1/studies/study/get-survey-infos', { studyKey });
+
+// Study flow
 export const enterStudyReq = (studyKey: string) => authApiInstance.post<AssignedSurveys>('/v1/studies/study/enter', { studyKey });
 export const leaveStudyRequest = (studyKey: string) => authApiInstance.post<AssignedSurveys>('/v1/studies/study/leave', { studyKey });
 export const getAllAssignedSurveysReq = () => authApiInstance.get<AssignedSurveys>('/v1/studies/all-assigned-surveys');
