@@ -2,9 +2,9 @@ import axios from 'axios';
 import store from "../../store";
 import { renewTokenReq } from '../auth-api';
 import { apiActions } from '../../store/api/apiSlice';
+import { minuteToMillisecondFactor } from '../../constants/constants';
 
-const minuteFactor = 60000;
-const renewThreshold = 1 * minuteFactor;
+const renewThreshold = 1 * minuteToMillisecondFactor;
 
 const authApiInstance = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL
@@ -20,7 +20,7 @@ const renewToken = async () => {
     store.dispatch(apiActions.setState({
       accessToken: response.data.accessToken,
       refreshToken: response.data.refreshToken,
-      expiresAt: new Date().getTime() + response.data.expiresIn * minuteFactor,
+      expiresAt: new Date().getTime() + response.data.expiresIn * minuteToMillisecondFactor,
     }));
     setDefaultAccessTokenHeader(response.data.accessToken);
 

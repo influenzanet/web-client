@@ -18,6 +18,9 @@ import { Tooltip } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupWithEmailRequest } from '../../../api/auth-api';
 import { GeneralState } from '../../../store/general/generalSlice';
+import { apiActions } from '../../../store/api/apiSlice';
+import { minuteToMillisecondFactor } from '../../../constants/constants';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -64,6 +67,8 @@ const Signup: React.FC = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   const instanceID = useSelector((state: { general: GeneralState }) => state.general.instanceID);
 
   let [emailAddress, setEmailAddress] = useState("");
@@ -73,6 +78,8 @@ const Signup: React.FC = () => {
   let [wantsNewsletter, setWantsNewsletter] = useState(false);
 
   let [errorMessages, setErrorMessages] = useState<string[]>([]);
+
+  let [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -110,26 +117,37 @@ const Signup: React.FC = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(emailAddress);
-
-    signupWithEmailRequest({
-      email: emailAddress,
-      password: password,
-      instanceId: instanceID,
-      preferredLanguage: "en",
-      wantsNewsletter: wantsNewsletter,
-    }).then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      try {
-        let errorString = error.response.data.error;
-        // console.log(errorString);
-        if (errorMessages.findIndex((errorMessage) => errorMessage === errorString) === -1) setErrorMessages([errorString]);
-      } catch {
-        console.log(error);
-      }
-    });
+    signUp();
   }
+
+  const signUp = async () => {
+    if (loading) return;
+    try {
+      setLoading(true);
+      let response = await signupWithEmailRequest({
+        email: emailAddress,
+        password: password,
+        instanceId: instanceID,
+        preferredLanguage: "en",
+        wantsNewsletter: wantsNewsletter,
+      });
+
+      dispatch(apiActions.setState({
+        accessToken: response.data.accessToken,
+        refreshToken: response.data.refreshToken,
+        expiresAt: new Date().getTime() + response.data.expiresIn * minuteToMillisecondFactor,
+      }));
+
+      setLoading(false);
+      history.push("/home");
+    } catch (e) {
+      console.log(e);
+      if (e.response && e.response.data && e.response.data.error) {
+        setErrorMessages([e.response.data.error]);
+      }
+      setLoading(false);
+    }
+  };
 
   return (
     <Container ref={containerRef} className={classes.pageContainer} maxWidth="xs" >
