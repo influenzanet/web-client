@@ -72,7 +72,7 @@ const Signup: React.FC = () => {
 
   const history = useHistory();
 
-  const instanceID = useSelector((state: { general: GeneralState }) => state.general.instanceID);
+  const instanceId = useSelector((state: { general: GeneralState }) => state.general.instanceId);
 
   let [emailAddress, setEmailAddress] = useState("");
   let [password, setPassword] = useState("");
@@ -130,7 +130,7 @@ const Signup: React.FC = () => {
       let response = await signupWithEmailRequest({
         email: emailAddress,
         password: password,
-        instanceId: instanceID,
+        instanceId: instanceId,
         preferredLanguage: "en",
         wantsNewsletter: wantsNewsletter,
       });

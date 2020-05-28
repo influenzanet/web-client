@@ -18,7 +18,7 @@ import RoundedBox from '../../../components/ui/RoundedBox';
 import FlexGrow from '../../../components/common/FlexGrow';
 import { loginWithEmailRequest } from '../../../api/auth-api';
 import { useSelector, useDispatch } from 'react-redux';
-import { GeneralState } from '../../../store/general/generalSlice';
+import { GeneralState, generalActions } from '../../../store/general/generalSlice';
 import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants/constants';
 import { useHistory } from 'react-router';
@@ -74,7 +74,7 @@ const Login: React.FC = () => {
 
   const history = useHistory();
 
-  const instanceID = useSelector((state: { general: GeneralState }) => state.general.instanceID);
+  const [instanceId, persistState] = useSelector((state: { general: GeneralState }) => [state.general.instanceId, state.general.persistState]);
 
   let [emailAddress, setEmailAddress] = useState("");
   let [password, setPassword] = useState("");
@@ -90,7 +90,7 @@ const Login: React.FC = () => {
       let response = await loginWithEmailRequest({
         email: emailAddress,
         password: password,
-        instanceId: instanceID,
+        instanceId: instanceId,
       });
 
       let tokenRefreshedAt = new Date().getTime();
@@ -127,6 +127,10 @@ const Login: React.FC = () => {
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setPassword(event.target.value);
+  }
+
+  const handleRememberMeChange = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+    dispatch(generalActions.setPersistState(checked));
   }
 
   const loginButtonEnabled = () => {
@@ -181,7 +185,7 @@ const Login: React.FC = () => {
             onChange={handlePasswordChange}
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value={persistState} onChange={handleRememberMeChange} color="primary" />}
             className={classes.remmemberText}
             label="Remember me"
           />
