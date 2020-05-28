@@ -23,6 +23,7 @@ import { minuteToMillisecondFactor } from '../../../constants/constants';
 import { useHistory } from 'react-router';
 import { OnBoardingPaths } from '../OnBoarding';
 import { HomePaths } from '../../Home/Home';
+import { userActions } from '../../../store/user/userSlice';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -134,11 +135,16 @@ const Signup: React.FC = () => {
         wantsNewsletter: wantsNewsletter,
       });
 
+      let tokenRefreshedAt = new Date().getTime();
+
       dispatch(apiActions.setState({
         accessToken: response.data.accessToken,
         refreshToken: response.data.refreshToken,
-        expiresAt: new Date().getTime() + response.data.expiresIn * minuteToMillisecondFactor,
+        expiresAt: tokenRefreshedAt + response.data.expiresIn * minuteToMillisecondFactor,
       }));
+
+      dispatch(userActions.setFromTokenResponse(response.data));
+      dispatch(userActions.setLastTokenRefresh(tokenRefreshedAt));
 
       setLoading(false);
       history.push(HomePaths.Dashboard);
