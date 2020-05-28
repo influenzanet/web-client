@@ -21,6 +21,8 @@ import { GeneralState } from '../../../store/general/generalSlice';
 import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants/constants';
 import { useHistory } from 'react-router';
+import { OnBoardingPaths } from '../OnBoarding';
+import { HomePaths } from '../../Home/Home';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -139,7 +141,7 @@ const Signup: React.FC = () => {
       }));
 
       setLoading(false);
-      history.push("/home");
+      history.push(HomePaths.Dashboard);
     } catch (e) {
       console.log(e);
       if (e.response && e.response.data && e.response.data.error) {
@@ -234,7 +236,7 @@ const Signup: React.FC = () => {
           >
             Sign Up
                     </Button>
-          <Link variant="body2" component={LinkRef} to="/start/login" align="center">
+          <Link variant="body2" component={LinkRef} to={OnBoardingPaths.Login} align="center">
             {"Already have an account? Sign in."}
           </Link>
         </form>

@@ -22,6 +22,8 @@ import { GeneralState } from '../../../store/general/generalSlice';
 import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants/constants';
 import { useHistory } from 'react-router';
+import { OnBoardingPaths } from '../OnBoarding';
+import { HomePaths } from '../../Home/Home';
 
 
 const useStyles = makeStyles(theme => ({
@@ -97,7 +99,7 @@ const Login: React.FC = () => {
       }));
 
       setLoading(false);
-      history.push("/home");
+      history.push(HomePaths.Dashboard);
     } catch (e) {
       console.log(e);
       if (e.response && e.response.data && e.response.data.error) {
@@ -195,7 +197,7 @@ const Login: React.FC = () => {
                             </Link>
             </Grid>
             <Grid item>
-              <Link variant="body2" component={LinkRef} to="/start/signup">
+              <Link variant="body2" component={LinkRef} to={OnBoardingPaths.Signup}>
                 {"Don't have an account? Sign Up."}
               </Link>
             </Grid>
