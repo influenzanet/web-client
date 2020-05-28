@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState, ChangeEvent } from 'react';
 import { LinkRef } from '../../../components/common/link';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -16,6 +16,12 @@ import logo from '../../../assets/images/Influenzanet_Logo_RGB.png';
 import Box from '@material-ui/core/Box';
 import RoundedBox from '../../../components/ui/RoundedBox';
 import FlexGrow from '../../../components/common/FlexGrow';
+import { loginWithEmailRequest } from '../../../api/auth-api';
+import { useSelector, useDispatch } from 'react-redux';
+import { GeneralState } from '../../../store/general/generalSlice';
+import { apiActions } from '../../../store/api/apiSlice';
+import { minuteToMillisecondFactor } from '../../../constants/constants';
+import { useHistory } from 'react-router';
 
 
 const useStyles = makeStyles(theme => ({
@@ -46,8 +52,14 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  errorContainer: {
+    marginBottom: theme.spacing(1),
+  },
   errorText: {
     color: "white",
+  },
+  remmemberText: {
+    userSelect: "none",
   }
 }));
 
@@ -55,13 +67,68 @@ const Login: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
+  const dispatch = useDispatch();
 
+  const history = useHistory();
+
+  const instanceID = useSelector((state: { general: GeneralState }) => state.general.instanceID);
+
+  let [emailAddress, setEmailAddress] = useState("");
+  let [password, setPassword] = useState("");
+
+  let [errorMessages, setErrorMessages] = useState<string[]>([]);
+
+  let [loading, setLoading] = useState(false);
+
+  const login = async () => {
+    if (loading) return;
+    try {
+      setLoading(true);
+      let response = await loginWithEmailRequest({
+        email: emailAddress,
+        password: password,
+        instanceId: instanceID,
+      });
+
+      dispatch(apiActions.setState({
+        accessToken: response.data.accessToken,
+        refreshToken: response.data.refreshToken,
+        expiresAt: new Date().getTime() + response.data.expiresIn * minuteToMillisecondFactor,
+      }));
+
+      setLoading(false);
+      history.push("/home");
+    } catch (e) {
+      console.log(e);
+      if (e.response && e.response.data && e.response.data.error) {
+        setErrorMessages([e.response.data.error]);
+      }
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.style.minHeight = `calc(100vh - ${containerRef.current.offsetTop}px)`;
     }
   }, []);
+
+  const handleEmailAdressChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setEmailAddress(event.target.value);
+  }
+
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setPassword(event.target.value);
+  }
+
+  const loginButtonEnabled = () => {
+    return emailAddress.length > 0 && password.length > 0;
+  }
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    login();
+  }
 
   return (
     <Container ref={containerRef} className={classes.pageContainer} maxWidth="xs" >
@@ -78,7 +145,7 @@ const Login: React.FC = () => {
         </Typography>
       </RoundedBox>
       <RoundedBox classNames={[classes.formContainer]} >
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={onSubmit} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -89,6 +156,8 @@ const Login: React.FC = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            value={emailAddress}
+            onChange={handleEmailAdressChange}
           />
           <TextField
             variant="outlined"
@@ -100,9 +169,12 @@ const Login: React.FC = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={password}
+            onChange={handlePasswordChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
+            className={classes.remmemberText}
             label="Remember me"
           />
           <Button
@@ -110,8 +182,9 @@ const Login: React.FC = () => {
             fullWidth
             variant="contained"
             color="primary"
-            component={LinkRef} to="/home"
+            // component={LinkRef} to="/home"
             className={classes.submit}
+            disabled={!loginButtonEnabled()}
           >
             Sign In
                     </Button>
@@ -129,11 +202,13 @@ const Login: React.FC = () => {
           </Grid>
         </form>
       </RoundedBox>
-      <RoundedBox color={theme.palette.error.main}>
-        <Typography variant="body1" color="inherit" className={classes.errorText}>
-          Password too long.
-        </Typography>
-      </RoundedBox>
+      {errorMessages.map(error =>
+        <RoundedBox classNames={[classes.errorContainer]} color={theme.palette.error.main} key={error}>
+          <Typography variant="body1" color="inherit" className={classes.errorText}>
+            {error}
+          </Typography>
+        </RoundedBox>
+      )}
       <FlexGrow />
     </Container>
   );
