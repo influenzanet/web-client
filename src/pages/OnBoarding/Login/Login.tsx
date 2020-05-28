@@ -25,6 +25,7 @@ import { useHistory } from 'react-router';
 import { OnBoardingPaths } from '../OnBoarding';
 import { HomePaths } from '../../Home/Home';
 import { userActions } from '../../../store/user/userSlice';
+import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 
 
 const useStyles = makeStyles(theme => ({
@@ -144,6 +145,7 @@ const Login: React.FC = () => {
 
   return (
     <Container ref={containerRef} className={classes.pageContainer} maxWidth="xs" >
+      <LanguageSelector />
       <FlexGrow />
       <Box className={classes.logo} height="80px">
         <img src={logo} alt="logo" height="100%" />
@@ -221,7 +223,7 @@ const Login: React.FC = () => {
           </Typography>
         </RoundedBox>
       )}
-      <FlexGrow />
+      <FlexGrow flexGrow={2} />
     </Container>
   );
 }

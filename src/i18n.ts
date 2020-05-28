@@ -1,6 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import Backend from 'i18next-http-backend';
+import store from "./store";
+import { userActions } from "./store/user/userSlice";
 
 
 i18n
@@ -19,6 +21,9 @@ i18n
     react: {
       useSuspense: true
     }
-
+  })
+  .then(() => {
+    store.dispatch(userActions.initializeLanguage(i18n.language));
   });
+
 export default i18n;

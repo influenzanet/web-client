@@ -18,7 +18,7 @@ const userSlice = createSlice({
         type: '',
         accountId: '',
         accountConfirmedAt: 0,
-        preferredLanguage: 'en',
+        preferredLanguage: '',
       },
       roles: [],
       timestamps: {
@@ -37,6 +37,14 @@ const userSlice = createSlice({
     selectedProfileId: '',
   } as UserState,
   reducers: {
+    initializeLanguage: (state, action: PayloadAction<string>) => {
+      if (state.currentUser.account.preferredLanguage === '') {
+        return updateObject(state, { currentUser: { account: { preferredLanguage: action.payload } } });
+      } else {
+        i18n.changeLanguage(state.currentUser.account.preferredLanguage);
+        return state;
+      }
+    },
     setLastTokenRefresh: (state, action: PayloadAction<number>) => {
       return updateObject(state, {
         currentUser: {
