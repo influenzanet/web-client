@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User, ContactPreferences } from '../../types/user';
 import { TokenResponse } from '../../types/auth-api';
 import { updateObject } from '../utils';
+import i18n from '../../i18n';
 
 export interface UserState {
   currentUser: User,
@@ -37,16 +38,16 @@ const userSlice = createSlice({
   } as UserState,
   reducers: {
     setLastTokenRefresh: (state, action: PayloadAction<number>) => {
-      updateObject(state, {
+      return updateObject(state, {
         currentUser: {
           timestamps: {
             lastTokenRefresh: action.payload,
           }
         }
-      });
+      } as UserState);
     },
     setFromTokenResponse: (state, action: PayloadAction<TokenResponse>) => {
-      updateObject(state, {
+      return updateObject(state, {
         currentUser: {
           profiles: action.payload.profiles,
           account: {
@@ -54,6 +55,16 @@ const userSlice = createSlice({
           }
         },
         selectedProfileId: action.payload.selectedProfileId,
+      } as UserState);
+    },
+    setPreferredLanguage: (state, action: PayloadAction<string>) => {
+      i18n.changeLanguage(action.payload);
+      return updateObject(state, {
+        currentUser: {
+          account: {
+            preferredLanguage: action.payload,
+          }
+        }
       } as UserState);
     }
   },

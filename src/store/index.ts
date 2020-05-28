@@ -3,11 +3,13 @@ import navigationSlice from './navigation/navigationSlice';
 import generalSlice from './general/generalSlice';
 import apiSlice from './api/apiSlice';
 import { getDefaultMiddleware, configureStore } from '@reduxjs/toolkit';
+import userSlice from './user/userSlice';
 
 const reducers = {
   general: generalSlice.reducer,
   api: apiSlice.reducer,
   navigation: navigationSlice.reducer,
+  user: userSlice.reducer,
 };
 
 const middleWare = [...getDefaultMiddleware(), thunk];

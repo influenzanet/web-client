@@ -16,7 +16,7 @@ const apiSlice = createSlice({
   } as APIState,
   reducers: {
     setState: (state, action: PayloadAction<APIState>) => {
-      updateObject(state, action.payload);
+      return updateObject(state, action.payload);
     },
   },
 });
