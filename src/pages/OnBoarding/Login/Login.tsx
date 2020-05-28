@@ -26,6 +26,7 @@ import { OnBoardingPaths } from '../OnBoarding';
 import { HomePaths } from '../../Home/Home';
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
+import { useTranslation } from 'react-i18next';
 
 
 const useStyles = makeStyles(theme => ({
@@ -72,6 +73,7 @@ const Login: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const dispatch = useDispatch();
+  const { t } = useTranslation(['app']);
 
   const history = useHistory();
 
@@ -151,11 +153,11 @@ const Login: React.FC = () => {
         <img src={logo} alt="logo" height="100%" />
       </Box>
       <Typography variant="h3" color="primary">
-        Sign In
-                </Typography>
+        {t("app:loginPage.title")}
+      </Typography>
       <RoundedBox classNames={[classes.textContainer]}>
         <Typography variant="body1" color="primary">
-          Welcome back!
+          {t("app:loginPage.message")}
         </Typography>
       </RoundedBox>
       <RoundedBox classNames={[classes.formContainer]} >
@@ -166,7 +168,7 @@ const Login: React.FC = () => {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label={t("app:loginPage.emailPlaceholder")}
             name="email"
             autoComplete="email"
             autoFocus
@@ -179,7 +181,7 @@ const Login: React.FC = () => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label={t("app:loginPage.passwordPlaceholder")}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -189,7 +191,7 @@ const Login: React.FC = () => {
           <FormControlLabel
             control={<Checkbox value={persistState} onChange={handleRememberMeChange} color="primary" />}
             className={classes.remmemberText}
-            label="Remember me"
+            label={t("app:loginPage.rememberMeLabel")}
           />
           <Button
             type="submit"
@@ -200,17 +202,17 @@ const Login: React.FC = () => {
             className={classes.submit}
             disabled={!loginButtonEnabled()}
           >
-            Sign In
-                    </Button>
+            {t("app:loginPage.loginButtonLabel")}
+          </Button>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Forgot password?
-                            </Link>
+                {t("app:loginPage.forgotPasswordLink")}
+              </Link>
             </Grid>
             <Grid item>
               <Link variant="body2" component={LinkRef} to={OnBoardingPaths.Signup}>
-                {"Don't have an account? Sign Up."}
+                {t("app:loginPage.signupLink")}
               </Link>
             </Grid>
           </Grid>

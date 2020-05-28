@@ -6,6 +6,16 @@
     "title": "Influenzanet",
     "metaDescription": "Partizipatives Umfragesystem für Bekämpfung von Epidemien"
   },
+  "loginPage": {
+    "title": "Anmelden",
+    "message": "Willkommen zurück!",
+    "emailPlaceholder": "E-Mail Addresse",
+    "passwordPlaceholder": "Passwort",
+    "rememberMeLabel": "Angemeldet bleiben",
+    "loginButtonLabel": "Anmelden",
+    "forgotPasswordLink": "Passwort vergessen?",
+    "signupLink": "Noch kein Konto? Jetzt registrieren."
+  },
   "profileRepresentation": {
     "nicknamePlaceholder": "Spitzname",
     "deleteButtonLabel": "Löschen"

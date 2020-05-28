@@ -6,6 +6,16 @@
     "title": "Influenzanet",
     "metaDescription": "A participatory survey system for fighting epidemics"
   },
+  "loginPage": {
+    "title": "Sign In",
+    "message": "Welcome back!",
+    "emailPlaceholder": "Email Address",
+    "passwordPlaceholder": "Password",
+    "rememberMeLabel": "Remember me",
+    "loginButtonLabel": "Sign in",
+    "forgotPasswordLink": "Forgot your password?",
+    "signupLink": "Don't have an account? Sign Up."
+  },
   "profileRepresentation": {
     "nicknamePlaceholder": "Nickname",
     "deleteButtonLabel": "Delete"
