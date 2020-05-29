@@ -198,7 +198,7 @@ const Login: React.FC = () => {
             onChange={handlePasswordChange}
           />
           <FormControlLabel
-            control={<Checkbox checked={persistState} onChange={handleRememberMeChange} color="primary" />}
+            control={<Checkbox checked={persistState} value={persistState} onChange={handleRememberMeChange} color="primary" />}
             className={classes.remmemberText}
             label={t("app:loginPage.rememberMeLabel")}
           />

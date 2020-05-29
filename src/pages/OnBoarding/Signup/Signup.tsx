@@ -218,7 +218,7 @@ const Signup: React.FC = () => {
             onChange={handleConfirmPasswordChange}
           />
           <FormControlLabel
-            control={<Checkbox checked={acceptedPrivacyPolicy} onChange={handleAcceptedPrivacyPolicyChange} color="primary" />}
+            control={<Checkbox checked={acceptedPrivacyPolicy} value={acceptedPrivacyPolicy} onChange={handleAcceptedPrivacyPolicyChange} color="primary" />}
             className={classes.checkBox}
             label={
               <Fragment><span>{t("app:signupPage.acceptPrivacyPolicyLabelBeforeLink")}</span> <Link variant="body1" component={LinkRef} to="/privacy">{t("app:signupPage.acceptPrivacyPolicyLink")}</Link><span>{t("app:signupPage.acceptPrivacyPolicyLabelAfterLink")}</span></Fragment>
@@ -226,7 +226,7 @@ const Signup: React.FC = () => {
           />
           <Tooltip title={t("app:signupPage.newsletterHint") as string}>
             <FormControlLabel
-              control={<Checkbox checked={wantsNewsletter} onChange={handleReceiveNewsletterChange} color="primary" />}
+              control={<Checkbox checked={wantsNewsletter} value={wantsNewsletter} onChange={handleReceiveNewsletterChange} color="primary" />}
               className={classes.checkBox}
               label={t("app:signupPage.receiveNewsletterLabel")}
             />
