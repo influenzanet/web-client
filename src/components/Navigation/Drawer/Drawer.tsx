@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 import {
@@ -18,7 +18,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import styles from './Drawer.module.scss';
 import logo from '../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
 // import { LinkRef } from '../../../common/link';
-import { Redirect, useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import { LinkRef } from '../../common/link';
 import { navigationActions, NavigationState } from '../../../store/navigation/navigationSlice';
 

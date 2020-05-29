@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useDispatch } from 'react-redux'
 import { Container } from '@material-ui/core';
 
 import SurveyView from '../../../components/survey/SurveyView/SurveyView';
 import { testSurvey } from '../../../test-surveys/test-survey-1';
-import { survey } from '../../../test-surveys/qcov';
-import SurveyEndView from '../../../components/survey/SurveyEndViews/EmojiActionPage/EmojiActionPage';
-import jsonSurvey from '../../../test-surveys/survey.json';
 import { useTranslation } from 'react-i18next';
 import { Survey } from 'survey-engine/lib/data_types';
 
-import Axios from 'axios';
 import { navigationActions } from '../../../store/navigation/navigationSlice';
+import { useMountEffect } from '../../../hooks';
 
 const MyStudies: React.FC = () => {
   const dispatch = useDispatch();
-  const { t, i18n, ready } = useTranslation(['common', 'survey']);
+  const { t, i18n } = useTranslation(['common', 'survey']);
 
   const [survey, setSurvey] = useState<Survey | undefined>(undefined);
 
@@ -24,11 +21,11 @@ const MyStudies: React.FC = () => {
     i18n.changeLanguage('de');
   }
 
-  useEffect(() => {
+  useMountEffect(() => {
     //setSurvey(jsonSurvey as Survey);
     setSurvey(testSurvey);
     dispatch(navigationActions.setPageTitle('My Studies'));
-  }, []);
+  });
 
   return (
     <Container maxWidth="lg">

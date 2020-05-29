@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Profile } from '../../../types/user';
-import { Grid, makeStyles, Theme, createStyles, Typography, TextField, useTheme, Dialog } from '@material-ui/core';
+import { Grid, makeStyles, Theme, createStyles, Typography, TextField, useTheme } from '@material-ui/core';
 import getAvatarPathFromID from '../utils/ProfileUtils';
 import RoundedBox from '../../../components/ui/RoundedBox';
 import RoundedButton from '../../../components/ui/buttons/RoundedButton';
