@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from "../../store";
 import { renewTokenReq } from '../auth-api';
 import { apiActions } from '../../store/api/apiSlice';
-import { minuteToMillisecondFactor } from '../../constants/constants';
+import { minuteToMillisecondFactor } from '../../constants';
 
 const renewThreshold = 1 * minuteToMillisecondFactor;
 

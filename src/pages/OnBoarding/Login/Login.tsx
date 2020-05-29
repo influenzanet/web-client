@@ -20,7 +20,7 @@ import { loginWithEmailRequest } from '../../../api/auth-api';
 import { useSelector, useDispatch } from 'react-redux';
 import { GeneralState, generalActions } from '../../../store/general/generalSlice';
 import { apiActions } from '../../../store/api/apiSlice';
-import { minuteToMillisecondFactor } from '../../../constants/constants';
+import { minuteToMillisecondFactor } from '../../../constants';
 import { useHistory } from 'react-router';
 import { OnBoardingPaths } from '../OnBoarding';
 import { HomePaths } from '../../Home/Home';
