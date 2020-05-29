@@ -9,12 +9,28 @@
   "loginPage": {
     "title": "Anmelden",
     "message": "Willkommen zurück!",
-    "emailPlaceholder": "E-Mail Addresse",
+    "emailPlaceholder": "E-Mail Adresse",
     "passwordPlaceholder": "Passwort",
     "rememberMeLabel": "Angemeldet bleiben",
     "loginButtonLabel": "Anmelden",
     "forgotPasswordLink": "Passwort vergessen?",
     "signupLink": "Noch kein Konto? Jetzt registrieren."
+  },
+  "signupPage": {
+    "title": "Registrieren",
+    "message": "Registrieren Sie sich jetzt, um den globalen Kampf gegen das neue Coronavirus und Influenza-ähnliche Krankheiten zu unterstützen!",
+    "emailPlaceholder": "E-Mail Adresse",
+    "passwordPlaceholder": "Passwort",
+    "confirmPasswordPlaceholder": "Passwort bestätigen",
+    "emailHint": "Die E-Mail Adresse wird als Nutzername für den Account dienen.",
+    "passwordHint": "Aus Sicherheitsgründen sollte das Passwort mindestens 6 Zeichen lang sein und aus mindestens einem Buchstaben und einer Ziffer bestehen.",
+    "newsletterHint": "Falls Sie wollen, erinnern wir sie per E-Mail, wenn neue Umfragen für Ihre abonnierten Studien verfügbar sind. Wir senden Ihnen außerdem alle paar Wochen ein kurzes Update mit Neuigkeiten.",
+    "acceptPrivacyPolicyLabelBeforeLink": "Ich habe die ",
+    "acceptPrivacyPolicyLink": "Datenschutzerklärung",
+    "acceptPrivacyPolicyLabelAfterLink": " gelesen und akzeptiere sie.*",
+    "receiveNewsletterLabel": "Ich möchte den Newsletter und Erinnerungen an Umfragen erhalten.",
+    "signupButtonLabel": "Registrieren",
+    "loginLink": "Sie besitzen bereits ein Konto? Jetzt einloggen."
   },
   "onboardingErrors": {
     "invalidEmail": "Fehlerhafte Email-Adresse.",

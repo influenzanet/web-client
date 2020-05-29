@@ -16,6 +16,22 @@
     "forgotPasswordLink": "Forgot your password?",
     "signupLink": "Don't have an account? Sign Up."
   },
+  "signupPage": {
+    "title": "Sign Up",
+    "message": "Register now to support the global fight against the novel coronavirus and influenza-like-illnesses!",
+    "emailPlaceholder": "Email Address",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm Password",
+    "emailHint": "Your email address will serve as the username for your account.",
+    "passwordHint": "For security reasons, your password should be at least 6 characters long and contain at least one number and one letter.",
+    "newsletterHint": "If you want to, we will remind you via E-Mail when new surveys are available in your subscribed studies. We will also send you updates about the project every few weeks.",
+    "acceptPrivacyPolicyLabelBeforeLink": "I have read and accept the ",
+    "acceptPrivacyPolicyLink": "privacy statement",
+    "acceptPrivacyPolicyLabelAfterLink": ".*",
+    "receiveNewsletterLabel": "I want to receive the newsletter and survey reminders.",
+    "signupButtonLabel": "Sign up",
+    "loginLink": "Already have an account? Sign in."
+  },
   "onboardingErrors": {
     "invalidEmail": "Invalid email address.",
     "weakPassword": "Password too weak.",

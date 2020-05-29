@@ -27,6 +27,7 @@ import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { setDefaultAccessTokenHeader } from '../../../api/instances/authApiInstance';
 import OnboardingError from '../Error/OnboardingError';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   textContainer: {
     marginTop: theme.spacing(2),
+    textAlign: "center",
   },
   formContainer: {
     marginTop: theme.spacing(2),
@@ -65,6 +67,7 @@ const Signup: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const { t } = useTranslation(['app']);
 
   const history = useHistory();
 
@@ -162,23 +165,23 @@ const Signup: React.FC = () => {
         <img src={logo} alt="logo" height="100%" />
       </Box>
       <Typography variant="h3" color="primary">
-        Sign Up
+        {t("app:signupPage.title")}
       </Typography>
       <RoundedBox classNames={[classes.textContainer]}>
         <Typography variant="body1" color="primary">
-          Register now to support the global fight against the novel coronavirus and influenza-like-illnesses!
+          {t("app:signupPage.message")}
         </Typography>
       </RoundedBox>
       <RoundedBox classNames={[classes.formContainer]} >
         <form className={classes.form} onSubmit={onSubmit} noValidate={true}>
-          <Tooltip title="We need this so we can identify you.">
+          <Tooltip title={t("app:signupPage.emailHint") as string}>
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label={t("app:signupPage.emailPlaceholder")}
               name="email"
               autoComplete="email"
               autoFocus
@@ -186,14 +189,14 @@ const Signup: React.FC = () => {
               onChange={handleEmailAdressChange}
             />
           </Tooltip>
-          <Tooltip title="Don't make it too long!">
+          <Tooltip title={t("app:signupPage.passwordHint") as string}>
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
               name="password"
-              label="Password"
+              label={t("app:signupPage.passwordPlaceholder")}
               type="password"
               id="password"
               autoComplete="new-password"
@@ -207,7 +210,7 @@ const Signup: React.FC = () => {
             required
             fullWidth
             name="confirmPassword"
-            label="Confirm Password"
+            label={t("app:signupPage.confirmPasswordPlaceholder")}
             type="password"
             id="confirmPassword"
             autoComplete="new-password"
@@ -218,14 +221,14 @@ const Signup: React.FC = () => {
             control={<Checkbox value={acceptedPrivacyPolicy} onChange={handleAcceptedPrivacyPolicyChange} color="primary" />}
             className={classes.checkBox}
             label={
-              <Fragment><span>I have read and accept the </span> <Link variant="body1" component={LinkRef} to="/privacy">privacy statement</Link><span>.*</span></Fragment>
+              <Fragment><span>{t("app:signupPage.acceptPrivacyPolicyLabelBeforeLink")}</span> <Link variant="body1" component={LinkRef} to="/privacy">{t("app:signupPage.acceptPrivacyPolicyLink")}</Link><span>{t("app:signupPage.acceptPrivacyPolicyLabelAfterLink")}</span></Fragment>
             }
           />
-          <Tooltip title="If you want to, we will remind you via E-Mail when new surveys are available in your subscribed studies. We will also send you updates about the project every few weeks.">
+          <Tooltip title={t("app:signupPage.newsletterHint") as string}>
             <FormControlLabel
               control={<Checkbox value={wantsNewsletter} onChange={handleReceiveNewsletterChange} color="primary" />}
               className={classes.checkBox}
-              label="I want to receive the newsletter and survey reminders."
+              label={t("app:signupPage.receiveNewsletterLabel")}
             />
           </Tooltip>
           <Button
@@ -238,10 +241,10 @@ const Signup: React.FC = () => {
             disabled={!signupButtonEnabled()}
           // onClick={onSubmit}
           >
-            Sign Up
-                    </Button>
+            {t("app:signupPage.signupButtonLabel")}
+          </Button>
           <Link variant="body2" component={LinkRef} to={OnBoardingPaths.Login} align="center">
-            {"Already have an account? Sign in."}
+            {t("app:signupPage.loginLink")}
           </Link>
         </form>
       </RoundedBox>
