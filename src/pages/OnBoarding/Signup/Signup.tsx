@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, Fragment, useState, ChangeEvent, useContext } from 'react';
+import React, { useRef, useEffect, Fragment, useState, ChangeEvent } from 'react';
 import { LinkRef } from '../../../components/common/link';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -25,6 +25,7 @@ import { OnBoardingPaths } from '../OnBoarding';
 import { HomePaths } from '../../Home/Home';
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
+import { setDefaultAccessTokenHeader } from '../../../api/instances/authApiInstance';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -144,8 +145,9 @@ const Signup: React.FC = () => {
         expiresAt: tokenRefreshedAt + response.data.expiresIn * minuteToMillisecondFactor,
       }));
 
-      dispatch(userActions.setFromTokenResponse(response.data));
-      dispatch(userActions.setLastTokenRefresh(tokenRefreshedAt));
+      setDefaultAccessTokenHeader(response.data.accessToken);
+
+      dispatch(userActions.setOnNewToken({ tokenResponse: response.data, timestamp: tokenRefreshedAt }));
 
       setLoading(false);
       history.push(HomePaths.Dashboard);

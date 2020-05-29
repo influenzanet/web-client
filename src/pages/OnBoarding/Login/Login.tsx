@@ -24,9 +24,11 @@ import { minuteToMillisecondFactor } from '../../../constants/constants';
 import { useHistory } from 'react-router';
 import { OnBoardingPaths } from '../OnBoarding';
 import { HomePaths } from '../../Home/Home';
-import { userActions } from '../../../store/user/userSlice';
+import { userActions, UserState } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { useTranslation } from 'react-i18next';
+import { setPreferredLanguageReq } from '../../../api/user-management-api';
+import { setDefaultAccessTokenHeader } from '../../../api/instances/authApiInstance';
 
 
 const useStyles = makeStyles(theme => ({
@@ -78,6 +80,7 @@ const Login: React.FC = () => {
   const history = useHistory();
 
   const [instanceId, persistState] = useSelector((state: { general: GeneralState }) => [state.general.instanceId, state.general.persistState]);
+  const currentPreferredLanguage = useSelector((state: { user: UserState }) => state.user.currentUser.account.preferredLanguage);
 
   let [emailAddress, setEmailAddress] = useState("");
   let [password, setPassword] = useState("");
@@ -90,6 +93,7 @@ const Login: React.FC = () => {
     if (loading) return;
     try {
       setLoading(true);
+
       let response = await loginWithEmailRequest({
         email: emailAddress,
         password: password,
@@ -104,8 +108,19 @@ const Login: React.FC = () => {
         expiresAt: tokenRefreshedAt + response.data.expiresIn * minuteToMillisecondFactor,
       }));
 
-      dispatch(userActions.setFromTokenResponse(response.data));
-      dispatch(userActions.setLastTokenRefresh(tokenRefreshedAt));
+      setDefaultAccessTokenHeader(response.data.accessToken);
+
+      if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.preferredLanguage) {
+        // Let server know that user chose a different language on login.
+        let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
+        userResponse.data.timestamps.lastTokenRefresh = tokenRefreshedAt;
+        dispatch(userActions.setState({
+          currentUser: userResponse.data,
+          selectedProfileId: response.data.selectedProfileId,
+        }));
+      } else {
+        dispatch(userActions.setOnNewToken({ tokenResponse: response.data, timestamp: tokenRefreshedAt }));
+      }
 
       setLoading(false);
       history.push(HomePaths.Dashboard);

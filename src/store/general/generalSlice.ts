@@ -9,12 +9,12 @@ export interface GeneralState {
 const generalSlice = createSlice({
   name: 'general',
   initialState: {
-    instanceID: 'germany',
+    instanceId: 'germany',
     persistState: false,
   },
   reducers: {
     setPersistState: (state, action: PayloadAction<boolean>) => {
-      return updateObject(state, { persistState: action.payload });
+      return updateObject(state, { persistState: action.payload } as GeneralState);
     }
   },
 });

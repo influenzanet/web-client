@@ -39,30 +39,27 @@ const userSlice = createSlice({
   reducers: {
     initializeLanguage: (state, action: PayloadAction<string>) => {
       if (state.currentUser.account.preferredLanguage === '') {
-        return updateObject(state, { currentUser: { account: { preferredLanguage: action.payload } } });
+        return updateObject(state, { currentUser: { account: { preferredLanguage: action.payload } } } as UserState);
       } else {
         i18n.changeLanguage(state.currentUser.account.preferredLanguage);
         return state;
       }
     },
-    setLastTokenRefresh: (state, action: PayloadAction<number>) => {
-      return updateObject(state, {
-        currentUser: {
-          timestamps: {
-            lastTokenRefresh: action.payload,
-          }
-        }
-      } as UserState);
+    setState: (state, action: PayloadAction<UserState>) => {
+      return updateObject(state, action.payload);
     },
-    setFromTokenResponse: (state, action: PayloadAction<TokenResponse>) => {
+    setOnNewToken: (state, action: PayloadAction<{ tokenResponse: TokenResponse, timestamp: number }>) => {
       return updateObject(state, {
         currentUser: {
-          profiles: action.payload.profiles,
+          profiles: action.payload.tokenResponse.profiles,
           account: {
-            preferredLanguage: action.payload.preferredLanguage,
+            preferredLanguage: action.payload.tokenResponse.preferredLanguage,
+          },
+          timestamps: {
+            lastTokenRefresh: action.payload.timestamp,
           }
         },
-        selectedProfileId: action.payload.selectedProfileId,
+        selectedProfileId: action.payload.tokenResponse.selectedProfileId,
       } as UserState);
     },
     setPreferredLanguage: (state, action: PayloadAction<string>) => {
