@@ -1,4 +1,4 @@
-import authApiInstance from './instances/authApiInstance';
+import authApiInstance from './instances/auth-api-instance';
 import { SurveyReferenceReq, SurveyAndContextMsg, SurveyResponseReq, AssignedSurveys, Studies, SurveyInfos } from '../types/study-api';
 
 // Study API

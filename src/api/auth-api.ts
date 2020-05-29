@@ -1,6 +1,6 @@
 import { SignupMsg, LoginMsg, TokenResponse } from '../types/auth-api';
-import authApiInstance from './instances/authApiInstance';
-import apiInstance from './instances/ApiInstance';
+import authApiInstance from './instances/auth-api-instance';
+import apiInstance from './instances/api-instance';
 
 // Auth API
 export const signupWithEmailRequest = (creds: SignupMsg) => apiInstance.post<TokenResponse>('/v1/auth/signup-with-email', creds);

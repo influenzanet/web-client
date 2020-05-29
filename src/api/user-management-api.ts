@@ -1,4 +1,4 @@
-import authApiInstance from './instances/authApiInstance';
+import authApiInstance from './instances/auth-api-instance';
 import { PasswordResetInfos } from '../types/user-management-api';
 import { ServiceStatus } from '../types/general';
 import { User, Profile, ContactPreferences, ContactInfo } from '../types/user';

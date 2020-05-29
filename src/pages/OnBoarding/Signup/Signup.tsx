@@ -25,7 +25,7 @@ import { OnBoardingPaths } from '../OnBoarding';
 import { HomePaths } from '../../Home/Home';
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
-import { setDefaultAccessTokenHeader } from '../../../api/instances/authApiInstance';
+import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
 import { useTranslation } from 'react-i18next';
 

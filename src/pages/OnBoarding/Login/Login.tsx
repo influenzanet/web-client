@@ -28,7 +28,7 @@ import { userActions, UserState } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import { setPreferredLanguageReq } from '../../../api/user-management-api';
-import { setDefaultAccessTokenHeader } from '../../../api/instances/authApiInstance';
+import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
 
 
