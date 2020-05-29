@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import { Helmet } from 'react-helmet';
 
@@ -25,6 +25,9 @@ import InfluenzaNetThemeData from './themes/influenzanet-theme';
 import SISThemeData from './themes/sis-theme';
 import PWCThemeData from './themes/pwc-theme';
 import ProfileSelection from './pages/Profile/ProfileSelection/ProfileSelection';
+import { RootState } from './store';
+import { useSelector } from 'react-redux';
+import i18n from './i18n';
 
 // import TestForm from './components/form/login/LoginForm';
 
@@ -34,6 +37,12 @@ const App: React.FC = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const themeParam = urlParams.get('theme');
+
+  const language = useSelector((state: RootState) => state.user.currentUser.account.preferredLanguage);
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
 
   let themeData = {};
 

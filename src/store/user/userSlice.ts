@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User, ContactPreferences } from '../../types/user';
 import { TokenResponse } from '../../types/auth-api';
 import { updateObject } from '../utils';
-import i18n from '../../i18n';
 
 export interface UserState {
   currentUser: User,
@@ -41,7 +40,6 @@ const userSlice = createSlice({
       if (state.currentUser.account.preferredLanguage === '') {
         return updateObject(state, { currentUser: { account: { preferredLanguage: action.payload } } } as UserState);
       } else {
-        i18n.changeLanguage(state.currentUser.account.preferredLanguage);
         return state;
       }
     },
@@ -63,7 +61,6 @@ const userSlice = createSlice({
       } as UserState);
     },
     setPreferredLanguage: (state, action: PayloadAction<string>) => {
-      i18n.changeLanguage(action.payload);
       return updateObject(state, {
         currentUser: {
           account: {
