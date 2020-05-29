@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 
 import Typography from '@material-ui/core/Typography';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import logo from '../../../assets/images/Influenzanet_Logo_RGB.png';
 import Box from '@material-ui/core/Box';
@@ -29,6 +29,7 @@ import LanguageSelector from '../../../components/language/LanguageSelector/Lang
 import { useTranslation } from 'react-i18next';
 import { setPreferredLanguageReq } from '../../../api/user-management-api';
 import { setDefaultAccessTokenHeader } from '../../../api/instances/authApiInstance';
+import OnboardingError from '../Error/OnboardingError';
 
 
 const useStyles = makeStyles(theme => ({
@@ -59,12 +60,6 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  errorContainer: {
-    marginBottom: theme.spacing(1),
-  },
-  errorText: {
-    color: "white",
-  },
   remmemberText: {
     userSelect: "none",
   }
@@ -73,7 +68,6 @@ const useStyles = makeStyles(theme => ({
 const Login: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
-  const theme = useTheme();
   const dispatch = useDispatch();
   const { t } = useTranslation(['app']);
 
@@ -234,11 +228,7 @@ const Login: React.FC = () => {
         </form>
       </RoundedBox>
       {errorMessages.map(error =>
-        <RoundedBox classNames={[classes.errorContainer]} color={theme.palette.error.main} key={error}>
-          <Typography variant="body1" color="inherit" className={classes.errorText}>
-            {error}
-          </Typography>
-        </RoundedBox>
+        <OnboardingError errorString={error} key={error} />
       )}
       <FlexGrow flexGrow={2} />
     </Container>

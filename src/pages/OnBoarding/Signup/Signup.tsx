@@ -8,7 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import logo from '../../../assets/images/Influenzanet_Logo_RGB.png';
 import Box from '@material-ui/core/Box';
@@ -26,6 +26,7 @@ import { HomePaths } from '../../Home/Home';
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { setDefaultAccessTokenHeader } from '../../../api/instances/authApiInstance';
+import OnboardingError from '../Error/OnboardingError';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -55,12 +56,6 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  errorContainer: {
-    marginBottom: theme.spacing(1),
-  },
-  errorText: {
-    color: "white",
-  },
   checkBox: {
     width: "100%",
   }
@@ -69,7 +64,6 @@ const useStyles = makeStyles(theme => ({
 const Signup: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
-  const theme = useTheme();
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -152,7 +146,7 @@ const Signup: React.FC = () => {
       setLoading(false);
       history.push(HomePaths.Dashboard);
     } catch (e) {
-      console.log(e);
+      console.log(e.response);
       if (e.response && e.response.data && e.response.data.error) {
         setErrorMessages([e.response.data.error]);
       }
@@ -252,11 +246,7 @@ const Signup: React.FC = () => {
         </form>
       </RoundedBox>
       {errorMessages.map(error =>
-        <RoundedBox classNames={[classes.errorContainer]} color={theme.palette.error.main} key={error}>
-          <Typography variant="body1" color="inherit" className={classes.errorText}>
-            {error}
-          </Typography>
-        </RoundedBox>
+        <OnboardingError errorString={error} key={error} />
       )}
       <FlexGrow flexGrow={2} />
     </Container>

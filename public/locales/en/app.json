@@ -16,6 +16,12 @@
     "forgotPasswordLink": "Forgot your password?",
     "signupLink": "Don't have an account? Sign Up."
   },
+  "onboardingErrors": {
+    "invalidEmail": "Invalid email address.",
+    "weakPassword": "Password too weak.",
+    "incorrectCredentials": "Incorrect email address and/or password.",
+    "unknownError": "Server Error. Please try again later:"
+  },
   "profileRepresentation": {
     "nicknamePlaceholder": "Nickname",
     "deleteButtonLabel": "Delete"
