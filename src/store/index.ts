@@ -1,4 +1,3 @@
-import thunk from 'redux-thunk';
 import navigationSlice from './navigation/navigationSlice';
 import generalSlice from './general/generalSlice';
 import apiSlice from './api/apiSlice';
@@ -14,7 +13,7 @@ const reducers = {
   user: userSlice.reducer,
 };
 
-const middleWare = [...getDefaultMiddleware(), thunk];
+const middleWare = [...getDefaultMiddleware()];
 
 const store = configureStore({
   reducer: reducers,
@@ -25,8 +24,6 @@ const store = configureStore({
 store.subscribe(throttle(() => {
   saveState(store.getState());
 }, 1000));
-
-// export type AppDispatch = typeof store.dispatch;
 
 export type RootState = ReturnType<typeof store.getState>
 
