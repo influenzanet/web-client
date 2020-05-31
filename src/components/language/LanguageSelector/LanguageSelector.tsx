@@ -1,7 +1,8 @@
 import React from 'react';
 import { FormControl, makeStyles, createStyles, Theme, Select, MenuItem } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { UserState, userActions } from '../../../store/user/userSlice';
+import { userActions } from '../../../store/user/userSlice';
+import { RootState } from '../../../store';
 
 const availableLanguages = [
   { code: 'en', label: '🇬🇧 English' },
@@ -20,7 +21,7 @@ const LanguageSelector: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const selectedLanguage = useSelector((state: { user: UserState }) => state.user.currentUser.account.preferredLanguage);
+  const selectedLanguage = useSelector((state: RootState) => state.user.currentUser.account.preferredLanguage);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     let newSelectedLanguage = event.target.value as string;

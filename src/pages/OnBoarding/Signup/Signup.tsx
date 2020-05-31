@@ -17,7 +17,6 @@ import FlexGrow from '../../../components/common/FlexGrow';
 import { Tooltip } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupWithEmailRequest } from '../../../api/auth-api';
-import { GeneralState } from '../../../store/general/generalSlice';
 import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants';
 import { useHistory } from 'react-router';
@@ -28,6 +27,7 @@ import LanguageSelector from '../../../components/language/LanguageSelector/Lang
 import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
 import { useTranslation } from 'react-i18next';
+import { RootState } from '../../../store';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -71,7 +71,7 @@ const Signup: React.FC = () => {
 
   const history = useHistory();
 
-  const instanceId = useSelector((state: { general: GeneralState }) => state.general.instanceId);
+  const instanceId = useSelector((state: RootState) => state.general.instanceId);
 
   let [emailAddress, setEmailAddress] = useState("");
   let [password, setPassword] = useState("");

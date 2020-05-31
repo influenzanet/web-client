@@ -8,7 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { navigationActions, NavigationState } from '../../../store/navigation/navigationSlice';
+import { navigationActions } from '../../../store/navigation/navigationSlice';
+import { RootState } from '../../../store';
 
 
 
@@ -30,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 export const NavBar: React.FC = () => {
   const classes = useStyles();
 
-  const pageTitle = useSelector((state: { navigation: NavigationState }) => state.navigation.appBar.currentPageTitle)
+  const pageTitle = useSelector((state: RootState) => state.navigation.appBar.currentPageTitle)
   const dispatch = useDispatch();
 
   return (

@@ -18,18 +18,19 @@ import RoundedBox from '../../../components/ui/RoundedBox';
 import FlexGrow from '../../../components/common/FlexGrow';
 import { loginWithEmailRequest } from '../../../api/auth-api';
 import { useSelector, useDispatch } from 'react-redux';
-import { GeneralState, generalActions } from '../../../store/general/generalSlice';
+import { generalActions } from '../../../store/general/generalSlice';
 import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants';
 import { useHistory } from 'react-router';
 import { OnBoardingPaths } from '../OnBoarding';
 import { HomePaths } from '../../Home/Home';
-import { userActions, UserState } from '../../../store/user/userSlice';
+import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import { setPreferredLanguageReq } from '../../../api/user-management-api';
 import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
+import { RootState } from '../../../store';
 
 
 const useStyles = makeStyles(theme => ({
@@ -73,8 +74,8 @@ const Login: React.FC = () => {
 
   const history = useHistory();
 
-  const [instanceId, persistState] = useSelector((state: { general: GeneralState }) => [state.general.instanceId, state.general.persistState]);
-  const currentPreferredLanguage = useSelector((state: { user: UserState }) => state.user.currentUser.account.preferredLanguage);
+  const [instanceId, persistState] = useSelector((state: RootState) => [state.general.instanceId, state.general.persistState]);
+  const currentPreferredLanguage = useSelector((state: RootState) => state.user.currentUser.account.preferredLanguage);
 
   let [emailAddress, setEmailAddress] = useState("");
   let [password, setPassword] = useState("");

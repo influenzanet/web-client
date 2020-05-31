@@ -20,7 +20,8 @@ import logo from '../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
 // import { LinkRef } from '../../../common/link';
 import { useRouteMatch } from 'react-router-dom';
 import { LinkRef } from '../../common/link';
-import { navigationActions, NavigationState } from '../../../store/navigation/navigationSlice';
+import { navigationActions } from '../../../store/navigation/navigationSlice';
+import { RootState } from '../../../store';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const Drawer: React.FC<DrawerProps> = (props) => {
   const classes = useStyles();
-  const drawerOpen = useSelector((state: { navigation: NavigationState }) => state.navigation.drawerOpen)
+  const drawerOpen = useSelector((state: RootState) => state.navigation.drawerOpen)
   const dispatch = useDispatch();
 
   const closeDrawer = () => (
