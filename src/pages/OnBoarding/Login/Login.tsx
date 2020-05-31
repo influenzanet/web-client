@@ -108,13 +108,12 @@ const Login: React.FC = () => {
       if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.token.preferredLanguage) {
         // Let server know that user chose a different language on login.
         let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
-        userResponse.data.timestamps.lastTokenRefresh = tokenRefreshedAt;
         dispatch(userActions.setState({
           currentUser: userResponse.data,
           selectedProfileId: response.data.token.selectedProfileId,
         }));
       } else {
-        dispatch(userActions.setOnNewToken({ tokenResponse: response.data.token, timestamp: tokenRefreshedAt }));
+        dispatch(userActions.setCurrentUser(response.data.user));
       }
 
       setLoading(false);

@@ -46,18 +46,18 @@ const userSlice = createSlice({
     setState: (state, action: PayloadAction<UserState>) => {
       return updateObject(state, action.payload);
     },
-    setOnNewToken: (state, action: PayloadAction<{ tokenResponse: TokenResponse, timestamp: number }>) => {
+    setCurrentUser: (state, action: PayloadAction<User>) => {
+      return updateObject(state, { currentUser: action.payload } as UserState);
+    },
+    setFromTokenResponse: (state, action: PayloadAction<TokenResponse>) => {
       return updateObject(state, {
         currentUser: {
-          profiles: action.payload.tokenResponse.profiles,
+          profiles: action.payload.profiles,
           account: {
-            preferredLanguage: action.payload.tokenResponse.preferredLanguage,
+            preferredLanguage: action.payload.preferredLanguage,
           },
-          timestamps: {
-            lastTokenRefresh: action.payload.timestamp,
-          }
         },
-        selectedProfileId: action.payload.tokenResponse.selectedProfileId,
+        selectedProfileId: action.payload.selectedProfileId,
       } as UserState);
     },
     setPreferredLanguage: (state, action: PayloadAction<string>) => {

@@ -144,7 +144,7 @@ const Signup: React.FC = () => {
 
       setDefaultAccessTokenHeader(response.data.accessToken);
 
-      dispatch(userActions.setOnNewToken({ tokenResponse: response.data, timestamp: tokenRefreshedAt }));
+      dispatch(userActions.setFromTokenResponse(response.data));
 
       setLoading(false);
       history.push(HomePaths.Dashboard);
