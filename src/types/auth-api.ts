@@ -1,4 +1,4 @@
-import { Profile } from "./user";
+import { Profile, User } from "./user";
 
 export interface SignupMsg {
   email: string;
@@ -12,6 +12,11 @@ export interface LoginMsg {
   email: string;
   password: string;
   instanceId: string;
+}
+
+export interface LoginResponse {
+  token: TokenResponse;
+  user: User;
 }
 
 export interface TokenResponse {

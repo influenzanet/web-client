@@ -98,23 +98,23 @@ const Login: React.FC = () => {
       let tokenRefreshedAt = new Date().getTime();
 
       dispatch(apiActions.setState({
-        accessToken: response.data.accessToken,
-        refreshToken: response.data.refreshToken,
-        expiresAt: tokenRefreshedAt + response.data.expiresIn * minuteToMillisecondFactor,
+        accessToken: response.data.token.accessToken,
+        refreshToken: response.data.token.refreshToken,
+        expiresAt: tokenRefreshedAt + response.data.token.expiresIn * minuteToMillisecondFactor,
       }));
 
-      setDefaultAccessTokenHeader(response.data.accessToken);
+      setDefaultAccessTokenHeader(response.data.token.accessToken);
 
-      if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.preferredLanguage) {
+      if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.token.preferredLanguage) {
         // Let server know that user chose a different language on login.
         let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
         userResponse.data.timestamps.lastTokenRefresh = tokenRefreshedAt;
         dispatch(userActions.setState({
           currentUser: userResponse.data,
-          selectedProfileId: response.data.selectedProfileId,
+          selectedProfileId: response.data.token.selectedProfileId,
         }));
       } else {
-        dispatch(userActions.setOnNewToken({ tokenResponse: response.data, timestamp: tokenRefreshedAt }));
+        dispatch(userActions.setOnNewToken({ tokenResponse: response.data.token, timestamp: tokenRefreshedAt }));
       }
 
       setLoading(false);
