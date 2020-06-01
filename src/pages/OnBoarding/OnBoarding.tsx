@@ -11,8 +11,6 @@ import Signup from './Signup/Signup';
 import Login from './Login/Login';
 import { HomePaths } from '../Home/Home';
 import Confirmation from './Confirmation/Confirmation';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
 
 
 export const OnBoardingPaths = {
@@ -25,10 +23,9 @@ export const OnBoardingPaths = {
 
 const OnBoarding: React.FC = () => {
   const history = useHistory();
-  const userAuthenticatedAt = useSelector((state: RootState) => state.user.currentUser.account.accountConfirmedAt);
 
-  const onLoggedIn = () => {
-    if (userAuthenticatedAt && userAuthenticatedAt > 0) {
+  const onLoggedIn = (userAuthenticatedAt: number) => {
+    if (userAuthenticatedAt && Number(userAuthenticatedAt) > 0) {
       history.push(HomePaths.Dashboard);
     } else {
       history.push(OnBoardingPaths.Confirmation);

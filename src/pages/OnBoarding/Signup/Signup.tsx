@@ -29,7 +29,7 @@ import { RootState } from '../../../store';
 
 
 interface SignupProps {
-  onLoggedIn: () => any;
+  onLoggedIn: (userAuthenticatedAt: number) => any;
 }
 
 
@@ -150,7 +150,7 @@ const Signup: React.FC<SignupProps> = (props) => {
       dispatch(userActions.setFromTokenResponse(response.data));
 
       setLoading(false);
-      props.onLoggedIn();
+      props.onLoggedIn(0);
     } catch (e) {
       console.log(e.response);
       if (e.response && e.response.data && e.response.data.error) {

@@ -32,7 +32,7 @@ import { RootState } from '../../../store';
 
 
 interface LoginProps {
-  onLoggedIn: () => any;
+  onLoggedIn: (userAuthenticatedAt: number) => any;
 }
 
 
@@ -107,22 +107,21 @@ const Login: React.FC<LoginProps> = (props) => {
 
       setDefaultAccessTokenHeader(response.data.token.accessToken);
 
+      let user = response.data.user;
+
       if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.token.preferredLanguage) {
         // Let server know that user chose a different language on login.
         let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
-        dispatch(userActions.setState({
-          currentUser: userResponse.data,
-          selectedProfileId: response.data.token.selectedProfileId,
-        }));
-      } else {
-        dispatch(userActions.setState({
-          currentUser: response.data.user,
-          selectedProfileId: response.data.token.selectedProfileId
-        }));
+        user = userResponse.data;
       }
 
+      dispatch(userActions.setState({
+        currentUser: user,
+        selectedProfileId: response.data.token.selectedProfileId
+      }));
+
       setLoading(false);
-      props.onLoggedIn();
+      props.onLoggedIn(user.account.accountConfirmedAt);
     } catch (e) {
       console.log(e);
       if (e.response && e.response.data && e.response.data.error) {
