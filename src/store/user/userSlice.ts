@@ -17,7 +17,7 @@ const userSlice = createSlice({
         type: '',
         accountId: '',
         accountConfirmedAt: 0,
-        preferredLanguage: '',
+        preferredLanguage: 'de',
       },
       roles: [],
       timestamps: {
@@ -44,10 +44,7 @@ const userSlice = createSlice({
       }
     },
     setState: (state, action: PayloadAction<UserState>) => {
-      return updateObject(state, action.payload);
-    },
-    setCurrentUser: (state, action: PayloadAction<User>) => {
-      return updateObject(state, { currentUser: action.payload } as UserState);
+      return updateObject(state, action.payload as UserState);
     },
     setFromTokenResponse: (state, action: PayloadAction<TokenResponse>) => {
       return updateObject(state, {

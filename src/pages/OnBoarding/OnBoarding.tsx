@@ -4,26 +4,43 @@ import {
   Route,
   Switch,
   Redirect,
+  useHistory,
 } from 'react-router-dom';
 import Landing from './Landing/Landing';
 import Signup from './Signup/Signup';
 import Login from './Login/Login';
+import { HomePaths } from '../Home/Home';
+import Confirmation from './Confirmation/Confirmation';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
-// import logo from '../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
-// import Button from '@material-ui/core/Button';
+
 export const OnBoardingPaths = {
   Landing: "/start",
   Login: "/start/login",
   Signup: "/start/signup",
+  Confirmation: "/start/confirmation",
 }
 
 
 const OnBoarding: React.FC = () => {
+  const history = useHistory();
+  const userAuthenticatedAt = useSelector((state: RootState) => state.user.currentUser.account.accountConfirmedAt);
+
+  const onLoggedIn = () => {
+    if (userAuthenticatedAt && userAuthenticatedAt > 0) {
+      history.push(HomePaths.Dashboard);
+    } else {
+      history.push(OnBoardingPaths.Confirmation);
+    }
+  }
+
   return (
     <Switch>
       <Route path={OnBoardingPaths.Landing} exact component={Landing} />
-      <Route path={OnBoardingPaths.Login} component={Login} />
-      <Route path={OnBoardingPaths.Signup} component={Signup} />
+      <Route path={OnBoardingPaths.Login} render={(props) => <Login {...props} onLoggedIn={onLoggedIn} />} />
+      <Route path={OnBoardingPaths.Signup} render={(props) => <Signup {...props} onLoggedIn={onLoggedIn} />} />
+      <Route path={OnBoardingPaths.Confirmation} component={Confirmation} />
       <Redirect to={OnBoardingPaths.Landing}></Redirect>
     </Switch>
 

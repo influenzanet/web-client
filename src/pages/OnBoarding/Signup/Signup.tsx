@@ -19,15 +19,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signupWithEmailRequest } from '../../../api/auth-api';
 import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants';
-import { useHistory } from 'react-router';
 import { OnBoardingPaths } from '../OnBoarding';
-import { HomePaths } from '../../Home/Home';
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../store';
+
+
+interface SignupProps {
+  onLoggedIn: () => any;
+}
+
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -63,13 +67,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Signup: React.FC = () => {
+
+const Signup: React.FC<SignupProps> = (props) => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   const { t } = useTranslation(['app']);
-
-  const history = useHistory();
 
   const instanceId = useSelector((state: RootState) => state.general.instanceId);
 
@@ -147,7 +150,7 @@ const Signup: React.FC = () => {
       dispatch(userActions.setFromTokenResponse(response.data));
 
       setLoading(false);
-      history.push(HomePaths.Dashboard);
+      props.onLoggedIn();
     } catch (e) {
       console.log(e.response);
       if (e.response && e.response.data && e.response.data.error) {

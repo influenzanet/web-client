@@ -6,7 +6,7 @@ export const loadState = () => {
   try {
     const serializedState = localStorage.getItem(stateKey);
     if (serializedState === null) {
-      return { undefined };
+      return undefined;
     }
     return JSON.parse(serializedState);
   } catch (err) {
@@ -17,9 +17,13 @@ export const loadState = () => {
 
 export const saveState = (state: RootState) => {
   try {
-    let stateToSave: RootState = (state.general.persistState) ? state : {} as RootState;
-    const serializedState = JSON.stringify(stateToSave);
-    localStorage.setItem(stateKey, serializedState);
+    if (state.general.persistState) {
+      const serializedState = JSON.stringify(state);
+      localStorage.setItem(stateKey, serializedState);
+    }
+    else {
+      localStorage.removeItem(stateKey);
+    }
   } catch {
     // ignore write errors
   }
