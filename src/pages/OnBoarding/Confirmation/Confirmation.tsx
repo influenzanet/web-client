@@ -8,6 +8,8 @@ import { resendVerificationEmailReq } from '../../../api/user-management-api';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import RoundedBox from '../../../components/ui/RoundedBox';
+import { OnBoardingPaths } from '../OnBoarding';
+import { LinkRef } from '../../../components/common/link';
 
 const useStyles = makeStyles(theme => ({
   box: {
@@ -76,7 +78,7 @@ const Confirmation: React.FC = () => {
 
         </Grid>
         <Grid item>
-          <Link>
+          <Link component={LinkRef} to={OnBoardingPaths.ChangeEmailAddress}>
             {t("app:confirmationPage.changeEmailLink")}
           </Link>
         </Grid>
