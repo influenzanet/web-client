@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Confirmation: React.FC = () => {
+const Activation: React.FC = () => {
   const classes = useStyles();
   const { t } = useTranslation(['app']);
   const emailAddress = useSelector((state: RootState) => state.user.currentUser.account.accountId);
@@ -39,10 +39,10 @@ const Confirmation: React.FC = () => {
   let [confirmationSent, setConfirmationSent] = useState(false);
 
   const onResendClicked = () => {
-    resendConfirmation();
+    resendActivation();
   }
 
-  const resendConfirmation = async () => {
+  const resendActivation = async () => {
     if (loading) return;
     setLoading(true);
     try {
@@ -62,12 +62,12 @@ const Confirmation: React.FC = () => {
       <Grid spacing={2} container className={classes.box}>
         <Grid item>
           <Typography variant="h3" color="primary">
-            {t("app:confirmationPage.headline")}
+            {t("app:activationPage.headline")}
           </Typography>
         </Grid>
         <Grid item>
           <Typography variant="h5" color="secondary">
-            {t("app:confirmationPage.description")}
+            {t("app:activationPage.description")}
           </Typography>
         </Grid>
         <div className={classes.spacer} />
@@ -75,17 +75,17 @@ const Confirmation: React.FC = () => {
           {
             (confirmationSent)
               ? <RoundedBox classNames={[classes.message]}>
-                {t("app:confirmationPage.resendSuccessMessage")}
+                {t("app:activationPage.resendSuccessMessage")}
               </RoundedBox>
               : <RoundedButton color="primary" className={classes.button} onClick={onResendClicked} disabled={loading}>
-                {t("app:confirmationPage.resendLinkButtonLabel")}
+                {t("app:activationPage.resendLinkButtonLabel")}
               </RoundedButton>
           }
 
         </Grid>
         <Grid item>
           <Link component={LinkRef} to={OnBoardingPaths.Signup}>
-            {t("app:confirmationPage.changeEmailLink")}
+            {t("app:activationPage.changeEmailLink")}
           </Link>
         </Grid>
       </Grid>
@@ -94,4 +94,4 @@ const Confirmation: React.FC = () => {
   );
 };
 
-export default Confirmation;
+export default Activation;

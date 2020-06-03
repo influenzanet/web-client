@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useMountEffect, useQuery } from '../../../../hooks';
 import { verifyContactReq } from '../../../../api/user-management-api';
 import CenterPage from '../../../../components/ui/pages/CenterPage';
@@ -6,12 +6,34 @@ import FlexGrow from '../../../../components/common/FlexGrow';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../../../../store/user/userSlice';
 import { RootState } from '../../../../store';
+import { Typography, CircularProgress, makeStyles, Container } from '@material-ui/core';
+import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
+import { useHistory } from 'react-router';
+import { OnBoardingPaths } from '../../OnBoarding';
+import { HomePaths } from '../../../Home/Home';
+import { useTranslation } from 'react-i18next';
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    textAlign: "center",
+  },
+  spacer: {
+    height: 32,
+  },
+  button: {
+    fontSize: "18px",
+  }
+}));
 
 const VerifyToken: React.FC = () => {
+  const classes = useStyles();
   const query = useQuery();
   const token = query.get("token");
 
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const { t } = useTranslation(['app']);
 
   const accountConfirmedAt = useSelector((state: RootState) => state.user.currentUser.account.accountConfirmedAt);
 
@@ -39,14 +61,60 @@ const VerifyToken: React.FC = () => {
     setLoading(false);
   };
 
+  const waiting = () => {
+    return (
+      <Container className={classes.container}>
+        <Typography variant="h3" color="primary">
+          {t("app:verificationPage.waitingTitle")}
+        </Typography>
+        <div className={classes.spacer} />
+        <CircularProgress color="secondary" />
+      </Container>
+    );
+  }
+
+  const success = () => {
+    return (
+      <Container className={classes.container}>
+        <Typography variant="h3" color="primary">
+          {t("app:verificationPage.successTitle")}
+        </Typography>
+        <Typography variant="h5" color="secondary">
+          {t("app:verificationPage.successSubtitle")}
+        </Typography>
+        <div className={classes.spacer} />
+        <RoundedButton className={classes.button} color="primary" onClick={() => history.push(HomePaths.Dashboard)}>
+          {t("app:verificationPage.successButtonLabel")}
+        </RoundedButton>
+      </Container>
+    );
+  }
+
+  const failure = () => {
+    return (
+      <Container className={classes.container}>
+        <Typography variant="h3" color="primary">
+          {t("app:verificationPage.failureTitle")}
+        </Typography>
+        <Typography variant="h5" color="secondary">
+          {t("app:verificationPage.failureSubtitle")}
+        </Typography>
+        <div className={classes.spacer} />
+        <RoundedButton className={classes.button} color="primary" onClick={() => history.push(OnBoardingPaths.Activation)}>
+          {t("app:verificationPage.activationButtonLabel")}
+        </RoundedButton>
+      </Container>
+    );
+  }
+
   return (
     <CenterPage>
       <FlexGrow />
       {(loading)
-        ? "Please wait."
+        ? waiting()
         : (confirmed)
-          ? "Success!"
-          : "Failure"
+          ? success()
+          : failure()
       }
       <FlexGrow />
     </CenterPage>
