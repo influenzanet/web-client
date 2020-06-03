@@ -33,12 +33,14 @@ const userSlice = createSlice({
       } as ContactPreferences,
       contactInfos: [],
     } as User,
-    selectedProfileId: '',
+    selectedProfileId: "",
   } as UserState,
   reducers: {
     initializeLanguage: (state, action: PayloadAction<string>) => {
       if (state.currentUser.account.preferredLanguage === '') {
-        return updateObject(state, { currentUser: { account: { preferredLanguage: action.payload } } } as UserState);
+        let newState = updateObject({}, state);
+        newState.currentUser.account.preferredLanguage = action.payload;
+        return newState;
       } else {
         return state;
       }
@@ -47,24 +49,18 @@ const userSlice = createSlice({
       return updateObject(state, action.payload as UserState);
     },
     setFromTokenResponse: (state, action: PayloadAction<TokenResponse>) => {
-      return updateObject(state, {
-        currentUser: {
-          profiles: action.payload.profiles,
-          account: {
-            preferredLanguage: action.payload.preferredLanguage,
-          },
-        },
-        selectedProfileId: action.payload.selectedProfileId,
-      } as UserState);
+      state.currentUser.profiles = action.payload.profiles;
+      state.currentUser.account.preferredLanguage = action.payload.preferredLanguage;
+      state.selectedProfileId = action.payload.selectedProfileId;
+      return state;
+    },
+    setUserID: (state, action: PayloadAction<string>) => {
+      state.currentUser.account.accountId = action.payload;
+      return state;
     },
     setPreferredLanguage: (state, action: PayloadAction<string>) => {
-      return updateObject(state, {
-        currentUser: {
-          account: {
-            preferredLanguage: action.payload,
-          }
-        }
-      } as UserState);
+      state.currentUser.account.preferredLanguage = action.payload;
+      return state;
     }
   },
 });

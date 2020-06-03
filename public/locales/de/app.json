@@ -38,6 +38,13 @@
     "incorrectCredentials": "Email-Adresse und/oder Passwort falsch.",
     "unknownError": "Serverfehler. Bitte später erneut versuchen:"
   },
+  "confirmationPage": {
+    "headline": "Registrierung erfolgreich!",
+    "description": "Bitte aktivieren Sie ihr Konto, indem sie den Link anklicken, den wir an Ihre E-Mail Adresse geschickt haben.",
+    "resendLinkButtonLabel": "Link erneut senden",
+    "resendSuccessMessage": "Link erneut gesendet!",
+    "changeEmailLink": "Falsche E-Mail Adresse? Hier erneut festlegen."
+  },
   "profileRepresentation": {
     "nicknamePlaceholder": "Spitzname",
     "deleteButtonLabel": "Löschen"

@@ -14,7 +14,7 @@ const generalSlice = createSlice({
   },
   reducers: {
     setPersistState: (state, action: PayloadAction<boolean>) => {
-      return updateObject(state, { persistState: action.payload } as GeneralState);
+      return updateObject(state, { persistState: action.payload });
     }
   },
 });

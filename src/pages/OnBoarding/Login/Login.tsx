@@ -119,6 +119,7 @@ const Login: React.FC<LoginProps> = (props) => {
         currentUser: user,
         selectedProfileId: response.data.token.selectedProfileId
       }));
+      dispatch(userActions.setUserID(emailAddress));
 
       setLoading(false);
       props.onLoggedIn(user.account.accountConfirmedAt);

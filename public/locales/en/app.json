@@ -38,6 +38,13 @@
     "incorrectCredentials": "Incorrect email address and/or password.",
     "unknownError": "Server Error. Please try again later:"
   },
+  "confirmationPage": {
+    "headline": "You are signed up!",
+    "description": "Please confirm your account by clicking the link we sent to your email address.",
+    "resendLinkButtonLabel": "Resend confirmation link",
+    "resendSuccessMessage": "Link sent again!",
+    "changeEmailLink": "Wrong email adress? Change it here."
+  },
   "profileRepresentation": {
     "nicknamePlaceholder": "Nickname",
     "deleteButtonLabel": "Delete"
