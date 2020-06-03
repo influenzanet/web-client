@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles, Typography, Link, Box, Grid } from '@material-ui/core';
+import { makeStyles, Typography, Link, Grid } from '@material-ui/core';
 import CenterPage from '../../../components/ui/pages/CenterPage';
 import RoundedButton from '../../../components/ui/buttons/RoundedButton';
 import FlexGrow from '../../../components/common/FlexGrow';
@@ -47,7 +47,9 @@ const Confirmation: React.FC = () => {
     setLoading(true);
     try {
       let response = await resendVerificationEmailReq(emailAddress);
-      setConfirmationSent(true);
+      if (response.status === 200) {
+        setConfirmationSent(true);
+      }
     } catch (e) {
       console.error(e);
     }

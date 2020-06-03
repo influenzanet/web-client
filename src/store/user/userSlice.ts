@@ -53,6 +53,10 @@ const userSlice = createSlice({
       state.selectedProfileId = action.payload.selectedProfileId;
       return state;
     },
+    setUser: (state, action: PayloadAction<User>) => {
+      state.currentUser = action.payload;
+      return state;
+    },
     setUserID: (state, action: PayloadAction<string>) => {
       state.currentUser.account.accountId = action.payload;
       return state;
