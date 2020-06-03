@@ -38,9 +38,8 @@ const userSlice = createSlice({
   reducers: {
     initializeLanguage: (state, action: PayloadAction<string>) => {
       if (state.currentUser.account.preferredLanguage === '') {
-        let newState = updateObject({}, state);
-        newState.currentUser.account.preferredLanguage = action.payload;
-        return newState;
+        state.currentUser.account.preferredLanguage = action.payload;
+        return state;
       } else {
         return state;
       }
