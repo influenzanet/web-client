@@ -10,11 +10,9 @@ import NavBar from '../../components/Navigation/NavBar/NavBar';
 import Drawer from '../../components/Navigation/Drawer/Drawer';
 import Dashboard from './Dashboard/Dashboard';
 import MyStudies from './MyStudies/MyStudies';
+import { HomePaths } from '../../routes';
 
-export const HomePaths = {
-  Dashboard: "/home",
-  MyStudies: "/home/my-studies",
-}
+
 
 export const Home: React.FC = () => {
   return (

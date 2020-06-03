@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Container, Typography, makeStyles, Theme, createStyles, Grid, useTheme } from '@material-ui/core';
-import FlexGrow from '../../../components/common/FlexGrow';
-import RoundedButton from '../../../components/ui/buttons/RoundedButton';
-import { Profile } from '../../../types/user';
+import FlexGrow from '../../../../components/common/FlexGrow';
+import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
+import { Profile } from '../../../../types/user';
 import ProfileRepresenation from '../ProfileRepresentation/ProfileRepresentation';
-import RoundedBox from '../../../components/ui/RoundedBox';
+import RoundedBox from '../../../../components/ui/RoundedBox';
 import ProfileCreateDialog from '../ProfileCreateDialog/ProfileCreateDialog';
 
 interface ProfileSelectionProps {

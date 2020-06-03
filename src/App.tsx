@@ -6,13 +6,11 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 
-import OnBoarding from './pages/OnBoarding/OnBoarding';
+import AuthPages from './pages/AuthPages/AuthPages';
 import Home from './pages/Home/Home';
-// import Login from './components/form/login/Login';
-// import Signup from './components/form/signup/Signup';
 
 import {
   createMuiTheme,
@@ -24,15 +22,19 @@ import { useTranslation } from 'react-i18next';
 import InfluenzaNetThemeData from './themes/influenzanet-theme';
 import SISThemeData from './themes/sis-theme';
 import PWCThemeData from './themes/pwc-theme';
-import ProfileSelection from './pages/Profile/ProfileSelection/ProfileSelection';
+
 import { RootState } from './store';
 import { useSelector } from 'react-redux';
 import i18n from './i18n';
+import LinkResolver from './pages/LinkResolver/LinkResolver';
+import Landing from './pages/Landing/Landing';
+import { AppRoutes } from './routes/root';
+import { AuthPagesPaths } from './routes';
 
-// import TestForm from './components/form/login/LoginForm';
 
 const App: React.FC = () => {
   const { t } = useTranslation(['app']);
+  const location = window.location.pathname + window.location.search;
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -132,6 +134,22 @@ const App: React.FC = () => {
     },
   };
 
+  const isAuthenticated = true;
+
+  const authRoutes = <Switch>
+    <Route path={AppRoutes.Home} component={Home} />
+    <Route path={AppRoutes.UserAuth} component={AuthPages} />
+    <Route path={AppRoutes.LinkResolver} component={LinkResolver} />
+    <Route path={AppRoutes.Landing} component={Landing} />
+    <Redirect to={AppRoutes.Home}></Redirect>
+  </Switch>
+
+  const noAuthRoutes = <Switch>
+    <Route path={AppRoutes.UserAuth} component={AuthPages} />
+    <Route path={AppRoutes.LinkResolver} component={LinkResolver} />
+    <Route path={AppRoutes.Landing} component={Landing} />
+    <Redirect to={AuthPagesPaths.Login + `?redirect=${location}`}></Redirect>
+  </Switch>
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -142,13 +160,7 @@ const App: React.FC = () => {
         </Helmet>
         <Router basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : undefined}>
           <Switch>
-            {/*<Route path="/login" component={Login}/>
-            <Route path="/signup" component={Signup}/>
-            <Route path="/testForm" component={TestForm}/>*/}
-            <Route path="/home" component={Home} />
-            <Route path="/start" component={OnBoarding} />
-            <Route path="/profile-selection" component={ProfileSelection} />
-            <Redirect to="/start"></Redirect>
+            {isAuthenticated ? authRoutes : noAuthRoutes}
           </Switch>
         </Router>
       </StylesProvider>

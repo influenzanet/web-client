@@ -8,8 +8,9 @@ import { resendVerificationEmailReq } from '../../../api/user-management-api';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import RoundedBox from '../../../components/ui/RoundedBox';
-import { OnBoardingPaths } from '../OnBoarding';
+
 import { LinkRef } from '../../../components/common/link';
+import { AuthPagesPaths } from '../../../routes';
 
 const useStyles = makeStyles(theme => ({
   box: {
@@ -81,10 +82,9 @@ const Activation: React.FC = () => {
                 {t("app:activationPage.resendLinkButtonLabel")}
               </RoundedButton>
           }
-
         </Grid>
         <Grid item>
-          <Link component={LinkRef} to={OnBoardingPaths.Signup}>
+          <Link component={LinkRef} to={AuthPagesPaths.Signup}>
             {t("app:activationPage.changeEmailLink")}
           </Link>
         </Grid>

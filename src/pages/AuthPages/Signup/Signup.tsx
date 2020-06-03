@@ -19,13 +19,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signupWithEmailRequest } from '../../../api/auth-api';
 import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants';
-import { OnBoardingPaths } from '../OnBoarding';
+
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../store';
+import { AuthPagesPaths } from '../../../routes';
 
 
 interface SignupProps {
@@ -246,7 +247,7 @@ const Signup: React.FC<SignupProps> = (props) => {
           >
             {t("app:signupPage.signupButtonLabel")}
           </Button>
-          <Link variant="body2" component={LinkRef} to={OnBoardingPaths.Login} align="center">
+          <Link variant="body2" component={LinkRef} to={AuthPagesPaths.Login} align="center">
             {t("app:signupPage.loginLink")}
           </Link>
         </form>

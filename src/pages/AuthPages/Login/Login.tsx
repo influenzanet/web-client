@@ -21,7 +21,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { generalActions } from '../../../store/general/generalSlice';
 import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants';
-import { OnBoardingPaths } from '../OnBoarding';
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { useTranslation } from 'react-i18next';
@@ -29,6 +28,7 @@ import { setPreferredLanguageReq } from '../../../api/user-management-api';
 import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
 import { RootState } from '../../../store';
+import { AuthPagesPaths } from '../../../routes';
 
 
 interface LoginProps {
@@ -225,7 +225,7 @@ const Login: React.FC<LoginProps> = (props) => {
               </Link>
             </Grid>
             <Grid item>
-              <Link variant="body2" component={LinkRef} to={OnBoardingPaths.Signup}>
+              <Link variant="body2" component={LinkRef} to={AuthPagesPaths.Signup}>
                 {t("app:loginPage.signupLink")}
               </Link>
             </Grid>

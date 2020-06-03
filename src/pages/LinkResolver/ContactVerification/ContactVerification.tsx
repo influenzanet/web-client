@@ -1,17 +1,16 @@
-import React, { useState, Fragment } from 'react';
-import { useMountEffect, useQuery } from '../../../../hooks';
-import { verifyContactReq } from '../../../../api/user-management-api';
-import CenterPage from '../../../../components/ui/pages/CenterPage';
-import FlexGrow from '../../../../components/common/FlexGrow';
+import React, { useState } from 'react';
+import { useMountEffect, useQuery } from '../../../hooks';
+import { verifyContactReq } from '../../../api/user-management-api';
+import CenterPage from '../../../components/ui/pages/CenterPage';
+import FlexGrow from '../../../components/common/FlexGrow';
 import { useDispatch, useSelector } from 'react-redux';
-import { userActions } from '../../../../store/user/userSlice';
-import { RootState } from '../../../../store';
+import { userActions } from '../../../store/user/userSlice';
+import { RootState } from '../../../store';
 import { Typography, CircularProgress, makeStyles, Container } from '@material-ui/core';
-import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
+import RoundedButton from '../../../components/ui/buttons/RoundedButton';
 import { useHistory } from 'react-router';
-import { OnBoardingPaths } from '../../OnBoarding';
-import { HomePaths } from '../../../Home/Home';
 import { useTranslation } from 'react-i18next';
+import { HomePaths, AuthPagesPaths } from '../../../routes';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -100,7 +99,7 @@ const VerifyToken: React.FC = () => {
           {t("app:verificationPage.failureSubtitle")}
         </Typography>
         <div className={classes.spacer} />
-        <RoundedButton className={classes.button} color="primary" onClick={() => history.push(OnBoardingPaths.Activation)}>
+        <RoundedButton className={classes.button} color="primary" onClick={() => history.push(AuthPagesPaths.SignupSuccess)}>
           {t("app:verificationPage.activationButtonLabel")}
         </RoundedButton>
       </Container>

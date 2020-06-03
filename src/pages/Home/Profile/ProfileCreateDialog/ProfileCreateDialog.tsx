@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog, makeStyles, Theme, createStyles, Typography, Grid, FormControlLabel, Checkbox } from '@material-ui/core';
-import { Profile } from '../../../types/user';
+import { Profile } from '../../../../types/user';
 import ProfileRepresenation from '../ProfileRepresentation/ProfileRepresentation';
-import RoundedButton from '../../../components/ui/buttons/RoundedButton';
+import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 import { useTranslation } from 'react-i18next';
 
 interface ProfileCreateDialogProps {

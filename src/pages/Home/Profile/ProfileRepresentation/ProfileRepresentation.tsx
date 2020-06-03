@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Profile } from '../../../types/user';
+import { Profile } from '../../../../types/user';
 import { Grid, makeStyles, Theme, createStyles, Typography, TextField, useTheme } from '@material-ui/core';
 import getAvatarPathFromID from '../utils/ProfileUtils';
-import RoundedBox from '../../../components/ui/RoundedBox';
-import RoundedButton from '../../../components/ui/buttons/RoundedButton';
+import RoundedBox from '../../../../components/ui/RoundedBox';
+import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 import AvatarDialog from './AvatarDialog/AvatarDialog';
 import { useTranslation } from 'react-i18next';
 
