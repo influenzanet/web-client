@@ -22,6 +22,9 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     color: theme.palette.success.main,
   },
+  spacer: {
+    height: 32,
+  },
   button: {
     fontSize: "18px",
   }
@@ -65,6 +68,7 @@ const Confirmation: React.FC = () => {
             {t("app:confirmationPage.description")}
           </Typography>
         </Grid>
+        <div className={classes.spacer} />
         <Grid item>
           {
             (confirmationSent)
@@ -78,7 +82,7 @@ const Confirmation: React.FC = () => {
 
         </Grid>
         <Grid item>
-          <Link component={LinkRef} to={OnBoardingPaths.ChangeEmailAddress}>
+          <Link component={LinkRef} to={OnBoardingPaths.Signup}>
             {t("app:confirmationPage.changeEmailLink")}
           </Link>
         </Grid>
