@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { LinkRef } from '../../../components/common/link';
+import { AuthPagesPaths } from '../../../routes';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -47,14 +48,14 @@ const Welcome: React.FC = () => {
             <Button variant="contained"
               color="primary"
               className={classes.button}
-              component={LinkRef} to="/start/signup"
+              component={LinkRef} to={AuthPagesPaths.Signup}
             >
               Create New Account
                         </Button>
             <Button variant="contained"
               color="secondary"
               className={classes.button}
-              component={LinkRef} to="/start/login"
+              component={LinkRef} to={AuthPagesPaths.Login}
             >
               Sign In
                         </Button>
