@@ -9,7 +9,7 @@ import {
 
 import Signup from './Signup/Signup';
 import Login from './Login/Login';
-import SignupSuccess from './SignupSuccess/SingupSuccess';
+import SignupSuccess from './SignupSuccess/SignupSuccess';
 import { HomePaths, AuthPagesPaths } from '../../routes';
 
 
