@@ -22,6 +22,7 @@ import { useRouteMatch } from 'react-router-dom';
 import { LinkRef } from '../../common/link';
 import { navigationActions } from '../../../store/navigation/navigationSlice';
 import { RootState } from '../../../store';
+import { useLogout } from '../../../hooks';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
@@ -51,6 +52,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
   const classes = useStyles();
   const drawerOpen = useSelector((state: RootState) => state.navigation.drawerOpen)
   const dispatch = useDispatch();
+  const logout = useLogout();
 
   const closeDrawer = () => (
     event: React.KeyboardEvent | React.MouseEvent,
@@ -157,8 +159,8 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
               variant="outlined" color="secondary"
               onClick={() => {
                 dispatch(navigationActions.closeNavigationDrawer());
+                logout();
               }}
-              component={LinkRef} to="/start"
             >
               Logout</Button>
           </Grid>

@@ -21,3 +21,5 @@ export const useAuthTokenCheck = () => {
     return false;
   }
 }
+
+export * from './useLogout';

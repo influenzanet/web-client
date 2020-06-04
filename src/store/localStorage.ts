@@ -28,3 +28,11 @@ export const saveState = (state: RootState) => {
     // ignore write errors
   }
 };
+
+export const removePersistedState = () => {
+  try {
+    localStorage.removeItem(stateKey);
+  } catch (error) {
+    console.error(error);
+  }
+}
