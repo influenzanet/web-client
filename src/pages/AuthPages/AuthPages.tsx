@@ -11,16 +11,19 @@ import Signup from './Signup/Signup';
 import Login from './Login/Login';
 import SignupSuccess from './SignupSuccess/SignupSuccess';
 import { HomePaths, AuthPagesPaths } from '../../routes';
+import { useRedirectUrl } from '../../hooks';
+import { useProfileUrl } from '../../hooks/useProfileUrl';
 
 
 
 
 const AuthPages: React.FC = () => {
   const history = useHistory();
+  const authenticatedUrl = useProfileUrl(useRedirectUrl(HomePaths.Dashboard));
 
   const onLoggedIn = (userAuthenticatedAt: number) => {
     if (userAuthenticatedAt && Number(userAuthenticatedAt) > 0) {
-      history.replace(HomePaths.Dashboard);
+      history.replace(authenticatedUrl);
     } else {
       history.replace(AuthPagesPaths.SignupSuccess);
     }

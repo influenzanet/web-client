@@ -11,6 +11,7 @@ import Drawer from '../../components/Navigation/Drawer/Drawer';
 import Dashboard from './Dashboard/Dashboard';
 import MyStudies from './MyStudies/MyStudies';
 import { HomePaths } from '../../routes';
+import ProfileSelection from './Profile/ProfileSelection/ProfileSelection';
 
 
 
@@ -22,6 +23,7 @@ export const Home: React.FC = () => {
       <Switch>
         <Route path={HomePaths.Dashboard} exact component={Dashboard} />
         <Route path={HomePaths.MyStudies} component={MyStudies} />
+        <Route path={HomePaths.Profiles} component={ProfileSelection} />
         <Redirect to={HomePaths.Dashboard}></Redirect>
       </Switch>
     </React.Fragment>

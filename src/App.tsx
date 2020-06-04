@@ -31,6 +31,7 @@ import Landing from './pages/Landing/Landing';
 import { AppRoutes } from './routes/root';
 import { AuthPagesPaths } from './routes';
 import { useAuthTokenCheck } from './hooks';
+import { urlWithRedirect } from './routes/utils/routeUtils';
 
 
 const App: React.FC = () => {
@@ -149,7 +150,7 @@ const App: React.FC = () => {
     <Route path={AppRoutes.UserAuth} component={AuthPages} />
     <Route path={AppRoutes.LinkResolver} component={LinkResolver} />
     <Route path={AppRoutes.Landing} component={Landing} />
-    <Redirect to={AuthPagesPaths.Login + `?redirect=${location}`}></Redirect>
+    <Redirect to={urlWithRedirect(AuthPagesPaths.Login, location)}></Redirect>
   </Switch>
 
   return (
