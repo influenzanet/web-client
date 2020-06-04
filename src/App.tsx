@@ -30,6 +30,7 @@ import LinkResolver from './pages/LinkResolver/LinkResolver';
 import Landing from './pages/Landing/Landing';
 import { AppRoutes } from './routes/root';
 import { AuthPagesPaths } from './routes';
+import { useAuthTokenCheck } from './hooks';
 
 
 const App: React.FC = () => {
@@ -134,7 +135,7 @@ const App: React.FC = () => {
     },
   };
 
-  const isAuthenticated = true;
+  const hasAuthTokens = useAuthTokenCheck();
 
   const authRoutes = <Switch>
     <Route path={AppRoutes.Home} component={Home} />
@@ -160,7 +161,7 @@ const App: React.FC = () => {
         </Helmet>
         <Router basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : undefined}>
           <Switch>
-            {isAuthenticated ? authRoutes : noAuthRoutes}
+            {hasAuthTokens ? authRoutes : noAuthRoutes}
           </Switch>
         </Router>
       </StylesProvider>

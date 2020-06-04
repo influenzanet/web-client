@@ -14,7 +14,7 @@ const renewToken = async () => {
   let expiresAt = store.getState().api.expiresAt;
   let refreshToken = store.getState().api.refreshToken;
 
-  if (refreshToken.length > 0 && expiresAt < new Date().getTime() + renewThreshold) {
+  if (refreshToken && refreshToken.length > 0 && expiresAt < new Date().getTime() + renewThreshold) {
     let response = await renewTokenReq(refreshToken);
 
     store.dispatch(apiActions.setState({
