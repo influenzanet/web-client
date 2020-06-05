@@ -39,6 +39,7 @@ authApiInstance.interceptors.request.use(
     return config;
   },
   (error) => {
+    resetAuth();
     console.error(error);
     return Promise.reject(error);
   }
@@ -47,5 +48,14 @@ authApiInstance.interceptors.request.use(
 export const setDefaultAccessTokenHeader = (token: string) => {
   authApiInstance.defaults.headers.Authorization = "Bearer " + token;
 };
+
+export const resetAuth = () => {
+  store.dispatch(apiActions.setState({
+    accessToken: '',
+    refreshToken: '',
+    expiresAt: 0,
+  }));
+  setDefaultAccessTokenHeader('');
+}
 
 export default authApiInstance;
