@@ -8,7 +8,8 @@ export const loadState = () => {
     if (serializedState === null) {
       return undefined;
     }
-    return JSON.parse(serializedState);
+    const loadedState = JSON.parse(serializedState);
+    return loadedState;
   } catch (err) {
     console.log(err);
     return undefined;
