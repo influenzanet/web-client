@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Typography, makeStyles, Theme, createStyles, Grid, useTheme } from '@material-ui/core';
+import { Container, Typography, makeStyles, Theme, createStyles, Grid, useTheme, CircularProgress } from '@material-ui/core';
 import FlexGrow from '../../../../components/common/FlexGrow';
 import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 import { Profile } from '../../../../types/user';
@@ -8,96 +8,17 @@ import ProfileRepresenation from '../ProfileRepresentation/ProfileRepresentation
 import RoundedBox from '../../../../components/ui/RoundedBox';
 import ProfileCreateDialog from '../ProfileCreateDialog/ProfileCreateDialog';
 import FullscreenHomePage from '../../../../components/ui/pages/Home/FullscreenHomePage';
-
-interface ProfileSelectionProps {
-}
-
-const profilesList: Profile[] = [
-  {
-    id: "1",
-    alias: "Average Alpaca",
-    consentConfirmedAt: 0,
-    avatarId: "default_alpaca",
-    createdAt: 0,
-  },
-  {
-    id: "2",
-    alias: "Daring Dolphin",
-    consentConfirmedAt: 0,
-    avatarId: "default_dolphin",
-    createdAt: 0,
-  },
-  {
-    id: "3",
-    alias: "Eloquent Elephant",
-    consentConfirmedAt: 0,
-    avatarId: "default_elephant",
-    createdAt: 0,
-  },
-  {
-    id: "4",
-    alias: "Old Owl",
-    consentConfirmedAt: 0,
-    avatarId: "default_owl",
-    createdAt: 0,
-  },
-  {
-    id: "5",
-    alias: "Fancy Flamingo",
-    consentConfirmedAt: 0,
-    avatarId: "default_flamingo",
-    createdAt: 0,
-  },
-  {
-    id: "6",
-    alias: "Fierce Fox",
-    consentConfirmedAt: 0,
-    avatarId: "default_fox",
-    createdAt: 0,
-  },
-  {
-    id: "7",
-    alias: "Galant Gecko",
-    consentConfirmedAt: 0,
-    avatarId: "default_gecko",
-    createdAt: 0,
-  },
-  {
-    id: "8",
-    alias: "Posh Panda",
-    consentConfirmedAt: 0,
-    avatarId: "default_panda",
-    createdAt: 0,
-  },
-  {
-    id: "9",
-    alias: "Perfect Penguin",
-    consentConfirmedAt: 0,
-    avatarId: "default_penguin",
-    createdAt: 0,
-  },
-  {
-    id: "10",
-    alias: "Sassy Spider",
-    consentConfirmedAt: 0,
-    avatarId: "default_spider",
-    createdAt: 0,
-  },
-  {
-    id: "11",
-    alias: "Bold Bull",
-    consentConfirmedAt: 0,
-    avatarId: "default_bull",
-    createdAt: 0,
-  },
-  {
-    id: "12",
-    alias: "Mr. X",
-    consentConfirmedAt: 0,
-    avatarId: "default_default",
-    createdAt: 0,
-  },
-];
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../../../store';
+import { useMountEffect, useRedirectUrl } from '../../../../hooks';
+import { getUserReq, saveProfileReq, removeProfileReq } from '../../../../api/user-management-api';
+import { userActions } from '../../../../store/user/userSlice';
+import { HomePaths } from '../../../../routes';
+import { useHistory } from 'react-router';
+import { switchProfileReq } from '../../../../api/auth-api';
+import { apiActions } from '../../../../store/api/apiSlice';
+import { minuteToMillisecondFactor } from '../../../../constants';
+import { setDefaultAccessTokenHeader } from '../../../../api/instances/auth-api-instance';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -126,55 +47,121 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
+
+const ProfileSelection: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation(['app']);
+  const dispatch = useDispatch();
+  const redirectUrl = useRedirectUrl(HomePaths.Dashboard);
+  const history = useHistory();
 
   const getCurrentDefaultProfile = () => {
     return {
-      id: new Date().toUTCString(),
+      id: "",
       alias: "",
       consentConfirmedAt: 0,
       avatarId: "",
       createdAt: 0,
     };
   }
+  const profiles = useSelector((state: RootState) => state.user.currentUser.profiles);
+  const refreshToken = useSelector((state: RootState) => state.api.refreshToken);
 
-  let [editMode, setEditMode] = useState(false);
-  let [profiles, setProfiles] = useState(profilesList);
   let [defaultProfile, setDefaultProfile] = useState<Profile>(getCurrentDefaultProfile());
+  const [loading, setLoading] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [createProfileDialogOpen, setCreateProfileDialogOpen] = useState(false);
 
-  let [createProfileDialogOpen, setCreateProfileDialogOpen] = useState(false);
 
-
-  useEffect(() => {
+  useMountEffect(() => {
     if (containerRef.current) {
       containerRef.current.style.minHeight = `calc(100vh - ${containerRef.current.offsetTop}px)`;
     }
-  }, []);
+
+    updateUser();
+  });
+
+  const updateUser = async () => {
+    await asyncCall(async () => {
+      const response = await getUserReq();
+      dispatch(userActions.setUser(response.data));
+    });
+  }
+
+  const saveProfile = async (profile: Profile) => {
+    await asyncCall(async () => {
+      const response = await saveProfileReq(profile);
+      dispatch(userActions.setUser(response.data));
+    });
+  }
+
+  const removeProfile = async (profile: Profile) => {
+    await asyncCall(async () => {
+      const response = await removeProfileReq(profile.id);
+      dispatch(userActions.setUser(response.data));
+    });
+  }
+
+  const switchProfile = async (profile: Profile) => {
+    await asyncCall(async () => {
+      const response = await switchProfileReq({
+        profileId: profile.id,
+        refreshToken: refreshToken,
+      });
+
+      let tokenRefreshedAt = new Date().getTime();
+
+      dispatch(apiActions.setState({
+        accessToken: response.data.accessToken,
+        refreshToken: response.data.refreshToken,
+        expiresAt: tokenRefreshedAt + response.data.expiresIn * minuteToMillisecondFactor,
+      }));
+
+      setDefaultAccessTokenHeader(response.data.accessToken);
+
+      dispatch(userActions.setFromTokenResponse(response.data));
+    });
+  }
+
+  const asyncCall = async (call: () => Promise<void>) => {
+    if (loading) return;
+    setLoading(true);
+
+    try {
+      await call();
+    } catch (e) {
+      console.error(e);
+    }
+
+    setLoading(false);
+  }
+
+  const switchProfileAndContinue = async (profile: Profile) => {
+    await switchProfile(profile);
+    history.push(redirectUrl);
+  }
 
   const onCreateProfileDialogClosed = () => {
     setCreateProfileDialogOpen(false);
   }
 
   const onProfileCreated = (profile: Profile) => {
-    console.log(profile.consentConfirmedAt);
     onCreateProfileDialogClosed();
-    setProfiles([...profiles, profile]);
+    saveProfile(profile);
   }
 
   const onProfileSelected = (profile: Profile) => {
-    console.log(profile.alias)
+    switchProfileAndContinue(profile);
   };
 
   const onProfileDeleted = (profile: Profile) => {
-    setProfiles(profiles.filter((p) => p.id !== profile.id));
+    removeProfile(profile);
   };
 
   const onProfileUpdated = (profile: Profile) => {
-    setProfiles(profiles.slice());
+    saveProfile(profile);
   }
 
   const onNewProfileClicked = () => {
@@ -183,7 +170,7 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
   }
 
   const profileList = profiles.map((profile) =>
-    <ProfileRepresenation key={profile.id} profile={profile} editMode={editMode} createMode={false} onSelected={onProfileSelected} onDeleted={onProfileDeleted} onUpdated={onProfileUpdated} />);
+    <ProfileRepresenation key={profile.id} profile={profile} editMode={editMode} createMode={false} allowDelete={profiles.length > 1} onSelected={onProfileSelected} onDeleted={onProfileDeleted} onUpdated={onProfileUpdated} />);
 
   const avatars = () => {
     return <Grid item container direction="row" spacing={0} justify="center" style={{ minHeight: "auto", width: "100%" }}>
@@ -198,9 +185,15 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
     </Grid>
   }
 
-  return (
-    <FullscreenHomePage>
-      <Container ref={containerRef} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  const loadingScreen = () => {
+    return (
+      <CircularProgress />
+    );
+  }
+
+  const profileSelectionScreen = () => {
+    return (
+      <Fragment>
         <FlexGrow />
         <div className={classes.spacer} />
         <Typography variant="h3" color="primary" align="center">
@@ -218,6 +211,17 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
         <div className={classes.spacer} />
         <FlexGrow />
         <ProfileCreateDialog defaultProfile={defaultProfile} open={createProfileDialogOpen} onCreated={onProfileCreated} onClose={onCreateProfileDialogClosed} />
+      </Fragment>
+    );
+  }
+
+  return (
+    <FullscreenHomePage>
+      <Container ref={containerRef} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        {loading
+          ? loadingScreen()
+          : profileSelectionScreen()
+        }
       </Container>
     </FullscreenHomePage>
   );

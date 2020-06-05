@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Profile } from '../../../../types/user';
 import { Grid, makeStyles, Theme, createStyles, Typography, TextField, useTheme } from '@material-ui/core';
 import getAvatarPathFromID from '../utils/ProfileUtils';
@@ -6,11 +6,13 @@ import RoundedBox from '../../../../components/ui/RoundedBox';
 import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 import AvatarDialog from './AvatarDialog/AvatarDialog';
 import { useTranslation } from 'react-i18next';
+import { updateObject } from '../../../../store/utils';
 
 interface ProfileRepresentationProps {
   profile: Profile;
   editMode: boolean;
   createMode: boolean;
+  allowDelete: boolean;
   onSelected: (profile: Profile) => any;
   onDeleted: (profile: Profile) => any;
   onUpdated: (profile: Profile) => any;
@@ -80,12 +82,17 @@ const ProfileRepresenation: React.FC<ProfileRepresentationProps> = (props) => {
   const theme = useTheme();
   const { t } = useTranslation(['app']);
 
-  let [avatarDialogOpen, setAvatarDialogOpen] = useState(false);
+  const [alias, setAlias] = useState(props.profile.alias);
+  const [avatarDialogOpen, setAvatarDialogOpen] = useState(false);
 
   let editMode = props.editMode;
   if (props.createMode) editMode = true;
 
-  let avatarPath = getAvatarPathFromID(props.profile.avatarId);
+  const avatarPath = getAvatarPathFromID(props.profile.avatarId);
+
+  useEffect(() => {
+    setAlias(props.profile.alias);
+  }, [props.profile]);
 
   const onSelected = () => {
     if (!editMode) {
@@ -99,25 +106,27 @@ const ProfileRepresenation: React.FC<ProfileRepresentationProps> = (props) => {
 
   const onAvatarSelected = (avatarId: string) => {
     onAvatarDialogClosed();
-    props.profile.avatarId = avatarId;
-    props.onUpdated(props.profile);
+    props.onUpdated(updateObject(props.profile, { avatarId: avatarId }));
   }
 
   const handleAliasChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.profile.alias = (event.target as HTMLInputElement).value;
-    props.onUpdated(props.profile);
+    setAlias((event.target as HTMLInputElement).value);
   };
 
-  let avatar = (editMode)
+  const onFocusLost = (event: any) => {
+    props.onUpdated(updateObject(props.profile, { alias: alias }));
+  }
+
+  const avatar = (editMode)
     ? <RoundedBox color={theme.palette.action.selected} classNames={[classes.avatarEditBox]} onClick={() => setAvatarDialogOpen(true)}>
       <img className={classes.avatarEdit} alt="" src={avatarPath} />
     </RoundedBox>
     : <img className={classes.avatar} alt="" src={avatarPath} />;
 
-  let nickname = (editMode)
+  const nickname = (editMode)
     ? <TextField
       placeholder={t('app:profileRepresentation.nicknamePlaceholder')}
-      value={props.profile.alias}
+      value={alias}
       margin="dense"
       variant="filled"
       inputProps={{
@@ -130,17 +139,18 @@ const ProfileRepresenation: React.FC<ProfileRepresentationProps> = (props) => {
           borderRadius: 1000,
         }
       }}
+      onBlur={onFocusLost}
       onChange={handleAliasChange}
     ></TextField>
     : <Typography variant="subtitle1" className={classes.alias} noWrap={true} >
       {props.profile.alias}
     </Typography>;
 
-  let spacer = (editMode)
+  const spacer = (editMode)
     ? null
     : <div className={classes.spacer} />;
 
-  let deleteButton = (editMode && !props.createMode)
+  const deleteButton = (editMode && !props.createMode && props.allowDelete)
     ? <RoundedButton onClick={() => { props.onDeleted(props.profile) }}>
       {t('app:profileRepresentation.deleteButtonLabel')}
     </RoundedButton>

@@ -80,9 +80,9 @@ const ProfileCreateDialog: React.FC<ProfileCreateDialogProps> = (props) => {
         <Typography variant="h4" color="primary" align="center">{t('app:profileCreateDialog.title')}</Typography>
         <div className={classes.spacer} />
         <div className={classes.spacer} />
-        <ProfileRepresenation profile={newProfile} editMode={true} createMode={true} onSelected={() => { }}
+        <ProfileRepresenation profile={newProfile} editMode={true} createMode={true} allowDelete={false} onSelected={() => { }}
           onDeleted={() => { }}
-          onUpdated={() => { setNewProfile({ ...newProfile }) }} />
+          onUpdated={(profile) => { setNewProfile({ ...profile }) }} />
         <div className={classes.spacer} />
         <FormControlLabel
           control={

@@ -64,6 +64,10 @@ const userSlice = createSlice({
     setPreferredLanguage: (state, action: PayloadAction<string>) => {
       state.currentUser.account.preferredLanguage = action.payload;
       return state;
+    },
+    setSelectedProfileID: (state, action: PayloadAction<string>) => {
+      state.selectedProfileId = action.payload;
+      return state;
     }
   },
 });
