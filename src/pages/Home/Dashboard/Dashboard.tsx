@@ -1,20 +1,12 @@
-import React, { useEffect } from 'react';
-
-import { useDispatch } from 'react-redux'
-import { navigationActions } from '../../../store/navigation/navigationSlice';
+import React from 'react';
+import NavigationHomePage from '../../../components/ui/pages/Home/NavigationHomePage';
 
 
 const Dashboard: React.FC = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(navigationActions.setPageTitle('InfluenzaNet'));
-  });
-
   return (
-    <div>
+    <NavigationHomePage title="InfluenzaNet">
       Dashboard
-    </div>
+    </NavigationHomePage>
   )
 }
 

@@ -7,6 +7,7 @@ import { Profile } from '../../../../types/user';
 import ProfileRepresenation from '../ProfileRepresentation/ProfileRepresentation';
 import RoundedBox from '../../../../components/ui/RoundedBox';
 import ProfileCreateDialog from '../ProfileCreateDialog/ProfileCreateDialog';
+import FullscreenHomePage from '../../../../components/ui/pages/Home/FullscreenHomePage';
 
 interface ProfileSelectionProps {
 }
@@ -198,25 +199,27 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = (props) => {
   }
 
   return (
-    <Container ref={containerRef} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <FlexGrow />
-      <div className={classes.spacer} />
-      <Typography variant="h3" color="primary" align="center">
-        {t('app:profileSelectionPage.headline')}
-      </Typography>
-      <div className={classes.spacer} />
-      {avatars()}
-      <div className={classes.spacer} />
-      <RoundedButton
-        className={classes.btn}
-        onClick={() => setEditMode(!editMode)}
-      >
-        {(editMode) ? t('app:profileSelectionPage.selectProfilesButtonLabel') : t('app:profileSelectionPage.manageProfilesButtonLabel')}
-      </RoundedButton>
-      <div className={classes.spacer} />
-      <FlexGrow />
-      <ProfileCreateDialog defaultProfile={defaultProfile} open={createProfileDialogOpen} onCreated={onProfileCreated} onClose={onCreateProfileDialogClosed} />
-    </Container>
+    <FullscreenHomePage>
+      <Container ref={containerRef} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <FlexGrow />
+        <div className={classes.spacer} />
+        <Typography variant="h3" color="primary" align="center">
+          {t('app:profileSelectionPage.headline')}
+        </Typography>
+        <div className={classes.spacer} />
+        {avatars()}
+        <div className={classes.spacer} />
+        <RoundedButton
+          className={classes.btn}
+          onClick={() => setEditMode(!editMode)}
+        >
+          {(editMode) ? t('app:profileSelectionPage.selectProfilesButtonLabel') : t('app:profileSelectionPage.manageProfilesButtonLabel')}
+        </RoundedButton>
+        <div className={classes.spacer} />
+        <FlexGrow />
+        <ProfileCreateDialog defaultProfile={defaultProfile} open={createProfileDialogOpen} onCreated={onProfileCreated} onClose={onCreateProfileDialogClosed} />
+      </Container>
+    </FullscreenHomePage>
   );
 };
 

@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { updateObject } from '../utils';
 
 export interface NavigationState {
+  showNavigation: boolean;
   appBar: {
     showBackBtn: boolean;
     currentPageTitle: string;
@@ -13,14 +14,19 @@ export interface NavigationState {
 const navigationSlice = createSlice({
   name: 'navigation',
   initialState: {
-    drawerOpen: false,
+    showNavigation: true,
     appBar: {
       currentPageTitle: 'InfluenzaNet',
       showBackBtn: false,
     },
+    drawerOpen: false,
     loading: false,
   } as NavigationState,
   reducers: {
+    setShowNavigation: (state, action: PayloadAction<boolean>) => {
+      state.showNavigation = action.payload;
+      return state;
+    },
     openNavigationDrawer: state => updateObject(state, { drawerOpen: true }),
     closeNavigationDrawer: state => updateObject(state, { drawerOpen: false }),
     setPageTitle: (state, action: PayloadAction<string>) =>

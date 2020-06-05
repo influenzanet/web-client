@@ -12,14 +12,22 @@ import Dashboard from './Dashboard/Dashboard';
 import MyStudies from './MyStudies/MyStudies';
 import { HomePaths } from '../../routes';
 import ProfileSelection from './Profile/ProfileSelection/ProfileSelection';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 
 
 export const Home: React.FC = () => {
+  const showNavigation = useSelector((state: RootState) => state.navigation.showNavigation);
+
   return (
     <React.Fragment>
-      <NavBar />
-      <Drawer side="left"></Drawer>
+      {showNavigation
+        ? <React.Fragment>
+          <NavBar />
+          <Drawer side="left"></Drawer>
+        </React.Fragment>
+        : null}
       <Switch>
         <Route path={HomePaths.Dashboard} exact component={Dashboard} />
         <Route path={HomePaths.MyStudies} component={MyStudies} />
