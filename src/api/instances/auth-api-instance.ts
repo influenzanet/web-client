@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from "../../store";
-import { renewTokenReq } from '../auth-api';
+import { renewTokenReq, renewTokenURL } from '../auth-api';
 import { apiActions } from '../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../constants';
 
@@ -32,6 +32,9 @@ const renewToken = async () => {
 
 authApiInstance.interceptors.request.use(
   async (config) => {
+    if (renewTokenURL === config.url) {
+      return config;
+    }
     try {
       let newAccessToken = await renewToken();
       if (newAccessToken) {
@@ -39,7 +42,7 @@ authApiInstance.interceptors.request.use(
       }
     } catch (e) {
       resetAuth();
-      console.error(e);
+      console.error(e.response);
     }
 
     return config;

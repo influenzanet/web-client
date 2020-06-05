@@ -6,8 +6,7 @@ export const useAuthTokenCheck = () => {
 
   const now = new Date().getTime();
 
-  if ((apiState.accessToken && apiState.accessToken.length > 0 && now < apiState.expiresAt) ||
-    (apiState.refreshToken && apiState.refreshToken.length > 0)) {
+  if ((apiState.accessToken && apiState.accessToken.length > 0 && now < apiState.expiresAt)) {
     return true;
   } else {
     return false;
