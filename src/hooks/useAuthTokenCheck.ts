@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 
-export const useAuthTokenCheck = () => {
+export const useAuthTokenCheck = (): boolean => {
   const apiState = useSelector((state: RootState) => state.api);
 
   if (apiState.accessToken && apiState.accessToken.length > 0) {
