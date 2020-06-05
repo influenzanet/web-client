@@ -14,21 +14,27 @@ const renewToken = async () => {
   let expiresAt = store.getState().api.expiresAt;
   let refreshToken = store.getState().api.refreshToken;
 
-  if (refreshToken && refreshToken.length > 0 && expiresAt < new Date().getTime() + renewThreshold) {
-    let response = await renewTokenReq(refreshToken);
+  if (refreshToken && refreshToken.length > 0) {
+    if (expiresAt < new Date().getTime() + renewThreshold) {
+      let response = await renewTokenReq(refreshToken);
 
-    store.dispatch(apiActions.setState({
-      accessToken: response.data.accessToken,
-      refreshToken: response.data.refreshToken,
-      expiresAt: new Date().getTime() + response.data.expiresIn * minuteToMillisecondFactor,
-    }));
-    setDefaultAccessTokenHeader(response.data.accessToken);
-
-    return response.data.accessToken;
-  } else {
-    return null;
+      store.dispatch(apiActions.setState({
+        accessToken: response.data.accessToken,
+        refreshToken: response.data.refreshToken,
+        expiresAt: new Date().getTime() + response.data.expiresIn * minuteToMillisecondFactor,
+      }));
+      setDefaultAccessTokenHeader(response.data.accessToken);
+      return response.data.accessToken;
+    }
+  } else if (expiresAt < new Date().getTime()) {
+    throw new Error('no valid tokens');
   }
+  return null;
 }
+
+
+
+
 
 authApiInstance.interceptors.request.use(
   async (config) => {
@@ -42,7 +48,12 @@ authApiInstance.interceptors.request.use(
       }
     } catch (e) {
       resetAuth();
-      console.error(e.response);
+      if (e.response) {
+        console.error(e.response);
+      } else {
+        console.error(e);
+      }
+
     }
 
     return config;
