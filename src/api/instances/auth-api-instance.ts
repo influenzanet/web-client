@@ -32,10 +32,16 @@ const renewToken = async () => {
 
 authApiInstance.interceptors.request.use(
   async (config) => {
-    let newAccessToken = await renewToken();
-    if (newAccessToken) {
-      config.headers.Authorization = "Bearer " + newAccessToken;
+    try {
+      let newAccessToken = await renewToken();
+      if (newAccessToken) {
+        config.headers.Authorization = "Bearer " + newAccessToken;
+      }
+    } catch (e) {
+      resetAuth();
+      console.error(e);
     }
+
     return config;
   },
   (error) => {
