@@ -23,6 +23,7 @@ import { LinkRef } from '../../common/link';
 import { navigationActions } from '../../../store/navigation/navigationSlice';
 import { RootState } from '../../../store';
 import { useLogout } from '../../../hooks';
+import { HomePaths } from '../../../routes';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
@@ -75,8 +76,8 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
     // drawerOpen = false;
   };
 
-  let matchHomeRoute = useRouteMatch<RouteProps>("/home");
-  let matchMyStudiesRoute = useRouteMatch<RouteProps>("/home/my-studies");
+  let matchHomeRoute = useRouteMatch<RouteProps>(HomePaths.Dashboard);
+  let matchMyStudiesRoute = useRouteMatch<RouteProps>(HomePaths.MyStudies);
 
   const checkRouteMatch = (match: any | null, exact: boolean): boolean => {
     if (!match || (exact && !match.isExact)) {
@@ -108,7 +109,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
             onClick={() => {
               dispatch(navigationActions.closeNavigationDrawer());
             }}
-            component={LinkRef} to="/home"
+            component={LinkRef} to={HomePaths.Dashboard}
           >
             <ListItemText primary={'Home'} />
           </ListItem>
@@ -120,7 +121,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
               dispatch(navigationActions.closeNavigationDrawer());
             }}
             className={checkRouteMatch(matchMyStudiesRoute, true) ? classes.currentRoute : ''}
-            component={LinkRef} to="/home/my-studies"
+            component={LinkRef} to={HomePaths.MyStudies}
           >
             <ListItemText primary={'My Studies'} />
           </ListItem>
@@ -139,7 +140,12 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
         </List>
         <Divider />
         <List>
-          <ListItem button key={'Profile'}>
+          <ListItem button key={'Profile'}
+            onClick={() => {
+              dispatch(navigationActions.closeNavigationDrawer());
+            }}
+            component={LinkRef} to={HomePaths.Profiles}
+          >
             <ListItemText primary={'Profile'} />
           </ListItem>
           <ListItem button key={'History'} disabled>
