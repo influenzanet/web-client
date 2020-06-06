@@ -1,6 +1,6 @@
 import React, { useRef, useState, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Typography, makeStyles, Theme, createStyles, Grid, useTheme, CircularProgress } from '@material-ui/core';
+import { Container, Typography, makeStyles, Theme, createStyles, Grid, useTheme, CircularProgress, Dialog } from '@material-ui/core';
 import FlexGrow from '../../../../components/common/FlexGrow';
 import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 import { Profile } from '../../../../types/user';
@@ -19,6 +19,7 @@ import { switchProfileReq } from '../../../../api/auth-api';
 import { apiActions } from '../../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../../constants';
 import { setDefaultAccessTokenHeader } from '../../../../api/instances/auth-api-instance';
+import LoadingDialog from '../../../../components/ui/dialogs/LoadingDialog';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -185,9 +186,9 @@ const ProfileSelection: React.FC = () => {
     </Grid>
   }
 
-  const loadingScreen = () => {
+  const loadingDialog = () => {
     return (
-      <CircularProgress />
+      <LoadingDialog open={loading} />
     );
   }
 
@@ -218,10 +219,8 @@ const ProfileSelection: React.FC = () => {
   return (
     <FullscreenHomePage>
       <Container ref={containerRef} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        {loading
-          ? loadingScreen()
-          : profileSelectionScreen()
-        }
+        {profileSelectionScreen()}
+        {loadingDialog()}
       </Container>
     </FullscreenHomePage>
   );
