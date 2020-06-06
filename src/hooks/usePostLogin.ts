@@ -1,5 +1,5 @@
 import { useHistory } from "react-router";
-import { useProfileUrl } from "./useProfileUrl";
+import { useProfileUrl } from ".";
 import { useRedirectUrl } from ".";
 import { HomePaths, AuthPagesPaths } from "../routes";
 import { useSelector } from "react-redux";

@@ -27,7 +27,7 @@ import OnboardingError from '../Error/OnboardingError';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
-import { usePostLogin } from '../../../hooks/usePostLogin';
+import { usePostLogin } from '../../../hooks';
 
 
 const useStyles = makeStyles(theme => ({

@@ -29,7 +29,7 @@ import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-ins
 import OnboardingError from '../Error/OnboardingError';
 import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
-import { usePostLogin } from '../../../hooks/usePostLogin';
+import { usePostLogin } from '../../../hooks';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
