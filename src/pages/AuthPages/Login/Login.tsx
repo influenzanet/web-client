@@ -29,12 +29,7 @@ import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-ins
 import OnboardingError from '../Error/OnboardingError';
 import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
-
-
-interface LoginProps {
-  onLoggedIn: (userAuthenticatedAt: number) => any;
-}
-
+import { usePostLogin } from '../../../hooks/usePostLogin';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -70,10 +65,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const Login: React.FC<LoginProps> = (props) => {
+const Login: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const postLogin = usePostLogin();
   const { t } = useTranslation(['app']);
 
   const [instanceId, persistState] = useSelector((state: RootState) => [state.general.instanceId, state.general.persistState]);
@@ -122,7 +118,7 @@ const Login: React.FC<LoginProps> = (props) => {
       dispatch(userActions.setUserID(emailAddress));
 
       setLoading(false);
-      props.onLoggedIn(user.account.accountConfirmedAt);
+      postLogin();
     } catch (e) {
       console.log(e);
       if (e.response && e.response.data && e.response.data.error) {

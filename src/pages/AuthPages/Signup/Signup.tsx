@@ -27,11 +27,7 @@ import OnboardingError from '../Error/OnboardingError';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
-
-
-interface SignupProps {
-  onLoggedIn: (userAuthenticatedAt: number) => any;
-}
+import { usePostLogin } from '../../../hooks/usePostLogin';
 
 
 const useStyles = makeStyles(theme => ({
@@ -69,10 +65,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const Signup: React.FC<SignupProps> = (props) => {
+const Signup: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const postLogin = usePostLogin();
   const { t } = useTranslation(['app']);
 
   const instanceId = useSelector((state: RootState) => state.general.instanceId);
@@ -151,7 +148,7 @@ const Signup: React.FC<SignupProps> = (props) => {
       dispatch(userActions.setFromTokenResponse(response.data));
 
       setLoading(false);
-      props.onLoggedIn(0);
+      postLogin();
     } catch (e) {
       console.log(e.response);
       if (e.response && e.response.data && e.response.data.error) {
