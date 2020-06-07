@@ -10,7 +10,8 @@ import { RootState } from '../../../store';
 import RoundedBox from '../../../components/ui/RoundedBox';
 
 import { LinkRef } from '../../../components/common/link';
-import { AuthPagesPaths } from '../../../routes';
+import { AuthPagesPaths, HomePaths } from '../../../routes';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   box: {
@@ -35,6 +36,7 @@ const Activation: React.FC = () => {
   const classes = useStyles();
   const { t } = useTranslation(['app']);
   const emailAddress = useSelector((state: RootState) => state.user.currentUser.account.accountId);
+  const accountConfirmedAt = useSelector((state: RootState) => state.user.currentUser.account.accountConfirmedAt);
 
   let [loading, setLoading] = useState(false);
   let [confirmationSent, setConfirmationSent] = useState(false);
@@ -59,6 +61,7 @@ const Activation: React.FC = () => {
 
   return (
     <CenterPage>
+      {+accountConfirmedAt > 0 ? <Redirect to={HomePaths.Dashboard} /> : null}
       <FlexGrow />
       <Grid spacing={2} container className={classes.box}>
         <Grid item>
