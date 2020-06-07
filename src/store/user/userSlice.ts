@@ -17,7 +17,7 @@ const userSlice = createSlice({
         type: '',
         accountId: '',
         accountConfirmedAt: 0,
-        preferredLanguage: 'de',
+        preferredLanguage: 'en',
       },
       roles: [],
       timestamps: {

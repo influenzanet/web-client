@@ -38,6 +38,10 @@ const Activation: React.FC = () => {
   const emailAddress = useSelector((state: RootState) => state.user.currentUser.account.accountId);
   const accountConfirmedAt = useSelector((state: RootState) => state.user.currentUser.account.accountConfirmedAt);
 
+  const isAccountConfirmed = (): boolean => {
+    return +accountConfirmedAt > 0;
+  }
+
   let [loading, setLoading] = useState(false);
   let [confirmationSent, setConfirmationSent] = useState(false);
 
@@ -61,7 +65,7 @@ const Activation: React.FC = () => {
 
   return (
     <CenterPage>
-      {+accountConfirmedAt > 0 ? <Redirect to={HomePaths.Dashboard} /> : null}
+      {isAccountConfirmed() ? <Redirect to={HomePaths.Dashboard} /> : null}
       <FlexGrow />
       <Grid spacing={2} container className={classes.box}>
         <Grid item>

@@ -9,7 +9,7 @@ i18n
   .use(Backend)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
-    lng: 'de',
+    lng: 'en',
     fallbackLng: 'en',
     backend: {
       // for all available options read the backend's repository readme file

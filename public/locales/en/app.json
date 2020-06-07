@@ -38,7 +38,7 @@
     "incorrectCredentials": "Incorrect email address and/or password.",
     "unknownError": "Server Error. Please try again later:"
   },
-  "confirmationPage": {
+  "activationPage": {
     "headline": "You are signed up!",
     "description": "Please activate your account by clicking the link we sent to your email address.",
     "resendLinkButtonLabel": "Resend activation link",
