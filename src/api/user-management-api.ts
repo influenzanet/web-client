@@ -20,6 +20,7 @@ export const removeProfileReq = (profileId: string) => authApiInstance.post<User
 // Contact settings:
 export const resendVerificationEmailReq = (address: string) => authApiInstance.post<ServiceStatus>('/v1/user/resend-verification-message', { type: 'email', address: address });
 export const verifyContactReq = (token: string) => apiInstance.post<User>('/v1/user/contact-verification', { token });
+export const unsubscribeNewsletterReq = (token: string) => apiInstance.get<ServiceStatus>('/v1/user/unsubscribe-newsletter', { params: { token } });
 export const updateContactPreferencesReq = (contactPrefs: ContactPreferences) => authApiInstance.post<User>('/v1/user/contact-preferences', { contactPreferences: contactPrefs });
 export const addEmailReq = (contactInfo: ContactInfo) => authApiInstance.post<User>('/v1/user/contact/add-email', { contactInfo });
 export const removeEmailReq = (contactInfoID: string) => authApiInstance.post<User>('/v1/user/contact/remove-email', { contactInfo: { id: contactInfoID } });
