@@ -1,5 +1,6 @@
 export * from './useAsyncCall';
 export * from './useAuthTokenCheck';
+export * from './useLocalization';
 export * from './useLogout';
 export * from './useMountEffect';
 export * from './usePostLogin';
