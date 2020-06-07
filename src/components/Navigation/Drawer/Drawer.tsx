@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 import {
@@ -10,7 +10,8 @@ import {
   List,
   Divider,
   ListItem,
-  ListItemText
+  ListItemText,
+  // Hidden
 } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
@@ -134,44 +135,65 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
     );
   }
 
+  const drawerContent = () => {
+    return (
+      <Fragment>
+        <AppBar position="static" className={styles.drawerAppbar} elevation={0}>
+          <Toolbar>
+            <img src={logo} alt="logo" className={styles.drawerLogo} />
+          </Toolbar>
+        </AppBar>
+        <Box className={styles.drawerContent + ' ' + classes.drawerContent}
+          display="flex"
+          flexDirection="column"
+        >
+          {drawerList(drawerItems1)}
+          <Divider />
+          {drawerList(drawerItems2)}
+
+          <Box flexGrow={1}></Box>
+          <Grid container direction="column" alignItems="center">
+            <Grid item xs={12}>
+              <RoundedButton
+                color="secondary"
+                onClick={() => {
+                  dispatch(navigationActions.closeNavigationDrawer());
+                  logout();
+                }}
+              >
+                {t("app:drawer.logoutButtonLabel")}
+              </RoundedButton>
+            </Grid>
+          </Grid>
+        </Box>
+      </Fragment>
+    );
+  }
 
   return (
-    <MDrawer
-      classes={{ paper: styles.drawer }}
-      open={drawerOpen}
-      anchor={props.side}
-      onClose={closeDrawer()}
-    >
-      <AppBar position="static" className={styles.drawerAppbar} elevation={0}>
-        <Toolbar>
-          <img src={logo} alt="logo" className={styles.drawerLogo} />
-        </Toolbar>
-      </AppBar>
-      <Box className={styles.drawerContent + ' ' + classes.drawerContent}
-        display="flex"
-        flexDirection="column"
+    <Fragment>
+      {/* <Hidden smUp> */}
+      <MDrawer
+        classes={{ paper: styles.drawer }}
+        open={drawerOpen}
+        anchor={props.side}
+        onClose={closeDrawer()}
+        variant="temporary"
       >
-        {drawerList(drawerItems1)}
-        <Divider />
-        {drawerList(drawerItems2)}
-
-        <Box flexGrow={1}></Box>
-        <Grid container direction="column" alignItems="center">
-          <Grid item xs={12}>
-            <RoundedButton
-              color="secondary"
-              onClick={() => {
-                dispatch(navigationActions.closeNavigationDrawer());
-                logout();
-              }}
-            >
-              {t("app:drawer.logoutButtonLabel")}
-            </RoundedButton>
-          </Grid>
-        </Grid>
-      </Box>
-
-    </MDrawer>
+        {drawerContent()}
+      </MDrawer>
+      {/* </Hidden> */}
+      {/* <Hidden xsDown>
+        <MDrawer
+          classes={{ paper: styles.drawer }}
+          open={drawerOpen}
+          anchor={props.side}
+          variant="permanent"
+        >
+          {drawerContent()}
+        </MDrawer>
+      </Hidden> */}
+    </Fragment>
   );
 }
 
