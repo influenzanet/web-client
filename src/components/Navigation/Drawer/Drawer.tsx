@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import {
   Drawer as MDrawer,
-  Button,
   AppBar,
   Toolbar,
   Box,
@@ -18,12 +17,14 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import styles from './Drawer.module.scss';
 import logo from '../../../assets/images/Influenzanet_Logoinsgesamt_RGB.png';
 // import { LinkRef } from '../../../common/link';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, match } from 'react-router-dom';
 import { LinkRef } from '../../common/link';
 import { navigationActions } from '../../../store/navigation/navigationSlice';
 import { RootState } from '../../../store';
 import { useLogout } from '../../../hooks';
 import { HomePaths } from '../../../routes';
+import RoundedButton from '../../ui/buttons/RoundedButton';
+import { useTranslation } from 'react-i18next';
 
 type DrawerSide = 'top' | 'left' | 'bottom' | 'right';
 
@@ -36,6 +37,13 @@ interface RouteProps {
   isExact: string;
 }
 
+interface DrawerItem {
+  key: string;
+  name: string;
+  path: string;
+  exactPath: boolean;
+  routeMatch: match<RouteProps> | null;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -55,10 +63,11 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
   const dispatch = useDispatch();
   const logout = useLogout();
 
+  const { t } = useTranslation(['app']);
+
   const closeDrawer = () => (
     event: React.KeyboardEvent | React.MouseEvent,
   ) => {
-    console.log('call close drawer')
     if (
       event.type === 'keydown' &&
       ((event as React.KeyboardEvent).key === 'Tab' ||
@@ -66,24 +75,63 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
     ) {
       return;
     }
-    console.log('close drawer - call action');
     dispatch(navigationActions.closeNavigationDrawer());
-
-    /*setState(oldState => ({
-        ...oldState,
-        open,
-    }));*/
-    // drawerOpen = false;
   };
 
-  let matchHomeRoute = useRouteMatch<RouteProps>(HomePaths.Dashboard);
-  let matchMyStudiesRoute = useRouteMatch<RouteProps>(HomePaths.MyStudies);
+  const drawerItems1: DrawerItem[] = [
+    {
+      key: "Home",
+      name: t("app:drawer.homeLabel"),
+      routeMatch: useRouteMatch<RouteProps>(HomePaths.Dashboard),
+      exactPath: true,
+      path: HomePaths.Dashboard,
+    },
+    {
+      key: "My Studies",
+      name: t("app:drawer.myStudiesLabel"),
+      routeMatch: useRouteMatch<RouteProps>(HomePaths.MyStudies),
+      exactPath: false,
+      path: HomePaths.MyStudies,
+    },
+  ];
 
-  const checkRouteMatch = (match: any | null, exact: boolean): boolean => {
+  const drawerItems2: DrawerItem[] = [
+    {
+      key: "Profiles",
+      name: t("app:drawer.profilesLabel"),
+      routeMatch: useRouteMatch<RouteProps>(HomePaths.Profiles),
+      exactPath: true,
+      path: HomePaths.Profiles,
+    },
+  ];
+
+  const checkRouteMatch = (match: match<RouteProps> | null, exact: boolean): boolean => {
     if (!match || (exact && !match.isExact)) {
       return false;
     }
     return true;
+  }
+
+  const drawerListItem = (item: DrawerItem) => {
+    return (
+      <ListItem button key={item.key}
+        className={checkRouteMatch(item.routeMatch, item.exactPath) ? classes.currentRoute : ''}
+        onClick={() => {
+          dispatch(navigationActions.closeNavigationDrawer());
+        }}
+        component={LinkRef} to={item.path}
+      >
+        <ListItemText primary={item.name} />
+      </ListItem>
+    );
+  }
+
+  const drawerList = (items: DrawerItem[]) => {
+    return (
+      <List>
+        {items.map((item) => drawerListItem(item))}
+      </List>
+    );
   }
 
 
@@ -103,72 +151,22 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
         display="flex"
         flexDirection="column"
       >
-        <List>
-          <ListItem button key={'Home'}
-            className={checkRouteMatch(matchHomeRoute, true) ? classes.currentRoute : ''}
-            onClick={() => {
-              dispatch(navigationActions.closeNavigationDrawer());
-            }}
-            component={LinkRef} to={HomePaths.Dashboard}
-          >
-            <ListItemText primary={'Home'} />
-          </ListItem>
-          <ListItem button key={'Explore'}>
-            <ListItemText primary={'Explore'} />
-          </ListItem>
-          <ListItem button key={'My Studies'}
-            onClick={() => {
-              dispatch(navigationActions.closeNavigationDrawer());
-            }}
-            className={checkRouteMatch(matchMyStudiesRoute, true) ? classes.currentRoute : ''}
-            component={LinkRef} to={HomePaths.MyStudies}
-          >
-            <ListItemText primary={'My Studies'} />
-          </ListItem>
-        </List>
+        {drawerList(drawerItems1)}
         <Divider />
-        <List>
-          <ListItem button key={'Coverage Map'}>
-            <ListItemText primary={'Coverage Map'} />
-          </ListItem>
-          <ListItem button key={'Devices'}>
-            <ListItemText primary={'Devices'} />
-          </ListItem>
-          <ListItem button key={'News'}>
-            <ListItemText color="secondary" primary={'News'} />
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button key={'Profile'}
-            onClick={() => {
-              dispatch(navigationActions.closeNavigationDrawer());
-            }}
-            component={LinkRef} to={HomePaths.Profiles}
-          >
-            <ListItemText primary={'Profile'} />
-          </ListItem>
-          <ListItem button key={'History'} disabled>
-            <ListItemText primary={'History'} />
-          </ListItem>
-          <ListItem button key={'Settings'} disabled>
-            <ListItemText primary={'Settings'} />
-          </ListItem>
-        </List>
-
+        {drawerList(drawerItems2)}
 
         <Box flexGrow={1}></Box>
         <Grid container direction="column" alignItems="center">
           <Grid item xs={12}>
-            <Button
-              className={styles.drawerBtn}
-              variant="outlined" color="secondary"
+            <RoundedButton
+              color="secondary"
               onClick={() => {
                 dispatch(navigationActions.closeNavigationDrawer());
                 logout();
               }}
             >
-              Logout</Button>
+              {t("app:drawer.logoutButtonLabel")}
+            </RoundedButton>
           </Grid>
         </Grid>
       </Box>

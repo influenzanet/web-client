@@ -6,6 +6,12 @@
     "title": "Influenzanet",
     "metaDescription": "A participatory survey system for fighting epidemics"
   },
+  "drawer": {
+    "homeLabel": "Home",
+    "myStudiesLabel": "My Studies",
+    "profilesLabel": "Profiles",
+    "logoutButtonLabel": "Logout"
+  },
   "loginPage": {
     "title": "Sign In",
     "message": "Welcome back!",

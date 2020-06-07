@@ -6,6 +6,12 @@
     "title": "Influenzanet",
     "metaDescription": "Partizipatives Umfragesystem für Bekämpfung von Epidemien"
   },
+  "drawer": {
+    "homeLabel": "Home",
+    "myStudiesLabel": "Meine Studien",
+    "profilesLabel": "Profile",
+    "logoutButtonLabel": "Abmelden"
+  },
   "loginPage": {
     "title": "Anmelden",
     "message": "Willkommen zurück!",
