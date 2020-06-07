@@ -1,0 +1,19 @@
+.studiesContainer {
+  padding: 16px;
+}
+
+.studyItem {
+  cursor: pointer;
+  user-select: none;
+}
+
+.unsubscribedText {
+  color: grey;
+}
+
+.studiesDescription {
+  max-width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

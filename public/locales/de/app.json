@@ -12,6 +12,12 @@
     "profilesLabel": "Profile",
     "logoutButtonLabel": "Abmelden"
   },
+  "dashboard": {
+    "title": "InfluenzaNet",
+    "studiesSubtitle": "Studien",
+    "subscribedTag": "Abonniert",
+    "unsubscribedTag": "Nicht abonniert"
+  },
   "loginPage": {
     "title": "Anmelden",
     "message": "Willkommen zurück!",
