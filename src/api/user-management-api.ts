@@ -2,9 +2,10 @@ import authApiInstance from './instances/auth-api-instance';
 import { PasswordResetInfos } from '../types/user-management-api';
 import { ServiceStatus } from '../types/general';
 import { User, Profile, ContactPreferences, ContactInfo } from '../types/user';
+import apiInstance from './instances/api-instance';
 
 // Password Reset API
-export const initiatePasswordResetReq = (instanceID: string, accountID: string) => authApiInstance.post<ServiceStatus>('/v1/user/password-reset/initiate', { instanceID, accountID });
+export const initiatePasswordResetReq = (instanceID: string, accountID: string) => apiInstance.post<ServiceStatus>('/v1/user/password-reset/initiate', { instanceID, accountID });
 export const getInfosForPasswordResetReq = (token: string) => authApiInstance.post<PasswordResetInfos>('/v1/user/password-reset/get-infos', { token });
 export const resetPasswordReq = (token: string, newPassword: string) => authApiInstance.post<ServiceStatus>('/v1/user/password-reset/reset-with', { token, newPassword });
 
@@ -18,7 +19,7 @@ export const saveProfileReq = (profile: Profile) => authApiInstance.post<User>('
 export const removeProfileReq = (profileId: string) => authApiInstance.post<User>('/v1/user/profile/remove', { profile: { id: profileId } });
 // Contact settings:
 export const resendVerificationEmailReq = (address: string) => authApiInstance.post<ServiceStatus>('/v1/user/resend-verification-message', { type: 'email', address: address });
-export const verifyContactReq = (token: string) => authApiInstance.post<User>('/v1/user/contact-verification', { token });
+export const verifyContactReq = (token: string) => apiInstance.post<User>('/v1/user/contact-verification', { token });
 export const updateContactPreferencesReq = (contactPrefs: ContactPreferences) => authApiInstance.post<User>('/v1/user/contact-preferences', { contactPreferences: contactPrefs });
 export const addEmailReq = (contactInfo: ContactInfo) => authApiInstance.post<User>('/v1/user/contact/add-email', { contactInfo });
 export const removeEmailReq = (contactInfoID: string) => authApiInstance.post<User>('/v1/user/contact/remove-email', { contactInfo: { id: contactInfoID } });
