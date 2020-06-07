@@ -2,7 +2,7 @@ import { SurveyResponse, Survey, SurveyContext, LocalizedString } from "survey-e
 
 
 export interface SurveyReferenceReq {
-  studeyKey: string;
+  studyKey: string;
   surveyKey: string;
 }
 
