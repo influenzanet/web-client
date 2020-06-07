@@ -10,7 +10,7 @@ import ProfileCreateDialog from '../ProfileCreateDialog/ProfileCreateDialog';
 import FullscreenHomePage from '../../../../components/ui/pages/Home/FullscreenHomePage';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../../store';
-import { useMountEffect, useRedirectUrl } from '../../../../hooks';
+import { useMountEffect, useRedirectUrl, useAsyncCall } from '../../../../hooks';
 import { getUserReq, saveProfileReq, removeProfileReq } from '../../../../api/user-management-api';
 import { userActions } from '../../../../store/user/userSlice';
 import { HomePaths } from '../../../../routes';
@@ -71,7 +71,7 @@ const ProfileSelection: React.FC = () => {
   const refreshToken = useSelector((state: RootState) => state.api.refreshToken);
 
   let [defaultProfile, setDefaultProfile] = useState<Profile>(getCurrentDefaultProfile());
-  const [loading, setLoading] = useState(false);
+  const [loading, asyncCall] = useAsyncCall();
   const [editMode, setEditMode] = useState(false);
   const [createProfileDialogOpen, setCreateProfileDialogOpen] = useState(false);
 
@@ -124,19 +124,6 @@ const ProfileSelection: React.FC = () => {
 
       dispatch(userActions.setFromTokenResponse(response.data));
     });
-  }
-
-  const asyncCall = async (call: () => Promise<void>) => {
-    if (loading) return;
-    setLoading(true);
-
-    try {
-      await call();
-    } catch (e) {
-      console.error(e);
-    }
-
-    setLoading(false);
   }
 
   const switchProfileAndContinue = async (profile: Profile) => {
