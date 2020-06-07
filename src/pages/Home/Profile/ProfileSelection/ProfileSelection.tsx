@@ -1,6 +1,6 @@
 import React, { useRef, useState, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Typography, makeStyles, Theme, createStyles, Grid, useTheme, CircularProgress, Dialog } from '@material-ui/core';
+import { Container, Typography, makeStyles, Theme, createStyles, Grid, useTheme } from '@material-ui/core';
 import FlexGrow from '../../../../components/common/FlexGrow';
 import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 import { Profile } from '../../../../types/user';
