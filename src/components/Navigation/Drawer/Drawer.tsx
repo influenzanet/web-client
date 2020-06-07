@@ -87,13 +87,13 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
       exactPath: true,
       path: HomePaths.Dashboard,
     },
-    {
-      key: "My Studies",
-      name: t("app:drawer.myStudiesLabel"),
-      routeMatch: useRouteMatch<RouteProps>(HomePaths.MyStudies),
-      exactPath: false,
-      path: HomePaths.MyStudies,
-    },
+    // {
+    //   key: "My Studies",
+    //   name: t("app:drawer.myStudiesLabel"),
+    //   routeMatch: useRouteMatch<RouteProps>(HomePaths.MyStudies),
+    //   exactPath: false,
+    //   path: HomePaths.MyStudies,
+    // },
   ];
 
   const drawerItems2: DrawerItem[] = [
