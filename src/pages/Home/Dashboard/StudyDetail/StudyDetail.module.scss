@@ -5,3 +5,16 @@
 .button {
   font-size: 1.1em;
 }
+
+.centerText {
+  text-align: center;
+}
+
+.surveyItem {
+    cursor: pointer;
+  user-select: none;
+}
+
+.surveyDescription {
+  max-width: 300px;
+}

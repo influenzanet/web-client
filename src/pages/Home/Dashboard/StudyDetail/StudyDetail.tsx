@@ -1,17 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import DetailHomePage from '../../../../components/ui/pages/Home/DetailHomePage';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../store';
 import { useRouteMatch, useParams } from 'react-router';
 import { HomePaths } from '../../../../routes';
-import { Typography, Grid } from '@material-ui/core';
-import { useLocalization, useAsyncCall } from '../../../../hooks';
+import { Typography, Grid, Container } from '@material-ui/core';
+import { useLocalization, useAsyncCall, useMountEffect } from '../../../../hooks';
 import RoundedBox from '../../../../components/ui/RoundedBox';
 import styles from './StudyDetail.module.scss';
 import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 import LoadingDialog from '../../../../components/ui/dialogs/LoadingDialog';
-import { enterStudyReq, leaveStudyRequest } from '../../../../api/study-api';
+import { enterStudyReq, leaveStudyRequest, getSurveyInfosForStudyReq, getAllAssignedSurveysReq } from '../../../../api/study-api';
 import { useUpdateStudies } from '../../../../hooks/useUpdateStudies';
+import { SurveyInfo, AssignedSurvey, SurveyInfos } from '../../../../types/study-api';
 
 const StudyDetail: React.FC = () => {
   const { key: urlKey } = useParams();
@@ -19,6 +20,8 @@ const StudyDetail: React.FC = () => {
   const localize = useLocalization();
   const [asyncLoading, asyncCall] = useAsyncCall();
   const [studiesLoading, updateAllStudies] = useUpdateStudies();
+  const [surveyInfos, setSurveyInfos] = useState<SurveyInfo[]>([]);
+  const [allAssignedSurveys, setAllAssignedSurveys] = useState<AssignedSurvey[]>([]);
 
   const loading = asyncLoading || studiesLoading;
 
@@ -32,11 +35,25 @@ const StudyDetail: React.FC = () => {
     : false;
 
 
+  const assignedSurveys = (allAssignedSurveys)
+    ? allAssignedSurveys.filter((assignedSurvey) => {
+      if (!selectedStudy) return false;
+      return assignedSurvey.studyKey === selectedStudy.key;
+    })
+    : [];
+  ;
+
+  const assignedSurveyInfos = surveyInfos.filter((surveyInfos) => assignedSurveys.findIndex((as) => as.surveyKey === surveyInfos.key) !== -1);
+
+  useMountEffect(() => {
+    getSurveysFromServer();
+  });
+
   const subscribe = () => {
     if (!selectedStudy) return;
     asyncCall(async () => {
       const response = await enterStudyReq(selectedStudy.key);
-      console.log(response);
+      setAllAssignedSurveys(response.data.surveys);
       await updateAllStudies();
     })
   }
@@ -44,10 +61,29 @@ const StudyDetail: React.FC = () => {
   const unsubscribe = () => {
     if (!selectedStudy) return;
     asyncCall(async () => {
-      const response = await leaveStudyRequest(selectedStudy.key);
-      console.log(response);
+      await leaveStudyRequest(selectedStudy.key);
       await updateAllStudies();
     })
+  }
+
+  const getSurveysFromServer = async () => {
+    await getSurveyInfos();
+    await getAllAssignedSurveys();
+  }
+
+  const getSurveyInfos = () => {
+    if (!selectedStudy) return;
+    asyncCall(async () => {
+      const response = await getSurveyInfosForStudyReq(selectedStudy.key);
+      setSurveyInfos(response.data.infos);
+    });
+  }
+
+  const getAllAssignedSurveys = () => {
+    asyncCall(async () => {
+      const response = await getAllAssignedSurveysReq();
+      setAllAssignedSurveys(response.data.surveys);
+    });
   }
 
   const notFoundPage = () => {
@@ -64,27 +100,68 @@ const StudyDetail: React.FC = () => {
     if (!selectedStudy) return null;
     return (
       <DetailHomePage title={localize(selectedStudy.props.name) ?? ""}>
-        <Grid container direction="column" spacing={2} alignItems="center" className={styles.pageContainer}>
-          <Grid item>
-            <Typography variant="h3" color="primary">
-              {localize(selectedStudy.props.name)}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <RoundedBox>
-              <Typography variant="body1">
-                {localize(selectedStudy.props.description)}
+        <Container maxWidth="md">
+          <Grid container direction="column" spacing={2} alignItems="stretch" className={styles.pageContainer}>
+            <Grid item>
+              <Typography variant="h3" color="primary" className={styles.centerText}>
+                {localize(selectedStudy.props.name)}
               </Typography>
-            </RoundedBox>
-          </Grid>
-          <Grid item>
-            {(subscribed)
-              ? unsubscribeButton()
-              : subscribeButton()
+            </Grid>
+            <Grid item>
+              <RoundedBox>
+                <Typography variant="body1" className={styles.centerText}>
+                  {localize(selectedStudy.props.description)}
+                </Typography>
+              </RoundedBox>
+            </Grid>
+            {
+              (subscribed)
+                ?
+                <Grid item container>
+                  {surveyList()}
+                </Grid>
+                : null
             }
+
+            <Grid item style={{ alignSelf: "center" }}>
+              {(subscribed)
+                ? unsubscribeButton()
+                : subscribeButton()
+              }
+            </Grid>
           </Grid>
-        </Grid>
+        </Container>
       </DetailHomePage>
+    );
+  }
+
+  const surveyItem = (surveyInfos: SurveyInfo) => {
+    return (
+      <RoundedBox key={surveyInfos.key} classNames={[styles.surveyItem]}>
+        <Grid>
+          <Typography variant="h6">
+            {localize(surveyInfos.name)}
+          </Typography>
+          <Typography variant="body1" className={styles.surveyDescription}>
+            {localize(surveyInfos.description)}
+          </Typography>
+        </Grid>
+      </RoundedBox>
+    );
+  }
+
+  const surveyList = () => {
+    return (
+      <Grid container spacing={2} className={styles.studiesContainer}>
+        <Grid item>
+          <Typography variant="h4" color="secondary">
+            Surveys
+          </Typography>
+        </Grid>
+        <Grid item container direction="row">
+          {assignedSurveyInfos.map((survey) => surveyItem(survey))}
+        </Grid>
+      </Grid>
     );
   }
 

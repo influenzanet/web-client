@@ -43,7 +43,7 @@ export const NavBar: React.FC = () => {
       <IconButton
         edge="start"
         className={classes.menuButton}
-        color="secondary"
+        // color="secondary"
         aria-label="close"
         onClick={() =>
           history.goBack()
@@ -72,10 +72,11 @@ export const NavBar: React.FC = () => {
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar} elevation={0}>
         <Toolbar >
+          {drawerButton()}
           {
             (showBackButton)
               ? backButton()
-              : drawerButton()
+              : null
           }
           <Typography variant="h6" className={classes.title} color="primary">
             {pageTitle}
