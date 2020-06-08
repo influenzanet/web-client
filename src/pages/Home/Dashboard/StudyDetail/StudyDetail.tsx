@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import DetailHomePage from '../../../../components/ui/pages/Home/DetailHomePage';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../store';
-import { useRouteMatch, useParams } from 'react-router';
+import { useRouteMatch, useParams, useHistory } from 'react-router';
 import { HomePaths } from '../../../../routes';
 import { Typography, Grid, Container } from '@material-ui/core';
 import { useLocalization, useAsyncCall, useMountEffect } from '../../../../hooks';
@@ -13,9 +13,12 @@ import LoadingDialog from '../../../../components/ui/dialogs/LoadingDialog';
 import { enterStudyReq, leaveStudyRequest, getSurveyInfosForStudyReq, getAllAssignedSurveysReq } from '../../../../api/study-api';
 import { useUpdateStudies } from '../../../../hooks/useUpdateStudies';
 import { SurveyInfo, AssignedSurvey, SurveyInfos } from '../../../../types/study-api';
+import { studyKeyQueryKey, surveyKeyQueryKey } from '../../MyStudies/MyStudies';
 
 const StudyDetail: React.FC = () => {
   const { key: urlKey } = useParams();
+
+  const history = useHistory();
 
   const localize = useLocalization();
   const [asyncLoading, asyncCall] = useAsyncCall();
@@ -86,6 +89,10 @@ const StudyDetail: React.FC = () => {
     });
   }
 
+  const onSurveyItemClicked = (surveyInfo: SurveyInfo) => {
+    history.push(HomePaths.MyStudies + `?${studyKeyQueryKey}=${selectedStudy?.key}&${surveyKeyQueryKey}=${surveyInfo.key}`)
+  }
+
   const notFoundPage = () => {
     return (
       <DetailHomePage title="Study Not Found">
@@ -135,15 +142,15 @@ const StudyDetail: React.FC = () => {
     );
   }
 
-  const surveyItem = (surveyInfos: SurveyInfo) => {
+  const surveyItem = (surveyInfo: SurveyInfo) => {
     return (
-      <RoundedBox key={surveyInfos.key} classNames={[styles.surveyItem]}>
+      <RoundedBox key={surveyInfo.key} classNames={[styles.surveyItem]} onClick={() => onSurveyItemClicked(surveyInfo)}>
         <Grid>
           <Typography variant="h6">
-            {localize(surveyInfos.name)}
+            {localize(surveyInfo.name)}
           </Typography>
           <Typography variant="body1" className={styles.surveyDescription}>
-            {localize(surveyInfos.description)}
+            {localize(surveyInfo.description)}
           </Typography>
         </Grid>
       </RoundedBox>

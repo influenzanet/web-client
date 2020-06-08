@@ -11,6 +11,7 @@ export const useAsyncCall = (): [boolean, (call: () => Promise<void>) => Promise
       await call();
     } catch (e) {
       console.error(e);
+      if (e.response) console.log(e.response);
     }
 
     setRunning(false);
