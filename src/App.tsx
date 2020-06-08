@@ -4,13 +4,7 @@ import { Helmet } from 'react-helmet';
 
 import {
   BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
 } from 'react-router-dom';
-
-import AuthPages from './pages/AuthPages/AuthPages';
-import Home from './pages/Home/Home';
 
 import {
   createMuiTheme,
@@ -26,17 +20,11 @@ import PWCThemeData from './themes/pwc-theme';
 import { RootState } from './store';
 import { useSelector } from 'react-redux';
 import i18n from './i18n';
-import LinkResolver from './pages/LinkResolver/LinkResolver';
-import Landing from './pages/Landing/Landing';
-import { AppRoutes } from './routes/root';
-import { AuthPagesPaths } from './routes';
-import { useAuthTokenCheck } from './hooks';
-import { urlWithRedirect } from './routes/utils/routeUtils';
+import AuthSwitch from './components/auth/AuthSwitch';
 
 
 const App: React.FC = () => {
   const { t } = useTranslation(['app']);
-  const location = window.location.pathname + window.location.search;
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -136,23 +124,6 @@ const App: React.FC = () => {
     },
   };
 
-  const hasAuthTokens = useAuthTokenCheck();
-
-  const authRoutes = <Switch>
-    <Route path={AppRoutes.Home} component={Home} />
-    <Route path={AppRoutes.UserAuth} component={AuthPages} />
-    <Route path={AppRoutes.LinkResolver} component={LinkResolver} />
-    <Route path={AppRoutes.Landing} component={Landing} />
-    <Redirect to={AppRoutes.Home}></Redirect>
-  </Switch>
-
-  const noAuthRoutes = <Switch>
-    <Route path={AppRoutes.UserAuth} component={AuthPages} />
-    <Route path={AppRoutes.LinkResolver} component={LinkResolver} />
-    <Route path={AppRoutes.Landing} component={Landing} />
-    <Redirect to={urlWithRedirect(AuthPagesPaths.Login, location)}></Redirect>
-  </Switch>
-
   return (
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
@@ -161,9 +132,7 @@ const App: React.FC = () => {
           <meta name="description" content={t('header.metaDescription')} />
         </Helmet>
         <Router basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : undefined}>
-          <Switch>
-            {hasAuthTokens ? authRoutes : noAuthRoutes}
-          </Switch>
+          <AuthSwitch />
         </Router>
       </StylesProvider>
     </MuiThemeProvider>

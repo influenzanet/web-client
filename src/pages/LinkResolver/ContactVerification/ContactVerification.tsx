@@ -8,7 +8,7 @@ import { userActions } from '../../../store/user/userSlice';
 import { RootState } from '../../../store';
 import { Typography, CircularProgress, makeStyles, Container } from '@material-ui/core';
 import RoundedButton from '../../../components/ui/buttons/RoundedButton';
-import { useHistory, Redirect } from 'react-router';
+import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { HomePaths, AuthPagesPaths } from '../../../routes';
 
@@ -38,19 +38,13 @@ const VerifyToken: React.FC = () => {
 
   let [loading, setLoading] = useState(false);
   let [confirmed, setConfirmed] = useState(Number(accountConfirmedAt) > 0);
-  const [redirectTo, setRedirectTo] = useState('');
 
   useMountEffect(() => {
     verifyToken();
   });
 
   const verifyToken = async () => {
-    if (confirmed) {
-      console.log("set redirect at start");
-      setRedirectTo(HomePaths.Dashboard);
-      return;
-    }
-    if (loading || !token) return;
+    if (loading || confirmed || !token) return;
     setLoading(true);
 
     try {
@@ -81,7 +75,6 @@ const VerifyToken: React.FC = () => {
   const success = () => {
     return (
       <Container className={classes.container}>
-        {redirectTo.length > 0 ? <Redirect to={redirectTo} /> : null}
         <Typography variant="h3" color="primary">
           {t("app:verificationPage.successTitle")}
         </Typography>
@@ -90,7 +83,7 @@ const VerifyToken: React.FC = () => {
         </Typography>
         <div className={classes.spacer} />
         <RoundedButton className={classes.button} color="primary" onClick={() =>
-          setRedirectTo(HomePaths.Dashboard)
+          history.push(HomePaths.Dashboard)
         }>
           {t("app:verificationPage.successButtonLabel")}
         </RoundedButton>
@@ -118,7 +111,7 @@ const VerifyToken: React.FC = () => {
   return (
     <CenterPage>
       <FlexGrow />
-      {(loading)
+      {loading
         ? waiting()
         : confirmed
           ? success()
