@@ -4,6 +4,7 @@ import { updateObject } from '../utils';
 export interface NavigationState {
   showNavigation: boolean;
   appBar: {
+    showMenuButton: boolean;
     showBackBtn: boolean;
     currentPageTitle: string;
   };
@@ -16,6 +17,7 @@ const initialState: NavigationState = {
   appBar: {
     currentPageTitle: 'InfluenzaNet',
     showBackBtn: false,
+    showMenuButton: true,
   },
   drawerOpen: false,
   loading: false,
@@ -49,6 +51,10 @@ const navigationSlice = createSlice({
           showBackBtn: action.payload,
         }
       }),
+    setShowMenuButton: (state, action: PayloadAction<boolean>) => {
+      state.appBar.showMenuButton = action.payload;
+      return state;
+    },
     startLoading: state => updateObject(state, { loading: true }),
     finishLoading: state => updateObject(state, { loading: false }),
   },

@@ -5,6 +5,9 @@ import SurveyPageView from './SurveyPageView/SurveyPageView';
 import { Switch, Route, useRouteMatch, Redirect, useLocation } from 'react-router';
 import { Box } from '@material-ui/core';
 import SurveyProgress from './SurveyProgress/SurveyProgress';
+import { useMountEffect } from '../../../hooks';
+import { useDispatch } from 'react-redux';
+import { navigationActions } from '../../../store/navigation/navigationSlice';
 
 interface SurveyViewProps {
   survey: Survey;
@@ -32,6 +35,13 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
   let currentPage = (location.pathname.includes(pagesPath))
     ? parseInt(location.pathname.split("/").slice(-1)[0])
     : 0;
+
+  const dispatch = useDispatch();
+
+
+  useMountEffect(() => {
+    dispatch(navigationActions.setShowMenuButton(false));
+  });
 
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
@@ -72,6 +82,8 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
       <Switch>
         <Route path={`${pagesPath}/:index`} render={routeProps => {
           let index = parseInt(routeProps.match.params.index);
+
+          dispatch(navigationActions.setShowBackBtn(index > 0));
 
           // If invalid index, redirect to beginning of survey.
           if (index < 0 || index > surveyPages.length - 1) return <Redirect to={`${pagesPath}/0${location.search}`} />

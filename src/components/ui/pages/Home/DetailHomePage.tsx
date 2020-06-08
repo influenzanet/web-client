@@ -13,6 +13,7 @@ const DetailHomePage: React.FC<DetailHomePageProps> = (props) => {
 
   useMountEffect(() => {
     dispatch(navigationActions.setShowBackBtn(true));
+    dispatch(navigationActions.setShowMenuButton(true));
   });
 
   return (

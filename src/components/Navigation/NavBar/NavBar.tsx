@@ -36,6 +36,7 @@ export const NavBar: React.FC = () => {
 
   const pageTitle = useSelector((state: RootState) => state.navigation.appBar.currentPageTitle);
   const showBackButton = useSelector((state: RootState) => state.navigation.appBar.showBackBtn);
+  const showMenuButton = useSelector((state: RootState) => state.navigation.appBar.showMenuButton);
   const dispatch = useDispatch();
 
   const backButton = () => {
@@ -72,7 +73,11 @@ export const NavBar: React.FC = () => {
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar} elevation={0}>
         <Toolbar >
-          {drawerButton()}
+          {
+            (showMenuButton)
+              ? drawerButton()
+              : null
+          }
           {
             (showBackButton)
               ? backButton()
