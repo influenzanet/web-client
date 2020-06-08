@@ -15,20 +15,11 @@ import ProfileSelection from './Profile/ProfileSelection/ProfileSelection';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import StudyDetail from './Dashboard/StudyDetail/StudyDetail';
-import { useMountEffect } from '../../hooks';
-import LoadingDialog from '../../components/ui/dialogs/LoadingDialog';
 import { appendParameterToPath } from '../../routes/utils/routeUtils';
-import { useUpdateStudies } from '../../hooks/useUpdateStudies';
-
 
 
 export const Home: React.FC = () => {
   const showNavigation = useSelector((state: RootState) => state.navigation.showNavigation);
-  const [loading, getAllStudies] = useUpdateStudies();
-
-  useMountEffect(() => {
-    getAllStudies();
-  });
 
   return (
     <React.Fragment>
@@ -45,7 +36,6 @@ export const Home: React.FC = () => {
         <Route path={HomePaths.Profiles} component={ProfileSelection} />
         <Redirect to={HomePaths.Dashboard}></Redirect>
       </Switch>
-      <LoadingDialog open={loading} />
     </React.Fragment>
   )
 }

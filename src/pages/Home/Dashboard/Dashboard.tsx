@@ -3,7 +3,7 @@ import NavigationHomePage from '../../../components/ui/pages/Home/NavigationHome
 import { StudyInfos } from '../../../types/study-api';
 import { Grid, Typography } from '@material-ui/core';
 import RoundedBox from '../../../components/ui/RoundedBox';
-import { useLocalization } from '../../../hooks';
+import { useLocalization, useMountEffect } from '../../../hooks';
 import styles from './Dashboard.module.scss';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -11,6 +11,8 @@ import { RootState } from '../../../store';
 import { useHistory } from 'react-router';
 import { appendParameter } from '../../../routes/utils/routeUtils';
 import { HomePaths } from '../../../routes';
+import { useUpdateStudies } from '../../../hooks/useUpdateStudies';
+import LoadingDialog from '../../../components/ui/dialogs/LoadingDialog';
 
 
 const Dashboard: React.FC = () => {
@@ -18,8 +20,14 @@ const Dashboard: React.FC = () => {
   const { t } = useTranslation(['app']);
   const history = useHistory();
 
+  const [loading, getAllStudies] = useUpdateStudies();
+
   const subscribedStudies = useSelector((state: RootState) => state.study.subscribedStudies);
   const availableStudies = useSelector((state: RootState) => state.study.availableStudies);
+
+  useMountEffect(() => {
+    getAllStudies();
+  });
 
   const onStudyItemClicked = (studyInfos: StudyInfos) => {
     history.push(appendParameter(HomePaths.StudyDetail.path, studyInfos.key));
@@ -67,6 +75,7 @@ const Dashboard: React.FC = () => {
   return (
     <NavigationHomePage title={t("app:dashboard.title")}>
       {studyList()}
+      <LoadingDialog open={loading} />
     </NavigationHomePage>
   )
 }

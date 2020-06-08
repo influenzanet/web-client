@@ -72,6 +72,7 @@ const StudyDetail: React.FC = () => {
   }
 
   const getSurveysFromServer = async () => {
+    await updateAllStudies();
     await getSurveyInfos();
     await getAllAssignedSurveys();
   }
