@@ -64,7 +64,8 @@ const MyStudies: React.FC = () => {
       });
     });
 
-    history.replace(HomePaths.Dashboard);
+
+    history.push(HomePaths.Dashboard);
   }
 
   const onSurveySubmitClicked = (responses: SurveySingleItemResponse[]) => {

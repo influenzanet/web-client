@@ -93,7 +93,7 @@ const StudyDetail: React.FC = () => {
   }
 
   const onSurveyItemClicked = (surveyInfo: SurveyInfo) => {
-    history.replace(HomePaths.MyStudies + `?${studyKeyQueryKey}=${selectedStudy?.key}&${surveyKeyQueryKey}=${surveyInfo.key}`)
+    history.push(HomePaths.MyStudies + `?${studyKeyQueryKey}=${selectedStudy?.key}&${surveyKeyQueryKey}=${surveyInfo.key}`)
   }
 
   const notFoundPage = () => {

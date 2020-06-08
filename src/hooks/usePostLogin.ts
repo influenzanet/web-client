@@ -15,9 +15,9 @@ export const usePostLogin = () => {
   useEffect(() => {
     if (loginComplete) {
       if (accountConfirmedAt && Number(accountConfirmedAt) > 0) {
-        history.replace(authenticatedUrl);
+        history.push(authenticatedUrl);
       } else {
-        history.replace(AuthPagesPaths.SignupSuccess);
+        history.push(AuthPagesPaths.SignupSuccess);
       }
     }
     // We only want to run this if loginComplete changes to true and under no other circumstances!

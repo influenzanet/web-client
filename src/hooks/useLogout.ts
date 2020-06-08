@@ -10,6 +10,6 @@ export const useLogout = () => {
   return () => {
     resetAuth();
     removePersistedState();
-    history.replace(AppRoutes.UserAuth);
+    history.push(AppRoutes.UserAuth);
   }
 }
