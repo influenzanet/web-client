@@ -67,7 +67,7 @@ const MyStudies: React.FC = () => {
     history.replace(HomePaths.Dashboard);
   }
 
-  const onSurveySubmitted = (responses: SurveySingleItemResponse[]) => {
+  const onSurveySubmitClicked = (responses: SurveySingleItemResponse[]) => {
     submitSurvey(responses);
   }
 
@@ -80,7 +80,7 @@ const MyStudies: React.FC = () => {
             prefills={surveyWithContext.prefill?.responses}
             context={surveyWithContext.context}
             languageCode={i18n.language}
-            onSubmit={onSurveySubmitted}
+            onSubmit={onSurveySubmitClicked}
             submitBtnText={t('survey:submitBtn')}
             nextBtnText={t('survey:nextBtn')}
             backBtnText={t('survey:backBtn')}

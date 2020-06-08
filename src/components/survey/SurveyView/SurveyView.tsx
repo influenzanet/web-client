@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 import { Survey, SurveySingleItem, SurveySingleItemResponse, SurveyContext } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveyPageView from './SurveyPageView/SurveyPageView';
-import { Switch, Route, useRouteMatch, Redirect } from 'react-router';
+import { Switch, Route, useRouteMatch, Redirect, useLocation } from 'react-router';
 import { Box } from '@material-ui/core';
 import SurveyProgress from './SurveyProgress/SurveyProgress';
 
@@ -25,11 +25,12 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
 
   const [responseCount, setResponseCount] = useState(0);
 
+  const location = useLocation();
   let { path: surveyPath } = useRouteMatch();
   let pagesPath = `${surveyPath}/pages`;
 
-  let currentPage = (window.location.href.includes(pagesPath))
-    ? parseInt(window.location.href.split("/").slice(-1)[0])
+  let currentPage = (location.pathname.includes(pagesPath))
+    ? parseInt(location.pathname.split("/").slice(-1)[0])
     : 0;
 
   const onSubmit = () => {
@@ -73,7 +74,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
           let index = parseInt(routeProps.match.params.index);
 
           // If invalid index, redirect to beginning of survey.
-          if (index < 0 || index > surveyPages.length - 1) return <Redirect to={`${pagesPath}/0`} />
+          if (index < 0 || index > surveyPages.length - 1) return <Redirect to={`${pagesPath}/0${location.search}`} />
 
           let lastPage = index >= surveyPages.length - 1;
 
@@ -85,13 +86,13 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
               onSubmit();
             }
             : () => {
-              routeProps.history.push(`${pagesPath}/${index + 1}`);
+              routeProps.history.push(`${pagesPath}/${index + 1}${location.search}`);
               resetScrollPosition();
             }
 
           return surveyPage(surveyPages[index], primaryActionLabel, primaryAction);
         }} />
-        <Redirect to={`${pagesPath}/0`} />
+        <Redirect to={`${pagesPath}/0${location.search}`} />
       </Switch>
     </Fragment>
   );
