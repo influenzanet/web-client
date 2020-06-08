@@ -6,7 +6,7 @@ import SurveyView from '../../../components/survey/SurveyView/SurveyView';
 import { useTranslation } from 'react-i18next';
 import { SurveySingleItemResponse, SurveyResponse } from 'survey-engine/lib/data_types';
 
-import { useMountEffect, useQuery, useAsyncCall } from '../../../hooks';
+import { useMountEffect, useQuery, useAsyncCall, useLocalization } from '../../../hooks';
 import NavigationHomePage from '../../../components/ui/pages/Home/NavigationHomePage';
 import { SurveyAndContextMsg } from '../../../types/study-api';
 import LoadingDialog from '../../../components/ui/dialogs/LoadingDialog';
@@ -19,6 +19,7 @@ export const surveyKeyQueryKey = "surveyKey";
 export const studyKeyQueryKey = "studyKey";
 
 const MyStudies: React.FC = () => {
+  const localize = useLocalization();
   const { t, i18n } = useTranslation(['common', 'survey']);
   const history = useHistory();
 
@@ -46,7 +47,7 @@ const MyStudies: React.FC = () => {
     });
   }
 
-  const onSurveySubmitted = (responses: SurveySingleItemResponse[]) => {
+  const submitSurvey = async (responses: SurveySingleItemResponse[]) => {
     const surveyResponse: SurveyResponse = {
       key: surveyWithContext ? surveyWithContext.survey.current.surveyDefinition.key : surveyKeyParam ? surveyKeyParam : 'unknown',
       submittedAt: moment().unix(),
@@ -56,19 +57,22 @@ const MyStudies: React.FC = () => {
       }
     }
 
-    console.log(surveyResponse);
-
-    asyncCall(async () => {
+    await asyncCall(async () => {
       await submitSurveyResponseRequest({
         studyKey: studyKeyParam ? studyKeyParam : "unknown",
         response: surveyResponse,
       });
-      history.push(HomePaths.Dashboard);
     });
+
+    history.replace(HomePaths.Dashboard);
+  }
+
+  const onSurveySubmitted = (responses: SurveySingleItemResponse[]) => {
+    submitSurvey(responses);
   }
 
   return (
-    <NavigationHomePage title="My Studies">
+    <NavigationHomePage title={localize(surveyWithContext?.survey.name) ?? ""}>
       <Container maxWidth="lg">
         {surveyWithContext
           ? <SurveyView
