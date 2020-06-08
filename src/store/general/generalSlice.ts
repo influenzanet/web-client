@@ -6,13 +6,19 @@ export interface GeneralState {
   persistState: boolean;
 }
 
+const initialState: GeneralState = {
+  instanceId: 'germany',
+  persistState: false,
+};
+
 const generalSlice = createSlice({
   name: 'general',
-  initialState: {
-    instanceId: 'germany',
-    persistState: false,
-  },
+  initialState: initialState,
   reducers: {
+    reset: (state) => {
+      state = initialState;
+      return state;
+    },
     setPersistState: (state, action: PayloadAction<boolean>) => {
       return updateObject(state, { persistState: action.payload });
     }

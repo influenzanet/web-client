@@ -6,13 +6,19 @@ export interface StudyState {
   availableStudies: StudyInfos[];
 }
 
+const initialState: StudyState = {
+  subscribedStudies: [],
+  availableStudies: [],
+} as StudyState;
+
 const studySlice = createSlice({
   name: 'study',
-  initialState: {
-    subscribedStudies: [],
-    availableStudies: [],
-  } as StudyState,
+  initialState: initialState,
   reducers: {
+    reset: (state) => {
+      state = initialState;
+      return state;
+    },
     setSubscribedStudies: (state, action: PayloadAction<StudyInfos[]>) => {
       state.subscribedStudies = action.payload;
       return state;

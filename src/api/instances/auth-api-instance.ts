@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from "../../store";
+import store, { resetStore } from "../../store";
 import { renewTokenReq, renewTokenURL } from '../auth-api';
 import { apiActions } from '../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../constants';
@@ -70,11 +70,7 @@ export const setDefaultAccessTokenHeader = (token: string) => {
 };
 
 export const resetAuth = () => {
-  store.dispatch(apiActions.setState({
-    accessToken: '',
-    refreshToken: '',
-    expiresAt: 0,
-  }));
+  resetStore();
   setDefaultAccessTokenHeader('');
 }
 

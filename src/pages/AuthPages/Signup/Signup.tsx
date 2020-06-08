@@ -22,7 +22,7 @@ import { minuteToMillisecondFactor } from '../../../constants';
 
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
-import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
+import { setDefaultAccessTokenHeader, resetAuth } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../store';
@@ -125,6 +125,7 @@ const Signup: React.FC = () => {
 
   const signUp = async () => {
     if (loading) return;
+    resetAuth();
     try {
       setLoading(true);
       let response = await signupWithEmailRequest({

@@ -25,9 +25,9 @@ import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { useTranslation } from 'react-i18next';
 import { setPreferredLanguageReq } from '../../../api/user-management-api';
-import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
+import { setDefaultAccessTokenHeader, resetAuth } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
-import { RootState } from '../../../store';
+import { RootState, resetStore } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
 import { usePostLogin } from '../../../hooks';
 
@@ -84,6 +84,7 @@ const Login: React.FC = () => {
 
   const login = async () => {
     if (loading) return;
+    resetAuth();
     try {
       setLoading(true);
 

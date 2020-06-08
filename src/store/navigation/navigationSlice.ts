@@ -11,18 +11,24 @@ export interface NavigationState {
   loading: boolean;
 }
 
+const initialState: NavigationState = {
+  showNavigation: true,
+  appBar: {
+    currentPageTitle: 'InfluenzaNet',
+    showBackBtn: false,
+  },
+  drawerOpen: false,
+  loading: false,
+} as NavigationState;
+
 const navigationSlice = createSlice({
   name: 'navigation',
-  initialState: {
-    showNavigation: true,
-    appBar: {
-      currentPageTitle: 'InfluenzaNet',
-      showBackBtn: false,
-    },
-    drawerOpen: false,
-    loading: false,
-  } as NavigationState,
+  initialState: initialState,
   reducers: {
+    reset: (state) => {
+      state = initialState;
+      return state;
+    },
     setShowNavigation: (state, action: PayloadAction<boolean>) => {
       state.showNavigation = action.payload;
       return state;

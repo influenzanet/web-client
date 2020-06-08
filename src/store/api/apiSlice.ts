@@ -7,14 +7,20 @@ export interface APIState {
   expiresAt: number;
 }
 
+const initialState: APIState = {
+  accessToken: '',
+  refreshToken: '',
+  expiresAt: 0,
+} as APIState;
+
 const apiSlice = createSlice({
   name: 'api',
-  initialState: {
-    accessToken: '',
-    refreshToken: '',
-    expiresAt: 0,
-  } as APIState,
+  initialState: initialState,
   reducers: {
+    reset: (state) => {
+      state = initialState;
+      return state;
+    },
     setState: (state, action: PayloadAction<APIState>) => {
       return updateObject(state, action.payload);
     },

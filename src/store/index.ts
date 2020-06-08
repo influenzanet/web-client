@@ -1,11 +1,11 @@
-import navigationSlice from './navigation/navigationSlice';
-import generalSlice from './general/generalSlice';
-import apiSlice from './api/apiSlice';
+import navigationSlice, { navigationActions } from './navigation/navigationSlice';
+import generalSlice, { generalActions } from './general/generalSlice';
+import apiSlice, { apiActions } from './api/apiSlice';
 import { getDefaultMiddleware, configureStore } from '@reduxjs/toolkit';
-import userSlice from './user/userSlice';
+import userSlice, { userActions } from './user/userSlice';
 import { loadState, saveState } from './localStorage';
 import throttle from 'lodash.throttle'
-import studySlice from './study/studySlice';
+import studySlice, { studyActions } from './study/studySlice';
 
 const reducers = {
   general: generalSlice.reducer,
@@ -26,6 +26,14 @@ const store = configureStore({
 store.subscribe(throttle(() => {
   saveState(store.getState());
 }, 1000));
+
+export const resetStore = () => {
+  store.dispatch(generalActions.reset());
+  store.dispatch(apiActions.reset());
+  store.dispatch(navigationActions.reset());
+  store.dispatch(userActions.reset());
+  store.dispatch(studyActions.reset());
+}
 
 export type RootState = ReturnType<typeof store.getState>
 
