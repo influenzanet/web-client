@@ -70,7 +70,10 @@
     "successButtonLabel": "Weiter",
     "failureTitle": "Konto konnte nicht aktiviert werden",
     "failureSubtitle": "Bitte forden Sie einen neuen Aktivierungslink an.",
-    "activationButtonLabel": "Zurück zur Aktivierungsseite"
+    "activationButtonLabel": "Zurück zur Aktivierungsseite",
+    "failureTitleLoggedOut": "Bitte anmelden",
+    "failureSubtitleLoggedOut": "Ihr Konto könnte bereits aktiviert sein. Bitte melden Sie sich an, sodass wir es erneut versuchen können.",
+    "loginButtonLabel": "Zurück zum Login"
   },
   "profileRepresentation": {
     "nicknamePlaceholder": "Spitzname",

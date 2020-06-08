@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useMountEffect, useQuery } from '../../../hooks';
+import { useMountEffect, useQuery, useAuthTokenCheck } from '../../../hooks';
 import { verifyContactReq } from '../../../api/user-management-api';
 import CenterPage from '../../../components/ui/pages/CenterPage';
 import FlexGrow from '../../../components/common/FlexGrow';
@@ -8,9 +8,10 @@ import { userActions } from '../../../store/user/userSlice';
 import { RootState } from '../../../store';
 import { Typography, CircularProgress, makeStyles, Container } from '@material-ui/core';
 import RoundedButton from '../../../components/ui/buttons/RoundedButton';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { HomePaths, AuthPagesPaths } from '../../../routes';
+import { urlWithRedirect } from '../../../routes/utils/routeUtils';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -34,7 +35,10 @@ const VerifyToken: React.FC = () => {
 
   const { t } = useTranslation(['app']);
 
+  const loggedIn = useAuthTokenCheck();
   const accountConfirmedAt = useSelector((state: RootState) => state.user.currentUser.account.accountConfirmedAt);
+
+  const location = useLocation();
 
   let [loading, setLoading] = useState(false);
   let [confirmed, setConfirmed] = useState(Number(accountConfirmedAt) > 0);
@@ -91,7 +95,7 @@ const VerifyToken: React.FC = () => {
     );
   }
 
-  const failure = () => {
+  const failureWhileLoggedIn = () => {
     return (
       <Container className={classes.container}>
         <Typography variant="h3" color="primary">
@@ -108,6 +112,23 @@ const VerifyToken: React.FC = () => {
     );
   }
 
+  const failureWhileLoggedOut = () => {
+    return (
+      <Container className={classes.container}>
+        <Typography variant="h3" color="primary">
+          {t("app:verificationPage.failureTitleLoggedOut")}
+        </Typography>
+        <Typography variant="h5" color="secondary">
+          {t("app:verificationPage.failureSubtitleLoggedOut")}
+        </Typography>
+        <div className={classes.spacer} />
+        <RoundedButton className={classes.button} color="primary" onClick={() => history.push(urlWithRedirect(AuthPagesPaths.Login, location.pathname + location.search))}>
+          {t("app:verificationPage.loginButtonLabel")}
+        </RoundedButton>
+      </Container>
+    );
+  }
+
   return (
     <CenterPage>
       <FlexGrow />
@@ -115,7 +136,9 @@ const VerifyToken: React.FC = () => {
         ? waiting()
         : confirmed
           ? success()
-          : failure()
+          : loggedIn
+            ? failureWhileLoggedIn()
+            : failureWhileLoggedOut()
       }
       <FlexGrow />
     </CenterPage>

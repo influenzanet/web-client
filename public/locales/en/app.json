@@ -70,7 +70,10 @@
     "successButtonLabel": "Continue",
     "failureTitle": "Couldn't activate your account",
     "failureSubtitle": "Please try sending your activation email again.",
-    "activationButtonLabel": "Return to activation page"
+    "activationButtonLabel": "Return to activation page",
+    "failureTitleLoggedOut": "Please try logging in",
+    "failureSubtitleLoggedOut": "Your account might already be activated. Please try logging in so we can check again.",
+    "loginButtonLabel": "Go to login page"
   },
   "profileRepresentation": {
     "nicknamePlaceholder": "Nickname",

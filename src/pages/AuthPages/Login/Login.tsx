@@ -27,7 +27,7 @@ import { useTranslation } from 'react-i18next';
 import { setPreferredLanguageReq } from '../../../api/user-management-api';
 import { setDefaultAccessTokenHeader, resetAuth } from '../../../api/instances/auth-api-instance';
 import OnboardingError from '../Error/OnboardingError';
-import { RootState, resetStore } from '../../../store';
+import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
 import { usePostLogin } from '../../../hooks';
 
