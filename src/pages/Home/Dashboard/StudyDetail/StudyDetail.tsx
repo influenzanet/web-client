@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import DetailHomePage from '../../../../components/ui/pages/Home/DetailHomePage';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../store';
-import { useRouteMatch, useParams, useHistory } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import { HomePaths } from '../../../../routes';
 import { Typography, Grid, Container } from '@material-ui/core';
 import { useLocalization, useAsyncCall, useMountEffect } from '../../../../hooks';
@@ -12,12 +12,14 @@ import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 import LoadingDialog from '../../../../components/ui/dialogs/LoadingDialog';
 import { enterStudyReq, leaveStudyRequest, getSurveyInfosForStudyReq, getAllAssignedSurveysReq } from '../../../../api/study-api';
 import { useUpdateStudies } from '../../../../hooks/useUpdateStudies';
-import { SurveyInfo, AssignedSurvey, SurveyInfos } from '../../../../types/study-api';
+import { SurveyInfo, AssignedSurvey } from '../../../../types/study-api';
 import { studyKeyQueryKey, surveyKeyQueryKey } from '../../MyStudies/MyStudies';
+import { useTranslation } from 'react-i18next';
 
 const StudyDetail: React.FC = () => {
   const { key: urlKey } = useParams();
 
+  const { t } = useTranslation(['app']);
   const history = useHistory();
 
   const localize = useLocalization();
@@ -97,8 +99,8 @@ const StudyDetail: React.FC = () => {
     return (
       <DetailHomePage title="Study Not Found">
         <Typography variant="h3">
-          Study not found!
-      </Typography>
+          {t("app:studyDetailPage.studyNotFoundMessage")}
+        </Typography>
       </DetailHomePage>
     );
   }
@@ -162,7 +164,7 @@ const StudyDetail: React.FC = () => {
       <Grid container spacing={2} className={styles.studiesContainer}>
         <Grid item>
           <Typography variant="h4" color="secondary">
-            Surveys
+            {t("app:studyDetailPage.surveysSubtitle")}
           </Typography>
         </Grid>
         <Grid item container direction="row">
@@ -175,7 +177,7 @@ const StudyDetail: React.FC = () => {
   const subscribeButton = () => {
     return (
       <RoundedButton color="primary" className={styles.button} onClick={subscribe}>
-        Subscribe
+        {t("app:studyDetailPage.subscribeButtonLabel")}
       </RoundedButton>
     );
   }
@@ -183,7 +185,7 @@ const StudyDetail: React.FC = () => {
   const unsubscribeButton = () => {
     return (
       <RoundedButton color="secondary" className={styles.button} onClick={unsubscribe}>
-        Unsubscribe
+        {t("app:studyDetailPage.unsubscribeButtonLabel")}
       </RoundedButton>
     );
   }

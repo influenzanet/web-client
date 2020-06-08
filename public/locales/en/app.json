@@ -18,6 +18,12 @@
     "subscribedTag": "Subscribed",
     "unsubscribedTag": "Not Subscribed"
   },
+  "studyDetailPage": {
+    "studyNotFoundMessage": "Study not found!",
+    "surveysSubtitle": "Surveys",
+    "subscribeButtonLabel": "Subscribe",
+    "unsubscribeButtonLabel": "Unsubscribe"
+  },
   "loginPage": {
     "title": "Sign In",
     "message": "Welcome back!",

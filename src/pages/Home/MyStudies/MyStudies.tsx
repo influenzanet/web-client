@@ -4,7 +4,7 @@ import { Container } from '@material-ui/core';
 
 import SurveyView from '../../../components/survey/SurveyView/SurveyView';
 import { useTranslation } from 'react-i18next';
-import { Survey, SurveySingleItemResponse, SurveyResponse } from 'survey-engine/lib/data_types';
+import { SurveySingleItemResponse, SurveyResponse } from 'survey-engine/lib/data_types';
 
 import { useMountEffect, useQuery, useAsyncCall } from '../../../hooks';
 import NavigationHomePage from '../../../components/ui/pages/Home/NavigationHomePage';

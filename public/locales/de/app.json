@@ -18,6 +18,12 @@
     "subscribedTag": "Abonniert",
     "unsubscribedTag": "Nicht abonniert"
   },
+  "studyDetailPage": {
+    "studyNotFoundMessage": "Studie nicht gefunden!",
+    "surveysSubtitle": "Umfragen",
+    "subscribeButtonLabel": "Abonnieren",
+    "unsubscribeButtonLabel": "Abonnement beenden"
+  },
   "loginPage": {
     "title": "Anmelden",
     "message": "Willkommen zurück!",
