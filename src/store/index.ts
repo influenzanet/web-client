@@ -1,5 +1,5 @@
 import navigationSlice, { navigationActions } from './navigation/navigationSlice';
-import generalSlice, { generalActions } from './general/generalSlice';
+import generalSlice from './general/generalSlice';
 import apiSlice, { apiActions } from './api/apiSlice';
 import { getDefaultMiddleware, configureStore } from '@reduxjs/toolkit';
 import userSlice, { userActions } from './user/userSlice';
@@ -28,11 +28,16 @@ store.subscribe(throttle(() => {
 }, 1000));
 
 export const resetStore = () => {
-  store.dispatch(generalActions.reset());
+  let oldState = store.getState();
+  let oldLanguage = oldState.user.currentUser.account.preferredLanguage;
+
+  // store.dispatch(generalActions.reset());
   store.dispatch(apiActions.reset());
   store.dispatch(navigationActions.reset());
   store.dispatch(userActions.reset());
   store.dispatch(studyActions.reset());
+
+  if (oldLanguage) store.dispatch(userActions.setPreferredLanguage(oldLanguage));
 }
 
 export type RootState = ReturnType<typeof store.getState>
