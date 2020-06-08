@@ -101,5 +101,8 @@
   "closePage": {
     "closeMsgBig": "Survey Completed",
     "closeMsgSmall": "Please close this page now."
+  },
+  "snackbars": {
+    "surveySavedMessage": "Survey saved!"
   }
 }

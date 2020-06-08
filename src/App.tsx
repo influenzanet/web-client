@@ -21,6 +21,7 @@ import { RootState } from './store';
 import { useSelector } from 'react-redux';
 import i18n from './i18n';
 import AuthSwitch from './components/auth/AuthSwitch';
+import Snackbars from './components/ui/snackbars/Snackbars';
 
 
 const App: React.FC = () => {
@@ -134,6 +135,7 @@ const App: React.FC = () => {
         <Router basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : undefined}>
           <AuthSwitch />
         </Router>
+        <Snackbars />
       </StylesProvider>
     </MuiThemeProvider>
   );

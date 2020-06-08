@@ -14,6 +14,8 @@ import { getAssignedSurveyRequest, submitSurveyResponseRequest } from '../../../
 import moment from 'moment';
 import { useHistory } from 'react-router';
 import { HomePaths } from '../../../routes';
+import { useDispatch } from 'react-redux';
+import { navigationActions } from '../../../store/navigation/navigationSlice';
 
 export const surveyKeyQueryKey = "surveyKey";
 export const studyKeyQueryKey = "studyKey";
@@ -22,6 +24,8 @@ const MyStudies: React.FC = () => {
   const localize = useLocalization();
   const { t, i18n } = useTranslation(['common', 'survey']);
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const query = useQuery();
 
@@ -66,6 +70,7 @@ const MyStudies: React.FC = () => {
 
 
     history.push(HomePaths.Dashboard);
+    dispatch(navigationActions.openSurveySavedSnackbar());
   }
 
   const onSurveySubmitClicked = (responses: SurveySingleItemResponse[]) => {

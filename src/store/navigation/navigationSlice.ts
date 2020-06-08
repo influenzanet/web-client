@@ -8,6 +8,9 @@ export interface NavigationState {
     showBackBtn: boolean;
     currentPageTitle: string;
   };
+  snackbars: {
+    surveySavedOpen: boolean;
+  }
   drawerOpen: boolean;
   loading: boolean;
 }
@@ -18,6 +21,9 @@ const initialState: NavigationState = {
     currentPageTitle: 'InfluenzaNet',
     showBackBtn: false,
     showMenuButton: true,
+  },
+  snackbars: {
+    surveySavedOpen: false,
   },
   drawerOpen: false,
   loading: false,
@@ -57,6 +63,15 @@ const navigationSlice = createSlice({
     },
     startLoading: state => updateObject(state, { loading: true }),
     finishLoading: state => updateObject(state, { loading: false }),
+
+    openSurveySavedSnackbar: state => {
+      state.snackbars.surveySavedOpen = true;
+      return state;
+    },
+    closeSurveySavedSnackbar: state => {
+      state.snackbars.surveySavedOpen = false;
+      return state;
+    },
   },
 });
 

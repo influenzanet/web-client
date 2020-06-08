@@ -101,5 +101,8 @@
   "closePage": {
     "closeMsgBig": "Umfrage abgeschlossen",
     "closeMsgSmall": "Bitte Seite schließen."
+  },
+  "snackbars": {
+    "surveySavedMessage": "Umfrage gespeichert!"
   }
 }
