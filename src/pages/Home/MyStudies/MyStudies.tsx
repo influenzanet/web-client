@@ -23,8 +23,9 @@ const MyStudies: React.FC = () => {
   const history = useHistory();
 
   const query = useQuery();
-  const surveyKeyParam = query.get(surveyKeyQueryKey);
-  const studyKeyParam = query.get(studyKeyQueryKey);
+
+  const [studyKeyParam,] = useState(query.get(studyKeyQueryKey));
+  const [surveyKeyParam,] = useState(query.get(surveyKeyQueryKey));
 
   const [loading, asyncCall] = useAsyncCall();
 
