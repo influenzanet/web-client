@@ -77,16 +77,16 @@ const Dashboard: React.FC = () => {
   return (
     <NavigationHomePage title={t("app:dashboard.title")}>
       <Grid container style={{ height: "calc(100vh - 64px)" }}>
-        <Grid item xs={8}>
+        <Grid item xs={12} md={4} >
+          {studyList()}
+        </Grid>
+        <Grid item xs={12} md={8}>
           <Iframe
             url={process.env.REACT_APP_DASHBOARD_IFRAME_URL ? process.env.REACT_APP_DASHBOARD_IFRAME_URL : ''}
             height="100%"
             width="100%"
             frameBorder={0}
           ></Iframe>
-        </Grid>
-        <Grid item xs={4}>
-          {studyList()}
         </Grid>
       </Grid>
 
