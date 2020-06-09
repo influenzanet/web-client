@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Container, makeStyles } from '@material-ui/core';
-import { useMountEffect } from '../../../hooks';
+import FullHeightPage from './FullHeightPage';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -13,18 +13,13 @@ const useStyles = makeStyles(theme => ({
 
 const CenterPage: React.FC = (props) => {
   const classes = useStyles();
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useMountEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.style.minHeight = `calc(100vh - ${containerRef.current.offsetTop}px)`;
-    }
-  });
 
   return (
-    <Container ref={containerRef} className={classes.pageContainer} maxWidth="xs" >
-      {props.children}
-    </Container>
+    <FullHeightPage>
+      <Container className={classes.pageContainer} maxWidth="xs" >
+        {props.children}
+      </Container>
+    </FullHeightPage>
   );
 };
 

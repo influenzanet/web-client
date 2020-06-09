@@ -1,7 +1,7 @@
 import React from 'react';
 import NavigationHomePage from '../../../components/ui/pages/Home/NavigationHomePage';
 import { StudyInfos } from '../../../types/study-api';
-import { Grid, Typography, Box } from '@material-ui/core';
+import { Grid, Typography, Box, useMediaQuery, useTheme } from '@material-ui/core';
 import RoundedBox from '../../../components/ui/RoundedBox';
 import { useLocalization, useMountEffect } from '../../../hooks';
 import styles from './Dashboard.module.scss';
@@ -14,11 +14,17 @@ import { HomePaths } from '../../../routes';
 import { useUpdateStudies } from '../../../hooks/useUpdateStudies';
 import LoadingDialog from '../../../components/ui/dialogs/LoadingDialog';
 import Iframe from 'react-iframe';
+import { useFullHeightRef } from '../../../hooks/useFullHeightRef';
 
 const Dashboard: React.FC = () => {
   const localize = useLocalization();
   const { t } = useTranslation(['app']);
   const history = useHistory();
+
+  const theme = useTheme();
+  const mdUp = useMediaQuery(theme.breakpoints.up('md'));
+
+  const fullHeightRef = useFullHeightRef();
 
   const [loading, getAllStudies] = useUpdateStudies();
 
@@ -76,21 +82,19 @@ const Dashboard: React.FC = () => {
 
   return (
     <NavigationHomePage title={t("app:dashboard.title")}>
-      <Grid container style={{ height: "calc(100vh - 64px)" }}>
-        <Grid item xs={12} md={4} >
+      <Grid container ref={fullHeightRef} direction={(mdUp ? "row" : "column")}>
+        <Grid item md={mdUp ? 4 : undefined}>
           {studyList()}
         </Grid>
-        <Grid item xs={12} md={8}>
+        <Grid item md={mdUp ? 8 : undefined}>
           <Iframe
             url={process.env.REACT_APP_DASHBOARD_IFRAME_URL ? process.env.REACT_APP_DASHBOARD_IFRAME_URL : ''}
-            height="100%"
+            height={mdUp ? "100%" : "1000px"}
             width="100%"
             frameBorder={0}
           ></Iframe>
         </Grid>
       </Grid>
-
-
       <LoadingDialog open={loading} />
     </NavigationHomePage>
   )
