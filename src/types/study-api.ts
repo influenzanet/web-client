@@ -34,7 +34,11 @@ export interface StudyInfos {
   props: {
     name: LocalizedString[];
     description: LocalizedString[];
-  }
+    tags?: string[];
+    startDate?: number;
+    endDate?: number;
+  };
+  systemDefaultStudy?: boolean;
 }
 
 export interface Studies {
