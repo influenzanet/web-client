@@ -37,8 +37,8 @@ export interface StudyInfos {
     tags?: string[];
     startDate?: number;
     endDate?: number;
+    systemDefaultStudy?: boolean;
   };
-  systemDefaultStudy?: boolean;
 }
 
 export interface Studies {
