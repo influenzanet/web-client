@@ -1,7 +1,7 @@
 import React from 'react';
 import NavigationHomePage from '../../../components/ui/pages/Home/NavigationHomePage';
 import { StudyInfos } from '../../../types/study-api';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Box } from '@material-ui/core';
 import RoundedBox from '../../../components/ui/RoundedBox';
 import { useLocalization, useMountEffect } from '../../../hooks';
 import styles from './Dashboard.module.scss';
@@ -13,7 +13,7 @@ import { appendParameter } from '../../../routes/utils/routeUtils';
 import { HomePaths } from '../../../routes';
 import { useUpdateStudies } from '../../../hooks/useUpdateStudies';
 import LoadingDialog from '../../../components/ui/dialogs/LoadingDialog';
-
+import Iframe from 'react-iframe';
 
 const Dashboard: React.FC = () => {
   const localize = useLocalization();
@@ -59,22 +59,38 @@ const Dashboard: React.FC = () => {
 
   const studyList = () => {
     return (
-      <Grid container spacing={2} className={styles.studiesContainer}>
-        <Grid item>
+      <Box p={2}>
+        <Box >
           <Typography variant="h3" color="primary">
             {t("app:dashboard.studiesSubtitle")}
           </Typography>
-        </Grid>
-        <Grid item container direction="row">
-          {availableStudies.map((study) => studyItem(study))}
-        </Grid>
-      </Grid>
+        </Box>
+        <Box>
+          <Grid item container direction="column">
+            {availableStudies.map((study) => studyItem(study))}
+          </Grid>
+        </Box>
+      </Box>
     );
   }
 
   return (
     <NavigationHomePage title={t("app:dashboard.title")}>
-      {studyList()}
+      <Grid container style={{ height: "calc(100vh - 64px)" }}>
+        <Grid item xs={8}>
+          <Iframe
+            url={process.env.REACT_APP_DASHBOARD_IFRAME_URL ? process.env.REACT_APP_DASHBOARD_IFRAME_URL : ''}
+            height="100%"
+            width="100%"
+            frameBorder={0}
+          ></Iframe>
+        </Grid>
+        <Grid item xs={4}>
+          {studyList()}
+        </Grid>
+      </Grid>
+
+
       <LoadingDialog open={loading} />
     </NavigationHomePage>
   )
