@@ -7,10 +7,10 @@ import FlexGrow from '../../../components/common/FlexGrow';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { useStyles } from '../../../hooks';
+import { useTranslation } from 'react-i18next';
 
 
 const Settings: React.FC = () => {
-  const user = useSelector((state: RootState) => state.user);
   const classes = useStyles(theme => ({
     deleteButton: {
       backgroundColor: theme.palette.error.main,
@@ -21,8 +21,11 @@ const Settings: React.FC = () => {
     }
   }));
 
+  const { t } = useTranslation(['app']);
+  const user = useSelector((state: RootState) => state.user);
+
   return (
-    <NavigationHomePage title="Settings">
+    <NavigationHomePage title={t("app:settingsPage.title")}>
       <CenterPage>
         <FlexGrow />
         <Grid container direction="column" spacing={2} alignItems="center">
@@ -38,13 +41,13 @@ const Settings: React.FC = () => {
           </Grid>
           <Grid item>
             <RoundedButton color="secondary">
-              Change Password
+              {t("app:settingsPage.changePasswordButtonLabel")}
             </RoundedButton>
           </Grid>
         </Grid>
         <FlexGrow />
         <RoundedButton className={classes.deleteButton}>
-          Delete Account
+          {t("app:settingsPage.deleteAccountButtonLabel")}
         </RoundedButton>
         <div style={{ height: 32 }} />
       </CenterPage>

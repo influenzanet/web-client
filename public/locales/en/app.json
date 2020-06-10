@@ -25,6 +25,11 @@
     "subscribeButtonLabel": "Subscribe",
     "unsubscribeButtonLabel": "Unsubscribe"
   },
+  "settingsPage": {
+    "title": "Settings",
+    "changePasswordButtonLabel": "Change Password",
+    "deleteAccountButtonLabel": "Delete Account"
+  },
   "loginPage": {
     "title": "Sign In",
     "message": "Welcome back!",

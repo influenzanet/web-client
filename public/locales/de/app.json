@@ -25,6 +25,11 @@
     "subscribeButtonLabel": "Abonnieren",
     "unsubscribeButtonLabel": "Abonnement beenden"
   },
+  "settingsPage": {
+    "title": "Einstellungen",
+    "changePasswordButtonLabel": "Passwort ändern",
+    "deleteAccountButtonLabel": "Konto löschen"
+  },
   "loginPage": {
     "title": "Anmelden",
     "message": "Willkommen zurück!",
