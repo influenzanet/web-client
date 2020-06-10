@@ -10,6 +10,7 @@
     "homeLabel": "Home",
     "myStudiesLabel": "Meine Studien",
     "profilesLabel": "Profile",
+    "settingsLabel": "Einstellungen",
     "logoutButtonLabel": "Abmelden"
   },
   "dashboard": {

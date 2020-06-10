@@ -6,4 +6,5 @@ export const HomePaths = {
   },
   MyStudies: "/home/my-studies",
   Profiles: "/home/profiles",
+  Settings: "/home/settings",
 }

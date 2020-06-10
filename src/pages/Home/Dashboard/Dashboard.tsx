@@ -66,16 +66,12 @@ const Dashboard: React.FC = () => {
   const studyList = () => {
     return (
       <Box p={2}>
-        <Box >
-          <Typography variant="h3" color="primary">
-            {t("app:dashboard.studiesSubtitle")}
-          </Typography>
-        </Box>
-        <Box>
-          <Grid item container direction="column">
-            {availableStudies.map((study) => studyItem(study))}
-          </Grid>
-        </Box>
+        <Typography variant="h3" color="primary">
+          {t("app:dashboard.studiesSubtitle")}
+        </Typography>
+        <Grid item container direction="column">
+          {availableStudies.map((study) => studyItem(study))}
+        </Grid>
       </Box>
     );
   }

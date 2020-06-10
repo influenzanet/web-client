@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import StudyDetail from './Dashboard/StudyDetail/StudyDetail';
 import { appendParameterToPath } from '../../routes/utils/routeUtils';
+import Settings from './Settings/Settings';
 
 
 export const Home: React.FC = () => {
@@ -34,6 +35,7 @@ export const Home: React.FC = () => {
         <Route path={appendParameterToPath(HomePaths.StudyDetail.path, HomePaths.StudyDetail.parameter)} component={StudyDetail} />
         <Route path={HomePaths.MyStudies} component={MyStudies} />
         <Route path={HomePaths.Profiles} component={ProfileSelection} />
+        <Route path={HomePaths.Settings} component={Settings} />
         <Redirect to={HomePaths.Dashboard}></Redirect>
       </Switch>
     </React.Fragment>

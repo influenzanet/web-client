@@ -104,6 +104,13 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
       exactPath: true,
       path: HomePaths.Profiles,
     },
+    {
+      key: "Settings",
+      name: t("app:drawer.settingsLabel"),
+      routeMatch: useRouteMatch<RouteProps>(HomePaths.Settings),
+      exactPath: true,
+      path: HomePaths.Settings,
+    },
   ];
 
   const checkRouteMatch = (match: match<RouteProps> | null, exact: boolean): boolean => {
