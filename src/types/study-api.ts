@@ -34,7 +34,7 @@ export interface StudyInfos {
   props: {
     name: LocalizedString[];
     description: LocalizedString[];
-    tags?: string[];
+    tags?: Array<{ label: LocalizedString[] }>;
     startDate?: number;
     endDate?: number;
     systemDefaultStudy?: boolean;
