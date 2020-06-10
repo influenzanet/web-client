@@ -51,7 +51,7 @@ const MyStudies: React.FC = () => {
     });
   }
 
-  const submitSurvey = async (responses: SurveySingleItemResponse[]) => {
+  const onSurveySubmitClicked = (responses: SurveySingleItemResponse[]) => {
     const surveyResponse: SurveyResponse = {
       key: surveyWithContext ? surveyWithContext.survey.current.surveyDefinition.key : surveyKeyParam ? surveyKeyParam : 'unknown',
       submittedAt: moment().unix(),
@@ -61,20 +61,18 @@ const MyStudies: React.FC = () => {
       }
     }
 
-    await asyncCall(async () => {
-      await submitSurveyResponseRequest({
+    asyncCall(async () => {
+      let response = await submitSurveyResponseRequest({
         studyKey: studyKeyParam ? studyKeyParam : "unknown",
         response: surveyResponse,
       });
+
+      if (response.status === 200) {
+        history.push(HomePaths.Dashboard);
+        dispatch(navigationActions.openSurveySavedSnackbar());
+        return true;
+      }
     });
-
-
-    history.push(HomePaths.Dashboard);
-    dispatch(navigationActions.openSurveySavedSnackbar());
-  }
-
-  const onSurveySubmitClicked = (responses: SurveySingleItemResponse[]) => {
-    submitSurvey(responses);
   }
 
   return (

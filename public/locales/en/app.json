@@ -1,6 +1,7 @@
 {
   "buttons": {
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "confirm": "Confirm"
   },
   "header": {
     "title": "Influenzanet",
@@ -28,7 +29,9 @@
   "settingsPage": {
     "title": "Settings",
     "changePasswordButtonLabel": "Change Password",
-    "deleteAccountButtonLabel": "Delete Account"
+    "deleteAccountButtonLabel": "Delete Account",
+    "deleteDialogTitle": "Delete Account?",
+    "deleteDialogDescription": "Are you sure you want to delete your account? This action cannot be undone."
   },
   "loginPage": {
     "title": "Sign In",

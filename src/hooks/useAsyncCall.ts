@@ -1,20 +1,23 @@
 import { useState } from "react"
 
-export const useAsyncCall = (): [boolean, (call: () => Promise<void>) => Promise<void>] => {
+export const useAsyncCall = (): [boolean, (call: () => Promise<void | boolean>) => Promise<void>] => {
   const [running, setRunning] = useState(false);
 
-  const asyncCall = async (call: () => Promise<void>) => {
+  const asyncCall = async (call: () => Promise<void | boolean>) => {
     if (running) return;
     setRunning(true);
+    let callsCompleted: void | boolean = false;
 
     try {
-      await call();
+      callsCompleted = await call();
     } catch (e) {
       console.error(e);
       if (e.response) console.log(e.response);
     }
 
-    setRunning(false);
+    if (!callsCompleted) {
+      setRunning(false);
+    }
   }
 
   return [

@@ -1,6 +1,7 @@
 {
   "buttons": {
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen"
   },
   "header": {
     "title": "Influenzanet",
@@ -28,7 +29,9 @@
   "settingsPage": {
     "title": "Einstellungen",
     "changePasswordButtonLabel": "Passwort ändern",
-    "deleteAccountButtonLabel": "Konto löschen"
+    "deleteAccountButtonLabel": "Konto löschen",
+    "deleteDialogTitle": "Konto löschen?",
+    "deleteDialogDescription": "Sind Sie sich sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
   },
   "loginPage": {
     "title": "Anmelden",
