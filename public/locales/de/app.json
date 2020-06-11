@@ -31,7 +31,13 @@
     "changePasswordButtonLabel": "Passwort ändern",
     "deleteAccountButtonLabel": "Konto löschen",
     "deleteDialogTitle": "Konto löschen?",
-    "deleteDialogDescription": "Sind Sie sich sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
+    "deleteDialogDescription": "Sind Sie sich sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "changePasswordDialog": {
+      "title": "Passwort ändern?",
+      "currentPasswordPlaceholder": "Aktuelles Passwort",
+      "newPasswordPlaceholder": "Neues Passwort",
+      "confirmNewPasswordPlaceholder": "Neues Passwort bestätigen"
+    }
   },
   "loginPage": {
     "title": "Anmelden",
@@ -59,10 +65,12 @@
     "signupButtonLabel": "Registrieren",
     "loginLink": "Sie besitzen bereits ein Konto? Jetzt einloggen."
   },
-  "onboardingErrors": {
+  "errors": {
     "invalidEmail": "Fehlerhafte Email-Adresse.",
     "weakPassword": "Zu schwaches Passwort.",
     "incorrectCredentials": "Email-Adresse und/oder Passwort falsch.",
+    "newPasswordTooWeak": "Neues Passwort zu schwach.",
+    "currentPasswordWrong": "Aktuelles Passwort falsch.",
     "unknownError": "Serverfehler. Bitte später erneut versuchen:"
   },
   "activationPage": {
@@ -112,6 +120,7 @@
     "closeMsgSmall": "Bitte Seite schließen."
   },
   "snackbars": {
-    "surveySavedMessage": "Umfrage gespeichert!"
+    "surveySavedMessage": "Umfrage gespeichert!",
+    "passwordChangedMessage": "Passwort geändert!"
   }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, Typography, useTheme } from '@material-ui/core';
-import RoundedBox from '../../../components/ui/RoundedBox';
+import RoundedBox from '../../ui/RoundedBox';
 
-interface OnboardingErrorProps {
+interface ErrorProps {
   errorString: string,
 }
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const OnboardingError: React.FC<OnboardingErrorProps> = (props) => {
+const Error: React.FC<ErrorProps> = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const { t } = useTranslation(['app']);
@@ -26,16 +26,22 @@ const OnboardingError: React.FC<OnboardingErrorProps> = (props) => {
 
   switch (props.errorString) {
     case "email not valid":
-      localizedError = t("app:onboardingErrors.invalidEmail");
+      localizedError = t("app:errors.invalidEmail");
       break;
     case "password too weak":
-      localizedError = t("app:onboardingErrors.weakPassword");
+      localizedError = t("app:errors.weakPassword");
       break;
     case "invalid username and/or password":
-      localizedError = t("app:onboardingErrors.incorrectCredentials");
+      localizedError = t("app:errors.incorrectCredentials");
+      break;
+    case "new password too weak":
+      localizedError = t("app:errors.newPasswordTooWeak");
+      break;
+    case "invalid user and/or password":
+      localizedError = t("app:errors.currentPasswordWrong");
       break;
     default:
-      localizedError = t("app:onboardingErrors.unknownError") + "\n" + props.errorString;
+      localizedError = t("app:errors.unknownError") + "\n" + props.errorString;
   }
 
   return (
@@ -47,4 +53,4 @@ const OnboardingError: React.FC<OnboardingErrorProps> = (props) => {
   );
 };
 
-export default OnboardingError;
+export default Error;

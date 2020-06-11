@@ -23,7 +23,7 @@ import { minuteToMillisecondFactor } from '../../../constants';
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { setDefaultAccessTokenHeader, resetAuth } from '../../../api/instances/auth-api-instance';
-import OnboardingError from '../Error/OnboardingError';
+import Error from '../../../components/auth/Error/Error';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
@@ -251,7 +251,7 @@ const Signup: React.FC = () => {
         </form>
       </RoundedBox>
       {errorMessages.map(error =>
-        <OnboardingError errorString={error} key={error} />
+        <Error errorString={error} key={error} />
       )}
       <FlexGrow flexGrow={2} />
     </Container>

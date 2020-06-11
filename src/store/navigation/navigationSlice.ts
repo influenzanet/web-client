@@ -10,6 +10,7 @@ export interface NavigationState {
   };
   snackbars: {
     surveySavedOpen: boolean;
+    passwordChangedOpen: boolean;
   }
   drawerOpen: boolean;
   loading: boolean;
@@ -70,6 +71,14 @@ const navigationSlice = createSlice({
     },
     closeSurveySavedSnackbar: state => {
       state.snackbars.surveySavedOpen = false;
+      return state;
+    },
+    openPasswordChangedSnackbar: state => {
+      state.snackbars.passwordChangedOpen = true;
+      return state;
+    },
+    closePasswordChangedSnackbar: state => {
+      state.snackbars.passwordChangedOpen = false;
       return state;
     },
   },

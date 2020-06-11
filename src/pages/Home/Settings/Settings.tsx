@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import LoadingDialog from '../../../components/ui/dialogs/LoadingDialog';
 import { deleteAccountReq } from '../../../api/user-management-api';
 import ConfirmationDialog from '../../../components/ui/dialogs/ConfirmationDialog';
+import ChangePasswordDialog from './Components/ChangePasswordDialog';
 
 
 const Settings: React.FC = () => {
@@ -28,7 +29,13 @@ const Settings: React.FC = () => {
   const user = useSelector((state: RootState) => state.user);
   const logout = useLogout();
   const [loading, asyncCall] = useAsyncCall();
+  const [changePasswordDialogOpen, setChangePasswordDialogOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+
+
+  const onChangePasswordClicked = () => {
+    setChangePasswordDialogOpen(true);
+  }
 
   const onDeleteAccountClicked = () => {
     setDeleteDialogOpen(true);
@@ -48,6 +55,10 @@ const Settings: React.FC = () => {
     return (
       <Fragment>
         <LoadingDialog open={loading} />
+        <ChangePasswordDialog
+          open={changePasswordDialogOpen}
+          onClosed={() => setChangePasswordDialogOpen(false)}
+        />
         <ConfirmationDialog
           open={deleteDialogOpen}
           title={t("app:settingsPage.deleteDialogTitle")}
@@ -75,7 +86,7 @@ const Settings: React.FC = () => {
             </Typography>
           </Grid>
           <Grid item>
-            <RoundedButton color="secondary">
+            <RoundedButton color="secondary" onClick={onChangePasswordClicked}>
               {t("app:settingsPage.changePasswordButtonLabel")}
             </RoundedButton>
           </Grid>

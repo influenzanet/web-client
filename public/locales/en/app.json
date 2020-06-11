@@ -31,7 +31,13 @@
     "changePasswordButtonLabel": "Change Password",
     "deleteAccountButtonLabel": "Delete Account",
     "deleteDialogTitle": "Delete Account?",
-    "deleteDialogDescription": "Are you sure you want to delete your account? This action cannot be undone."
+    "deleteDialogDescription": "Are you sure you want to delete your account? This action cannot be undone.",
+    "changePasswordDialog": {
+      "title": "Change Password?",
+      "currentPasswordPlaceholder": "Current Password",
+      "newPasswordPlaceholder": "New Password",
+      "confirmNewPasswordPlaceholder": "Confirm New Password"
+    }
   },
   "loginPage": {
     "title": "Sign In",
@@ -59,10 +65,12 @@
     "signupButtonLabel": "Sign up",
     "loginLink": "Already have an account? Sign in."
   },
-  "onboardingErrors": {
+  "errors": {
     "invalidEmail": "Invalid email address.",
     "weakPassword": "Password too weak.",
     "incorrectCredentials": "Incorrect email address and/or password.",
+    "newPasswordTooWeak": "New password too weak.",
+    "currentPasswordWrong": "Current password is wrong.",
     "unknownError": "Server Error. Please try again later:"
   },
   "activationPage": {
@@ -112,6 +120,7 @@
     "closeMsgSmall": "Please close this page now."
   },
   "snackbars": {
-    "surveySavedMessage": "Survey saved!"
+    "surveySavedMessage": "Survey saved!",
+    "passwordChangedMessage": "Password Changed!"
   }
 }
