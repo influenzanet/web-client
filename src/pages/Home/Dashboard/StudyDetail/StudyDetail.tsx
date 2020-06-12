@@ -134,9 +134,11 @@ const StudyDetail: React.FC = () => {
             }
 
             <Grid item style={{ alignSelf: "center" }}>
-              {(subscribed)
-                ? unsubscribeButton()
-                : subscribeButton()
+              {(selectedStudy.props.systemDefaultStudy)
+                ? null
+                : (subscribed)
+                  ? unsubscribeButton()
+                  : subscribeButton()
               }
             </Grid>
           </Grid>

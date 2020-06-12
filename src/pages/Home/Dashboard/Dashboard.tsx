@@ -3,7 +3,7 @@ import NavigationHomePage from '../../../components/ui/pages/Home/NavigationHome
 import { StudyInfos } from '../../../types/study-api';
 import { Grid, Typography, Box, useMediaQuery, useTheme } from '@material-ui/core';
 import RoundedBox from '../../../components/ui/RoundedBox';
-import { useLocalization, useMountEffect } from '../../../hooks';
+import { useLocalization, useMountEffect, useAsyncCall } from '../../../hooks';
 import styles from './Dashboard.module.scss';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -15,6 +15,7 @@ import { useUpdateStudies } from '../../../hooks/useUpdateStudies';
 import LoadingDialog from '../../../components/ui/dialogs/LoadingDialog';
 import Iframe from 'react-iframe';
 import { useFullHeightRef } from '../../../hooks/useFullHeightRef';
+import { enterStudyReq } from '../../../api/study-api';
 
 const Dashboard: React.FC = () => {
   const localize = useLocalization();
@@ -26,14 +27,32 @@ const Dashboard: React.FC = () => {
 
   const fullHeightRef = useFullHeightRef();
 
-  const [loading, getAllStudies] = useUpdateStudies();
+  const [studiesLoading, getAllStudies] = useUpdateStudies();
+  const [asyncLoading, asyncCall] = useAsyncCall();
+
+  const loading = studiesLoading || asyncLoading;
 
   const subscribedStudies = useSelector((state: RootState) => state.study.subscribedStudies);
   const availableStudies = useSelector((state: RootState) => state.study.availableStudies);
 
+  const subscribedToStudy = (studyInfos: StudyInfos) => {
+    return subscribedStudies.findIndex((subscribedStudy) => subscribedStudy.key === studyInfos.key) !== -1;
+  }
+
   useMountEffect(() => {
     getAllStudies();
   });
+
+  if (!loading) {
+    availableStudies.forEach((availableStudy) => {
+      if (availableStudy.props.systemDefaultStudy && !subscribedToStudy(availableStudy)) {
+        asyncCall(async () => {
+          await enterStudyReq(availableStudy.key);
+          await getAllStudies();
+        })
+      }
+    });
+  }
 
   const onStudyItemClicked = (studyInfos: StudyInfos) => {
     history.push(appendParameter(HomePaths.StudyDetail.path, studyInfos.key));
@@ -49,12 +68,12 @@ const Dashboard: React.FC = () => {
           <Typography variant="body1" className={styles.studiesDescription}>
             {localize(studyInfos.props.description)}
           </Typography>
-          {(subscribedStudies.findIndex((subscribedStudy) => subscribedStudy.key === studyInfos.key) === -1)
-            ? <Typography variant="subtitle1" className={styles.unsubscribedText}>
-              {t("app:dashboard.unsubscribedTag")}
-            </Typography>
-            : <Typography variant="subtitle1" color="secondary">
+          {subscribedToStudy(studyInfos)
+            ? <Typography variant="subtitle1" color="secondary">
               {t("app:dashboard.subscribedTag")}
+            </Typography>
+            : <Typography variant="subtitle1" className={styles.unsubscribedText}>
+              {t("app:dashboard.unsubscribedTag")}
             </Typography>
           }
 
