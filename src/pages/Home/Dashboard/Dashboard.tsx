@@ -83,12 +83,26 @@ const Dashboard: React.FC = () => {
           {studyList()}
         </Grid>
         <Grid item md={mdUp ? 8 : undefined}>
-          <Iframe
-            url={process.env.REACT_APP_DASHBOARD_IFRAME_URL ? process.env.REACT_APP_DASHBOARD_IFRAME_URL : ''}
+          <Box
+            position="relative"
             height={mdUp ? "100%" : "1000px"}
-            width="100%"
-            frameBorder={0}
-          ></Iframe>
+            width="100%">
+            {
+              !process.env.REACT_APP_DASHBOARD_IFRAME_URL ? <Box position="absolute" pt="40vh" width="100%" textAlign="center">
+                <Typography variant="h5">
+                  {'Content not defined'}
+                </Typography>
+              </Box> : null
+            }
+            <Iframe
+              url={process.env.REACT_APP_DASHBOARD_IFRAME_URL ? process.env.REACT_APP_DASHBOARD_IFRAME_URL : ''}
+              height={mdUp ? "100%" : "1000px"}
+              width="100%"
+              frameBorder={0}
+              className={styles.contentFrame}
+            >
+            </Iframe>
+          </Box>
         </Grid>
       </Grid>
       <LoadingDialog open={loading} />
