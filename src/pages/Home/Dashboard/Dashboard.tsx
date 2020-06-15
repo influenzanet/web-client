@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavigationHomePage from '../../../components/ui/pages/Home/NavigationHomePage';
-import { StudyInfos } from '../../../types/study-api';
-import { Grid, Typography, Box, useMediaQuery, useTheme } from '@material-ui/core';
+import { StudyInfos, AssignedSurvey } from '../../../types/study-api';
+import { Grid, Typography, Box, useMediaQuery, useTheme, Chip } from '@material-ui/core';
 import RoundedBox from '../../../components/ui/RoundedBox';
-import { useLocalization, useMountEffect, useAsyncCall } from '../../../hooks';
-import styles from './Dashboard.module.scss';
+import { useLocalization, useMountEffect, useAsyncCall, useStyles } from '../../../hooks';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
@@ -15,9 +14,37 @@ import { useUpdateStudies } from '../../../hooks/useUpdateStudies';
 import LoadingDialog from '../../../components/ui/dialogs/LoadingDialog';
 import Iframe from 'react-iframe';
 import { useFullHeightRef } from '../../../hooks/useFullHeightRef';
-import { enterStudyReq } from '../../../api/study-api';
+import { enterStudyReq, getAllAssignedSurveysReq } from '../../../api/study-api';
 
 const Dashboard: React.FC = () => {
+  const classes = useStyles(theme => ({
+    studiesContainer: {
+      padding: 16,
+    },
+    studyItem: {
+      cursor: "pointer",
+      userSelect: "none",
+      margin: "10px 0",
+    },
+    unsubscribedText: {
+      color: "grey",
+    },
+    studiesDescription: {
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+    },
+    contentFrame: {
+      backgroundColor: "#cacaca",
+    },
+    tags: {
+      marginTop: 4,
+    },
+    availableSurveys: {
+      marginTop: 4,
+    }
+  }));
+
   const localize = useLocalization();
   const { t } = useTranslation(['app']);
   const history = useHistory();
@@ -29,6 +56,7 @@ const Dashboard: React.FC = () => {
 
   const [studiesLoading, getAllStudies] = useUpdateStudies();
   const [asyncLoading, asyncCall] = useAsyncCall();
+  const [allAssignedSurveys, setAllAssignedSurveys] = useState<AssignedSurvey[]>([]);
 
   const loading = studiesLoading || asyncLoading;
 
@@ -39,9 +67,23 @@ const Dashboard: React.FC = () => {
     return subscribedStudies.findIndex((subscribedStudy) => subscribedStudy.key === studyInfos.key) !== -1;
   }
 
+  const unsubscribedStudies = availableStudies.filter((study) => !subscribedToStudy(study));
+
   useMountEffect(() => {
-    getAllStudies();
+    getInfosFromServer();
   });
+
+  const getInfosFromServer = async () => {
+    await getAllStudies();
+    await getAllAssignedSurveys();
+  }
+
+  const getAllAssignedSurveys = async () => {
+    await asyncCall(async () => {
+      const response = await getAllAssignedSurveysReq();
+      setAllAssignedSurveys(response.data.surveys);
+    });
+  }
 
   if (!loading) {
     availableStudies.forEach((availableStudy) => {
@@ -58,23 +100,55 @@ const Dashboard: React.FC = () => {
     history.push(appendParameter(HomePaths.StudyDetail.path, studyInfos.key));
   }
 
-  const studyItem = (studyInfos: StudyInfos) => {
+  const tags = (studyInfos: StudyInfos) => {
+    if (!studyInfos.props.tags) return null;
+
     return (
-      <RoundedBox key={studyInfos.key} classNames={[styles.studyItem]} onClick={() => onStudyItemClicked(studyInfos)}>
+      <Grid container item direction="row" spacing={1} className={classes.tags}>
+        {
+          studyInfos.props.tags.map((tag, index) => {
+            return (
+              <Grid item key={index}>
+                <Chip label={localize(tag.label)} color="secondary" size="small" />
+              </Grid>
+            );
+          })
+        }
+      </Grid>
+    );
+  }
+
+  const availableSurveys = (count: number) => {
+    return (
+      <Grid item container direction="row" spacing={1} justify="center" alignItems="center" className={classes.availableSurveys}>
+        <Grid item>
+          <Typography color="secondary" variant="h6">
+            {count}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Typography variant="caption">
+            {t("app:dashboard.availableSurveysText")}
+          </Typography>
+        </Grid>
+      </Grid>
+    );
+  }
+
+  const studyItem = (studyInfos: StudyInfos) => {
+    const assignedSurveys = allAssignedSurveys.filter((survey) => survey.studyKey === studyInfos.key).length;
+    return (
+      <RoundedBox key={studyInfos.key} classNames={[classes.studyItem]} onClick={() => onStudyItemClicked(studyInfos)}>
         <Grid>
           <Typography variant="h6">
             {localize(studyInfos.props.name)}
           </Typography>
-          <Typography variant="body1" className={styles.studiesDescription}>
+          <Typography variant="body1" className={classes.studiesDescription}>
             {localize(studyInfos.props.description)}
           </Typography>
           {subscribedToStudy(studyInfos)
-            ? <Typography variant="subtitle1" color="secondary">
-              {t("app:dashboard.subscribedTag")}
-            </Typography>
-            : <Typography variant="subtitle1" className={styles.unsubscribedText}>
-              {t("app:dashboard.unsubscribedTag")}
-            </Typography>
+            ? availableSurveys(assignedSurveys)
+            : tags(studyInfos)
           }
 
         </Grid>
@@ -82,14 +156,14 @@ const Dashboard: React.FC = () => {
     );
   }
 
-  const studyList = () => {
+  const studyList = (title: string, studies: StudyInfos[]) => {
     return (
-      <Box p={2}>
+      <Box>
         <Typography variant="h3" color="primary">
-          {t("app:dashboard.studiesSubtitle")}
+          {title}
         </Typography>
         <Grid item container direction="column">
-          {availableStudies.map((study) => studyItem(study))}
+          {studies.map((study) => studyItem(study))}
         </Grid>
       </Box>
     );
@@ -98,8 +172,17 @@ const Dashboard: React.FC = () => {
   return (
     <NavigationHomePage title={t("app:dashboard.title")}>
       <Grid container ref={fullHeightRef} direction={(mdUp ? "row" : "column")}>
-        <Grid item md={mdUp ? 4 : undefined}>
-          {studyList()}
+        <Grid item md={mdUp ? 4 : undefined} >
+          <Box p={2}>
+            <Grid container direction="column" spacing={2}>
+              <Grid item>
+                {studyList(t("app:dashboard.subscribedStudiesSubtitle"), subscribedStudies)}
+              </Grid>
+              <Grid item>
+                {studyList(t("app:dashboard.unsubscribedStudiesSubtitle"), unsubscribedStudies)}
+              </Grid>
+            </Grid>
+          </Box>
         </Grid>
         <Grid item md={mdUp ? 8 : undefined}>
           <Box
@@ -118,7 +201,7 @@ const Dashboard: React.FC = () => {
               height={mdUp ? "100%" : "1000px"}
               width="100%"
               frameBorder={0}
-              className={styles.contentFrame}
+              className={classes.contentFrame}
             >
             </Iframe>
           </Box>

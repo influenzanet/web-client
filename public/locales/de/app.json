@@ -16,9 +16,9 @@
   },
   "dashboard": {
     "title": "InfluenzaNet",
-    "studiesSubtitle": "Studien",
-    "subscribedTag": "Abonniert",
-    "unsubscribedTag": "Nicht abonniert"
+    "subscribedStudiesSubtitle": "Meine Studien",
+    "unsubscribedStudiesSubtitle": "Mehr Studien",
+    "availableSurveysText": "Verfügbare Umfrage(n)"
   },
   "studyDetailPage": {
     "studyNotFoundMessage": "Studie nicht gefunden!",

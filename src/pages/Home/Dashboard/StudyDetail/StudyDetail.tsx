@@ -102,16 +102,16 @@ const StudyDetail: React.FC = () => {
     await getAllAssignedSurveys();
   }
 
-  const getSurveyInfos = () => {
+  const getSurveyInfos = async () => {
     if (!selectedStudy) return;
-    asyncCall(async () => {
+    await asyncCall(async () => {
       const response = await getSurveyInfosForStudyReq(selectedStudy.key);
       setSurveyInfos(response.data.infos);
     });
   }
 
-  const getAllAssignedSurveys = () => {
-    asyncCall(async () => {
+  const getAllAssignedSurveys = async () => {
+    await asyncCall(async () => {
       const response = await getAllAssignedSurveysReq();
       setAllAssignedSurveys(response.data.surveys);
     });
