@@ -4,6 +4,9 @@ import Backend from 'i18next-http-backend';
 import store from "./store";
 import { userActions } from "./store/user/userSlice";
 
+export const InterpolationKeys = {
+  Date: "date",
+}
 
 i18n
   .use(Backend)
@@ -16,7 +19,13 @@ i18n
       loadPath: process.env.PUBLIC_URL + '/locales/{{lng}}/{{ns}}.json'
     },
     interpolation: {
-      escapeValue: false // react already safes from xss
+      escapeValue: false, // react already safes from xss
+      format: (value, format, lng) => {
+        if (format === InterpolationKeys.Date) {
+          return new Intl.DateTimeFormat(lng).format(value);
+        }
+        return value;
+      }
     },
     react: {
       useSuspense: true

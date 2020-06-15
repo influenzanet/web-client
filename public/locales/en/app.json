@@ -24,7 +24,9 @@
     "studyNotFoundMessage": "Study not found!",
     "surveysSubtitle": "Surveys",
     "subscribeButtonLabel": "Subscribe",
-    "unsubscribeButtonLabel": "Unsubscribe"
+    "unsubscribeButtonLabel": "Unsubscribe",
+    "startDateLabel": "Start Date:",
+    "endDateLabel": "End Date:"
   },
   "settingsPage": {
     "title": "Settings",
@@ -122,5 +124,6 @@
   "snackbars": {
     "surveySavedMessage": "Survey saved!",
     "passwordChangedMessage": "Password Changed!"
-  }
+  },
+  "date": "{{date, date}}"
 }

@@ -5,9 +5,8 @@ import { RootState } from '../../../../store';
 import { useParams, useHistory } from 'react-router';
 import { HomePaths } from '../../../../routes';
 import { Typography, Grid, Container } from '@material-ui/core';
-import { useLocalization, useAsyncCall, useMountEffect } from '../../../../hooks';
+import { useLocalization, useAsyncCall, useMountEffect, useStyles } from '../../../../hooks';
 import RoundedBox from '../../../../components/ui/RoundedBox';
-import styles from './StudyDetail.module.scss';
 import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
 import LoadingDialog from '../../../../components/ui/dialogs/LoadingDialog';
 import { enterStudyReq, leaveStudyRequest, getSurveyInfosForStudyReq, getAllAssignedSurveysReq } from '../../../../api/study-api';
@@ -15,8 +14,35 @@ import { useUpdateStudies } from '../../../../hooks/useUpdateStudies';
 import { SurveyInfo, AssignedSurvey } from '../../../../types/study-api';
 import { studyKeyQueryKey, surveyKeyQueryKey } from '../../MyStudies/MyStudies';
 import { useTranslation } from 'react-i18next';
+import FlexGrow from '../../../../components/common/FlexGrow';
 
 const StudyDetail: React.FC = () => {
+  const classes = useStyles(theme => ({
+    pageContainer: {
+      padding: 16,
+    },
+    button: {
+      fontSize: "1.1em",
+    },
+    centerText: {
+      textAlign: "center",
+    },
+    surveyItem: {
+      cursor: "pointer",
+      userSelect: "none",
+    },
+    surveyDescription: {
+      maxWidth: "0300px",
+    },
+    dates: {
+      color: "grey",
+      marginTop: 8,
+    },
+    dateText: {
+      marginLeft: 4,
+    }
+  }));
+
   const { key: urlKey } = useParams();
 
   const { t } = useTranslation(['app']);
@@ -38,7 +64,6 @@ const StudyDetail: React.FC = () => {
   const subscribed = (selectedStudy)
     ? (subscribedStudies.findIndex((subscribedStudy) => subscribedStudy.key === selectedStudy.key) !== -1)
     : false;
-
 
   const assignedSurveys = (allAssignedSurveys)
     ? allAssignedSurveys.filter((assignedSurvey) => {
@@ -96,6 +121,57 @@ const StudyDetail: React.FC = () => {
     history.push(HomePaths.MyStudies + `?${studyKeyQueryKey}=${selectedStudy?.key}&${surveyKeyQueryKey}=${surveyInfo.key}`)
   }
 
+  const startDate = () => {
+    if (selectedStudy && selectedStudy.props.startDate) {
+      return (
+        <Fragment>
+          <Typography variant="caption">
+            {t("app:studyDetailPage.startDateLabel")}
+          </Typography>
+          <Typography className={classes.dateText}>
+            {t("app:date", { date: new Date(selectedStudy.props.startDate * 1000) })}
+          </Typography>
+        </Fragment>
+      );
+    } else {
+      return null;
+    }
+  }
+
+  const endDate = () => {
+    if (selectedStudy && selectedStudy.props.endDate) {
+      return (
+        <Fragment>
+          <Typography variant="caption">
+            {t("app:studyDetailPage.endDateLabel")}
+          </Typography>
+          <Typography className={classes.dateText}>
+            {t("app:date", { date: new Date(selectedStudy.props.endDate * 1000) })}
+          </Typography>
+        </Fragment>
+      );
+    } else {
+      return null;
+    }
+  }
+
+  const dates = () => {
+    if (!selectedStudy) return null;
+    return (selectedStudy.props.startDate || selectedStudy.props.endDate)
+      ? <Grid container justify="space-around" alignItems="center" className={classes.dates}>
+        <FlexGrow />
+        {startDate()}
+        {
+          selectedStudy.props.startDate && selectedStudy.props.endDate
+            ? <FlexGrow />
+            : null
+        }
+        {endDate()}
+        <FlexGrow />
+      </Grid>
+      : null;
+  }
+
   const notFoundPage = () => {
     return (
       <DetailHomePage title="Study Not Found">
@@ -111,17 +187,18 @@ const StudyDetail: React.FC = () => {
     return (
       <DetailHomePage title={localize(selectedStudy.props.name) ?? ""}>
         <Container maxWidth="md">
-          <Grid container direction="column" spacing={2} alignItems="stretch" className={styles.pageContainer}>
+          <Grid container direction="column" spacing={2} alignItems="stretch" className={classes.pageContainer}>
             <Grid item>
-              <Typography variant="h3" color="primary" className={styles.centerText}>
+              <Typography variant="h3" color="primary" className={classes.centerText}>
                 {localize(selectedStudy.props.name)}
               </Typography>
             </Grid>
             <Grid item>
               <RoundedBox>
-                <Typography variant="body1" className={styles.centerText}>
+                <Typography variant="body1" className={classes.centerText}>
                   {localize(selectedStudy.props.description)}
                 </Typography>
+                {dates()}
               </RoundedBox>
             </Grid>
             {
@@ -149,12 +226,12 @@ const StudyDetail: React.FC = () => {
 
   const surveyItem = (surveyInfo: SurveyInfo) => {
     return (
-      <RoundedBox key={surveyInfo.key} classNames={[styles.surveyItem]} onClick={() => onSurveyItemClicked(surveyInfo)}>
+      <RoundedBox key={surveyInfo.key} classNames={[classes.surveyItem]} onClick={() => onSurveyItemClicked(surveyInfo)}>
         <Grid>
           <Typography variant="h6">
             {localize(surveyInfo.name)}
           </Typography>
-          <Typography variant="body1" className={styles.surveyDescription}>
+          <Typography variant="body1" className={classes.surveyDescription}>
             {localize(surveyInfo.description)}
           </Typography>
         </Grid>
@@ -164,7 +241,7 @@ const StudyDetail: React.FC = () => {
 
   const surveyList = () => {
     return (
-      <Grid container spacing={2} className={styles.studiesContainer}>
+      <Grid container spacing={2}>
         <Grid item>
           <Typography variant="h4" color="secondary">
             {t("app:studyDetailPage.surveysSubtitle")}
@@ -179,7 +256,7 @@ const StudyDetail: React.FC = () => {
 
   const subscribeButton = () => {
     return (
-      <RoundedButton color="primary" className={styles.button} onClick={subscribe}>
+      <RoundedButton color="primary" className={classes.button} onClick={subscribe}>
         {t("app:studyDetailPage.subscribeButtonLabel")}
       </RoundedButton>
     );
@@ -187,7 +264,7 @@ const StudyDetail: React.FC = () => {
 
   const unsubscribeButton = () => {
     return (
-      <RoundedButton color="secondary" className={styles.button} onClick={unsubscribe}>
+      <RoundedButton color="secondary" className={classes.button} onClick={unsubscribe}>
         {t("app:studyDetailPage.unsubscribeButtonLabel")}
       </RoundedButton>
     );
