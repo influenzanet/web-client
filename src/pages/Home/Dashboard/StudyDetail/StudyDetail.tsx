@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../../store';
 import { useParams, useHistory } from 'react-router';
 import { HomePaths } from '../../../../routes';
-import { Typography, Grid, Container } from '@material-ui/core';
+import { Typography, Grid, Container, Chip } from '@material-ui/core';
 import { useLocalization, useAsyncCall, useMountEffect, useStyles } from '../../../../hooks';
 import RoundedBox from '../../../../components/ui/RoundedBox';
 import RoundedButton from '../../../../components/ui/buttons/RoundedButton';
@@ -172,6 +172,21 @@ const StudyDetail: React.FC = () => {
       : null;
   }
 
+  const tags = () => {
+    if (!selectedStudy || !selectedStudy.props.tags) return null;
+    return <Grid container item direction="row" justify="center" spacing={1}>
+      {
+        selectedStudy.props.tags.map((tag, index) => {
+          return (
+            <Grid item>
+              <Chip key={index} label={localize(tag.label)} color="secondary" />
+            </Grid>
+          );
+        })
+      }
+    </Grid>
+  }
+
   const notFoundPage = () => {
     return (
       <DetailHomePage title="Study Not Found">
@@ -193,6 +208,7 @@ const StudyDetail: React.FC = () => {
                 {localize(selectedStudy.props.name)}
               </Typography>
             </Grid>
+            {tags()}
             <Grid item>
               <RoundedBox>
                 <Typography variant="body1" className={classes.centerText}>
