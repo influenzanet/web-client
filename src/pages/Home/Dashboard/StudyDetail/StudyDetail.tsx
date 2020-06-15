@@ -178,8 +178,8 @@ const StudyDetail: React.FC = () => {
       {
         selectedStudy.props.tags.map((tag, index) => {
           return (
-            <Grid item>
-              <Chip key={index} label={localize(tag.label)} color="secondary" />
+            <Grid item key={index}>
+              <Chip label={localize(tag.label)} color="secondary" />
             </Grid>
           );
         })
