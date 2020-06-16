@@ -67,6 +67,11 @@
     "signupButtonLabel": "Sign up",
     "loginLink": "Already have an account? Sign in."
   },
+  "initiatePasswordResetPage": {
+    "headline": "Reset Password",
+    "mailSentConfirmation": "Email Sent",
+    "resetPasswordButtonLabel": "Reset Password"
+  },
   "errors": {
     "invalidEmail": "Invalid email address.",
     "weakPassword": "Password too weak.",

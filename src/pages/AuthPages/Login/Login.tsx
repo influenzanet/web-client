@@ -217,7 +217,7 @@ const Login: React.FC = () => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link variant="body2" component={LinkRef} to={AuthPagesPaths.InitiatePasswordReset}>
                 {t("app:loginPage.forgotPasswordLink")}
               </Link>
             </Grid>

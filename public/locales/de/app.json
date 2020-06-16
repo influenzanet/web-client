@@ -67,6 +67,11 @@
     "signupButtonLabel": "Registrieren",
     "loginLink": "Sie besitzen bereits ein Konto? Jetzt einloggen."
   },
+  "initiatePasswordResetPage": {
+    "headline": "Passwort zurücksetzen",
+    "mailSentConfirmation": "Email versandt",
+    "resetPasswordButtonLabel": "Passwort zurücksetzen"
+  },
   "errors": {
     "invalidEmail": "Fehlerhafte Email-Adresse.",
     "weakPassword": "Zu schwaches Passwort.",

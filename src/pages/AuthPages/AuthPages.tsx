@@ -11,6 +11,7 @@ import Login from './Login/Login';
 import SignupSuccess from './SignupSuccess/SignupSuccess';
 import { AuthPagesPaths } from '../../routes';
 import { useAuthTokenCheck } from '../../hooks';
+import InitiatePasswordReset from './PasswordReset/InitiatePasswordReset';
 
 const AuthPages: React.FC = () => {
   const hasAuthTokens = useAuthTokenCheck();
@@ -19,6 +20,7 @@ const AuthPages: React.FC = () => {
     <Switch>
       <Route path={AuthPagesPaths.Login} component={Login} />
       <Route path={AuthPagesPaths.Signup} component={Signup} />
+      <Route path={AuthPagesPaths.InitiatePasswordReset} component={InitiatePasswordReset} />
       {hasAuthTokens ? <Route path={AuthPagesPaths.SignupSuccess} component={SignupSuccess} /> : null}
       <Redirect to={AuthPagesPaths.Login}></Redirect>
     </Switch>
