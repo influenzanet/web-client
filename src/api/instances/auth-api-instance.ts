@@ -32,10 +32,6 @@ const renewToken = async () => {
   return null;
 }
 
-
-
-
-
 authApiInstance.interceptors.request.use(
   async (config) => {
     if (renewTokenURL === config.url) {
@@ -53,9 +49,7 @@ authApiInstance.interceptors.request.use(
       } else {
         console.error(e);
       }
-
     }
-
     return config;
   },
   (error) => {

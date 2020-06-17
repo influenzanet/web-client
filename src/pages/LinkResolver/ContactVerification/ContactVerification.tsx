@@ -12,6 +12,11 @@ import { useHistory, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { HomePaths, AuthPagesPaths } from '../../../routes';
 import { urlWithRedirect } from '../../../routes/utils/routeUtils';
+import { switchProfileReq } from '../../../api/auth-api';
+import { setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
+import { apiActions } from '../../../store/api/apiSlice';
+import { minuteToMillisecondFactor } from '../../../constants';
+import { Profile } from '../../../types/user';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -37,6 +42,7 @@ const VerifyToken: React.FC = () => {
 
   const loggedIn = useAuthTokenCheck();
   const accountConfirmedAt = useSelector((state: RootState) => state.user.currentUser.account.accountConfirmedAt);
+  const refreshToken = useSelector((state: RootState) => state.api.refreshToken);
 
   const location = useLocation();
 
@@ -55,14 +61,40 @@ const VerifyToken: React.FC = () => {
       let response = await verifyContactReq(token);
       if (response.status === 200) {
         dispatch(userActions.setUser(response.data));
+        if (loggedIn) {
+          try {
+            if (response.data.profiles.length > 0) {
+              await renewTokenForProfile(response.data.profiles[0])
+            }
+          } catch (e) {
+            console.error(e.response);
+          }
+        }
         setConfirmed(true);
       }
     } catch (e) {
       console.error(e.response);
     }
-
     setLoading(false);
   };
+
+  const renewTokenForProfile = async (profile: Profile) => {
+    const response = await switchProfileReq({
+      profileId: profile.id,
+      refreshToken: refreshToken,
+    });
+
+    let tokenRefreshedAt = new Date().getTime();
+
+    dispatch(apiActions.setState({
+      accessToken: response.data.accessToken,
+      refreshToken: response.data.refreshToken,
+      expiresAt: tokenRefreshedAt + response.data.expiresIn * minuteToMillisecondFactor,
+    }));
+
+    setDefaultAccessTokenHeader(response.data.accessToken);
+    dispatch(userActions.setFromTokenResponse(response.data));
+  }
 
   const waiting = () => {
     return (
