@@ -6,8 +6,8 @@ import apiInstance from './instances/api-instance';
 
 // Password Reset API
 export const initiatePasswordResetReq = (instanceId: string, accountId: string) => apiInstance.post<ServiceStatus>('/v1/user/password-reset/initiate', { instanceId, accountId });
-export const getInfosForPasswordResetReq = (token: string) => authApiInstance.post<PasswordResetInfos>('/v1/user/password-reset/get-infos', { token });
-export const resetPasswordReq = (token: string, newPassword: string) => authApiInstance.post<ServiceStatus>('/v1/user/password-reset/reset-with', { token, newPassword });
+export const getInfosForPasswordResetReq = (token: string) => apiInstance.post<PasswordResetInfos>('/v1/user/password-reset/get-infos', { token });
+export const resetPasswordReq = (token: string, newPassword: string) => apiInstance.post<ServiceStatus>('/v1/user/password-reset/reset-with', { token, newPassword });
 
 // User management API
 export const getUserReq = () => authApiInstance.get<User>('/v1/user');

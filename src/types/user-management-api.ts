@@ -1,4 +1,4 @@
 
 export interface PasswordResetInfos {
-  accountID: string;
+  accountId: string;
 }

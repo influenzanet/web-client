@@ -51,9 +51,8 @@ const InitiatePasswordReset: React.FC = () => {
         margin="normal"
         required
         fullWidth
-        id="email"
         label={t("app:loginPage.emailPlaceholder")}
-        name="email"
+        type="email"
         autoComplete="email"
         autoFocus
         value={emailAddress}

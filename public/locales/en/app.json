@@ -72,6 +72,15 @@
     "mailSentConfirmation": "Email Sent",
     "resetPasswordButtonLabel": "Reset Password"
   },
+  "passwordResetPage": {
+    "headline": "Change Password",
+    "newPasswordPlaceholder": "New Password",
+    "confirmNewPasswordPlaceholder": "Confirm New Password",
+    "passwordChangedConfirmation": "Password Changed!",
+    "loginButtonLabel": "Continue to Login",
+    "changePasswordButtonLabel": "Change Password",
+    "invalidTokenMessage": "Couldn't verify password reset link. Please try again."
+  },
   "errors": {
     "invalidEmail": "Invalid email address.",
     "weakPassword": "Password too weak.",
