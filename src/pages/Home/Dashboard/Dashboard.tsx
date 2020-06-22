@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
       color: "grey",
     },
     studiesDescription: {
-      whiteSpace: "nowrap",
+      // whiteSpace: "nowrap",
       overflow: "hidden",
       textOverflow: "ellipsis",
     },
