@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. Create `.env.local` and add
 ```
 REACT_APP_API_BASE_URL=<your backend address>
+REACT_APP_DASHBOARD_IFRAME_URL=<content of the dashboard iframe>
 ```
 
 
