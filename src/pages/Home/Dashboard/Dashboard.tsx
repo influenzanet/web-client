@@ -81,7 +81,7 @@ const Dashboard: React.FC = () => {
   const getAllAssignedSurveys = async () => {
     await asyncCall(async () => {
       const response = await getAllAssignedSurveysReq();
-      setAllAssignedSurveys(response.data.surveys);
+      setAllAssignedSurveys(response.data.surveys ?? []);
     });
   }
 
