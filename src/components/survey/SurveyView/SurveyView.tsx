@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { Survey, SurveySingleItem, SurveySingleItemResponse, SurveyContext } from 'survey-engine/lib/data_types';
 import { SurveyEngineCore } from 'survey-engine/lib/engine';
 import SurveyPageView from './SurveyPageView/SurveyPageView';
@@ -43,6 +43,11 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
     dispatch(navigationActions.setShowMenuButton(false));
   });
 
+  useEffect(() => {
+    dispatch(navigationActions.setShowBackBtn(currentPage > 0));
+    dispatch(navigationActions.setShowProfileSelection(false));
+  }, [location, currentPage, dispatch]);
+
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
     props.onSubmit(resp);
@@ -82,9 +87,6 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
       <Switch>
         <Route path={`${pagesPath}/:index`} render={routeProps => {
           let index = parseInt(routeProps.match.params.index);
-
-          dispatch(navigationActions.setShowBackBtn(index > 0));
-          dispatch(navigationActions.setShowProfileSelection(index > 0));
 
           // If invalid index, redirect to beginning of survey.
           if (index < 0 || index > surveyPages.length - 1) return <Redirect to={`${pagesPath}/0${location.search}`} />
