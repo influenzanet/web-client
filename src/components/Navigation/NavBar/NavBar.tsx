@@ -11,7 +11,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import { navigationActions } from '../../../store/navigation/navigationSlice';
 import { RootState } from '../../../store';
-import { useHistory } from 'react-router';
+import  {useHistory } from 'react-router';
 import {
   Avatar,
   Grid,
@@ -26,6 +26,8 @@ import {apiActions} from "../../../store/api/apiSlice";
 import {minuteToMillisecondFactor} from "../../../constants";
 import {setDefaultAccessTokenHeader} from "../../../api/instances/auth-api-instance";
 import {useAsyncCall} from "../../../hooks";
+import {getAllAvailableStudiesReq, getStudiesForUserReq} from "../../../api/study-api";
+import {studyActions} from "../../../store/study/studySlice";
 
 
 
@@ -78,7 +80,12 @@ export const NavBar: React.FC = () => {
         expiresAt: tokenRefreshedAt + response.data.expiresIn * minuteToMillisecondFactor,
       }));
       dispatch(userActions.setFromTokenResponse(response.data));
-      history.goBack();
+    });
+    await asyncCall(async () => {
+      const response = await getStudiesForUserReq();
+      dispatch(studyActions.setSubscribedStudies((response.data.studies) ? response.data.studies : []));
+      const allStudiesResponse = await getAllAvailableStudiesReq();
+      dispatch(studyActions.setAvailableStudies((allStudiesResponse.data.studies) ? allStudiesResponse.data.studies : []));
     });
   };
 
@@ -111,7 +118,7 @@ export const NavBar: React.FC = () => {
             value={selectedProfile}
             className={classes.profileSelection}
             onChange={handleChange}>
-          { profileList.map((value: Profile, index) => {
+          { profileList.map((value: Profile) => {
             const valueId: string = value.id;
             return (<MenuItem value={valueId} key={valueId}>
               <Grid container direction="row" spacing={2} alignItems="center">
