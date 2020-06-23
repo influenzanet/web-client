@@ -13,6 +13,7 @@ const NavigationHomePage: React.FC<NavigationHomePageProps> = (props) => {
   useMountEffect(() => {
     dispatch(navigationActions.setShowNavigation(true));
     dispatch(navigationActions.setShowBackBtn(false));
+    dispatch(navigationActions.setShowProfileSelection(false));
     dispatch(navigationActions.setShowMenuButton(true));
     if (props.title) {
       dispatch(navigationActions.setPageTitle(props.title));

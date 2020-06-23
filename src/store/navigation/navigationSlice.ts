@@ -6,6 +6,7 @@ export interface NavigationState {
   appBar: {
     showMenuButton: boolean;
     showBackBtn: boolean;
+    showProfileSelection: boolean;
     currentPageTitle: string;
   };
   snackbars: {
@@ -21,6 +22,7 @@ const initialState: NavigationState = {
   appBar: {
     currentPageTitle: 'InfluenzaNet',
     showBackBtn: false,
+    showProfileSelection: false,
     showMenuButton: true,
   },
   snackbars: {
@@ -56,6 +58,13 @@ const navigationSlice = createSlice({
         appBar: {
           ...state.appBar,
           showBackBtn: action.payload,
+        }
+      }),
+    setShowProfileSelection: (state, action: PayloadAction<boolean>) =>
+      updateObject(state, {
+        appBar: {
+          ...state.appBar,
+          showProfileSelection: action.payload,
         }
       }),
     setShowMenuButton: (state, action: PayloadAction<boolean>) => {
