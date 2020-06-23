@@ -84,6 +84,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
           let index = parseInt(routeProps.match.params.index);
 
           dispatch(navigationActions.setShowBackBtn(index > 0));
+          dispatch(navigationActions.setShowProfileSelection(index > 0));
 
           // If invalid index, redirect to beginning of survey.
           if (index < 0 || index > surveyPages.length - 1) return <Redirect to={`${pagesPath}/0${location.search}`} />
