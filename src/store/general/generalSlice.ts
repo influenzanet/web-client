@@ -7,7 +7,7 @@ export interface GeneralState {
 }
 
 const initialState: GeneralState = {
-  instanceId: 'germany',
+  instanceId: process.env.REACT_APP_DEFAULT_INSTANCE ? process.env.REACT_APP_DEFAULT_INSTANCE : 'default',
   persistState: false,
 };
 
