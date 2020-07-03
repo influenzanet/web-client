@@ -79,6 +79,7 @@ const Signup: React.FC = () => {
   let [confirmPassword, setConfirmPassword] = useState("");
   let [acceptedPrivacyPolicy, setAcceptedPrivacyPolicy] = useState(false);
   let [wantsNewsletter, setWantsNewsletter] = useState(false);
+  let [useTwoFactor, setUseTwoFactor] = useState(true);
 
   let [errorMessages, setErrorMessages] = useState<string[]>([]);
 
@@ -110,6 +111,10 @@ const Signup: React.FC = () => {
     setWantsNewsletter(checked);
   }
 
+  const handleUseTwoFactorChange = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+    setUseTwoFactor(checked);
+  }
+
   const signupButtonEnabled = () => {
     return acceptedPrivacyPolicy && emailAddress.length > 0 && password.length > 0 && passwordsMatch();
   }
@@ -134,6 +139,7 @@ const Signup: React.FC = () => {
         instanceId: instanceId,
         preferredLanguage: "en",
         wantsNewsletter: wantsNewsletter,
+        use2fa: useTwoFactor,
       });
 
       let tokenRefreshedAt = new Date().getTime();
@@ -231,6 +237,14 @@ const Signup: React.FC = () => {
               control={<Checkbox checked={wantsNewsletter} value={wantsNewsletter} onChange={handleReceiveNewsletterChange} color="primary" />}
               className={classes.checkBox}
               label={t("app:signupPage.receiveNewsletterLabel")}
+            />
+          </Tooltip>
+
+          <Tooltip title={'Todo'}>
+            <FormControlLabel
+              control={<Checkbox checked={useTwoFactor} value={useTwoFactor} onChange={handleUseTwoFactorChange} color="primary" />}
+              className={classes.checkBox}
+              label={'Use Two Factor'}
             />
           </Tooltip>
           <Button
