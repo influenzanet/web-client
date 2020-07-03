@@ -1,14 +1,6 @@
-import React, { useRef, useEffect, useState, ChangeEvent } from 'react';
-import { LinkRef } from '../../../components/common/link';
-import Button from '@material-ui/core/Button';
+import React, { useRef, useEffect, useState } from 'react';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import TextField from '@material-ui/core/TextField';
 
-import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -23,13 +15,16 @@ import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants';
 import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
-import { useTranslation } from 'react-i18next';
 import { setPreferredLanguageReq } from '../../../api/user-management-api';
 import { setDefaultAccessTokenHeader, resetAuth } from '../../../api/instances/auth-api-instance';
 import Error from '../../../components/auth/Error/Error';
 import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
 import { usePostLogin } from '../../../hooks';
+import LoginForm from './LoginForm';
+import { useHistory } from 'react-router-dom';
+import VerificationCodeForm from './VerificationCodeForm';
+import { LoginMsg } from '../../../types/auth-api';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -37,9 +32,6 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between"
-  },
-  textContainer: {
-    marginTop: theme.spacing(2),
   },
   formContainer: {
     marginTop: theme.spacing(2),
@@ -56,9 +48,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
   },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+
   remmemberText: {
     userSelect: "none",
   }
@@ -70,61 +60,66 @@ const Login: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
   const postLogin = usePostLogin();
-  const { t } = useTranslation(['app']);
+
+  const history = useHistory();
 
   const [instanceId, persistState] = useSelector((state: RootState) => [state.general.instanceId, state.general.persistState]);
   const currentPreferredLanguage = useSelector((state: RootState) => state.user.currentUser.account.preferredLanguage);
 
+  // credentials:
   let [emailAddress, setEmailAddress] = useState("");
   let [password, setPassword] = useState("");
+
+  let [showVerificationForm, setShowVerificationForm] = useState(true);
 
   let [errorMessages, setErrorMessages] = useState<string[]>([]);
 
   let [loading, setLoading] = useState(false);
 
-  const login = async () => {
+  const login = async (credentials: LoginMsg) => {
     if (loading) return;
     resetAuth();
     try {
       setLoading(true);
 
-      let response = await loginWithEmailRequest({
-        email: emailAddress,
-        password: password,
-        instanceId: instanceId,
-      });
+      const response = await loginWithEmailRequest(credentials);
 
-      let tokenRefreshedAt = new Date().getTime();
+      if (response.data.secondFactorNeeded) {
+        setShowVerificationForm(true);
+      } else {
+        let tokenRefreshedAt = new Date().getTime();
 
-      dispatch(apiActions.setState({
-        accessToken: response.data.token.accessToken,
-        refreshToken: response.data.token.refreshToken,
-        expiresAt: tokenRefreshedAt + response.data.token.expiresIn * minuteToMillisecondFactor,
-      }));
+        dispatch(apiActions.setState({
+          accessToken: response.data.token.accessToken,
+          refreshToken: response.data.token.refreshToken,
+          expiresAt: tokenRefreshedAt + response.data.token.expiresIn * minuteToMillisecondFactor,
+        }));
 
-      setDefaultAccessTokenHeader(response.data.token.accessToken);
+        setDefaultAccessTokenHeader(response.data.token.accessToken);
 
-      let user = response.data.user;
+        let user = response.data.user;
 
-      if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.token.preferredLanguage) {
-        // Let server know that user chose a different language on login.
-        let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
-        user = userResponse.data;
+        if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.token.preferredLanguage) {
+          // Let server know that user chose a different language on login.
+          let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
+          user = userResponse.data;
+        }
+
+        dispatch(userActions.setState({
+          currentUser: user,
+          selectedProfileId: response.data.token.selectedProfileId
+        }));
+        dispatch(userActions.setUserID(emailAddress));
+
+        postLogin();
       }
-
-      dispatch(userActions.setState({
-        currentUser: user,
-        selectedProfileId: response.data.token.selectedProfileId
-      }));
-      dispatch(userActions.setUserID(emailAddress));
-
-      setLoading(false);
-      postLogin();
     } catch (e) {
       console.log(e);
       if (e.response && e.response.data && e.response.data.error) {
         setErrorMessages([e.response.data.error]);
       }
+      setLoading(false);
+    } finally {
       setLoading(false);
     }
   };
@@ -135,25 +130,37 @@ const Login: React.FC = () => {
     }
   }, []);
 
-  const handleEmailAdressChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setEmailAddress(event.target.value);
+
+  const onLinkClicked = (name: string) => {
+    switch (name) {
+      case 'signup':
+        history.push(AuthPagesPaths.Signup);
+        break;
+      default:
+        console.warn(`undefined link name: ${name}`);
+        break;
+    }
   }
 
-  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setPassword(event.target.value);
+  const onLoginSubmit = (email: string, password: string, rememberMe: boolean) => {
+    setEmailAddress(email);
+    setPassword(password);
+
+    dispatch(generalActions.setPersistState(rememberMe));
+    login({
+      instanceId: instanceId,
+      email: email,
+      password: password
+    });
   }
 
-  const handleRememberMeChange = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    dispatch(generalActions.setPersistState(checked));
-  }
-
-  const loginButtonEnabled = () => {
-    return emailAddress.length > 0 && password.length > 0;
-  }
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    login();
+  const onVerificationCodeSubmit = (verificationCode: string) => {
+    login({
+      instanceId: instanceId,
+      email: emailAddress,
+      password: password,
+      verificationCode: verificationCode,
+    });
   }
 
   return (
@@ -163,71 +170,18 @@ const Login: React.FC = () => {
       <Box className={classes.logo} height="80px">
         <img src={logo} alt="logo" height="100%" />
       </Box>
-      <Typography variant="h3" color="primary">
-        {t("app:loginPage.title")}
-      </Typography>
-      <RoundedBox classNames={[classes.textContainer]}>
-        <Typography variant="body1" color="primary">
-          {t("app:loginPage.message")}
-        </Typography>
-      </RoundedBox>
       <RoundedBox classNames={[classes.formContainer]} >
-        <form className={classes.form} onSubmit={onSubmit} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label={t("app:loginPage.emailPlaceholder")}
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={emailAddress}
-            onChange={handleEmailAdressChange}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label={t("app:loginPage.passwordPlaceholder")}
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <FormControlLabel
-            control={<Checkbox checked={persistState} value={persistState} onChange={handleRememberMeChange} color="primary" />}
-            className={classes.remmemberText}
-            label={t("app:loginPage.rememberMeLabel")}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            // component={LinkRef} to="/home"
-            className={classes.submit}
-            disabled={!loginButtonEnabled()}
-          >
-            {t("app:loginPage.loginButtonLabel")}
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link variant="body2" component={LinkRef} to={AuthPagesPaths.InitiatePasswordReset}>
-                {t("app:loginPage.forgotPasswordLink")}
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link variant="body2" component={LinkRef} to={AuthPagesPaths.Signup}>
-                {t("app:loginPage.signupLink")}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
+        {
+          !showVerificationForm ?
+            <LoginForm
+              onSubmit={onLoginSubmit}
+              rememberMeDefault={persistState}
+              onLinkClicked={onLinkClicked}
+            /> :
+            <VerificationCodeForm
+              onSubmit={onVerificationCodeSubmit}
+            />
+        }
       </RoundedBox>
       {errorMessages.map(error =>
         <Error errorString={error} key={error} />
