@@ -14,7 +14,7 @@ import { RootState } from '../../../store';
 import  {useHistory } from 'react-router';
 import {
   Avatar,
-  Grid,
+  Grid, Hidden,
   MenuItem,
   Select
 } from "@material-ui/core";
@@ -45,9 +45,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   profileSelection: {
-    width: '15%',
     overflow: 'hidden',
-    whitespace: 'nowrap',
   },
 }));
 
@@ -128,11 +126,14 @@ export const NavBar: React.FC = () => {
                     src={getAvatarPathFromID(`${value.avatarId}`)}
                   />
                 </Grid>
+
+                <Hidden xsDown >
                 <Grid item>
                   <Typography variant="subtitle2" color="primary">
                     {value.alias}
                   </Typography>
                 </Grid>
+                </Hidden>
               </Grid>
             </MenuItem>)
           })}
