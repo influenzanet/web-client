@@ -29,7 +29,9 @@ const CenterPage: React.FC<CenterPageProps> = (props) => {
   return (
     <FullHeightPage>
       <Container className={classes.pageContainer} maxWidth={maxWidth} >
-        {props.children}
+        <React.Fragment>
+          {props.children}
+        </React.Fragment>
       </Container>
     </FullHeightPage>
   );
