@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 import { makeStyles } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -11,7 +12,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import { navigationActions } from '../../../store/navigation/navigationSlice';
 import { RootState } from '../../../store';
-import  {useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 import {
   Avatar,
   Grid,
@@ -19,15 +20,15 @@ import {
   Select
 } from "@material-ui/core";
 import getAvatarPathFromID from "../../../pages/Home/Profile/utils/ProfileUtils";
-import {Profile} from "../../../types/user";
-import {userActions} from "../../../store/user/userSlice";
-import {switchProfileReq} from "../../../api/auth-api";
-import {apiActions} from "../../../store/api/apiSlice";
-import {minuteToMillisecondFactor} from "../../../constants";
-import {setDefaultAccessTokenHeader} from "../../../api/instances/auth-api-instance";
-import {useAsyncCall} from "../../../hooks";
-import {getAllAvailableStudiesReq, getStudiesForUserReq} from "../../../api/study-api";
-import {studyActions} from "../../../store/study/studySlice";
+import { Profile } from "../../../types/user";
+import { userActions } from "../../../store/user/userSlice";
+import { switchProfileReq } from "../../../api/auth-api";
+import { apiActions } from "../../../store/api/apiSlice";
+import { minuteToMillisecondFactor } from "../../../constants";
+import { setDefaultAccessTokenHeader } from "../../../api/instances/auth-api-instance";
+import { useAsyncCall } from "../../../hooks";
+import { getAllAvailableStudiesReq, getStudiesForUserReq } from "../../../api/study-api";
+import { studyActions } from "../../../store/study/studySlice";
 
 
 
@@ -45,9 +46,11 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   profileSelection: {
-    width: '15%',
-    overflow: 'hidden',
-    whitespace: 'nowrap',
+    // minWidth: '15%',
+    maxWidth: 180,
+    // overflow: 'hidden',
+    // whitespace: 'nowrap',
+    padding: theme.spacing(0, 1),
   },
 }));
 
@@ -66,7 +69,7 @@ export const NavBar: React.FC = () => {
   const showMenuButton = useSelector((state: RootState) => state.navigation.appBar.showMenuButton);
   const dispatch = useDispatch();
 
-  const switchProfile =  async (profileId: string) => {
+  const switchProfile = async (profileId: string) => {
     await asyncCall(async () => {
       const response = await switchProfileReq({
         profileId: profileId,
@@ -112,31 +115,33 @@ export const NavBar: React.FC = () => {
 
   const profileSelectDropdown = () => {
     return (
-        <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper-1"
-            value={selectedProfile}
-            className={classes.profileSelection}
-            onChange={handleChange}>
-          { profileList.map((value: Profile) => {
-            const valueId: string = value.id;
-            return (<MenuItem value={valueId} key={valueId}>
-              <Grid container direction="row" spacing={2} alignItems="center">
-                <Grid item>
-                  <Avatar
-                    alt={`${value.alias}`}
-                    src={getAvatarPathFromID(`${value.avatarId}`)}
-                  />
-                </Grid>
-                <Grid item>
-                  <Typography variant="subtitle2" color="primary">
-                    {value.alias}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </MenuItem>)
-          })}
-        </Select>
+      <Select
+        labelId="demo-simple-select-helper-label"
+        id="demo-simple-select-helper-1"
+        value={selectedProfile}
+        className={classes.profileSelection}
+        onChange={handleChange}>
+        {profileList.map((value: Profile) => {
+          const valueId: string = value.id;
+          return (<MenuItem value={valueId} key={valueId}>
+
+            <Box display="flex" overflow="hidden" alignItems="center" pr={1}>
+              <Avatar
+                style={{ height: "0%", width: 30 }}
+                variant="square"
+                alt={`${value.alias}`}
+                src={getAvatarPathFromID(`${value.avatarId}`)}
+              />
+              <Box ml={1}>
+                <Typography variant="subtitle2" color="primary">
+                  {value.alias}
+                </Typography>
+              </Box>
+            </Box>
+
+          </MenuItem>)
+        })}
+      </Select>
 
     )
   };
@@ -174,7 +179,7 @@ export const NavBar: React.FC = () => {
           </Typography>
           {
             (showProfileSelection)
-            ?
+              ?
               profileSelectDropdown()
               : null
           }
