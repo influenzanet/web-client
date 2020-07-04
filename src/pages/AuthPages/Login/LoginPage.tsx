@@ -70,7 +70,7 @@ const Login: React.FC = () => {
   let [emailAddress, setEmailAddress] = useState("");
   let [password, setPassword] = useState("");
 
-  let [showVerificationForm, setShowVerificationForm] = useState(true);
+  let [showVerificationForm, setShowVerificationForm] = useState(false);
 
   let [errorMessages, setErrorMessages] = useState<string[]>([]);
 

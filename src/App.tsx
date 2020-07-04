@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.scss';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import {
   BrowserRouter as Router,
@@ -128,14 +128,16 @@ const App: React.FC = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
-        <Helmet>
-          <title>{t('header.title')}</title>
-          <meta name="description" content={t('header.metaDescription')} />
-        </Helmet>
-        <Router basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : undefined}>
-          <AuthSwitch />
-        </Router>
-        <Snackbars />
+        <HelmetProvider>
+          <Helmet>
+            <title>{t('header.title')}</title>
+            <meta name="description" content={t('header.metaDescription')} />
+          </Helmet>
+          <Router basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : undefined}>
+            <AuthSwitch />
+          </Router>
+          <Snackbars />
+        </HelmetProvider>
       </StylesProvider>
     </MuiThemeProvider>
   );
