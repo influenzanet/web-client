@@ -31,3 +31,8 @@ export interface TokenResponse {
   preferredLanguage: string;
 }
 
+export interface AutoTokenValidationResponse {
+  accountId: string;
+  verificationCode: string;
+  isSameUser: boolean;
+}

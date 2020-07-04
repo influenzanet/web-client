@@ -15,7 +15,6 @@ import { RootState } from '../../../store';
 import { useHistory } from 'react-router';
 import {
   Avatar,
-  Grid,
   MenuItem,
   Select
 } from "@material-ui/core";
