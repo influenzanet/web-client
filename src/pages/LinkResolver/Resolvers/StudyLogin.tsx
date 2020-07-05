@@ -6,14 +6,14 @@ import { useTranslation } from 'react-i18next';
 import { AppRoutes, HomePaths } from '../../../routes';
 import { autoValidateTemporaryTokenReq, loginWithEmailRequest } from '../../../api/auth-api';
 import { RootState } from '../../../store';
-import { useSelector, useDispatch } from 'react-redux';
-import { resetAuth, setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
+import { useSelector } from 'react-redux';
+import { resetAuth } from '../../../api/instances/auth-api-instance';
 
-import { apiActions } from '../../../store/api/apiSlice';
-import { minuteToMillisecondFactor } from '../../../constants';
-import { userActions } from '../../../store/user/userSlice';
+
 import { Button, TextField, Box, Typography } from '@material-ui/core';
 import { useAsyncApiCall } from '../../../hooks/useAsyncApiCall';
+import { useSetAuthState } from '../../../hooks/useSetAuthState';
+import { LoginResponse } from '../../../types/auth-api';
 
 const StudyLogin: React.FC = () => {
   const query = useQuery();
@@ -23,6 +23,7 @@ const StudyLogin: React.FC = () => {
   const accessToken = useSelector((state: RootState) => state.api.accessToken);
 
   const [loading, setLoading] = useState(false);
+  const setAuthState = useSetAuthState();
 
   const [credentials, setCredentials] = useState({
     email: '',
@@ -32,7 +33,6 @@ const StudyLogin: React.FC = () => {
 
   const { t } = useTranslation(['app']);
   const history = useHistory();
-  const dispatch = useDispatch();
   const postLogin = usePostLogin();
 
 
@@ -72,23 +72,9 @@ const StudyLogin: React.FC = () => {
   useEffect(() => {
     if (loginReqState.value) {
       console.log('login finished')
-      const response = loginReqState.value;
+      const response = loginReqState.value.data as LoginResponse;
 
-      let tokenRefreshedAt = new Date().getTime();
-      dispatch(apiActions.setState({
-        accessToken: response.data.token.accessToken,
-        refreshToken: response.data.token.refreshToken,
-        expiresAt: tokenRefreshedAt + response.data.token.expiresIn * minuteToMillisecondFactor,
-      }));
-
-      setDefaultAccessTokenHeader(response.data.token.accessToken);
-      let user = response.data.user;
-      dispatch(userActions.setState({
-        currentUser: user,
-        selectedProfileId: response.data.token.selectedProfileId
-      }));
-      dispatch(userActions.setUserID(credentials.email));
-
+      setAuthState(response.token, response.user);
       postLogin();
 
     } else if (loginReqState.error) {
