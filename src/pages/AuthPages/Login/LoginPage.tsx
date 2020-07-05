@@ -11,12 +11,9 @@ import FlexGrow from '../../../components/common/FlexGrow';
 import { loginWithEmailRequest } from '../../../api/auth-api';
 import { useSelector, useDispatch } from 'react-redux';
 import { generalActions } from '../../../store/general/generalSlice';
-import { apiActions } from '../../../store/api/apiSlice';
-import { minuteToMillisecondFactor } from '../../../constants';
-import { userActions } from '../../../store/user/userSlice';
 import LanguageSelector from '../../../components/language/LanguageSelector/LanguageSelector';
 import { setPreferredLanguageReq } from '../../../api/user-management-api';
-import { setDefaultAccessTokenHeader, resetAuth } from '../../../api/instances/auth-api-instance';
+import { resetAuth } from '../../../api/instances/auth-api-instance';
 import Error from '../../../components/auth/Error/Error';
 import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
@@ -24,7 +21,10 @@ import { usePostLogin } from '../../../hooks';
 import LoginForm from './LoginForm';
 import { useHistory } from 'react-router-dom';
 import VerificationCodeForm from './VerificationCodeForm';
-import { LoginMsg } from '../../../types/auth-api';
+import { LoginResponse } from '../../../types/auth-api';
+import { useAsyncApiCall } from '../../../hooks/useAsyncApiCall';
+import { useSetAuthState } from '../../../hooks/useSetAuthState';
+import { LinearProgress } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -59,6 +59,7 @@ const Login: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const setAuthState = useSetAuthState();
   const postLogin = usePostLogin();
 
   const history = useHistory();
@@ -74,61 +75,39 @@ const Login: React.FC = () => {
 
   let [errorMessages, setErrorMessages] = useState<string[]>([]);
 
-  let [loading, setLoading] = useState(false);
+  const [loginReqState, callLogin] = useAsyncApiCall(loginWithEmailRequest);
 
-  const login = async (credentials: LoginMsg) => {
-    if (loading) return;
-    resetAuth();
-    try {
-      setLoading(true);
+  const loading = loginReqState.loading;
 
-      const response = await loginWithEmailRequest(credentials);
-
-      if (response.data.secondFactorNeeded) {
+  useEffect(() => {
+    if (loginReqState.value) {
+      console.log('login finished')
+      const response = loginReqState.value.data as LoginResponse;
+      if (response.secondFactorNeeded) {
         setShowVerificationForm(true);
       } else {
-        let tokenRefreshedAt = new Date().getTime();
 
-        dispatch(apiActions.setState({
-          accessToken: response.data.token.accessToken,
-          refreshToken: response.data.token.refreshToken,
-          expiresAt: tokenRefreshedAt + response.data.token.expiresIn * minuteToMillisecondFactor,
-        }));
-
-        setDefaultAccessTokenHeader(response.data.token.accessToken);
-
-        let user = response.data.user;
-
-        if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.token.preferredLanguage) {
-          // Let server know that user chose a different language on login.
-          let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
-          user = userResponse.data;
-        }
-
-        dispatch(userActions.setState({
-          currentUser: user,
-          selectedProfileId: response.data.token.selectedProfileId
-        }));
-        dispatch(userActions.setUserID(emailAddress));
-
+        /*
+          if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.token.preferredLanguage) {
+            // Let server know that user chose a different language on login.
+            let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
+            user = userResponse.data;
+          }
+        */
+        setAuthState(response.token, response.user);
         postLogin();
       }
-    } catch (e) {
-      console.log(e);
+
+
+    } else if (loginReqState.error) {
+      const e = loginReqState.error;
+      console.error(e);
       if (e.response && e.response.data && e.response.data.error) {
         setErrorMessages([e.response.data.error]);
       }
-      setLoading(false);
-    } finally {
-      setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.style.minHeight = `calc(100vh - ${containerRef.current.offsetTop}px)`;
-    }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loginReqState.value, loginReqState.error]);
 
 
   const onLinkClicked = (name: string) => {
@@ -143,11 +122,12 @@ const Login: React.FC = () => {
   }
 
   const onLoginSubmit = (email: string, password: string, rememberMe: boolean) => {
+    resetAuth();
     setEmailAddress(email);
     setPassword(password);
-
     dispatch(generalActions.setPersistState(rememberMe));
-    login({
+
+    callLogin({
       instanceId: instanceId,
       email: email,
       password: password
@@ -155,7 +135,7 @@ const Login: React.FC = () => {
   }
 
   const onVerificationCodeSubmit = (verificationCode: string) => {
-    login({
+    callLogin({
       instanceId: instanceId,
       email: emailAddress,
       password: password,
@@ -165,6 +145,7 @@ const Login: React.FC = () => {
 
   return (
     <Container ref={containerRef} className={classes.pageContainer} maxWidth="xs" >
+      {loading && <LinearProgress />}
       <LanguageSelector />
       <FlexGrow />
       <Box className={classes.logo} height="80px">

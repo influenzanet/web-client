@@ -159,7 +159,7 @@ const Dashboard: React.FC = () => {
   const studyList = (title: string, studies: StudyInfos[]) => {
     return (
       <Box>
-        <Typography variant="h3" color="primary">
+        <Typography variant="h6" color="primary">
           {title}
         </Typography>
         <Grid item container direction="column">
