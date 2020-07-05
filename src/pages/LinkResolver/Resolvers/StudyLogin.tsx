@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '../../../hooks/useQuery';
 import { useMountEffect, usePostLogin } from '../../../hooks';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppRoutes, HomePaths } from '../../../routes';
 import { autoValidateTemporaryTokenReq, loginWithEmailRequest } from '../../../api/auth-api';
 import { RootState } from '../../../store';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetAuth, setDefaultAccessTokenHeader } from '../../../api/instances/auth-api-instance';
-import { LoginMsg } from '../../../types/auth-api';
+
 import { apiActions } from '../../../store/api/apiSlice';
 import { minuteToMillisecondFactor } from '../../../constants';
 import { userActions } from '../../../store/user/userSlice';
 import { Button, TextField, Box, Typography } from '@material-ui/core';
+import { useAsyncApiCall } from '../../../hooks/useAsyncApiCall';
 
 const StudyLogin: React.FC = () => {
   const query = useQuery();
@@ -22,7 +23,6 @@ const StudyLogin: React.FC = () => {
   const accessToken = useSelector((state: RootState) => state.api.accessToken);
 
   const [loading, setLoading] = useState(false);
-  const [performLogin, setPerformLogin] = useState(false);
 
   const [credentials, setCredentials] = useState({
     email: '',
@@ -35,10 +35,7 @@ const StudyLogin: React.FC = () => {
   const dispatch = useDispatch();
   const postLogin = usePostLogin();
 
-  const [loginSuccess, setLoginSuccess] = useState(false);
 
-  console.log(token);
-  console.log(studyKey);
 
   const validateToken = async (token: string) => {
     setLoading(true);
@@ -70,15 +67,14 @@ const StudyLogin: React.FC = () => {
     }
   }
 
-  const login = async (credentials: LoginMsg) => {
-    if (loading) return;
-    resetAuth();
-    try {
-      setLoading(true);
-      const response = await loginWithEmailRequest(credentials);
+  const [loginReqState, callLogin] = useAsyncApiCall(loginWithEmailRequest);
+
+  useEffect(() => {
+    if (loginReqState.value) {
+      console.log('login finished')
+      const response = loginReqState.value;
 
       let tokenRefreshedAt = new Date().getTime();
-
       dispatch(apiActions.setState({
         accessToken: response.data.token.accessToken,
         refreshToken: response.data.token.refreshToken,
@@ -86,23 +82,29 @@ const StudyLogin: React.FC = () => {
       }));
 
       setDefaultAccessTokenHeader(response.data.token.accessToken);
-
       let user = response.data.user;
-
-      /*
-      if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.token.preferredLanguage) {
-        // Let server know that user chose a different language on login.
-        let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
-        user = userResponse.data;
-      }*/
-
       dispatch(userActions.setState({
         currentUser: user,
         selectedProfileId: response.data.token.selectedProfileId
       }));
       dispatch(userActions.setUserID(credentials.email));
-      setLoginSuccess(true);
+
       postLogin();
+
+    } else if (loginReqState.error) {
+      console.error(loginReqState.error)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loginReqState.value, loginReqState.error]);
+
+
+
+  /*
+    if (currentPreferredLanguage !== "" && currentPreferredLanguage !== response.data.token.preferredLanguage) {
+      // Let server know that user chose a different language on login.
+      let userResponse = await setPreferredLanguageReq(currentPreferredLanguage);
+      user = userResponse.data;
+    }
     } catch (e) {
       console.log(e);
       if (e.response && e.response.data && e.response.data.error) {
@@ -111,10 +113,13 @@ const StudyLogin: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  };*/
 
   // Use Effects:
   useMountEffect(() => {
+    console.log(token);
+    console.log(studyKey);
+
     if (!token || token.length < 1) {
       history.replace(AppRoutes.Home);
       return;
@@ -122,12 +127,17 @@ const StudyLogin: React.FC = () => {
     validateToken(token);
   });
 
-  useEffect(() => {
+
+  // const validateToken = useAsyncApiCall(loginWithEmailRequest, [{ ...credentials, instanceId }], performLogin);
+
+
+  /*useEffect(() => {
     if (performLogin) {
       login({ ...credentials, instanceId });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [performLogin]);
+  */
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = event.target.value;
@@ -141,7 +151,7 @@ const StudyLogin: React.FC = () => {
 
   return (
     <React.Fragment>
-      {loading && <p>Loading ... </p>}
+      {(loading || loginReqState.loading) && <p>Loading ... </p>}
 
       <Box>
         <Typography variant="h5" color="primary">
@@ -168,7 +178,12 @@ const StudyLogin: React.FC = () => {
         />
 
         <Button
-          onClick={() => { setPerformLogin(true) }}
+          onClick={() => {
+            resetAuth();
+            callLogin({ ...credentials, instanceId });
+
+
+          }}
           fullWidth
           variant="contained"
           color="primary"
