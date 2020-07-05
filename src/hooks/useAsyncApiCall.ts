@@ -18,7 +18,6 @@ export const useAsyncApiCall = (call: (...args: any[]) => any): [{ value: any, e
       setLoading(true);
       setValue(null);
       setError(null);
-      console.warn('perform call');
       const result = await call(...params);
       setValue(result);
     } catch (e) {

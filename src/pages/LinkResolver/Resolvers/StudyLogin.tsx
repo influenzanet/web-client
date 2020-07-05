@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useQuery } from '../../../hooks/useQuery';
 import { useMountEffect, usePostLogin } from '../../../hooks';
 import { useHistory } from 'react-router-dom';
@@ -8,22 +8,36 @@ import { autoValidateTemporaryTokenReq, loginWithEmailRequest } from '../../../a
 import { RootState } from '../../../store';
 import { useSelector } from 'react-redux';
 import { resetAuth } from '../../../api/instances/auth-api-instance';
+import Error from '../../../components/auth/Error/Error';
 
-
-import { Button, TextField, Box, Typography } from '@material-ui/core';
+import { Button, TextField, Box, Typography, Container, makeStyles, Paper, LinearProgress } from '@material-ui/core';
 import { useAsyncApiCall } from '../../../hooks/useAsyncApiCall';
 import { useSetAuthState } from '../../../hooks/useSetAuthState';
 import { LoginResponse } from '../../../types/auth-api';
 
+const useStyles = makeStyles(theme => ({
+  pageContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
+}));
+
 const StudyLogin: React.FC = () => {
+  const classes = useStyles();
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const query = useQuery();
   const token = query.get("token");
   const studyKey = query.get("study");
   const instanceId = useSelector((state: RootState) => state.general.instanceId);
   const accessToken = useSelector((state: RootState) => state.api.accessToken);
+  const setAuthState = useSetAuthState();
+  const postLogin = usePostLogin();
 
   const [loading, setLoading] = useState(false);
-  const setAuthState = useSetAuthState();
+  let [errorMessages, setErrorMessages] = useState<string[]>([]);
 
   const [credentials, setCredentials] = useState({
     email: '',
@@ -33,7 +47,7 @@ const StudyLogin: React.FC = () => {
 
   const { t } = useTranslation(['app']);
   const history = useHistory();
-  const postLogin = usePostLogin();
+
 
 
 
@@ -78,7 +92,11 @@ const StudyLogin: React.FC = () => {
       postLogin();
 
     } else if (loginReqState.error) {
-      console.error(loginReqState.error)
+      const e = loginReqState.error;
+      console.error(e);
+      if (e.response && e.response.data && e.response.data.error) {
+        setErrorMessages([e.response.data.error]);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loginReqState.value, loginReqState.error]);
@@ -113,18 +131,6 @@ const StudyLogin: React.FC = () => {
     validateToken(token);
   });
 
-
-  // const validateToken = useAsyncApiCall(loginWithEmailRequest, [{ ...credentials, instanceId }], performLogin);
-
-
-  /*useEffect(() => {
-    if (performLogin) {
-      login({ ...credentials, instanceId });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [performLogin]);
-  */
-
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = event.target.value;
     setCredentials(prev => {
@@ -135,53 +141,61 @@ const StudyLogin: React.FC = () => {
     });
   }
 
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    resetAuth();
+    callLogin({ ...credentials, instanceId });
+  }
+
   return (
     <React.Fragment>
-      {(loading || loginReqState.loading) && <p>Loading ... </p>}
+      {(loading || loginReqState.loading) && <LinearProgress />}
 
-      <Box>
-        <Typography variant="h5" color="primary">
-          {t("app:loginPage.title")}
-        </Typography>
+      <Container ref={containerRef} className={classes.pageContainer} maxWidth="xs" >
+        <Box p={2}></Box>
+        <Paper>
+          <Box p={2}>
 
-        <Typography variant="body1" color="primary">
-          {t("app:loginPage.message")}
-        </Typography>
+            <Typography variant="h5" color="primary">
+              {'Confirm your password to continue'}
+            </Typography>
 
+            <Typography variant="body1" color="primary">
+              {credentials.email}
+            </Typography>
+            <form onSubmit={onSubmit} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label={t("app:loginPage.passwordPlaceholder")}
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={credentials.password}
+                onChange={handlePasswordChange}
+              />
 
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          label={t("app:loginPage.passwordPlaceholder")}
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={credentials.password}
-          onChange={handlePasswordChange}
-        />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+              // className={classes.submit}
+              // disabled={!loginButtonEnabled()}
+              >
+                {t("app:loginPage.loginButtonLabel")}
+              </Button>
 
-        <Button
-          onClick={() => {
-            resetAuth();
-            callLogin({ ...credentials, instanceId });
-
-
-          }}
-          fullWidth
-          variant="contained"
-          color="primary"
-        // className={classes.submit}
-        // disabled={!loginButtonEnabled()}
-        >
-          {t("app:loginPage.loginButtonLabel")}
-        </Button>
-
-
-      </Box>
-
+            </form>
+          </Box>
+        </Paper>
+        {errorMessages.map(error =>
+          <Error errorString={error} key={error} />
+        )}
+      </Container>
     </React.Fragment>
   );
 };
