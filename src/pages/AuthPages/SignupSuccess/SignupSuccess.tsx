@@ -59,6 +59,7 @@ const Activation: React.FC = () => {
       }
     } catch (e) {
       console.error(e);
+      console.error(e.response.data.error);
     }
     setLoading(false);
   }

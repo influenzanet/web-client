@@ -28,6 +28,7 @@ import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
 import { usePostLogin } from '../../../hooks';
+import { useSetAuthState } from '../../../hooks/useSetAuthState';
 
 
 const useStyles = makeStyles(theme => ({
@@ -69,6 +70,7 @@ const Signup: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const setAuthState = useSetAuthState();
   const postLogin = usePostLogin();
   const { t } = useTranslation(['app']);
 
@@ -133,7 +135,7 @@ const Signup: React.FC = () => {
     resetAuth();
     try {
       setLoading(true);
-      let response = await signupWithEmailRequest({
+      const response = await signupWithEmailRequest({
         email: emailAddress,
         password: password,
         instanceId: instanceId,
@@ -142,6 +144,26 @@ const Signup: React.FC = () => {
         use2fa: useTwoFactor,
       });
 
+      // TODO: update user correctly
+      setAuthState(response.data, {
+        id: '',
+        account: {
+          type: 'email',
+          accountId: emailAddress,
+          accountConfirmedAt: 0,
+          preferredLanguage: "en",
+        },
+        roles: [],
+        contactPreferences: { subscribedToNewsletter: false, sendNewsletterTo: [] },
+        contactInfos: [],
+        profiles: [],
+        timestamps: {
+          createdAt: 0,
+          updatedAt: 0,
+          lastLogin: 0,
+          lastTokenRefresh: 0,
+        },
+      })
       let tokenRefreshedAt = new Date().getTime();
 
       dispatch(apiActions.setState({
