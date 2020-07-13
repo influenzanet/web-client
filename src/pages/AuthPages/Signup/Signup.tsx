@@ -28,6 +28,7 @@ import { useTranslation } from 'react-i18next';
 import { RootState } from '../../../store';
 import { AuthPagesPaths } from '../../../routes';
 import { usePostLogin } from '../../../hooks';
+import { useSetAuthState } from '../../../hooks/useSetAuthState';
 
 
 const useStyles = makeStyles(theme => ({
@@ -69,6 +70,7 @@ const Signup: React.FC = () => {
   const classes = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const setAuthState = useSetAuthState();
   const postLogin = usePostLogin();
   const { t } = useTranslation(['app']);
 
@@ -79,6 +81,7 @@ const Signup: React.FC = () => {
   let [confirmPassword, setConfirmPassword] = useState("");
   let [acceptedPrivacyPolicy, setAcceptedPrivacyPolicy] = useState(false);
   let [wantsNewsletter, setWantsNewsletter] = useState(false);
+  let [useTwoFactor, setUseTwoFactor] = useState(true);
 
   let [errorMessages, setErrorMessages] = useState<string[]>([]);
 
@@ -110,6 +113,10 @@ const Signup: React.FC = () => {
     setWantsNewsletter(checked);
   }
 
+  const handleUseTwoFactorChange = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+    setUseTwoFactor(checked);
+  }
+
   const signupButtonEnabled = () => {
     return acceptedPrivacyPolicy && emailAddress.length > 0 && password.length > 0 && passwordsMatch();
   }
@@ -128,14 +135,35 @@ const Signup: React.FC = () => {
     resetAuth();
     try {
       setLoading(true);
-      let response = await signupWithEmailRequest({
+      const response = await signupWithEmailRequest({
         email: emailAddress,
         password: password,
         instanceId: instanceId,
         preferredLanguage: "en",
         wantsNewsletter: wantsNewsletter,
+        use2fa: useTwoFactor,
       });
 
+      // TODO: update user correctly
+      setAuthState(response.data, {
+        id: '',
+        account: {
+          type: 'email',
+          accountId: emailAddress,
+          accountConfirmedAt: 0,
+          preferredLanguage: "en",
+        },
+        roles: [],
+        contactPreferences: { subscribedToNewsletter: false, sendNewsletterTo: [] },
+        contactInfos: [],
+        profiles: [],
+        timestamps: {
+          createdAt: 0,
+          updatedAt: 0,
+          lastLogin: 0,
+          lastTokenRefresh: 0,
+        },
+      })
       let tokenRefreshedAt = new Date().getTime();
 
       dispatch(apiActions.setState({
@@ -231,6 +259,14 @@ const Signup: React.FC = () => {
               control={<Checkbox checked={wantsNewsletter} value={wantsNewsletter} onChange={handleReceiveNewsletterChange} color="primary" />}
               className={classes.checkBox}
               label={t("app:signupPage.receiveNewsletterLabel")}
+            />
+          </Tooltip>
+
+          <Tooltip title={'Todo'}>
+            <FormControlLabel
+              control={<Checkbox checked={useTwoFactor} value={useTwoFactor} onChange={handleUseTwoFactorChange} color="primary" />}
+              className={classes.checkBox}
+              label={'Use Two Factor'}
             />
           </Tooltip>
           <Button

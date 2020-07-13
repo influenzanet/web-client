@@ -46,6 +46,7 @@
     "message": "Welcome back!",
     "emailPlaceholder": "Email Address",
     "passwordPlaceholder": "Password",
+    "verificationCodePlaceholder": "Verification Code",
     "rememberMeLabel": "Remember me",
     "loginButtonLabel": "Sign in",
     "forgotPasswordLink": "Forgot your password?",

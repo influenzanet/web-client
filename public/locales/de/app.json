@@ -46,6 +46,7 @@
     "message": "Willkommen zurück!",
     "emailPlaceholder": "E-Mail Adresse",
     "passwordPlaceholder": "Passwort",
+    "verificationCodePlaceholder": "Verifizierungsnummer",
     "rememberMeLabel": "Angemeldet bleiben",
     "loginButtonLabel": "Anmelden",
     "forgotPasswordLink": "Passwort vergessen?",

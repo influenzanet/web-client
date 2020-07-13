@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import 'typeface-roboto';
+import 'fontsource-roboto';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

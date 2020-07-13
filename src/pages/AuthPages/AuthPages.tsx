@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Signup from './Signup/Signup';
-import Login from './Login/Login';
+import Login from './Login/LoginPage';
 import SignupSuccess from './SignupSuccess/SignupSuccess';
 import { AuthPagesPaths } from '../../routes';
 import { useAuthTokenCheck } from '../../hooks';
